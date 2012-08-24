@@ -1,0 +1,13 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "songs" %>
+<% end %>
+
+<h1 class="songHeader">
+  <%= @song_collection.title %>
+  <%= link_to "&#8592; Back to Song List".html_safe, song_collections_path, :class => "back" %>
+</h1>
+<ul class="songs">
+  <% @song_collection.songs.each do |song| %>
+    <%= render :partial => "song", :object => song %>
+  <% end %>
+</ul>

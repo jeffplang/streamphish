@@ -1,0 +1,11 @@
+<h1>Shows</h1>
+<br><br>
+<ul>
+<% @shows.each do |show| %>
+  <li>
+    <%= show %>
+    <%= button_to "delete", {:action => :destroy, :id => show.id}, {:method => :delete} %>
+  </li>
+<% end %>
+</ul>
+<%= link_to "Add New Show", new_show_path %>

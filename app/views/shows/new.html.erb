@@ -1,0 +1,14 @@
+<h1>Add New Show</h1>
+<br>
+<br>
+<%= link_to "Back to Index", shows_path %>
+<br><br>
+<%= form_for @show do |f| %>
+  <%= f.label :show_date %>
+  <%= f.date_select :show_date, :start_year => 1980 %>
+  <br>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <br>
+  <%= f.submit %>
+<% end %>

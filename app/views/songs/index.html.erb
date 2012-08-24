@@ -1,0 +1,17 @@
+<h1>Songs</h1>
+<br>
+<% if flash[:notice] %>
+  <%= flash[:notice] %><br>
+<% end %>
+
+<ul>
+<% @songs.each do |song| %>
+  <li><%= link_to ">", '#', :class => 'btn play', :'data-song-uri' => song.song_file.url %> <%= song.title %></li>
+<% end %>
+</ul>
+
+<%= link_to "Add Song", new_song_path %>
+
+<% content_for :extra_javascript_includes do %>
+  <%= javascript_include_tag 'song_player' %>
+<% end %>
