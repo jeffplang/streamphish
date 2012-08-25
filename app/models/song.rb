@@ -9,5 +9,5 @@ class Song < ActiveRecord::Base
   validates_attachment :song_file, :presence => true,
     :content_type => {:content_type => ['application/mp3', 'application/x-mp3', 'audio/mpeg', 'audio/mp3']}
 
-  validates_presence_of :show, :title, :song_collection
+  validates_presence_of :show, :title, :position, :song_collection
 end
