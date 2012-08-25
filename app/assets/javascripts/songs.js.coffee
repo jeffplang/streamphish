@@ -1,9 +1,10 @@
 //= require soundmanager2
+//= require util
 
 class Song
   constructor: (@$song) ->
     @songUri = @$song.data 'song-uri'
-    @$wrapper = @$song.parent()
+    @$scrubber = @$song.find '.songTime'
     @$duration = @$song.find 'time.totalTime'
     @$currentTime = @$song.find 'time.currentTime'
     that = this
@@ -11,55 +12,44 @@ class Song
     @sound = soundManager.createSound
       id: @songUri
       url: @songUri
-      autoPlay: true
+      autoPlay: false
       whileloading: -> 
         that.duration = this.duration
         that.$duration
-          .text(SongManager.msToMMSS(this.duration))
-          .css('visibility', 'visible')
+          .text(SP.Util.msToMMSS(this.duration))
       whileplaying: ->
         that.$currentTime
-          .text(SongManager.msToMMSS(this.position))
-          .css('visibility', 'visible')
+          .text(SP.Util.msToMMSS(this.position))
 
-    @$song
-      .data('sound', this)
-      .parent().addClass('playing')
+    @$song.data('sound', this)
+    this.play()
 
   togglePause: ->
     @sound.togglePause()
 
   play: ->
-    @$wrapper.addClass('playing')
-    @$duration.css('visibility', 'visible')
+    @$song.addClass('playing')
+    @$scrubber.css('visibility', 'visible')
     @sound.play()
 
   stop: ->
-    @$currentTime.css('visibility', 'hidden')
-    @$duration.css('visibility', 'hidden')
-    @$wrapper.removeClass('playing')
+    @$song.removeClass('playing')
+    @$scrubber.css('visibility', 'hidden')
     @sound.stop()
 
 
 class SongManager
-  @msToMMSS: (ms) ->
-    minutes = Math.floor(ms / (1000 * 60))
-    remainingMs = ms - (minutes * 1000 * 60)
-    seconds = Math.round(remainingMs / 1000)
-
-    "#{ minutes }:#{if seconds < 10 then '0' else '' }#{ seconds }"
-
   constructor: ->
     soundManager.setup
       url: '/assets/'
       useHTML5Audio: true
 
     @$songList = $('.songs')
-    @$songList.on 'click', 'li a', this.handleSongClick
+    @$songList.on 'click', 'li', this.handleSongClick
 
   handleSongClick: (e) =>
     $song = $(e.currentTarget)
-    if $song.parent().hasClass('playing')
+    if $song.hasClass('playing')
       $song.data('sound').togglePause()
     else
       this.playSong($song)
@@ -73,10 +63,47 @@ class SongManager
       sound.play()
 
   silence: ->
-    log 'SILENCING'
-    $playing = @$songList.find('li.playing a')
+    $playing = @$songList.find('li.playing')
     if $playing.length
-      log $playing.data('sound')
       $playing.data('sound').stop()
 
-SM = new SongManager
+
+class ScrubberManager
+  pLMax: -7
+  pRMax: 248
+
+  constructor: ->
+    $('.songs').on 'mousedown', '.scrubber .handle', (e) =>
+      e.originalEvent.preventDefault() # prevents I-bar/text selection cursor from appearing
+      e.stopPropagation()
+      e.stopImmediatePropagation()
+      @$currHandle = $(e.currentTarget)
+      @$currScrubber = @$currHandle.closest('.scrubber')
+      @handleOffset = @$currHandle.width() / 2
+
+      this._toggleHandleHandlers()
+
+  _toggleHandleHandlers: ->
+    $doc = $(document)
+
+    if @$currHandle?
+      $doc
+        .on('mousemove', (e) =>
+          newPos = SP.Util.clamp e.pageX - @$currScrubber.offset().left - @handleOffset,
+                                 @pLMax, 
+                                 @pRMax
+          @$currHandle.css 'left', newPos)
+
+        .on('mouseup', (e) =>
+          e.stopImmediatePropagation()
+          e.stopPropagation()
+          @$currHandle = null
+          this._toggleHandleHandlers())
+    else
+      $doc.off('mouseup mousemove')
+
+
+$ ->
+  SongM = new SongManager
+  ScrbM = new ScrubberManager
+

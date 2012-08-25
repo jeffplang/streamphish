@@ -3,19 +3,32 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $songBg: #0F2340;
+$sHandleSize: 12px;
 
 h1.songHeader { position: fixed; top: 0; margin: 0; background: #55BA79; color: #fff; display: block; width: 100%; padding-left: 8px; }
 h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: none; margin: 12px 16px 0 0; }
 
 .songs { margin-top: 44px; list-style-type: none; padding: 0; }
 .songs .songInfo { float: left; margin-top: 5px; }
-.songs .songTime { float: right; }
-.songs .songTime time { display: block; }
-.songs .songTime .currentTime { font-size: 32px; color: #FFFBA3; visibility: hidden; }
-.songs .songTime .totalTime { font-size: 14px; float: right; color: #fff; visibility: hidden; }
-.songs li.playing a { background: lighten($songBg, 15%) }
-.songs li a { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; }
-.songs li a:hover { background: #145C63; }
+.songs .songTime { 
+  float: right; 
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.songs .songTime { visibility: hidden; }
+.songs .songTime time { display: inline-block; line-height: 3px; width: 40px; }
+.songs .songTime time.currentTime {  }
+.songs .songTime time.totalTime { margin-left: 6px; }
+.songs li.playing { background: lighten($songBg, 15%) }
+.songs li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; }
+.songs li:hover { background: #145C63; }
 .songs br { margin: 0; }
 .songs .songDate { font-size: 22px; }
 .songs .songVenue { font-size: 15px; }
+
+.songs .scrubber { width: 255px; background: #aaa; height: 4px; margin-top: 25px; display: inline-block; }
+.songs .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: -4px; left: -7px; }

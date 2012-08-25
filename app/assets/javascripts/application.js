@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require h5bp
 
+// global namespace for stuff
+var SP = {};
+
 $(function() {
   $('.epd').on('click', function(e){
     e.preventDefault();

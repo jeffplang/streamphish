@@ -1,13 +1,10 @@
-<li>
-  <a href="#" class="epd" data-song-uri="<%= song.song_file.url %>">
+<li data-song-uri="<%= song.song_file.url %>">
+  <!-- <a href="#" class="epd" data-song-uri="<%= song.song_file.url %>"> -->
     <div class="songInfo">
       <span class="songDate"><%= song.show.show_date.strftime '%-m/%-d/%Y' %></span><br>
       <span class="songVenue"><%= song.show.location %></span>
     </div>
-    <div class="songTime">
-      <time class="currentTime">0:00</time>
-      <time class="totalTime">0:00</time>
-    </div>
+    <%= render "scrubber" %>
     <div class="clearfix"></div>
-  </a>
+  <!-- </a> -->
 </li>
