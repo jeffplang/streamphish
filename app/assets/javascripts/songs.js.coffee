@@ -14,12 +14,13 @@ class Song
       url: @songUri
       autoPlay: false
       whileloading: -> 
-        that.duration = this.duration
+        that.duration = this.durationEstimate
         that.$duration
-          .text(SP.Util.msToMMSS(this.duration))
+          .text(SP.Util.msToMMSS(that.duration))
+      onload: ->
+        that.duration = this.duration
       whileplaying: ->
-        that.$currentTime
-          .text(SP.Util.msToMMSS(this.position))
+        that.updatePosition(this.position)
 
     @$song.data('sound', this)
     this.play()
@@ -36,6 +37,10 @@ class Song
     @$song.removeClass('playing')
     @$scrubber.css('visibility', 'hidden')
     @sound.stop()
+
+  updatePosition: (pos) ->
+    @$currentTime
+      .text(SP.Util.msToMMSS(pos))
 
 
 class SongManager
@@ -75,8 +80,6 @@ class ScrubberManager
   constructor: ->
     $('.songs').on 'mousedown', '.scrubber .handle', (e) =>
       e.originalEvent.preventDefault() # prevents I-bar/text selection cursor from appearing
-      e.stopPropagation()
-      e.stopImmediatePropagation()
       @$currHandle = $(e.currentTarget)
       @$currScrubber = @$currHandle.closest('.scrubber')
       @handleOffset = @$currHandle.width() / 2
@@ -95,8 +98,6 @@ class ScrubberManager
           @$currHandle.css 'left', newPos)
 
         .on('mouseup', (e) =>
-          e.stopImmediatePropagation()
-          e.stopPropagation()
           @$currHandle = null
           this._toggleHandleHandlers())
     else
