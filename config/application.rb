@@ -61,6 +61,6 @@ module Streamphish
 
     config.assets.initialize_on_precompile = false
 
-    config.assets.precompile += %w(polyfills.js)
+    config.assets.precompile += %w(polyfills.js songs.js)
   end
 end
