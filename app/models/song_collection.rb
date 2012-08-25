@@ -5,5 +5,6 @@ class SongCollection < ActiveRecord::Base
 
   validates_presence_of :title
 
-  slug :title
+  extend FriendlyId
+  friendly_id :title, :use => :slugged
 end
