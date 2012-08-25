@@ -1,6 +1,6 @@
 class Song < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :show_id, :title, :song_file, :song_collection_id
+  attr_accessible :show_id, :title, :position, :song_file, :song_collection_id
 
   belongs_to :show
   belongs_to :song_collection
