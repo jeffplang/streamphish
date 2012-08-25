@@ -17,4 +17,4 @@
 # Custom
 /.rvmrc
 /public/system/*
-/config/database.yml
+config/database.yml
