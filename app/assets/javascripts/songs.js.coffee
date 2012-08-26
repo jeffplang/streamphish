@@ -20,9 +20,9 @@ class Song
       onload: ->
         that.duration = this.duration
       whileplaying: ->
-        that.updatePosition(this.position)
+        that.updateUIPosition(this.position)
 
-    @$song.data('sound', this)
+    @$song.data('song', this)
 
   togglePause: ->
     @sound.togglePause()
@@ -35,7 +35,7 @@ class Song
     @$song.removeClass 'playing'
     @sound.stop()
 
-  updatePosition: (pos) ->
+  updateUIPosition: (pos) ->
     @$currentTime.text SP.Util.msToMMSS(pos)
     @scrubber.moveToPercent pos / this.duration
 
@@ -54,13 +54,13 @@ class SongManager
     $song = $(e.currentTarget)
 
     if $song.hasClass('playing')
-      $song.data('sound').togglePause()
+      $song.data('song').togglePause()
     else
       this.playSong($song)
 
   playSong: ($song) ->
     this.silence()
-    sound = $song.data('sound')
+    sound = $song.data('song')
     unless sound?
       sound = new Song($song)
 
@@ -69,7 +69,7 @@ class SongManager
   silence: ->
     $playing = @$songList.children('.playing')
     if $playing.length
-      $playing.data('sound').stop()
+      $playing.data('song').stop()
 
 
 class Scrubber
@@ -89,6 +89,7 @@ class Scrubber
       @$handle.css('left', newPos)
 
 
+
 class ScrubberManager
   constructor: ->
     $('.songs').on 'mousedown', '.scrubber .handle', @_mouseDownHandler
@@ -101,6 +102,7 @@ class ScrubberManager
     e.originalEvent.preventDefault() # prevents I-bar/text selection cursor from appearing
     @$currHandle = $(e.currentTarget)
     @$currTimeline = @$currHandle.closest('.scrubber')
+    @currSong = @$currTimeline.closest('li').data('song')
     @handleOffset = @$currHandle.width() / 2
 
     @$currHandle.addClass('grabbed')
@@ -110,9 +112,12 @@ class ScrubberManager
     newPos = SP.Util.clamp e.pageX - @$currTimeline.offset().left - @handleOffset,
                            Scrubber.pLMax, 
                            Scrubber.pRMax
+
     @$currHandle.css 'left', newPos
 
   _mouseUpHandler: (e) =>
+    # TODO: update Song position on mouseup, maybe also currentTime as scrubber handle
+    #       is dragged.
     @$currHandle.removeClass('grabbed')
     @$currHandle = null
     @._toggleHandleHandlers()
