@@ -21,20 +21,18 @@ h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: n
 }
 
 
-.songs .songTime time { display: inline-block; line-height: 3px; width: 40px; }
+.songs .songTime time { display: inline-block; line-height: 3px; }
 .songs .songTime time.currentTime {  }
-.songs .songTime time.totalTime { margin-left: 6px; }
+.songs .songTime time.totalTime { width: 40px; }
 .songs li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; }
 .songs li.playing { background: lighten($songBg, 15%) }
 .songs li.playing .songTime { visibility: visible; }
-.songs li .songTime { visibility: hidden; }
-
-
+.songs li .songTime { visibility: hidden; margin-top: 12px; }
 
 .songs li:hover { background: #145C63; }
 .songs br { margin: 0; }
 .songs .songDate { font-size: 22px; }
 .songs .songVenue { font-size: 15px; }
-
-.songs .scrubber { width: 255px; background: #aaa; height: 4px; margin-top: 25px; display: inline-block; }
-.songs .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: -4px; left: -7px; }
+.songs .scrubber { display: inline-block; width: 265px; height: 18px; position: relative; }
+.songs .scrubber .timeline { background: #aaa; height: 4px; margin: 0 7px 0 7px; }
+.songs .scrubber .handle { border: 1px solid #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: 9px; left: 0; }

@@ -73,8 +73,7 @@ class SongManager
 
 
 class Scrubber
-  @pLMax: -7
-  @pRMax: 248
+  @distance: 251
 
   constructor: (@song) ->
     @$song = @song.$song
@@ -83,10 +82,7 @@ class Scrubber
 
   moveToPercent: (percent) ->
     unless @$handle.hasClass('grabbed')
-      distance = Scrubber.pRMax - Scrubber.pLMax
-      newPos = Math.round(distance * percent) + Scrubber.pLMax
-
-      @$handle.css('left', newPos)
+      @$handle.css('left', Math.round(Scrubber.distance * percent))
 
 
 
@@ -101,17 +97,17 @@ class ScrubberManager
   _mouseDownHandler: (e) =>
     e.originalEvent.preventDefault() # prevents I-bar/text selection cursor from appearing
     @$currHandle = $(e.currentTarget)
-    @$currTimeline = @$currHandle.closest('.scrubber')
-    @currSong = @$currTimeline.closest('li').data('song')
+    @$currScrubber = @$currHandle.closest('.scrubber')
+    @currSong = @$currScrubber.closest('li').data('song')
     @handleOffset = @$currHandle.width() / 2
 
     @$currHandle.addClass('grabbed')
     @._toggleHandleHandlers()
 
   _mouseMoveHandler: (e) =>
-    newPos = SP.Util.clamp e.pageX - @$currTimeline.offset().left - @handleOffset,
-                           Scrubber.pLMax, 
-                           Scrubber.pRMax
+    newPos = SP.Util.clamp e.pageX - @$currScrubber.offset().left - @handleOffset,
+                           0, 
+                           Scrubber.distance
 
     @$currHandle.css 'left', newPos
 
