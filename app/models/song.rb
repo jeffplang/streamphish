@@ -11,4 +11,14 @@ class Song < ActiveRecord::Base
     :content_type => {:content_type => ['application/mp3', 'application/x-mp3', 'audio/mpeg', 'audio/mp3']}
 
   validates_presence_of :show, :title, :position, :song_collection
+
+  before_save :set_duration
+
+  protected
+
+  def set_duration
+    Mp3Info.open song_file.path do |mp3|
+      self.duration = (mp3.length * 1000).round
+    end
+  end
 end

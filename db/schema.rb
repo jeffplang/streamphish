@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120824024109) do
+ActiveRecord::Schema.define(:version => 20120826214332) do
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(:version => 20120824024109) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "section_markers", :force => true do |t|
+    t.string   "title"
+    t.integer  "position"
+    t.integer  "song_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "shows", :force => true do |t|
     t.date     "show_date"
@@ -51,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20120824024109) do
     t.integer  "song_file_file_size"
     t.datetime "song_file_updated_at"
     t.integer  "song_collection_id"
+    t.integer  "duration"
   end
 
   create_table "users", :force => true do |t|

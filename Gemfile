@@ -11,6 +11,7 @@ gem 'paperclip'
 gem 'rails_admin'
 gem 'nokogiri'
 gem 'friendly_id'
+gem 'mp3info'
 
 # Gems used only for assets and not required
 # in production environments by default.
