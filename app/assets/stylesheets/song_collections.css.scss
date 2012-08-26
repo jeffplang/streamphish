@@ -19,12 +19,18 @@ h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: n
   -ms-user-select: none;
   user-select: none;
 }
-.songs .songTime { visibility: hidden; }
+
+
 .songs .songTime time { display: inline-block; line-height: 3px; width: 40px; }
 .songs .songTime time.currentTime {  }
 .songs .songTime time.totalTime { margin-left: 6px; }
-.songs li.playing { background: lighten($songBg, 15%) }
 .songs li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; }
+.songs li.playing { background: lighten($songBg, 15%) }
+.songs li.playing .songTime { visibility: visible; }
+.songs li .songTime { visibility: hidden; }
+
+
+
 .songs li:hover { background: #145C63; }
 .songs br { margin: 0; }
 .songs .songDate { font-size: 22px; }

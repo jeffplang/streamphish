@@ -3,10 +3,10 @@
 
 class Song
   constructor: (@$song) ->
-    @songUri = @$song.data 'song-uri'
-    @$scrubber = @$song.find '.songTime'
     @$duration = @$song.find 'time.totalTime'
     @$currentTime = @$song.find 'time.currentTime'
+    @songUri = @$song.data 'song-uri'
+    @scrubber = new Scrubber(this)
     that = this
 
     @sound = soundManager.createSound
@@ -16,31 +16,28 @@ class Song
       whileloading: -> 
         that.duration = this.durationEstimate
         that.$duration
-          .text(SP.Util.msToMMSS(that.duration))
+          .text SP.Util.msToMMSS(that.duration)
       onload: ->
         that.duration = this.duration
       whileplaying: ->
         that.updatePosition(this.position)
 
     @$song.data('sound', this)
-    this.play()
 
   togglePause: ->
     @sound.togglePause()
 
   play: ->
-    @$song.addClass('playing')
-    @$scrubber.css('visibility', 'visible')
+    @$song.addClass 'playing'
     @sound.play()
 
   stop: ->
-    @$song.removeClass('playing')
-    @$scrubber.css('visibility', 'hidden')
+    @$song.removeClass 'playing'
     @sound.stop()
 
   updatePosition: (pos) ->
-    @$currentTime
-      .text(SP.Util.msToMMSS(pos))
+    @$currentTime.text SP.Util.msToMMSS(pos)
+    @scrubber.moveToPercent pos / this.duration
 
 
 class SongManager
@@ -48,63 +45,91 @@ class SongManager
     soundManager.setup
       url: '/assets/'
       useHTML5Audio: true
+      debugMode: false
 
     @$songList = $('.songs')
-    @$songList.on 'click', 'li', this.handleSongClick
+    @$songList.on 'click', 'li', this._handleSongClick
 
-  handleSongClick: (e) =>
+  _handleSongClick: (e) =>
+    log 'in handle song click'
     $song = $(e.currentTarget)
+    # event for 'mouseup' on scrubber handle always fires after this, 
+    # due to it being a handler on $(document)?  Hence this hack.
+    if $song.find('.handle').hasClass('grabbed')
+      log 'it is being grabbed'
+      return
+
     if $song.hasClass('playing')
       $song.data('sound').togglePause()
     else
       this.playSong($song)
 
   playSong: ($song) ->
-    this.silence();
+    this.silence()
     sound = $song.data('sound')
     unless sound?
       sound = new Song($song)
-    else
-      sound.play()
+
+    sound.play()
 
   silence: ->
-    $playing = @$songList.find('li.playing')
+    $playing = @$songList.children('.playing')
     if $playing.length
       $playing.data('sound').stop()
 
 
+class Scrubber
+  @pLMax: -7
+  @pRMax: 248
+
+  constructor: (@song) ->
+    @$song = @song.$song
+    @$timeline = @$song.find('.scrubber')
+    @$handle = @$timeline.find('.handle')
+
+  moveToPercent: (percent) ->
+    unless @$handle.hasClass('grabbed')
+      distance = Scrubber.pRMax - Scrubber.pLMax
+      newPos = Math.round(distance * percent) + Scrubber.pLMax
+
+      @$handle.css('left', newPos)
+
+
 class ScrubberManager
-  pLMax: -7
-  pRMax: 248
-
   constructor: ->
-    $('.songs').on 'mousedown', '.scrubber .handle', (e) =>
-      e.originalEvent.preventDefault() # prevents I-bar/text selection cursor from appearing
-      @$currHandle = $(e.currentTarget)
-      @$currScrubber = @$currHandle.closest('.scrubber')
-      @handleOffset = @$currHandle.width() / 2
+    $('.songs').on 'mousedown', '.scrubber .handle', @_mouseDownHandler
 
-      this._toggleHandleHandlers()
+  _mouseDownHandler: (e) =>
+    e.originalEvent.preventDefault() # prevents I-bar/text selection cursor from appearing
+    @$currHandle = $(e.currentTarget)
+    @$currTimeline = @$currHandle.closest('.scrubber')
+    @handleOffset = @$currHandle.width() / 2
+
+    @$currHandle.addClass('grabbed')
+    @._toggleHandleHandlers()
+
+  _mouseMoveHandler: (e) =>
+    newPos = SP.Util.clamp e.pageX - @$currTimeline.offset().left - @handleOffset,
+                           Scrubber.pLMax, 
+                           Scrubber.pRMax
+    @$currHandle.css 'left', newPos
+
+  _mouseUpHandler: (e) =>
+    log 'mouse up'
+    @$currHandle.removeClass('grabbed')
+    @$currHandle = null
+    @._toggleHandleHandlers()
 
   _toggleHandleHandlers: ->
     $doc = $(document)
 
     if @$currHandle?
-      $doc
-        .on('mousemove', (e) =>
-          newPos = SP.Util.clamp e.pageX - @$currScrubber.offset().left - @handleOffset,
-                                 @pLMax, 
-                                 @pRMax
-          @$currHandle.css 'left', newPos)
-
-        .on('mouseup', (e) =>
-          @$currHandle = null
-          this._toggleHandleHandlers())
+      $doc.on('mousemove', @_mouseMoveHandler)
+          .on('mouseup', @_mouseUpHandler)
     else
       $doc.off('mouseup mousemove')
 
-
 $ ->
-  SongM = new SongManager
-  ScrbM = new ScrubberManager
+  SP.ScrbM = new ScrubberManager
+  SP.SongM = new SongManager
 
