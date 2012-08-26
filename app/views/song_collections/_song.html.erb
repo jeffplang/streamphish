@@ -4,7 +4,7 @@
       <span class="songDate"><%= song.show.show_date.strftime '%-m/%-d/%Y' %></span><br>
       <span class="songVenue"><%= song.show.location %></span>
     </div>
-    <%= render "scrubber" %>
+    <%= render :partial => "scrubber", :locals => {:song => song} %>
     <div class="clearfix"></div>
   <!-- </a> -->
 </li>

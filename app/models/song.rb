@@ -2,6 +2,7 @@ class Song < ActiveRecord::Base
   # attr_accessible :title, :body
   attr_accessible :show_id, :title, :position, :song_file, :song_collection_id
 
+  has_many :section_markers
   belongs_to :show
   belongs_to :song_collection
 

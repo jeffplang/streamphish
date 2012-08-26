@@ -2,7 +2,9 @@
   <time class="currentTime">0:00</time>
   <div class="scrubber">
     <div class="handle"></div>
-    <div class="timeline"></div>
+    <div class="timeline">
+      <%= render :partial => "marker", :collection => song.section_markers %>
+    </div>
   </div>
   <time class="totalTime">13:21</time>
 </div>
