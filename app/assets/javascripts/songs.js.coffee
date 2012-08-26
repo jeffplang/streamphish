@@ -7,6 +7,7 @@ class Song
     @$currentTime = @$song.find 'time.currentTime'
     @songUri = @$song.data 'song-uri'
     @scrubber = new Scrubber(this)
+    @$markers = @$song.find '.marker'
     that = this
 
     @sound = soundManager.createSound
@@ -22,7 +23,7 @@ class Song
       whileplaying: ->
         that.updateUIPosition(this.position)
 
-    @$song.data('song', this)
+    @$song.data 'song', this
 
   togglePause: ->
     @sound.togglePause()
