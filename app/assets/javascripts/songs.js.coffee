@@ -51,13 +51,7 @@ class SongManager
     @$songList.on 'click', 'li', this._handleSongClick
 
   _handleSongClick: (e) =>
-    log 'in handle song click'
     $song = $(e.currentTarget)
-    # event for 'mouseup' on scrubber handle always fires after this, 
-    # due to it being a handler on $(document)?  Hence this hack.
-    if $song.find('.handle').hasClass('grabbed')
-      log 'it is being grabbed'
-      return
 
     if $song.hasClass('playing')
       $song.data('sound').togglePause()
@@ -99,6 +93,10 @@ class ScrubberManager
   constructor: ->
     $('.songs').on 'mousedown', '.scrubber .handle', @_mouseDownHandler
 
+    # if a mouseup event is done on the handle, a click event bubbles
+    # to the song <li>...this prevents it
+    $('.songs').on 'click', '.scrubber .handle', -> false
+
   _mouseDownHandler: (e) =>
     e.originalEvent.preventDefault() # prevents I-bar/text selection cursor from appearing
     @$currHandle = $(e.currentTarget)
@@ -115,7 +113,6 @@ class ScrubberManager
     @$currHandle.css 'left', newPos
 
   _mouseUpHandler: (e) =>
-    log 'mouse up'
     @$currHandle.removeClass('grabbed')
     @$currHandle = null
     @._toggleHandleHandlers()
@@ -130,6 +127,6 @@ class ScrubberManager
       $doc.off('mouseup mousemove')
 
 $ ->
-  SP.ScrbM = new ScrubberManager
   SP.SongM = new SongManager
+  SP.ScrbM = new ScrubberManager
 
