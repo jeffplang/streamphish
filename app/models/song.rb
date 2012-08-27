@@ -7,20 +7,22 @@ class Song < ActiveRecord::Base
   belongs_to :song_collection
 
   has_attached_file :song_file
+
   validates_attachment :song_file, :presence => true,
     :content_type => {:content_type => ['application/mp3', 'application/x-mp3', 'audio/mpeg', 'audio/mp3']}
 
   validates_presence_of :show, :title, :position, :song_collection
 
-  before_save :set_duration
+  after_save :set_duration
 
   protected
 
   def set_duration
-    Rails.logger.info "* * * SONG FILE PATH * * *"
-    Rails.logger.info song_file.path
-    Mp3Info.open song_file.path do |mp3|
-      self.duration = (mp3.length * 1000).round
+    unless self.duration
+      Mp3Info.open song_file.path do |mp3|
+        self.duration = (mp3.length * 1000).round
+        save
+      end
     end
   end
 end
