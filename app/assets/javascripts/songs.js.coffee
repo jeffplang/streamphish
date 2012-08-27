@@ -6,6 +6,7 @@ class Song
     @$duration = @$song.find 'time.totalTime'
     @$currentTime = @$song.find 'time.currentTime'
     @songUri = @$song.data 'song-uri'
+    @duration = @$song.data 'duration'
     @scrubber = new Scrubber(this)
     @$markers = @$song.find '.marker'
     that = this
@@ -14,16 +15,13 @@ class Song
       id: @songUri
       url: @songUri
       autoPlay: false
-      whileloading: -> 
-        that.duration = this.durationEstimate
-        that.$duration
-          .text SP.Util.msToMMSS(that.duration)
-      onload: ->
-        that.duration = this.duration
       whileplaying: ->
         that.updateUIPosition(this.position)
 
     @$song.data 'song', this
+    @$markers.each (idx, marker) =>
+      $marker = $(marker)
+      $marker.data 'marker', new Marker(this, $marker.data('position'))
 
   togglePause: ->
     @sound.togglePause()
@@ -36,10 +34,13 @@ class Song
     @$song.removeClass 'playing'
     @sound.stop()
 
+  goToPosition: (pos) ->
+    @sound.setPosition(pos)
+    @updateUIPosition(pos)
+
   updateUIPosition: (pos) ->
     @$currentTime.text SP.Util.msToMMSS(pos)
     @scrubber.moveToPercent pos / this.duration
-
 
 class SongManager
   constructor: ->
@@ -85,6 +86,15 @@ class Scrubber
     unless @$handle.hasClass('grabbed')
       @$handle.css('left', Math.round(Scrubber.distance * percent))
 
+class Marker
+  @initMarkers: ->
+    $('.marker').on 'click', (e) ->
+      e.stopPropagation()
+
+      marker = $(e.currentTarget).data('marker')
+      marker.song.goToPosition(marker.position)
+
+  constructor: (@song, @position) ->
 
 
 class ScrubberManager
@@ -128,7 +138,9 @@ class ScrubberManager
     else
       $doc.off('mouseup mousemove')
 
+
 $ ->
   SP.SongM = new SongManager
   SP.ScrbM = new ScrubberManager
+  Marker.initMarkers()
 

@@ -22,7 +22,7 @@ h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: n
 }
 
 
-.songs .songTime time { display: inline-block; line-height: 3px; }
+.songs .songTime time { display: inline-block; line-height: 5px; }
 .songs .songTime time.currentTime {  }
 .songs .songTime time.totalTime { width: 40px; }
 .songs li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; }
@@ -36,8 +36,8 @@ h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: n
 
 .songs .scrubber { display: inline-block; width: 265px; height: 18px; position: relative; }
 .songs .scrubber .timeline { background: #aaa; height: 4px; margin: 0 7px 0 7px; }
-.songs .scrubber .handle { border: 1px #fff solid; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: 9px; left: 0; }
+.songs .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: 8px; left: 0; border-radius: 6px; }
 
-.songs .songTime .marker { position: relative; float: left; top: -33px; }
+.songs .songTime .marker { position: relative; float: left; top: -31px; }
 .songs .songTime .marker a { color: #000; text-decoration: none; font-size: 10px; background: $markerColor; border-radius: 3px; border-bottom-left-radius: 0; padding: 1px 3px 1px 3px; }
-.songs .songTime .marker .stick { height: 18px; border-left: 3px solid $markerColor; margin-top: -3px; }
+.songs .songTime .marker .stick { height: 16px; border-left: 3px solid $markerColor; margin-top: -3px; }

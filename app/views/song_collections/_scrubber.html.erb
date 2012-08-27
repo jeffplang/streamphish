@@ -6,5 +6,5 @@
       <%= render :partial => "marker", :collection => song.section_markers, :locals => {:song => song} %>
     </div>
   </div>
-  <time class="totalTime">13:21</time>
+  <time class="totalTime"><%= ms_to_MMSS song.duration %></time>
 </div>
