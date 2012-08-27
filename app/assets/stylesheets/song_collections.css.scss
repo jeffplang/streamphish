@@ -11,16 +11,7 @@ h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: n
 
 .songs { margin-top: 44px; list-style-type: none; padding: 0; }
 .songs .songInfo { float: left; margin-top: 5px; }
-.songs .songTime { 
-  float: right; 
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
+.songs .songTime { float: right; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
 .songs .songTime time { display: inline-block; line-height: 5px; }
 .songs .songTime time.currentTime {  }
@@ -41,3 +32,6 @@ h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: n
 .songs .songTime .marker { position: relative; float: left; top: -31px; }
 .songs .songTime .marker a { color: #000; text-decoration: none; font-size: 10px; background: $markerColor; border-radius: 3px; border-bottom-left-radius: 0; padding: 1px 3px 1px 3px; }
 .songs .songTime .marker .stick { height: 16px; border-left: 3px solid $markerColor; margin-top: -3px; }
+
+.hugeSongList li { padding: 0; }
+.hugeSongList li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; padding: 10px; }

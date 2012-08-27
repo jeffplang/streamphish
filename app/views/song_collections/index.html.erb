@@ -1,5 +1,5 @@
 <h1 class="songHeader">Songs</h1>
-<ul class="songs">
+<ul class="songs hugeSongList">
 <% @song_collections.each do |song| %>
   <li><%= link_to song.title, song_collection_path(song) %></li>
 <% end %>
