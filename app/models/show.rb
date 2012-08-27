@@ -6,4 +6,5 @@ class Show < ActiveRecord::Base
   def to_s
     "#{show_date} - #{location}"
   end
+  alias_method :title, :to_s # for rails admin
 end

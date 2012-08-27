@@ -17,6 +17,8 @@ class Song < ActiveRecord::Base
   protected
 
   def set_duration
+    Rails.logger.info "* * * SONG FILE PATH * * *"
+    Rails.logger.info song_file.path
     Mp3Info.open song_file.path do |mp3|
       self.duration = (mp3.length * 1000).round
     end
