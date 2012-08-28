@@ -57,6 +57,7 @@ class Song
       @updateCurrentTime pos
     @scrubber.moveToPercent pos / this.duration
 
+
 class SongManager
   constructor: ->
     soundManager.setup
@@ -104,16 +105,6 @@ class Scrubber
     unless @$handle.hasClass('grabbed')
       @$handle.css('left', Math.round(Scrubber.distance * percent))
 
-class Marker
-  @initMarkers: ->
-    $('.marker').on 'click', (e) ->
-      e.stopPropagation()
-
-      marker = $(e.currentTarget).data('marker')
-      marker.song.goToPosition(marker.position)
-
-  constructor: (@song, @position) ->
-
 
 class ScrubberManager
   constructor: ->
@@ -127,8 +118,8 @@ class ScrubberManager
     e.originalEvent.preventDefault() # prevents I-bar/text selection cursor from appearing
 
     @scrubber = $(e.currentTarget).closest('.scrubber').data('scrubber')
-    @handleOffset = @scrubber.$handle.width() / 2
-    @scrubberOffset = @scrubber.$scrubber.offset().left
+    @handleOffset = @scrubber.$handle.width() / 2        # These values are cached to keep the 
+    @scrubberOffset = @scrubber.$scrubber.offset().left  # mouseMoveHandler speedy
 
     @scrubber.$handle.addClass 'grabbed'
     @._toggleHandleHandlers()
@@ -144,8 +135,6 @@ class ScrubberManager
     @scrubber.$handle.css 'left', newHandlePos
 
   _mouseUpHandler: (e) =>
-    # TODO: update Song position on mouseup, maybe also currentTime as scrubber handle
-    #       is dragged.
     @scrubber.song.goToPosition @potentialSongPos
     @scrubber.$handle.removeClass('grabbed')
     @scrubber = null
@@ -165,8 +154,18 @@ class ScrubberManager
       $doc.off('mouseup mousemove')
 
 
+class Marker
+  @initMarkers: ->
+    $('.marker').on 'click', (e) ->
+      e.stopPropagation()
+
+      marker = $(e.currentTarget).data('marker')
+      marker.song.goToPosition(marker.position)
+
+  constructor: (@song, @position) ->
+
+
 $ ->
   SP.SongM = new SongManager
   SP.ScrbM = new ScrubberManager
   Marker.initMarkers()
-
