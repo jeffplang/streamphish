@@ -42,7 +42,7 @@ class Song
     @sound.stop()
 
   goToPosition: (pos) ->
-    if pos < @durationLoaded
+    if pos > @durationLoaded
       return false
     else
       @sound.setPosition(pos)
