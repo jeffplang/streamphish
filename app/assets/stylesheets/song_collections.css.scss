@@ -13,7 +13,7 @@ h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: n
 .songs .songInfo { float: left; margin-top: 5px; }
 .songs .songTime { float: right; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
-.songs .songTime time { display: inline-block; line-height: 5px; }
+.songs .songTime time { display: inline-block; line-height: 3px; }
 .songs .songTime time.currentTime {  }
 .songs .songTime time.totalTime { width: 40px; }
 .songs li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; }
@@ -26,10 +26,36 @@ h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: n
 .songs .songVenue { font-size: 15px; }
 
 .songs .scrubber { display: inline-block; width: 265px; height: 18px; position: relative; }
-.songs .scrubber .timeline { background: #aaa; height: 4px; margin: 0 7px 0 7px; }
-.songs .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: 8px; left: 0; border-radius: 6px; }
+.songs .scrubber .timeline { 
+  background: rgb(88,88,88); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(88,88,88,1) 0%, rgba(140,140,140,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(88,88,88,1)), color-stop(100%,rgba(140,140,140,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(88,88,88,1) 0%,rgba(140,140,140,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(88,88,88,1) 0%,rgba(140,140,140,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(88,88,88,1) 0%,rgba(140,140,140,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(88,88,88,1) 0%,rgba(140,140,140,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#585858', endColorstr='#8c8c8c',GradientType=0 ); /* IE6-9 */
+  height: 6px; margin: 0 7px 0 7px; 
+  border-radius: 2px;
+}
 
-.songs .songTime .marker { position: relative; float: left; top: -31px; }
+.songs .scrubber .loadingProgress {
+  background: rgb(234,185,45); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(234,185,45,1) 0%, rgba(199,152,16,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(234,185,45,1)), color-stop(100%,rgba(199,152,16,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eab92d', endColorstr='#c79810',GradientType=0 ); /* IE6-9 */
+  width: 0;
+  height: 100%;
+  border-radius: 2px;
+}
+
+.songs .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: 9px; left: 0; border-radius: 6px; }
+
+.songs .songTime .marker { position: relative; float: left; top: -35px; }
 .songs .songTime .marker a { color: #000; text-decoration: none; font-size: 10px; background: $markerColor; border-radius: 3px; border-bottom-left-radius: 0; padding: 1px 3px 1px 3px; }
 .songs .songTime .marker .stick { height: 16px; border-left: 3px solid $markerColor; margin-top: -3px; }
 

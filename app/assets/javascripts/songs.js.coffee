@@ -15,6 +15,13 @@ class Song
       id: @songUri
       url: @songUri
       autoPlay: false
+      whileloading: ->
+        that.durationLoaded = this.duration
+
+        width = Math.round(this.duration / that.duration * 100) + "%"
+        that.scrubber.$loadingBar.width(width)
+      onload: ->
+        that.scrubber.$loadingBar.width( "100%" )
       whileplaying: ->
         that.updateUIPosition(this.position)
 
@@ -35,8 +42,12 @@ class Song
     @sound.stop()
 
   goToPosition: (pos) ->
-    @sound.setPosition(pos)
-    @updateUIPosition(pos)
+    if pos < @durationLoaded
+      return false
+    else
+      @sound.setPosition(pos)
+      @updateUIPosition(pos)
+      true
 
   updateUIPosition: (pos) ->
     @$currentTime.text SP.Util.msToMMSS(pos)
@@ -80,6 +91,7 @@ class Scrubber
   constructor: (@song) ->
     @$song = @song.$song
     @$timeline = @$song.find('.scrubber')
+    @$loadingBar = @$song.find('.loadingProgress')
     @$handle = @$timeline.find('.handle')
 
   moveToPercent: (percent) ->
