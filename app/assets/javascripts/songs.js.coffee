@@ -94,6 +94,8 @@ class Scrubber
     @$loadingBar = @$song.find('.loadingProgress')
     @$handle = @$scrubber.find('.handle')
 
+    @$scrubber.data('scrubber', this)
+
   moveToPercent: (percent) ->
     unless @$handle.hasClass('grabbed')
       @$handle.css('left', Math.round(Scrubber.distance * percent))
@@ -119,36 +121,35 @@ class ScrubberManager
 
   _mouseDownHandler: (e) =>
     e.originalEvent.preventDefault() # prevents I-bar/text selection cursor from appearing
-    @$currHandle = $(e.currentTarget)
-    @$currScrubber = @$currHandle.closest('.scrubber')
-    @currSong = @$currScrubber.closest('li').data('song')
-    @handleOffset = @$currHandle.width() / 2
 
-    @$currHandle.addClass('grabbed')
+    @scrubber = $(e.currentTarget).closest('.scrubber').data('scrubber')
+    @handleOffset = @scrubber.$handle.width() / 2
+
+    @scrubber.$handle.addClass('grabbed')
     @._toggleHandleHandlers()
 
   _mouseMoveHandler: (e) =>
-    newPos = SP.Util.clamp e.pageX - @$currScrubber.offset().left - @handleOffset,
+    newPos = SP.Util.clamp e.pageX - @scrubber.$scrubber.offset().left - @handleOffset,
                            0, 
                            e.data.loadingWidth
 
-    @$currHandle.css 'left', newPos
+    @scrubber.$handle.css 'left', newPos
 
   _mouseUpHandler: (e) =>
     # TODO: update Song position on mouseup, maybe also currentTime as scrubber handle
     #       is dragged.
-    @$currHandle.removeClass('grabbed')
-    @$currHandle = null
+    @scrubber.$handle.removeClass('grabbed')
+    @scrubber = null
     @._toggleHandleHandlers()
 
   _toggleHandleHandlers: ->
     $doc = $(document)
 
-    if @$currHandle?
+    if @scrubber?
       $doc.on('mousemove', 
               null, 
               loadingWidth: 
-                @$currScrubber.find('.loadingProgress').width() 
+                @scrubber.$loadingBar.width() 
               @_mouseMoveHandler)
           .on('mouseup', @_mouseUpHandler)
     else
