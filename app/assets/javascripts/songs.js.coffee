@@ -49,8 +49,12 @@ class Song
       @updateUIPosition(pos)
       true
 
-  updateUIPosition: (pos) ->
+  updateCurrentTime: (pos) ->
     @$currentTime.text SP.Util.msToMMSS(pos)
+
+  updateUIPosition: (pos) ->
+    unless @scrubber.$handle.hasClass('grabbed')
+      @updateCurrentTime pos
     @scrubber.moveToPercent pos / this.duration
 
 class SongManager
@@ -130,15 +134,19 @@ class ScrubberManager
     @._toggleHandleHandlers()
 
   _mouseMoveHandler: (e) =>
-    newPos = SP.Util.clamp e.pageX - @scrubberOffset - @handleOffset,
-                           0, 
-                           e.data.loadingWidth
+    newHandlePos = SP.Util.clamp e.pageX - @scrubberOffset - @handleOffset,
+                                 0, 
+                                 e.data.loadingWidth
 
-    @scrubber.$handle.css 'left', newPos
+    @potentialSongPos = Math.round( @scrubber.song.duration * (newHandlePos / Scrubber.distance) )
+
+    @scrubber.song.updateCurrentTime @potentialSongPos
+    @scrubber.$handle.css 'left', newHandlePos
 
   _mouseUpHandler: (e) =>
     # TODO: update Song position on mouseup, maybe also currentTime as scrubber handle
     #       is dragged.
+    @scrubber.song.goToPosition @potentialSongPos
     @scrubber.$handle.removeClass('grabbed')
     @scrubber = null
     @._toggleHandleHandlers()
