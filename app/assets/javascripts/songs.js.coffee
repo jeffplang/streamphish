@@ -90,9 +90,9 @@ class Scrubber
 
   constructor: (@song) ->
     @$song = @song.$song
-    @$timeline = @$song.find('.scrubber')
+    @$scrubber = @$song.find('.scrubber')
     @$loadingBar = @$song.find('.loadingProgress')
-    @$handle = @$timeline.find('.handle')
+    @$handle = @$scrubber.find('.handle')
 
   moveToPercent: (percent) ->
     unless @$handle.hasClass('grabbed')
@@ -130,7 +130,7 @@ class ScrubberManager
   _mouseMoveHandler: (e) =>
     newPos = SP.Util.clamp e.pageX - @$currScrubber.offset().left - @handleOffset,
                            0, 
-                           Scrubber.distance
+                           e.data.loadingWidth
 
     @$currHandle.css 'left', newPos
 
@@ -145,7 +145,11 @@ class ScrubberManager
     $doc = $(document)
 
     if @$currHandle?
-      $doc.on('mousemove', @_mouseMoveHandler)
+      $doc.on('mousemove', 
+              null, 
+              loadingWidth: 
+                @$currScrubber.find('.loadingProgress').width() 
+              @_mouseMoveHandler)
           .on('mouseup', @_mouseUpHandler)
     else
       $doc.off('mouseup mousemove')
