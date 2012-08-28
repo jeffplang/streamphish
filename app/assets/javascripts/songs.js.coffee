@@ -20,8 +20,8 @@ class Song
 
         width = Math.round(this.duration / that.duration * 100) + "%"
         that.scrubber.$loadingBar.width(width)
-      onload: ->
-        that.scrubber.$loadingBar.width( "100%" )
+      onload: (success) ->
+        that.scrubber.$loadingBar.width( "100%" ) if success
       whileplaying: ->
         that.updateUIPosition(this.position)
 
