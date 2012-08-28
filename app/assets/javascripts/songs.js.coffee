@@ -124,12 +124,13 @@ class ScrubberManager
 
     @scrubber = $(e.currentTarget).closest('.scrubber').data('scrubber')
     @handleOffset = @scrubber.$handle.width() / 2
+    @scrubberOffset = @scrubber.$scrubber.offset().left
 
-    @scrubber.$handle.addClass('grabbed')
+    @scrubber.$handle.addClass 'grabbed'
     @._toggleHandleHandlers()
 
   _mouseMoveHandler: (e) =>
-    newPos = SP.Util.clamp e.pageX - @scrubber.$scrubber.offset().left - @handleOffset,
+    newPos = SP.Util.clamp e.pageX - @scrubberOffset - @handleOffset,
                            0, 
                            e.data.loadingWidth
 
