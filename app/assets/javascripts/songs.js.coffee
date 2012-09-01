@@ -187,7 +187,7 @@ class Marker
       # an SMSound object ignores the setPosition() call in most cases
       setTimeout ->      
         marker.song.play()
-      , 100
+      , 300
 
   constructor: (@song, @position) ->
 
