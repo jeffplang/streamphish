@@ -35,6 +35,12 @@ class Song
     SP.SongM.toggleTitleAnimation()
 
   play: ->
+    if @sound.paused
+      @togglePause()
+      return
+
+    return if @sound.playState is 1
+
     @$song.addClass 'playing'
     @sound.play()
     SP.SongM.toggleTitleAnimation()
@@ -92,7 +98,7 @@ class SongManager
       $playing.data('song').stop()
 
   toggleTitleAnimation: ->
-    @_frames ||= ['-', '-', '>']
+    @_frames ||= ['~', '~', '>']
 
     if @_animating?
       clearInterval @_titleAnimation
@@ -171,11 +177,17 @@ class ScrubberManager
 
 class Marker
   @initMarkers: ->
-    $('.marker').on 'click', (e) ->
+    $('.marker a').on 'click', (e) ->
       e.stopPropagation()
 
-      marker = $(e.currentTarget).data('marker')
+      marker = $(e.currentTarget).parent().data('marker')
       marker.song.goToPosition(marker.position)
+
+      # doing a setPosition() with a togglePause() immediately after on
+      # an SMSound object ignores the setPosition() call in most cases
+      setTimeout ->      
+        marker.song.play()
+      , 100
 
   constructor: (@song, @position) ->
 
