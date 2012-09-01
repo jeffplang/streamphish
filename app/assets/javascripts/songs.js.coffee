@@ -107,7 +107,7 @@ class SongManager
       @_titleAnimation = setInterval =>
         @_frames.unshift @_frames.pop()
         document.title = @_frames.join('')
-      , 1000
+      , 500
       @_animating = true
 
 
@@ -184,7 +184,8 @@ class Marker
       marker.song.goToPosition(marker.position)
 
       # doing a setPosition() with a togglePause() immediately after on
-      # an SMSound object ignores the setPosition() call in most cases
+      # an SMSound object ignores the setPosition() call in most cases,
+      # maybe some race condition in the flash player?
       setTimeout ->      
         marker.song.play()
       , 300
