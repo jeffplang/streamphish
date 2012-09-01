@@ -32,12 +32,12 @@ class Song
 
   togglePause: ->
     @sound.togglePause()
-    SongManager.toggleTitleAnimation()
+    SP.SongM.toggleTitleAnimation()
 
   play: ->
     @$song.addClass 'playing'
     @sound.play()
-    SongManager.toggleTitleAnimation()
+    SP.SongM.toggleTitleAnimation()
 
   stop: ->
     @$song.removeClass 'playing'
@@ -91,18 +91,18 @@ class SongManager
     if $playing.length
       $playing.data('song').stop()
 
-  @toggleTitleAnimation: ->
-    frames = ['-', '-', '>']
+  toggleTitleAnimation: ->
+    @_frames ||= ['-', '-', '>']
 
-    if SongManager._animating
-      clearInterval SongManager._titleAnimation
-      SongManager._animating = false
+    if @_animating?
+      clearInterval @_titleAnimation
+      @_animating = null
     else
-      SongManager._titleAnimation = setInterval ->
-        frames.unshift frames.pop()
-        document.title = frames.join('')
+      @_titleAnimation = setInterval =>
+        @_frames.unshift @_frames.pop()
+        document.title = @_frames.join('')
       , 1000
-      SongManager._animating = true
+      @_animating = true
 
 
 class Scrubber
