@@ -1,5 +1,5 @@
 class SongCollection < ActiveRecord::Base
-  has_many :songs, :dependent => :destroy
+  has_and_belongs_to_many :songs
 
   attr_accessible :title
 

@@ -1,17 +1,21 @@
 class Song < ActiveRecord::Base
-  # attr_accessible :title, :body
-  attr_accessible :show_id, :title, :position, :song_file, :song_collection_id
+
+  FILE_NAME_HASH_SECRET = "CROUOPQNDKUCBVYTQYQLUSKCOMJAQFEWXMEX"
+
+  attr_accessible :show_id, :title, :position, :song_file, :song_collection_id, :song_collection_ids
 
   has_many :section_markers
   belongs_to :show
-  belongs_to :song_collection
+  has_and_belongs_to_many :song_collections
 
-  has_attached_file :song_file
+  has_attached_file :song_file,
+    :url => "/system/:class/:attachment/:id_partition/:style/:hash.:extension",
+    :hash_secret => FILE_NAME_HASH_SECRET
 
   validates_attachment :song_file, :presence => true,
     :content_type => {:content_type => ['application/mp3', 'application/x-mp3', 'audio/mpeg', 'audio/mp3']}
 
-  validates_presence_of :show, :title, :position, :song_collection
+  validates_presence_of :show, :title, :position
 
   before_save :check_file_dirty
 

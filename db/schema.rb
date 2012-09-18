@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120826214332) do
+ActiveRecord::Schema.define(:version => 20120918003054) do
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -48,6 +48,11 @@ ActiveRecord::Schema.define(:version => 20120826214332) do
     t.string   "slug"
   end
 
+  create_table "song_collections_songs", :id => false, :force => true do |t|
+    t.integer "song_collection_id"
+    t.integer "song_id"
+  end
+
   create_table "songs", :force => true do |t|
     t.integer  "show_id"
     t.string   "title"
@@ -58,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20120826214332) do
     t.string   "song_file_content_type"
     t.integer  "song_file_file_size"
     t.datetime "song_file_updated_at"
-    t.integer  "song_collection_id"
     t.integer  "duration"
   end
 
