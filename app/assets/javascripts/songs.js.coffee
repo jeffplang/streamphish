@@ -24,6 +24,8 @@ class Song
         that.scrubber.$loadingBar.width( "100%" ) if success
       whileplaying: ->
         that.updateUIPosition(this.position)
+      onfinish: ->
+        SP.SongM.playNext()
 
     @$song.data 'song', this
     @$markers.each (idx, marker) =>
@@ -86,12 +88,20 @@ class SongManager
       this.playSong($song)
 
   playSong: ($song) ->
-    this.silence()
+    @silence()
     sound = $song.data('song')
     unless sound?
       sound = new Song($song)
 
     sound.play()
+
+  playNext: ->
+    # Assumes other sounds have been stopped
+    $nextSong = @$songList.children('.playing').next('li')
+    if $nextSong.length
+      @playSong($nextSong)
+    else
+      @silence()
 
   silence: ->
     $playing = @$songList.children('.playing')
