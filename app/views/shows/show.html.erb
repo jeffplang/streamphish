@@ -1,0 +1,12 @@
+<% content_for(:title) { @show.to_page_title_s } %>
+<% content_for(:javascripts) { javascript_include_tag "songs" } %>
+
+<h1 class="pageListHeader">
+  <%= @show.to_page_title_s %>
+  <%= link_to "&#8592; Shows".html_safe, shows_path, :class => "back" %>
+</h1>
+<ul class="pageList songs">
+  <% @show.songs.each do |song| %>
+    <%= render :partial => "shared/song", :object => song, :locals => { :list_type => :show } %>
+  <% end %>
+</ul>

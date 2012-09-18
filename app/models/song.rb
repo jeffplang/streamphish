@@ -13,12 +13,25 @@ class Song < ActiveRecord::Base
 
   validates_presence_of :show, :title, :position, :song_collection
 
+  before_save :check_file_dirty
+
   after_save :set_duration
+
+  default_scope order(:position)
 
   protected
 
+  def check_file_dirty
+    if song_file.dirty?
+      Rails.logger.info "* * * IT IS DIRTY * * *"
+    else
+      Rails.logger.info "* * * NOT DIRTY * * *"
+    end
+    true
+  end
+
   def set_duration
-    unless self.duration
+    unless self.duration # this won't record the correct duration if we're uploading a new file
       Mp3Info.open song_file.path do |mp3|
         self.duration = (mp3.length * 1000).round
         save

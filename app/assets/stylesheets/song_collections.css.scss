@@ -2,31 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$songBg: #0F2340;
 $sHandleSize: 12px;
 $markerColor: #FFF4A3;
 
-h1.songHeader { position: fixed; top: 0; margin: 0; background: #55BA79; color: #fff; display: block; width: 100%; padding-left: 8px; }
-h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: none; margin: 12px 16px 0 0; }
+.pageList .songInfo { float: left; margin-top: 5px; }
+.pageList .songTime { float: right; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
-.songs { margin-top: 44px; list-style-type: none; padding: 0; }
-.songs .songInfo { float: left; margin-top: 5px; }
-.songs .songTime { float: right; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.pageList .songTime time { display: inline-block; line-height: 3px; }
+.pageList .songTime time.currentTime {  }
+.pageList .songTime time.totalTime { width: 40px; }
+.pageList li.playing { background: lighten($songBg, 15%) }
+.pageList li.playing .songTime { visibility: visible; }
+.pageList .songTime { visibility: hidden; margin-top: 12px; }
+.pageList br { margin: 0; }
+.pageList .songDate { font-size: 22px; }
+.pageList .songVenue { font-size: 15px; }
+.pageList .songTitle { font-size: 23px; display: inline-block; margin-top: 5px; }
+.pageList .songInfo a { color: inherit; }
+.pageList .songInfo a:hover { color: #fff; }
 
-.songs .songTime time { display: inline-block; line-height: 3px; }
-.songs .songTime time.currentTime {  }
-.songs .songTime time.totalTime { width: 40px; }
-.songs li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; }
-.songs li.playing { background: lighten($songBg, 15%) }
-.songs li.playing .songTime { visibility: visible; }
-.songs .songTime { visibility: hidden; margin-top: 12px; }
-.songs li:hover { background: #145C63; }
-.songs br { margin: 0; }
-.songs .songDate { font-size: 22px; }
-.songs .songVenue { font-size: 15px; }
-
-.songs .scrubber { display: inline-block; width: 265px; height: 18px; }
-.songs .scrubber .timeline { 
+.pageList .scrubber { display: inline-block; width: 265px; height: 18px; }
+.pageList .scrubber .timeline { 
   background: rgb(88,88,88); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(88,88,88,1) 0%, rgba(140,140,140,1) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(88,88,88,1)), color-stop(100%,rgba(140,140,140,1))); /* Chrome,Safari4+ */
@@ -40,7 +36,7 @@ h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: n
   position: relative;
 }
 
-.songs .scrubber .loadingProgress {
+.pageList .scrubber .loadingProgress {
   background: rgb(234,185,45); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(234,185,45,1) 0%, rgba(199,152,16,1) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(234,185,45,1)), color-stop(100%,rgba(199,152,16,1))); /* Chrome,Safari4+ */
@@ -54,11 +50,11 @@ h1.songHeader a { float: right; font-size: 14px; color: #fff; text-decoration: n
   border-radius: 2px;
 }
 
-.songs .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: 9px; left: 0; border-radius: 6px; }
+.pageList .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: 9px; left: 0; border-radius: 6px; }
 
-.songs .songTime .marker { position: absolute; float: left; top: -29px; }
-.songs .songTime .marker a { color: #000; text-decoration: none; font-size: 10px; background: $markerColor; border-radius: 3px; border-bottom-left-radius: 0; padding: 1px 3px 1px 3px; }
-.songs .songTime .marker .stick { height: 16px; border-left: 3px solid $markerColor; margin-top: -3px; }
+.pageList .songTime .marker { position: absolute; float: left; top: -29px; }
+.pageList .songTime .marker a { color: #000; text-decoration: none; font-size: 10px; background: $markerColor; border-radius: 3px; border-bottom-left-radius: 0; padding: 1px 3px 1px 3px; }
+.pageList .songTime .marker .stick { height: 16px; border-left: 3px solid $markerColor; margin-top: -3px; }
 
-.hugeSongList li { padding: 0; }
-.hugeSongList li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; padding: 10px; }
+.pageList.songTitles li, .pageList.years li { padding: 0; }
+.pageList.songTitles li a, .pageList.yearsa li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; padding: 10px; }

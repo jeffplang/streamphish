@@ -75,6 +75,7 @@ class SongManager
 
     @$songList = $('.songs')
     @$songList.on 'click', 'li', this._handleSongClick
+    @$songList.on 'click', 'li a', (e) -> e.stopPropagation();
 
   _handleSongClick: (e) =>
     $song = $(e.currentTarget)

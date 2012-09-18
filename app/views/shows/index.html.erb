@@ -1,11 +1,53 @@
-<h1>Shows</h1>
-<br><br>
-<ul>
-<% @shows.each do |show| %>
-  <li>
-    <%= show %>
-    <%= button_to "delete", {:action => :destroy, :id => show.id}, {:method => :delete} %>
+<h1 class="pageListHeader">Shows</h1>
+<!--
+<div class="yearsContainer">
+  <%# years_2 = @years.slice! (@years.length / 2.0).ceil..-1 %>
+  <%# [@years, years_2].each do |years| %>
+    <ul class="years">
+    <%# years.each do |year| %>
+      <li><%#= link_to year, '#' %></li>
+    <%# end %>
+    </ul>
+  <%# end %>
+</div>
+-->
+
+
+<ul class="yearsCircles">
+  <% prev_left = 0 %>
+  <% @years.each_with_index do |year, i| %>
+  <li style="background: <%= random_css_color %>;">
+    <%= link_to "<span>#{year}</span>".html_safe, '#' %>
   </li>
-<% end %>
+  <% end %>
 </ul>
-<%= link_to "Add New Show", new_show_path %>
+
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "circle_event_manager" %>
+  <script type="text/javascript">
+  $(function() {
+
+    var $circles = $('ul.yearsCircles li')
+      , leftAccum = 0;
+
+    $circles
+
+      .find('a')
+        .circlemouse({
+          onMouseEnter: function(el) {
+            el.addClass('hover');
+          },
+          onMouseLeave: function(el) {
+            el.removeClass('hover');
+          },
+        })
+      .end()
+
+      .each(function(idx, el) {
+        $(el)
+          .css('left', leftAccum);
+          leftAccum = ((idx + 1) / ($circles.length + 1)) * $(window).width();
+      });
+  });
+  </script>
+<% end %>
