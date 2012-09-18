@@ -12,6 +12,6 @@ class Show < ActiveRecord::Base
   alias_method :title, :to_s # for rails admin
 
   def to_page_title_s
-    "#{show_date.strftime('%-m/%-d/%Y')} - #{location}"
+    "#{show_date.strftime('%m-%d-%Y')} - #{location}"
   end
 end
