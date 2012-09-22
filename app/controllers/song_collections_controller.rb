@@ -1,6 +1,6 @@
 class SongCollectionsController < ApplicationController
   def index
-    @song_collections = SongCollection.all    
+    @song_collections = SongCollection.unscoped.order(:title)
   end
 
   def show

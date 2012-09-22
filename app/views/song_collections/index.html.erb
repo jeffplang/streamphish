@@ -1,5 +1,5 @@
 <h1 class="pageListHeader">Songs</h1>
-<ul class="pageList songTitles">
+<ul class="pageList linkItems">
 <% @song_collections.each do |song| %>
   <li><%= link_to song.title, song_collection_path(song) %></li>
 <% end %>

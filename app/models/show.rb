@@ -3,6 +3,8 @@ class Show < ActiveRecord::Base
 
   has_many :songs
 
+  validates_presence_of :show_date, :location
+
   extend FriendlyId
   friendly_id :show_date
 

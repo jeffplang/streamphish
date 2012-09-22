@@ -30,7 +30,7 @@
             var _self   = this;
             
             this.$el.on({
-                'mouseenter.circlemouse'    : function( event ) {
+                'mouseenter.circlemouse webkitTransitionEnd transitioned oTransitionEnd MSTransitionEnd'    : function( event ) {
                     
                     var el  = $(this),
                     

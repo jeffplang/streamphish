@@ -6,4 +6,19 @@ module ApplicationHelper
   def random_css_color
     "#%02x%02x%02x" % [rand(256), rand(256), rand(256)]
   end
+
+  def random_bg_and_text_colors
+    bg = Color::RGB.new(rand(256), rand(256), rand(256))
+    palette = Color::Palette::MonoContrast.new(bg)
+    
+    [palette.background[-2].html, palette.foreground[-5].html]
+  end
+
+  def lighter_hover_for(color)
+    Color::RGB.from_html(color).lighten_by(90).html
+  end
+
+  def lighter_hover_inline_js(bg)
+    "onMouseOver=\"this.style.background='#{lighter_hover_for bg}';\" onMouseOut=\"this.style.background='#{bg}';\"".html_safe
+  end
 end

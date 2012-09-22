@@ -14,12 +14,12 @@
 
 
 <ul class="yearsCircles">
-  <% prev_left = 0 %>
-  <% @years.each_with_index do |year, i| %>
-  <li style="background: <%= random_css_color %>;">
-    <%= link_to "<span>#{year}</span>".html_safe, '#' %>
+<% @years.each_with_index do |year, i| %>
+  <% bg, fg = random_bg_and_text_colors %>
+  <li style="background: <%= bg %>" <%= lighter_hover_inline_js(bg) %>>
+  <%= link_to "<span>#{year}</span>".html_safe, shows_path(:year => year), :style => "color: #{fg};" %>
   </li>
-  <% end %>
+<% end %>
 </ul>
 
 <% content_for :javascripts do %>
@@ -35,10 +35,10 @@
       .find('a')
         .circlemouse({
           onMouseEnter: function(el) {
-            el.addClass('hover');
+            el.parent().addClass('hover');
           },
           onMouseLeave: function(el) {
-            el.removeClass('hover');
+            el.parent().removeClass('hover');
           },
         })
       .end()

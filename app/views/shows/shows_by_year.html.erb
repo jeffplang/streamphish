@@ -1,0 +1,9 @@
+<h1 class="pageListHeader">
+  <%= @year %>
+  <%= link_to "&#8592; Years".html_safe, shows_path, :class => "back" %>
+</h1>
+<ul class="pageList linkItems">
+<% @shows.each do |show| %>
+  <li><%= link_to show, show_path(show) %></li>
+<% end %>
+</ul>

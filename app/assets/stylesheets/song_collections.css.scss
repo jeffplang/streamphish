@@ -11,11 +11,23 @@ $markerColor: #FFF4A3;
 .pageList .songTime time { display: inline-block; line-height: 3px; }
 .pageList .songTime time.currentTime {  }
 .pageList .songTime time.totalTime { width: 40px; }
-.pageList li.playing { background: lighten($songBg, 15%) }
+/*.pageList li.playing { background: lighten($songBg, 15%) }*/
+
+.pageList li.playing { 
+  background: rgb(0,76,152); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(0,76,152,1) 0%, rgba(6,69,132,1) 44%, rgba(10,60,110,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,76,152,1)), color-stop(44%,rgba(6,69,132,1)), color-stop(100%,rgba(10,60,110,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(0,76,152,1) 0%,rgba(6,69,132,1) 44%,rgba(10,60,110,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(0,76,152,1) 0%,rgba(6,69,132,1) 44%,rgba(10,60,110,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(0,76,152,1) 0%,rgba(6,69,132,1) 44%,rgba(10,60,110,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(0,76,152,1) 0%,rgba(6,69,132,1) 44%,rgba(10,60,110,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004c98', endColorstr='#0a3c6e',GradientType=0 ); /* IE6-9 */
+}
+
 .pageList li.playing .songTime { visibility: visible; }
 .pageList .songTime { visibility: hidden; margin-top: 12px; }
 .pageList br { margin: 0; }
-.pageList .songDate { font-size: 22px; }
+.pageList .songDate { font-size: 20px; }
 .pageList .songVenue { font-size: 15px; }
 .pageList .songTitle { font-size: 23px; display: inline-block; margin-top: 5px; }
 .pageList .songInfo a { color: inherit; }
@@ -56,5 +68,5 @@ $markerColor: #FFF4A3;
 .pageList .songTime .marker a { color: #000; text-decoration: none; font-size: 10px; background: $markerColor; border-radius: 3px; border-bottom-left-radius: 0; padding: 1px 3px 1px 3px; }
 .pageList .songTime .marker .stick { height: 16px; border-left: 3px solid $markerColor; margin-top: -3px; }
 
-.pageList.songTitles li, .pageList.years li { padding: 0; }
-.pageList.songTitles li a, .pageList.yearsa li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; padding: 10px; }
+/*.pageList.songTitles li, .pageList.years li { padding: 0; }
+.pageList.songTitles li a, .pageList.years li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; padding: 10px; }*/
