@@ -50,6 +50,7 @@ class Song
   stop: ->
     @$song.removeClass 'playing'
     @sound.stop()
+    SP.SongM.toggleTitleAnimation()
 
   goToPosition: (pos) ->
     if pos > @durationLoaded
