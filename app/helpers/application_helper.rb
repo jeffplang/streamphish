@@ -21,4 +21,11 @@ module ApplicationHelper
   def lighter_hover_inline_js(bg)
     "onMouseOver=\"this.style.background='#{lighter_hover_for bg}';\" onMouseOut=\"this.style.background='#{bg}';\"".html_safe
   end
+
+  def song_data_attribs(song, list_type)
+    (%!data-song-uri="#{song.song_file.url}" ! + \
+     %!data-duration="#{song.duration}" ! + \
+     %!data-title="#{song.title}"! + \
+     (list_type == :song ? %! data-show="#{song.show.to_s}"! : '')).html_safe
+  end
 end

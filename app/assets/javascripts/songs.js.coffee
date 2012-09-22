@@ -3,6 +3,8 @@
 
 class Song
   constructor: (@$song) ->
+    @title = @$song.data 'title'
+    @show = @$song.data 'show'
     @$duration = @$song.find 'time.totalTime'
     @$currentTime = @$song.find 'time.currentTime'
     @songUri = @$song.data 'song-uri'
@@ -43,6 +45,8 @@ class Song
 
     return if @sound.playState is 1
 
+    @_setPageTitle()
+
     @$song.addClass 'playing'
     @sound.play()
     SP.SongM.toggleTitleAnimation()
@@ -50,7 +54,7 @@ class Song
   stop: ->
     @$song.removeClass 'playing'
     @sound.stop()
-    SP.SongM.toggleTitleAnimation()
+    SP.SongM.toggleTitleAnimation() if SP.SongM.isTitleAnimating()
 
   goToPosition: (pos) ->
     if pos > @durationLoaded
@@ -60,6 +64,9 @@ class Song
       @updateUIPosition(pos)
       true
 
+  isPaused: ->
+    @sound.paused
+
   updateCurrentTime: (pos) ->
     @$currentTime.text SP.Util.msToMMSS(pos)
 
@@ -67,6 +74,14 @@ class Song
     unless @scrubber.$handle.hasClass('grabbed')
       @updateCurrentTime pos
     @scrubber.moveToPercent pos / this.duration
+
+  _setPageTitle: ->
+    song_sep_pos = document.title.indexOf(":: ")
+    if song_sep_pos == -1
+      document.title = @title + " :: " + (@show || document.title)
+    else
+      document.title = @title + " :: " + (@show || document.title.slice(song_sep_pos + 3, document.title.length))
+
 
 
 class SongManager
@@ -86,15 +101,15 @@ class SongManager
     if $song.hasClass('playing')
       $song.data('song').togglePause()
     else
-      this.playSong($song)
+      @playSong($song)
 
   playSong: ($song) ->
     @silence()
-    sound = $song.data('song')
-    unless sound?
-      sound = new Song($song)
+    song = $song.data('song')
+    unless song?
+      song = new Song($song)
 
-    sound.play()
+    song.play()
 
   playNext: ->
     # Assumes other sounds have been stopped
@@ -109,16 +124,21 @@ class SongManager
     if $playing.length
       $playing.data('song').stop()
 
+  isTitleAnimating: ->
+    @_animating?
+
   toggleTitleAnimation: ->
+    @_title ||= document.title
     @_frames ||= ['~', '~', '>']
 
     if @_animating?
       clearInterval @_titleAnimation
-      @_animating = null
+      document.title = @_title
+      @_title = @_animating = null
     else
       @_titleAnimation = setInterval =>
         @_frames.unshift @_frames.pop()
-        document.title = @_frames.join('')
+        document.title = @_frames.join('') + " " + @_title
       , 500
       @_animating = true
 

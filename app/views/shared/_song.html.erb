@@ -1,4 +1,4 @@
-<li data-song-uri="<%= song.song_file.url %>" data-duration="<%= song.duration %>">
+<li <%= song_data_attribs(song, list_type) %>>
     <div class="songInfo">
       <% if list_type == :song %>
         <span class="songDate"><%= link_to song.show.show_date.strftime('%m-%d-%Y'), show_path(song.show) %></span><br>
