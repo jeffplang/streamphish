@@ -89,6 +89,7 @@ class SongManager
     soundManager.setup
       url: '/assets/'
       useHTML5Audio: true
+      preferFlash: false
       debugMode: false
 
     @$songList = $('.songs')
