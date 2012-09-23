@@ -2,8 +2,7 @@ class Show < ActiveRecord::Base
   attr_accessible :show_date, :location
 
   has_many :songs
-  scope :for_year, lambda do |year|
-    order(:show_date)
+  scope :for_year, lambda { |year|
     if year == '83-87'
       where('show_date between ? and ?', 
               Date.new(1983).beginning_of_year, 
@@ -14,7 +13,7 @@ class Show < ActiveRecord::Base
               date.beginning_of_year, 
               date.end_of_year).order(:show_date)
     end
-  end
+  }
 
   validates_presence_of :show_date, :location
 
