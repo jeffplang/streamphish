@@ -1,20 +1,3 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-$songBg: #0F2340;
-
-h1.songHeader { position: fixed; top: 0; margin: 0; background: #55BA79; color: #fff; display: block; width: 100%; }
-
-.songDates { margin-top: 44px; list-style-type: none; padding: 0; }
-.songDates .songInfo { float: left; margin-top: 5px; }
-.songDates .songTime { float: right; }
-.songDates .songTime time { display: block; }
-.songDates .songTime .currentTime { font-size: 32px; color: #FFFBA3; }
-.songDates .songTime .totalTime { font-size: 14px; float: right; color: #fff; }
-.songDates li.playing a { background: lighten($songBg, 15%) }
-.songDates li a { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; }
-.songDates li a:hover { background: #145C63; }
-.songDates br { margin: 0; }
-.songDates .songDate { font-size: 22px; }
-.songDates .songVenue { font-size: 15px; }
