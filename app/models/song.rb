@@ -1,8 +1,8 @@
 class Song < ActiveRecord::Base
 
-  #############
-  # Attributes
-  #############
+  #########################
+  # Attributes & Constants
+  #########################
   FILE_NAME_HASH_SECRET = "CROUOPQNDKUCBVYTQYQLUSKCOMJAQFEWXMEX"
   attr_accessible :show_id, :title, :position, :song_file, :song_collection_ids
 
