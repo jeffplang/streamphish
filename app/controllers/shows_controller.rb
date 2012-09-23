@@ -4,8 +4,7 @@ class ShowsController < ApplicationController
       get_shows_by_year
       render "shows_by_year"
     else
-      get_years
-      render "pages/index"
+      redirect_to root_path
     end
   end
 
@@ -34,16 +33,7 @@ class ShowsController < ApplicationController
   private
 
   def get_shows_by_year
-    if params[:year] == '83-87'
-      @year = params[:year]
-      @shows = Show.where("show_date between ? and ?", 
-                          Date.new(1983).beginning_of_year, 
-                          Date.new(1987).end_of_year)
-    else
-      @year = params[:year].to_i
-      @shows = Show.where("show_date between ? and ?", 
-                          Date.new(@year).beginning_of_year, 
-                          Date.new(@year).end_of_year)
-    end
+    @year = params[:year]
+    @shows = Show.for_year @year
   end
 end
