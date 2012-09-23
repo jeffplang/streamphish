@@ -53,6 +53,7 @@ class Song < ActiveRecord::Base
   end
 
   def populate_position
+    # If we don't have a position and there is at least 1 previous song in the show
     if !self.position && !(last_song = Song.where(:show_id => show.id).last).nil?
       self.position = last_song.position + 1
     elsif !self.position
