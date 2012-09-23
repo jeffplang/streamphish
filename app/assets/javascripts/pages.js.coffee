@@ -30,14 +30,13 @@ $ ->
           Math.sin( (i / $songs.length) * Math.PI ) * maxHeight - $el.height() )
         left: (i / $songs.length) * $songsC.width() - i - 1
 
-      if $span.height() <= 53
-        log "#{$span.text()} <= 53"
-        $span.css 'top', $el.height() * 0.35
+      if $span.height() <= 24
+        $span.css 'top', $el.height()/2 - $span.height()/1.5
+      else if $span.height() <= 53
+        $span.css 'top', $el.height()/2 - $span.height()/2.1
       else if $span.height() <= 82
-        log "#{$span.text()} <= 82"
         $span.css 'top', $el.height() * 0.30
       else if $span.height() <= 111
-        log "#{$span.text()} <= 111"
         $span.css 'top', $el.height() * 0.30
 
 

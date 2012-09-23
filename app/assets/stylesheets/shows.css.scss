@@ -31,6 +31,8 @@ div.songs a {
   width: 120px; 
   font-family: 'Allan', cursive;
   font-size: 21px;
+  -webkit-transition-property: left, top;
+  -webkit-transition-duration: 1.5s, 1.5s;
 }
 div.songs a.hover { z-index: 5000; text-decoration: none; }
 div.songs a span { position: relative; }
