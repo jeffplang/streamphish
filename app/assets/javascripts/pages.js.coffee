@@ -21,7 +21,7 @@ $ ->
       $el   = $(el)
       $span = $el.children 'span'
       randomSize = SP.Util.clamp($span.width() + 40, 80, 146)
-      maxHeight = Math.min 250, $songsC.height()
+      maxHeight = Math.min 300, $songsC.height()
 
       $el.css
         width: randomSize

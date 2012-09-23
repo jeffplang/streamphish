@@ -8,7 +8,7 @@
   <% end %>
   </ul>
 
-  <h2>Songs</h2>
+  <h2>Songs <span>( <%= link_to 'view all', song_collections_path %> )</span></h2>
   <div class="songs">
   <% @song_collections.each do |sc| %>
     <%= render :partial => 'song_bubble', :locals => {:sc => sc} %>
