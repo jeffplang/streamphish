@@ -17,7 +17,7 @@ class Show < ActiveRecord::Base
   friendly_id :show_date
 
   def to_s
-    "#{show_date.strftime('%m-%d-%Y')} - #{location}"
+    "#{show_date.strftime('%m-%d-%Y')} - #{location}" if show_date && location
   end
   alias_method :title, :to_s # for rails admin
 end
