@@ -1,10 +1,5 @@
 h2 { color: #fff; margin: 0 0 0 13px; padding: 0; font-family: 'Jacques Francois', serif; font-size: 28px;}
 
-.yearsContainer { width: 150px; margin: 50px auto 0 auto; border: 1px solid #000; position: relative; padding: 2px 4px; background: lighten($songBg, 15%); }
-ul.years { margin: 0 auto; list-style-type: none; padding: 0; display: inline-block; position: relative; }
-ul.years li { padding: 2px 0 2px 0; }
-ul.years li a { display: block; border-radius: 5px; background: #f0f; padding: 8px 15px; border: 1px solid #00f; width: 41px; text-align: center; text-decoration: none; }
-
 ul.yearsCircles { margin: 0 0 40px 0; padding: 0; list-style-type: none; position: relative; left: 10px; height: 100px; }
 ul.yearsCircles li { width: 75px; height: 75px; border-radius: 50%; background: #fff; text-align: center; 
   float: left; position: absolute; left: 0; top: 0; 
