@@ -9,7 +9,8 @@ class Song < ActiveRecord::Base
   ########################
   # Associations & Scopes
   ########################
-  has_and_belongs_to_many :song_collections
+  has_many :song_collections_songs, :dependent => :destroy
+  has_many :song_collections, :through => :song_collections_songs
   has_many :section_markers
   belongs_to :show
  

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120918003054) do
+ActiveRecord::Schema.define(:version => 20120923013134) do
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -43,12 +43,13 @@ ActiveRecord::Schema.define(:version => 20120918003054) do
 
   create_table "song_collections", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "slug"
+    t.integer  "songs_count", :default => 0
   end
 
-  create_table "song_collections_songs", :id => false, :force => true do |t|
+  create_table "song_collections_songs", :force => true do |t|
     t.integer "song_collection_id"
     t.integer "song_id"
   end
