@@ -1,0 +1,22 @@
+<h1 class="pageListHeader">StreamPhish</h1>
+
+<div class="pageContainer">
+  <h2>Years</h2>
+  <ul class="yearsCircles">
+  <% @years.each_with_index do |year, i| %>
+    <% bg, fg = random_bg_and_text_colors %>
+    <li style="background: <%= bg %>" <%= lighter_hover_inline_js(bg) %>>
+    <%= link_to "<span>#{year}</span>".html_safe, shows_path(:year => year), :style => "color: #{fg};" %>
+    </li>
+  <% end %>
+  </ul>
+
+  <h2>Songs</h2>
+    
+<div>
+
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "circle_event_manager" %>
+  <%= javascript_include_tag "pages" %>
+
+<% end %>

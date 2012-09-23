@@ -1,4 +1,7 @@
-<h1 class="pageListHeader">Songs</h1>
+<h1 class="pageListHeader">
+  Songs
+  <%= link_to "&#8592; Home".html_safe, root_path, :class => "back" %>
+</h1>
 <ul class="pageList linkItems">
 <% @song_collections.each do |song| %>
   <li><%= link_to song.title, song_collection_path(song) %></li>

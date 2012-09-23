@@ -2,10 +2,10 @@ class ShowsController < ApplicationController
   def index
     if params[:year]
       get_shows_by_year
+      render "shows_by_year"
     else
-      @years = ['83-87'] + (1988..2012).to_a
-      @left_values = incremental_vals_for(@years, 50, 64)
-      @top_values = incremental_vals_for(@years, 0, 15)
+      get_years
+      render "pages/index"
     end
   end
 
@@ -33,12 +33,6 @@ class ShowsController < ApplicationController
 
   private
 
-  def incremental_vals_for(array, min, max, initial=0)
-    array[1..-1].inject([initial]) do |vals, year| 
-      vals << vals.last + rand(min..max)
-    end
-  end
-
   def get_shows_by_year
     if params[:year] == '83-87'
       @year = params[:year]
@@ -51,6 +45,5 @@ class ShowsController < ApplicationController
                           Date.new(@year).beginning_of_year, 
                           Date.new(@year).end_of_year)
     end
-    render "shows_by_year"
   end
 end
