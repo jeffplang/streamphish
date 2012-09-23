@@ -18,3 +18,19 @@ ul.yearsCircles li.hover a { background: inherit; z-index: 5000; height: 100%; w
 ul.yearsCircles li.hover a span { font-size: 25px; top: 29px; }
 
 ul.yearsCircles li.empty { background: transparent!important; }
+
+div.songs { position: relative; margin: 12px 0 0 10px; }
+div.songs a { 
+  border-radius: 50%; 
+  text-align: center; 
+  display: block; 
+  text-decoration: none; 
+  color: #fff; 
+  position: absolute; 
+  height: 120px; 
+  width: 120px; 
+  font-family: 'Allan', cursive;
+  font-size: 21px;
+}
+div.songs a.hover { z-index: 5000; text-decoration: none; }
+div.songs a span { position: relative; }

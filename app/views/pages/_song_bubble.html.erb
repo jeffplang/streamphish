@@ -1,0 +1,5 @@
+<% bg, fg = random_bg_and_text_colors %>
+
+<a href="<%= song_collection_path(sc) %>" style="background: <%= bg %>; color: <%= fg %>" <%= lighter_hover_inline_js(bg) %>>
+  <span><%= sc.title %></span>
+</a>

@@ -3,19 +3,16 @@
 <div class="pageContainer">
   <h2>Years</h2>
   <ul class="yearsCircles">
-  <% @years.each_with_index do |year, i| %>
-    <% bg, fg = random_bg_and_text_colors %>
-    <li class="<%= translucent_if_empty(year) %>" style="background: <%= bg %>; border: 1px solid <%= bg %>;" <%= lighter_hover_inline_js(bg) %>>
-    <%= link_to "<span>#{year}</span>".html_safe, shows_path(:year => year), :style => "color: #{fg};" %>
-    </li>
+  <% @years.each do |year| %>
+    <%= render :partial => 'year_bubble', :locals => {:year => year} %>
   <% end %>
   </ul>
 
   <h2>Songs</h2>
-  <div class="songContainer">
-    <% @song_collections.each do |sc| %>
-
-    <% end %>
+  <div class="songs">
+  <% @song_collections.each do |sc| %>
+    <%= render :partial => 'song_bubble', :locals => {:sc => sc} %>
+  <% end %>
   </div>
 <div>
 

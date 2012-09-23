@@ -30,7 +30,7 @@
 //-----------------------------------------
 @include h5bp-helpers;
 @include h5bp-media;
-@import url(http://fonts.googleapis.com/css?family=Audiowide|Jacques+Francois);
+@import url(http://fonts.googleapis.com/css?family=Audiowide|Jacques+Francois|Allan);
 
 $songBg: #0F2340;
 
@@ -40,7 +40,6 @@ h1.pageListHeader {
   position: fixed; 
   top: 0; 
   margin: 0; 
-  background: #55BA79; 
   color: #fff; 
   display: block; 
   width: 100%; 
@@ -49,6 +48,15 @@ h1.pageListHeader {
   font-family: 'Audiowide', cursive;
   overflow: hidden;
   white-space: nowrap;
+
+  background: rgb(49,205,122); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(49,205,122,1) 0%, rgba(51,179,111,1) 44%, rgba(50,152,98,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(49,205,122,1)), color-stop(44%,rgba(51,179,111,1)), color-stop(100%,rgba(50,152,98,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31cd7a', endColorstr='#329862',GradientType=0 ); /* IE6-9 */
 }
 h1.pageListHeader a { font-size: 14px; color: #fff; text-decoration: none; top: 0; right: 0; z-index: 50; position: absolute; display: inline-block; height: 32px; padding: 12px 18px 0 6px; background: inherit; }
 

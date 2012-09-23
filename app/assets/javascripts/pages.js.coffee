@@ -1,20 +1,54 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+//= require 'util'
+
 $ ->
-  $circles  = $ 'ul.yearsCircles li'
-  leftAccum = 0
+  $songsC    = $ 'div.songs'
+  $songs     = $songsC.children 'a'
+  $circles   = $ 'ul.yearsCircles li'
+  $win       = $ window
+
+  $songsC.height $win.height() - $songsC.offset().top
+
+  $songs
+    .circlemouse
+      onMouseEnter: ($el) ->
+        $el.addClass 'hover'
+      onMouseLeave: ($el) ->
+        $el.removeClass 'hover'
+    .each (i, el) ->
+      $el   = $(el)
+      $span = $el.children 'span'
+      randomSize = SP.Util.clamp($span.width() + 40, 80, 146)
+      maxHeight = Math.min 250, $songsC.height()
+
+      $el.css
+        width: randomSize
+        height: randomSize
+        top: Math.max( 0,
+          Math.sin( (i / $songs.length) * Math.PI ) * maxHeight - $el.height() )
+        left: (i / $songs.length) * $songsC.width() - i - 1
+
+      if $span.height() <= 53
+        log "#{$span.text()} <= 53"
+        $span.css 'top', $el.height() * 0.35
+      else if $span.height() <= 82
+        log "#{$span.text()} <= 82"
+        $span.css 'top', $el.height() * 0.30
+      else if $span.height() <= 111
+        log "#{$span.text()} <= 111"
+        $span.css 'top', $el.height() * 0.30
+
 
   $circles
     .find('a').circlemouse
       onMouseEnter: ($el) ->
-        $el.parent().addClass('hover')
+        $el.parent().addClass 'hover'
       onMouseLeave: ($el) ->
-        $el.parent().removeClass('hover')
+        $el.parent().removeClass 'hover'
     .end()
-    .each (idx, el) ->
+    .each (i, el) ->
       $(el).css
-        left: leftAccum
-        top: Math.round(Math.sin(idx) / 2 * 30) + 10
-
-      leftAccum = ((idx + 1) / ($circles.length + 1)) * $(window).width()
+        left: (i / $circles.length) * $(window).width() - i
+        top: Math.round(Math.sin(i) / 2 * 30) + 10
