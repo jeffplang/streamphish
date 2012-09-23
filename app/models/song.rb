@@ -47,7 +47,7 @@ class Song < ActiveRecord::Base
 
   def populate_song_collection
     if self.song_collections.empty?
-      sc = SongCollection.where("lower(title) = ?", self.title.downcase)
+      sc = SongCollection.where 'lower(title) = ?', self.title.downcase
       self.song_collections << sc if sc
     end
   end
