@@ -5,7 +5,7 @@
   <ul class="yearsCircles">
   <% @years.each_with_index do |year, i| %>
     <% bg, fg = random_bg_and_text_colors %>
-    <li style="background: <%= bg %>; <%= hide_if_empty(year) %>" <%= lighter_hover_inline_js(bg) %>>
+    <li class="<%= translucent_if_empty(year) %>" style="background: <%= bg %>; border: 1px solid <%= bg %>;" <%= lighter_hover_inline_js(bg) %>>
     <%= link_to "<span>#{year}</span>".html_safe, shows_path(:year => year), :style => "color: #{fg};" %>
     </li>
   <% end %>
