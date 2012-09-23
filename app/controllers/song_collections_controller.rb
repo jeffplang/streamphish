@@ -1,9 +1,9 @@
 class SongCollectionsController < ApplicationController
   def index
-    @song_collections = SongCollection.unscoped.order(:title)
+    @song_collections = SongCollection.where('songs_count > 0').order(:title)
   end
 
   def show
-    @song_collection = SongCollection.find_by_slug(params[:id])
+    @song_collection = SongCollection.find params[:id]
   end
 end
