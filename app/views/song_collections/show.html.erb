@@ -6,7 +6,7 @@
   <%= link_to "&#8592; Songs".html_safe, song_collections_path, :class => "back" %>
 </h1>
 <ul class="pageList songs">
-  <% @song_collection.songs.each do |song| %>
+  <% @song_collection.songs.chronological.each do |song| %>
     <%= render :partial => "/shared/song", :object => song, :locals => { :list_type => :song } %>
   <% end %>
 </ul>

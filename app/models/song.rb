@@ -6,6 +6,10 @@ class Song < ActiveRecord::Base
   FILE_NAME_HASH_SECRET = "CROUOPQNDKUCBVYTQYQLUSKCOMJAQFEWXMEX"
   attr_accessible :show_id, :title, :position, :song_file, :song_collection_ids
 
+  has_attached_file :song_file,
+    :url => "/system/:class/:attachment/:id_partition/:style/:hash.:extension",
+    :hash_secret => FILE_NAME_HASH_SECRET
+
   ########################
   # Associations & Scopes
   ########################
@@ -13,11 +17,8 @@ class Song < ActiveRecord::Base
   has_many :song_collections, :through => :song_collections_songs
   has_many :section_markers
   belongs_to :show
- 
-  default_scope order :position
-  has_attached_file :song_file,
-    :url => "/system/:class/:attachment/:id_partition/:style/:hash.:extension",
-    :hash_secret => FILE_NAME_HASH_SECRET
+  
+  scope :chronological, order('shows.show_date ASC').joins(:show)
 
   ##############
   # Validations
