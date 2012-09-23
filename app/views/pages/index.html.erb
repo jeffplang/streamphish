@@ -12,13 +12,14 @@
   </ul>
 
   <h2>Songs</h2>
-  <% @song_collections.each do |sc| %>
+  <div class="songContainer">
+    <% @song_collections.each do |sc| %>
 
-  <% end %>
+    <% end %>
+  </div>
 <div>
 
 <% content_for :javascripts do %>
   <%= javascript_include_tag "circle_event_manager" %>
   <%= javascript_include_tag "pages" %>
-
 <% end %>

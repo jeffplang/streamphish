@@ -30,13 +30,27 @@
 //-----------------------------------------
 @include h5bp-helpers;
 @include h5bp-media;
+@import url(http://fonts.googleapis.com/css?family=Audiowide|Jacques+Francois);
 
 $songBg: #0F2340;
 
 body { background: $songBg; }
 
-h1.pageListHeader { position: fixed; top: 0; margin: 0; background: #55BA79; color: #fff; display: block; width: 100%; padding-left: 8px; z-index: 5; }
-h1.pageListHeader a { float: right; font-size: 14px; color: #fff; text-decoration: none; margin: 12px 16px 0 0; }
+h1.pageListHeader { 
+  position: fixed; 
+  top: 0; 
+  margin: 0; 
+  background: #55BA79; 
+  color: #fff; 
+  display: block; 
+  width: 100%; 
+  padding: 0 0 0 8px; 
+  z-index: 5; 
+  font-family: 'Audiowide', cursive;
+  overflow: hidden;
+  white-space: nowrap;
+}
+h1.pageListHeader a { font-size: 14px; color: #fff; text-decoration: none; top: 0; right: 0; z-index: 50; position: absolute; display: inline-block; height: 32px; padding: 12px 18px 0 6px; background: inherit; }
 
 div.pageContainer { margin-top: 60px; position: relative; }
 
