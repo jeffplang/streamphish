@@ -3,9 +3,7 @@ Streamphish::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  resources :shows do
-    match ':year', :action => 'year', :constraints => { :year => /\d{4}/ }
-  end
+  resources :shows
   resources :song_collections, :path => "songs"
 
   root :to => 'pages#index'
