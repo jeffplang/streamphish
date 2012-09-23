@@ -8,8 +8,8 @@ ul.years li a { display: block; border-radius: 5px; background: #f0f; padding: 8
 ul.yearsCircles { margin: 0 0 40px 0; padding: 0; list-style-type: none; position: relative; left: 10px; height: 100px; }
 ul.yearsCircles li { width: 75px; height: 75px; border-radius: 50%; background: #fff; text-align: center; 
   float: left; position: absolute; left: 0; top: 0; 
-  -webkit-transition-property: left, top, height, width;
-  -webkit-transition-duration: 1.5s, 1.5s, 0.175s, 0.175s;
+  -webkit-transition-property: left, top, height, width, background;
+  -webkit-transition-duration: 1.5s, 1.5s, 0.175s, 0.175s, 0.175s;
 }
 ul.yearsCircles li a { display: block; height: 100%; width: 100%; border-radius: 50%; text-decoration: none; position: relative; }
 ul.yearsCircles li a:hover { text-decoration: none; }
