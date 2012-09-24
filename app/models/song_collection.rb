@@ -9,13 +9,13 @@ class SongCollection < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
-  # include PgSearch
-  # pg_search_scope :kinda_matching,
-  #                 :against => :title, 
-  #                 :using => {
-  #                   tsearch: {
-  #                     any_word: true,
-  #                     normalization: 8
-  #                   }
-  #                 }
+  include PgSearch
+  pg_search_scope :kinda_matching,
+                  :against => :title, 
+                  :using => {
+                    tsearch: {
+                      any_word: true,
+                      normalization: 16
+                    }
+                  }
 end
