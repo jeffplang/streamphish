@@ -1,7 +1,8 @@
 class Show < ActiveRecord::Base
   attr_accessible :show_date, :location
 
-  has_many :songs
+  has_many :songs, :dependent => :destroy
+
   scope :for_year, lambda { |year|
     if year == '83-87'
       where('show_date between ? and ?', 

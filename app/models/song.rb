@@ -15,7 +15,7 @@ class Song < ActiveRecord::Base
   ########################
   has_many :song_collections_songs, :dependent => :destroy
   has_many :song_collections, :through => :song_collections_songs
-  has_many :section_markers
+  has_many :section_markers, :dependent => :destroy
   belongs_to :show
   
   scope :chronological, order('shows.show_date ASC').joins(:show)
