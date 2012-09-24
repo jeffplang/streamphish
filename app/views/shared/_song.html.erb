@@ -1,13 +1,13 @@
 <li <%= song_data_attribs(song, list_type) %>>
-    <div class="songInfo">
-      <% if list_type == :song %>
-        <span class="songDate"><%= link_to song.show.show_date.strftime('%m-%d-%Y'), show_path(song.show) %></span><br>
-        <span class="songVenue"><%= song.show.location %></span>
-      <% elsif list_type == :show %>
-        <span class="songTitle"><%= link_to ("%02d %s" % [song.position, song.title]), song_collection_path(song.song_collections.first) %></span>
-      <% end %>
-    </div>
-    <%= render :partial => "/shared/scrubber", :locals => {:song => song} %>
-    <div class="clearfix"></div>
-  <!-- </a> -->
+  <div class="songInfo">
+    <% if list_type == :song %>
+      <span class="songDate"><%= link_to song.show.show_date.strftime('%m-%d-%Y'), show_path(song.show) %></span><br>
+      <span class="songVenue"><%= song.show.location %></span>
+    <% elsif list_type == :show %>
+      <span class="songTitle"><%= link_to ("%02d %s" % [song.position, song.title]), song_collection_path(song.song_collections.first) %></span>
+    <% end %>
+  </div>
+  <%= render :partial => "/shared/scrubber", :locals => {:song => song} %>
+  <%= render :partial => "/shared/duration", :locals => {:song => song} %>
+  <div class="clearfix"></div>
 </li>

@@ -63,7 +63,7 @@ h1.pageListHeader a { font-size: 14px; color: #fff; text-decoration: none; top: 
 div.pageContainer { margin-top: 60px; position: relative; }
 
 .pageList { margin-top: 44px; list-style-type: none; padding: 0; }
-.pageList li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; height: 57px; }
+.pageList li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; height: 57px; position: relative; }
 .pageList li:hover { 
   background: rgb(24,94,87); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(24,94,87,1) 0%, rgba(24,82,76,1) 44%, rgba(23,71,66,1) 100%); /* FF3.6+ */
