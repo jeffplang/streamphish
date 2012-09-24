@@ -32,11 +32,11 @@ $markerColor: #FFF4A3;
 .pageList br { margin: 0; }
 .pageList .songDate { font-size: 20px; }
 .pageList .songVenue { font-size: 15px; }
-.pageList .songTitle { font-size: 23px; display: inline-block; margin-top: 5px; }
+.pageList .songTitle { font-size: 23px; display: inline-block; margin-top: 7px; }
 .pageList .songInfo a { color: inherit; }
 .pageList .songInfo a:hover { color: #fff; }
 
-.pageList .scrubber { display: inline-block; width: 265px; height: 18px; }
+.pageList .scrubber { display: inline-block; width: 265px; height: 16px; }
 .pageList .scrubber .timeline { 
   background: rgb(88,88,88); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(88,88,88,1) 0%, rgba(140,140,140,1) 100%); /* FF3.6+ */
@@ -67,7 +67,7 @@ $markerColor: #FFF4A3;
 
 .pageList .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: 9px; left: 0; border-radius: 6px; }
 
-.pageList .songTime .marker { position: absolute; float: left; top: -29px; }
+.pageList .songTime .marker { position: absolute; float: left; top: -28px; }
 .pageList .songTime .marker a { color: #000; text-decoration: none; font-size: 10px; background: $markerColor; border-radius: 3px; border-bottom-left-radius: 0; padding: 1px 3px 1px 3px; }
 .pageList .songTime .marker .stick { height: 16px; border-left: 3px solid $markerColor; margin-top: -3px; }
 
