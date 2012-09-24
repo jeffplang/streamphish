@@ -4,6 +4,6 @@
 </h1>
 <ul class="pageList linkItems">
 <% @song_collections.each do |song| %>
-  <li><%= link_to song.title, song_collection_path(song) %></li>
+  <li><%= link_to "<span>#{song.title}</span>".html_safe, song_collection_path(song) %></li>
 <% end %>
 </ul>

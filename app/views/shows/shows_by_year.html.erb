@@ -6,6 +6,6 @@
 </h1>
 <ul class="pageList linkItems">
 <% @shows.each do |show| %>
-  <li><%= link_to show, show_path(show) %></li>
+  <li><%= link_to "<span>#{show}</span>".html_safe, show_path(show) %></li>
 <% end %>
 </ul>
