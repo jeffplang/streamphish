@@ -59,7 +59,7 @@ module ShowImporter
 
     def populate_songs
       @show_info.songs.each do |pos, song|
-        fn_match = @fm.matches.find{ |k,v| v.title == song }#
+        fn_match = @fm.matches.find{ |k,v| !v.nil? && v.title == song }#
         if fn_match
           @songs << Song.new(pos, song, fn_match[0], fn_match[1])
         else
