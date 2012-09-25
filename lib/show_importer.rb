@@ -131,11 +131,6 @@ module ShowImporter
 
       @si = ShowImporter.new(ARGV[1], ARGV[0])
       main_menu
-    end
-
-    def main_menu
-      puts "\n#{@si.show}\n\n"
-      @si.pp_list
 
       puts "\nPick a position to edit: "
       while line = Readline.readline('> ', true)
@@ -143,12 +138,17 @@ module ShowImporter
         if pos > 0
           edit_for_pos(pos)
         elsif line == 'l'
-          @si.pp_list
+          main_menu
         elsif line == 's'
           puts "Saving..."
           @si.save
         end
       end
+    end
+
+    def main_menu
+      puts "\n#{@si.show}\n\n"
+      @si.pp_list
     end
 
     def edit_for_pos(pos)
