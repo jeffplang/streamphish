@@ -27,7 +27,7 @@ $markerColor: #FFF4A3;
 .pageList li.playing .songTime { opacity: 1; /*visibility: visible;*/ }
 .pageList li.playing .duration { opacity: 0; }
 .pageList .songTime { /*visibility: hidden;*/opacity: 0; margin-top: 12px; -webkit-transition-duration: 0.5s; }
-.pageList .duration { position: absolute; right: 45px; top: 24px; font-size: 32px; color: #425F77; -webkit-transition-duration: 0.5s; opacity: 1; }
+.pageList .duration { position: absolute; right: 45px; top: 25px; font-size: 32px; color: #425F77; -webkit-transition-duration: 0.5s; opacity: 1; }
 
 .pageList br { margin: 0; }
 .pageList .songDate { font-size: 20px; }
