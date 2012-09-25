@@ -59,7 +59,7 @@ module ShowImporter
 
     def populate_songs
       @show_info.songs.each do |pos, song|
-        fn_match = @fm.matches.find{ |k,v| v.title == song }
+        fn_match = @fm.matches.find{ |k,v| v.title == song }#
         if fn_match
           @songs << Song.new(pos, song, fn_match[0], fn_match[1])
         else
@@ -129,7 +129,12 @@ module ShowImporter
     def initialize
       require 'readline'
 
-      @si = ShowImporter.new(ARGV[0], ARGV[1])
+      @si = ShowImporter.new(ARGV[1], ARGV[0])
+      main_menu
+    end
+
+    def main_menu
+      puts "\n#{@si.show}\n\n"
       @si.pp_list
 
       puts "\nPick a position to edit: "

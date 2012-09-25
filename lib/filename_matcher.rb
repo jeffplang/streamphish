@@ -3,10 +3,13 @@ class FilenameMatcher
 
   def initialize(dir)
     @s_dir     = scrub_dir_path(dir)
-    raise "Must provide a valid directory path" unless File.directory? @s_dir
+    unless File.directory? @s_dir
+      puts "TRIED: #{@s_dir}"
+      raise "Must provide a valid directory path" 
+    end
 
     @matches  = {}
-    filenames = Dir.entries(@s_dir).reject{ |e| e == '.' || e == '..' }
+    filenames = Dir.entries(@s_dir).reject{ |e| e == '.' || e == '..' || e =~ /.txt$/ }
 
     filenames.each do |filename|
       s_filename = scrub_filename filename
