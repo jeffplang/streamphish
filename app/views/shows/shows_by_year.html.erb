@@ -2,7 +2,7 @@
 
 <h1 class="pageListHeader">
   <%= @year %>
-  <%= link_to "&#8592; Home".html_safe, root_path, :class => "back" %>
+  <%= back_link_for @shows %>
 </h1>
 <ul class="pageList linkItems">
 <% @shows.each do |show| %>

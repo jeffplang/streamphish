@@ -3,7 +3,7 @@
 
 <h1 class="pageListHeader">
   <%= @show %>
-  <%= link_to "&#8592; #{year = @show.show_date.year}".html_safe, shows_path(:year => year), :class => "back" %>
+  <%= back_link_for(@show) %>
 </h1>
 <ul class="pageList songs">
   <% @show.songs.order(:position).each do |song| %>

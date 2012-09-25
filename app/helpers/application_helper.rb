@@ -3,6 +3,22 @@ module ApplicationHelper
     "%d:%02d" % [ms / 60000, ms % 60000 / 1000]
   end
 
+  def back_link_for(thing)
+    if thing.is_a?(Show)
+      if Date.new(1983).beginning_of_year < thing.show_date && thing.show_date < Date.new(1987).end_of_year
+        text, href = '83-87', shows_path(:year => '83-87')
+      else
+        text, href = thing.show_date.year, shows_path(:year => thing.show_date.year)
+      end
+    elsif thing.is_a?(SongCollection)
+      text, href = "Songs", song_collections_path
+    else
+      text, href = "Home", root_path
+    end
+
+    link_to "&#8592; #{text}".html_safe, href
+  end
+
   def random_css_color
     "#%02x%02x%02x" % [rand(256), rand(256), rand(256)]
   end
