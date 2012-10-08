@@ -7,14 +7,18 @@ module ShowImporter
   class ShowImporter
     attr_reader :show, :fm, :songs
 
-    def initialize(date, dir)
+    def initialize(date)
       puts "Fetching show info..."
       @show_info = ShowInfo.new date
       puts "Analyzing filenames..."
-      @fm    = FilenameMatcher.new dir
+      @fm    = FilenameMatcher.new date
 
-      @show = Show.where(:show_date => Date.strptime(date, '%m/%d/%Y')).first
-      @show ||= Show.new(:location => @show_info.location, :show_date => Date.strptime(date, '%m/%d/%Y'))
+      # TEMP DISABLED UNTIL WE DONE WIT MAY
+      # @show = Show.where(:show_date => Date.strptime(date, '%m/%d/%Y')).first
+      # @show ||= Show.new(:location => @show_info.location, :show_date => Date.strptime(date, '%m/%d/%Y'))
+
+      @show = Show.where(:show_date => Date.strptime(date, '%Y-%m-%d')).first
+      @show ||= Show.new(:location => @show_info.location, :show_date => Date.strptime(date, '%Y-%m-%d'))
 
       @songs = []
       populate_songs
@@ -58,19 +62,21 @@ module ShowImporter
     private
 
     def populate_songs
+      matches = @fm.matches.dup
       @show_info.songs.each do |pos, song|
-        fn_match = @fm.matches.find{ |k,v| !v.nil? && v.title == song }#
+        fn_match = matches.find{ |k,v| !v.nil? && v.title == song }
         if fn_match
-          @songs << Song.new(pos, song, fn_match[0], fn_match[1])
+          @songs << SongProxy.new(pos, song, fn_match[0], fn_match[1])
+          matches.delete(fn_match[0])
         else
-          @songs << Song.new(pos, song)
+          @songs << SongProxy.new(pos, song)
         end
       end
     end
   end
 
 
-  class Song
+  class SongProxy
     attr_accessor :filename
 
     def initialize(pos=nil, title=nil, filename=nil, song_collection=nil)
@@ -129,7 +135,7 @@ module ShowImporter
     def initialize
       require 'readline'
 
-      @si = ShowImporter.new(ARGV[1], ARGV[0])
+      @si = ShowImporter.new(ARGV[0])
       main_menu
 
       puts "\nPick a position to edit: "
@@ -209,8 +215,8 @@ end
 
 
 if __FILE__ == $0
-  if ARGV.length < 2
-    puts "Need 2 args"
+  if ARGV.length < 1
+    puts "Need date"
   else
     ShowImporter::Cli.new
   end
