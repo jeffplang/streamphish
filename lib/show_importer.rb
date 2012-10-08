@@ -143,6 +143,8 @@ module ShowImporter
         pos = line.to_i
         if pos > 0
           edit_for_pos(pos)
+        elsif line == 'f'
+          print_filenames
         elsif line == 'l'
           main_menu
         elsif line == 's'
@@ -155,6 +157,15 @@ module ShowImporter
     def main_menu
       puts "\n#{@si.show}\n\n"
       @si.pp_list
+    end
+
+    def print_filenames
+      filenames = @si.fm.matches.keys
+
+      puts "Choose a file:"
+      filenames.each_with_index do |fn, i| 
+        puts "%02d.) %s" % [i + 1, fn]
+      end
     end
 
     def edit_for_pos(pos)
@@ -192,12 +203,7 @@ module ShowImporter
     end
 
     def update_file_for_pos(pos)
-      filenames = @si.fm.matches.keys
-
-      puts "Choose a file:"
-      filenames.each_with_index do |fn, i| 
-        puts "%02d.) %s" % [i + 1, fn]
-      end
+      print_filenames
 
       while line = Readline.readline("1-#{filenames.length} > ")
         choice = line.to_i
