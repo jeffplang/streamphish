@@ -37,3 +37,7 @@ div.songs a {
 }
 div.songs a.hover { z-index: 5000; text-decoration: none; }
 div.songs a span { position: relative; }
+
+.pageList.showsByYear li { height: 70px; }
+.pageList.showsByYear li a span { top: 16px; font-size: 18px; letter-spacing: -1.5px; }
+.pageList.showsByYear li a span strong { font-size: 27px; letter-spacing: 0em;}
