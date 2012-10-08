@@ -4,8 +4,8 @@
   <%= @year %>
   <%= back_link_for @shows %>
 </h1>
-<ul class="pageList linkItems">
+<ul class="pageList linkItems showsByYear">
 <% @shows.each do |show| %>
-  <li><%= link_to "<span>#{show}</span>".html_safe, show_path(show) %></li>
+  <li><%= link_to "<span><strong>#{show.show_date.strftime('%m/%d/%Y')}</strong> #{show.location}</span>".html_safe, show_path(show) %></li>
 <% end %>
 </ul>
