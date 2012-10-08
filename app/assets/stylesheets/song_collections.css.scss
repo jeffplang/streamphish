@@ -33,7 +33,7 @@ $markerColor: #FFF4A3;
 .pageList .songDate { font-size: 20px; }
 .pageList .songVenue { font-size: 15px; }
 .pageList .songTitle { font-size: 23px; display: inline-block; margin-top: 7px; }
-.pageList .songInfo a { color: inherit; }
+.pageList .songInfo a { color: inherit; text-decoration: none; }
 .pageList .songInfo a:hover { color: #fff; }
 
 .pageList .scrubber { display: inline-block; width: 265px; height: 16px; }
