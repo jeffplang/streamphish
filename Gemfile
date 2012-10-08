@@ -16,6 +16,10 @@ gem 'friendly_id'
 gem 'mp3info'
 gem 'pg_search'
 gem 'color', '>= 1.4.0', :require => ['color', 'color/palette/monocontrast']
+gem 'selenium-webdriver'
+gem 'xmpp4r'
+# gem 'capybara'
+# gem 'capybara-webkit'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,8 +35,15 @@ group :assets do
   gem 'compass-h5bp'
 end
 
+group :production do
+  gem 'passenger'
+end
+
 gem 'jquery-rails'
 gem 'html5-rails'
+
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
