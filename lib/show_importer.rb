@@ -39,9 +39,7 @@ module ShowImporter
       receiving.merge_song(assimilating)
       @songs.delete assimilating
 
-      @songs.each do |song|
-        song.decr_pos if song.pos > pos
-      end
+      @songs.each { |song| song.decr_pos if song.pos > pos }
     end
 
     def get_song(pos)
@@ -123,6 +121,8 @@ module ShowImporter
 
     def merge_song(song)
       @_song.title += " > #{song.title}"
+      @_song.song_collections << song.song_collections
+      @filename = song.filename if @filename.nil? && !song.filename.nil?
     end
 
     def save
@@ -162,10 +162,10 @@ module ShowImporter
     def print_filenames
       filenames = @si.fm.matches.keys
 
-      puts "Choose a file:"
       filenames.each_with_index do |fn, i| 
-        puts "%02d.) %s" % [i + 1, fn]
+        puts "%2d.) %s" % [i + 1, fn]
       end
+      filenames
     end
 
     def edit_for_pos(pos)
@@ -203,7 +203,8 @@ module ShowImporter
     end
 
     def update_file_for_pos(pos)
-      print_filenames
+      puts "Choose a file:"
+      filenames = print_filenames
 
       while line = Readline.readline("1-#{filenames.length} > ")
         choice = line.to_i

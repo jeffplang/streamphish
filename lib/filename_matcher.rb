@@ -17,6 +17,7 @@ class FilenameMatcher
 
       @matches[filename] = found
     end
+    @matches = Hash[@matches.sort]
   end
 
   def submit_correction(filename, search_term)

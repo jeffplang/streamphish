@@ -26,7 +26,8 @@ class ShowInfo
   end
 
   def location
-    "#{@data['venue']} - #{@data['city']}, #{@data['state']}"
+    last_part = @data['state'].blank? ? @data['country'] : @data['state']
+    "#{@data['venue']} - #{@data['city']}, #{last_part}"
   end
 
   private
