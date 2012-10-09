@@ -155,7 +155,7 @@ module ShowImporter
     end
 
     def main_menu
-      puts "\n#{@si.show}\n\n"
+      puts "\n#{@si.show} #{' ::SBD::' if @si.}\n\n"
       @si.pp_list
     end
 
@@ -169,7 +169,7 @@ module ShowImporter
     end
 
     def edit_for_pos(pos)
-      help_str = "Combine (u)p, Choose (s)ong collection, Choose (f)ile"
+      help_str = "Combine (u)p, Choose (s)ong collection, Choose (f)ile, Toggle s(b)d"
       puts "#{@si.get_song(pos)}"
       puts help_str
 
@@ -183,6 +183,9 @@ module ShowImporter
           update_sc_for_pos(pos)
         elsif line == 'f'
           update_file_for_pos(pos)
+        elsif line == 'b'
+          toggle_sbd
+          puts "Is SBD: " + @si.show.sbd ? 'YES' : 'NO'
         elsif line == '?'
           puts "#{@si.get_song(pos)}"
           puts help_str
@@ -200,6 +203,10 @@ module ShowImporter
         end
         break
       end
+    end
+
+    def toggle_sbd
+      @si.show.sbd = !@si.show.sbd
     end
 
     def update_file_for_pos(pos)
