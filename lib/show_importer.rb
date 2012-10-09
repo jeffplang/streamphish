@@ -143,6 +143,9 @@ module ShowImporter
         pos = line.to_i
         if pos > 0
           edit_for_pos(pos)
+        elsif line == 'b'
+          toggle_sbd
+          puts "Is SBD: " + @si.show.sbd ? 'YES' : 'NO'
         elsif line == 'f'
           print_filenames
         elsif line == 'l'
@@ -183,9 +186,6 @@ module ShowImporter
           update_sc_for_pos(pos)
         elsif line == 'f'
           update_file_for_pos(pos)
-        elsif line == 'b'
-          toggle_sbd
-          puts "Is SBD: " + @si.show.sbd ? 'YES' : 'NO'
         elsif line == '?'
           puts "#{@si.get_song(pos)}"
           puts help_str
