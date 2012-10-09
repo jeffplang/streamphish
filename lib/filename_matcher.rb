@@ -53,7 +53,7 @@ class FilenameMatcher
   private
 
   def scrub_dir_path(path)
-    path.gsub('\\', '')
+    path.gsub('\\', '').gsub('/', '-')
   end
 
   def scrub_filename(filename)

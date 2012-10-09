@@ -33,11 +33,9 @@ class ShowInfo
   private
 
   def format_date(date)
-    # ATTN: TEMP DISABLED UNTIL WE DONE WIT MAY
-    # 
-    # month, day, year = date.split('/')
-    # "%d-%02d-%02d" % [year, month, day]
-    date
+    puts "DATE: #{date}"
+    month, day, year = date.split('/')
+    "%d-%02d-%02d" % [year, month, day]
   end
 
 end

@@ -13,12 +13,12 @@ module ShowImporter
       puts "Analyzing filenames..."
       @fm    = FilenameMatcher.new date
 
-      # TEMP DISABLED UNTIL WE DONE WIT MAY
-      # @show = Show.where(:show_date => Date.strptime(date, '%m/%d/%Y')).first
-      # @show ||= Show.new(:location => @show_info.location, :show_date => Date.strptime(date, '%m/%d/%Y'))
+      @show = Show.where(:show_date => Date.strptime(date, '%m/%d/%Y')).first
+      @show ||= Show.new(:location => @show_info.location, :show_date => Date.strptime(date, '%m/%d/%Y'))
 
-      @show = Show.where(:show_date => Date.strptime(date, '%Y-%m-%d')).first
-      @show ||= Show.new(:location => @show_info.location, :show_date => Date.strptime(date, '%Y-%m-%d'))
+      # SWITCHOVA TIME 
+      # @show = Show.where(:show_date => Date.strptime(date, '%Y-%m-%d')).first
+      # @show ||= Show.new(:location => @show_info.location, :show_date => Date.strptime(date, '%Y-%m-%d'))
 
       @songs = []
       populate_songs
