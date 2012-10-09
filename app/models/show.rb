@@ -1,5 +1,5 @@
 class Show < ActiveRecord::Base
-  attr_accessible :show_date, :location
+  attr_accessible :show_date, :location, :sbd, :remastered
 
   has_many :songs, :dependent => :destroy
 
