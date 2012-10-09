@@ -155,7 +155,7 @@ module ShowImporter
     end
 
     def main_menu
-      puts "\n#{@si.show} #{' ::SBD::' if @si.}\n\n"
+      puts "\n#{@si.show} #{' ::SBD::' if @si.show.sbd}\n\n"
       @si.pp_list
     end
 
