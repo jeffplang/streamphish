@@ -1,7 +1,9 @@
 <li <%= song_data_attribs(song, list_type) %>>
   <div class="songInfo">
     <% if list_type == :song %>
-      <span class="songDate"><%= link_to song.show.show_date.strftime('%m-%d-%Y'), show_path(song.show) %></span><br>
+      <span class="songDate"><%= link_to song.show.show_date.strftime('%m-%d-%Y'), show_path(song.show) %></span>
+      <% if song.show.remastered %><span class="tag">remastered</span><% end %>
+      <br>
       <span class="songVenue"><%= song.show.location %></span>
     <% elsif list_type == :show %>
       <div class="songTitle">
