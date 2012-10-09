@@ -36,7 +36,7 @@ group :assets do
 end
 
 group :production do
-  gem 'passenger'
+  # gem 'passenger'
 end
 
 gem 'jquery-rails'
