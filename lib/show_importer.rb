@@ -135,24 +135,27 @@ module ShowImporter
     def initialize
       require 'readline'
 
-      @si = ShowImporter.new(ARGV[0])
-      main_menu
+      ARGV.each do |date|
+        @si = ShowImporter.new(date)
+        main_menu
 
-      puts "\nPick a position to edit: "
-      while line = Readline.readline('> ', true)
-        pos = line.to_i
-        if pos > 0
-          edit_for_pos(pos)
-        elsif line == 'b'
-          toggle_sbd
-          puts "Is SBD: " + (@si.show.sbd ? 'YES' : 'NO')
-        elsif line == 'f'
-          print_filenames
-        elsif line == 'l'
-          main_menu
-        elsif line == 's'
-          puts "Saving..."
-          @si.save
+        puts "\nPick a position to edit: "
+        while line = Readline.readline('> ', true)
+          pos = line.to_i
+          if pos > 0
+            edit_for_pos(pos)
+          elsif line == 'b'
+            toggle_sbd
+            puts "Is SBD: " + (@si.show.sbd ? 'YES' : 'NO')
+          elsif line == 'f'
+            print_filenames
+          elsif line == 'l'
+            main_menu
+          elsif line == 's'
+            puts "Saving..."
+            @si.save
+            break
+          end
         end
       end
     end
