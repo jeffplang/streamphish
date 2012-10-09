@@ -2,13 +2,13 @@
   <div class="songInfo">
     <% if list_type == :song %>
       <span class="songDate"><%= link_to song.show.show_date.strftime('%m-%d-%Y'), show_path(song.show) %></span>
-      <% if song.show.remastered %><span class="tag">remastered</span><% end %>
+      <%= song_tags(song) %>
       <br>
       <span class="songVenue"><%= song.show.location %></span>
     <% elsif list_type == :show %>
       <div class="songTitle">
         <%= link_to ("%02d %s" % [song.position, song.title]), song_collection_path(song.song_collections.first) %>
-        <% if song.show.remastered %><span class="tag">remastered</span><% end %>
+        <%= song_tags(song) %>
       </div>
     <% end %>
   </div>

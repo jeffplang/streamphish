@@ -3,6 +3,10 @@ module ApplicationHelper
     "%d:%02d" % [ms / 60000, ms % 60000 / 1000]
   end
 
+  def song_tags(song)
+    %!#{'<span class="tag">sbd</span>' if song.show.sbd}#{'<span class="tag">remastered</span>' if song.show.remastered}!.html_safe
+  end
+
   def back_link_for(thing)
     if thing.is_a?(Show)
       if Date.new(1983).beginning_of_year < thing.show_date && thing.show_date < Date.new(1987).end_of_year
