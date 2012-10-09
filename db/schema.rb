@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120923013134) do
+ActiveRecord::Schema.define(:version => 20121009153624) do
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -36,9 +36,10 @@ ActiveRecord::Schema.define(:version => 20120923013134) do
 
   create_table "shows", :force => true do |t|
     t.date     "show_date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "location"
+    t.boolean  "remastered", :default => false
   end
 
   create_table "song_collections", :force => true do |t|
