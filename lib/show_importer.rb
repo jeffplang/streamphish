@@ -145,7 +145,7 @@ module ShowImporter
           edit_for_pos(pos)
         elsif line == 'b'
           toggle_sbd
-          puts "Is SBD: " + @si.show.sbd ? 'YES' : 'NO'
+          puts "Is SBD: " + (@si.show.sbd ? 'YES' : 'NO')
         elsif line == 'f'
           print_filenames
         elsif line == 'l'
