@@ -2,13 +2,13 @@
   <div class="songInfo">
     <% if list_type == :song %>
       <span class="songDate"><%= link_to song.show.show_date.strftime('%m-%d-%Y'), show_path(song.show) %></span>
-      <%= song_tags(song) %>
+      <%= li_tags_for(song) %>
       <br>
       <span class="songVenue"><%= song.show.location %></span>
     <% elsif list_type == :show %>
       <div class="songTitle">
         <%= link_to ("%02d %s" % [song.position, song.title]), song_collection_path(song.song_collections.first) %>
-        <%= song_tags(song) %>
+        <%= li_tags_for(song) %>
       </div>
     <% end %>
   </div>

@@ -3,7 +3,7 @@ module ApplicationHelper
     "%d:%02d" % [ms / 60000, ms % 60000 / 1000]
   end
 
-  def song_tags(thing)
+  def li_tags_for(thing)
     show = thing.is_a?(Show) ? thing : thing.show
     %!#{'<span class="tag">sbd</span>' if show.sbd}#{'<span class="tag">remastered</span>' if show.remastered}!.html_safe
   end
