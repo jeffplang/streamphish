@@ -117,7 +117,7 @@ module ShowImporter
 
     def merge_song(song)
       @_song.title += " > #{song.title}"
-      @_song.song_collections << song.song_collections
+      @_song.song_collections << song.song_collections.reject{ |sc| @_song.song_collections.include?(sc) }
       @filename = song.filename if @filename.nil? && !song.filename.nil?
     end
 
