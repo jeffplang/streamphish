@@ -86,6 +86,8 @@ module ShowImporter
     def initialize(pos=nil, title=nil, filename=nil, song_collection=nil)
       @_song = ::Song.new(:position => pos, :title => title)
 
+      song_collection ||= ::SongCollection.find_by_title(title)
+
       @_song.song_collections << song_collection unless song_collection.nil?
 
       @filename = filename
