@@ -13,19 +13,15 @@ module ShowImporter
       puts "Analyzing filenames..."
       @fm    = FilenameMatcher.new date
 
-      @show = Show.where(:show_date => Date.strptime(date, '%m/%d/%Y')).first
-      @show ||= Show.new(:location => @show_info.location, :show_date => Date.strptime(date, '%m/%d/%Y'))
-
-      # SWITCHOVA TIME 
-      # @show = Show.where(:show_date => Date.strptime(date, '%Y-%m-%d')).first
-      # @show ||= Show.new(:location => @show_info.location, :show_date => Date.strptime(date, '%Y-%m-%d'))
+      @show = Show.where(:show_date => Date.strptime(date, '%m/%d/%Y')).first || \
+              Show.new(:location => @show_info.location, :show_date => Date.strptime(date, '%m/%d/%Y'))
 
       @songs = []
       populate_songs
     end
 
     def pp_list
-      @songs.each do |song|
+      @songs.sort{ |a,b| a.pos <=> b.pos }.each do |song|
         puts song
       end
     end
@@ -42,6 +38,16 @@ module ShowImporter
       @songs.each { |song| song.decr_pos if song.pos > pos }
     end
 
+    def insert_before(pos)
+      @songs.each { |song| song.incr_pos if song.pos >= pos }
+      @songs.insert pos, SongProxy.new(pos)
+    end
+
+    def delete(pos)
+      @songs.delete_if { |song| song.pos == pos }
+      @songs.each { |song| song.decr_pos if song.pos > pos }
+    end
+
     def get_song(pos)
       @songs.find{|s| s.pos == pos}
     end
@@ -51,7 +57,7 @@ module ShowImporter
       @songs.each do |s|
         if s.valid?
           s.show = @show
-          s.file = File.new("#{@fm.s_dir}/#{s.filename}")
+          s.song_file = File.new("#{@fm.s_dir}/#{s.filename}")
           s.save
         end
       end
@@ -99,24 +105,12 @@ module ShowImporter
       @_song.position
     end
 
-    def title
-      @_song.title
-    end
-
     def decr_pos
       @_song.position -= 1
     end
 
-    def song_collections
-      @_song.song_collections
-    end
-
-    def show=(show)
-      @_song.show_id = show.id
-    end
-
-    def file=(file)
-      @_song.song_file = file
+    def incr_pos
+      @_song.position += 1
     end
 
     def merge_song(song)
@@ -125,8 +119,8 @@ module ShowImporter
       @filename = song.filename if @filename.nil? && !song.filename.nil?
     end
 
-    def save
-      @_song.save
+    def method_missing(method, *args, &block)
+      @_song.send(method, *args)
     end
   end
 
@@ -139,8 +133,8 @@ module ShowImporter
         @si = ShowImporter.new(date)
         main_menu
 
-        puts "\nPick a position to edit: "
-        while line = Readline.readline('> ', true)
+        puts "\nPick a position to edit, Toggle S(b)D, Show (f)ilenames, Show song (l)ist, (i)nsert new, (d)elete song, (s)ave: "
+        while line = Readline.readline('#bflids> ', true)
           pos = line.to_i
           if pos > 0
             edit_for_pos(pos)
@@ -151,6 +145,10 @@ module ShowImporter
             print_filenames
           elsif line == 'l'
             main_menu
+          elsif line == 'i'
+            insert_new_song
+          elsif line == 'd'
+            delete_song
           elsif line == 's'
             puts "Saving..."
             @si.save
@@ -175,11 +173,11 @@ module ShowImporter
     end
 
     def edit_for_pos(pos)
-      help_str = "Combine (u)p, Choose (s)ong collection, Choose (f)ile, Toggle s(b)d"
+      help_str = "Combine (u)p, Choose (s)ong collection, Choose (f)ile, Change (t)itle"
       puts "#{@si.get_song(pos)}"
       puts help_str
 
-      while line = Readline.readline('usf?> ', false)
+      while line = Readline.readline('usft?> ', false)
 
         if line == 'u'
           puts "Combining up (#{pos}) #{@si.get_song(pos).title} into (#{pos - 1}) #{@si.get_song(pos - 1).title}"
@@ -189,11 +187,30 @@ module ShowImporter
           update_sc_for_pos(pos)
         elsif line == 'f'
           update_file_for_pos(pos)
+        elsif line == 't'
+          update_title_for_pos(pos)
         elsif line == '?'
           puts "#{@si.get_song(pos)}"
           puts help_str
         end
 
+      end
+      puts
+    end
+
+    def insert_new_song
+      puts "Before song #:"
+      while line = Readline.readline('> ', true)
+        @si.insert_before(line.to_i)
+        break
+      end
+    end
+
+    def delete_song
+      puts "Delete song #:"
+      while line = Readline.readline('> ', true)
+        @si.delete(line.to_i)
+        break
       end
     end
 
@@ -206,6 +223,16 @@ module ShowImporter
         end
         break
       end
+      puts
+    end
+
+    def update_title_for_pos(pos)
+      puts "Enter new title:"
+      while line = Readline.readline('> ', true)
+        @si.get_song(pos).title = line
+        break
+      end
+      puts
     end
 
     def toggle_sbd
@@ -225,6 +252,7 @@ module ShowImporter
           break
         end
       end
+      puts
     end
   end
 end
