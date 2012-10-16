@@ -59,6 +59,8 @@ class FilenameMatcher
   def scrub_filename(filename)
     if filename =~ /mike/i
       "Mike's Song"
+    elsif filename =~ /\d HYHU( -)?.mp3$/
+      "Hold Your Head Up"
     else
       filename
         .gsub('.mp3', '')
