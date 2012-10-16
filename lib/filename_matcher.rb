@@ -61,6 +61,8 @@ class FilenameMatcher
       "Mike's Song"
     elsif filename =~ /\d HYHU( -)?.mp3$/
       "Hold Your Head Up"
+    elsif filename =~ /Freebird.mp3/
+      "Free Bird"
     else
       filename
         .gsub('.mp3', '')
