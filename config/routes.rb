@@ -6,6 +6,8 @@ Streamphish::Application.routes.draw do
   resources :shows
   resources :song_collections, :path => "songs"
 
+  match "/years" => "pages#years"
+
   root :to => 'pages#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.

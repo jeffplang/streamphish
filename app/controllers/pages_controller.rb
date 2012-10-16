@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   def index
-    @years = ['83-87'] + (1988..2012).to_a
+    get_years
     @song_collections = SongCollection.random 18
+  end
+
+  def years
+    get_years
   end
 end
