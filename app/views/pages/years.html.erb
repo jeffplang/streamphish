@@ -1,0 +1,12 @@
+<% content_for(:title) { "Years :: StreamPhish" } %>
+
+<h1 class="pageListHeader">
+  Years
+  <%= back_link_for @years %>
+</h1>
+<ul class="pageList linkItems showsByYear">
+<% @years.each do |year| %>
+  <% year_html = year_empty?(year) ? "<span>#{year}</span>" : "<span><strong>#{year}</strong></span>" %>
+  <li><%= link_to year_html.html_safe, shows_path(:year => year) %></li>
+<% end %>
+</ul>
