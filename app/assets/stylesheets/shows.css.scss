@@ -64,3 +64,10 @@ top: 11px!important;
 }
 
 .songInfo .tag { top: -4px!important; margin-left: 3px;}
+
+@media only screen and (max-device-width : 320px) {
+  .pageList.showsByYear li { height: 50px; overflow: hidden; }
+  .pageList.showsByYear li a span { top: 8px; font-size: 12px; letter-spacing: -1.5px; }
+  .pageList.showsByYear li a span strong { font-size: 14px; letter-spacing: 0em; }
+}
+

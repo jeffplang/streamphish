@@ -82,5 +82,11 @@ div.pageContainer { margin-top: 60px; position: relative; }
 .pageList.linkItems li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; font-size: 21px; padding: 0 0 0 18px; }
 .pageList.linkItems li a span { top: 30px; position: relative; }
 
+@media only screen and (max-device-width : 320px) {
+  .pageList { margin-top: 26px; list-style-type: none; padding: 0; }
+  h1.pageListHeader { font-size: 18px; }
+  h1.pageListHeader a { font-size: 14px; top: 0; right: 0; height: 32px; padding: 3px 18px 0 6px; background: inherit; }
+}
+
 @import "song_collections";
 @import "shows";

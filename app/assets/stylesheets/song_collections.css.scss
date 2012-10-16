@@ -73,3 +73,10 @@ $markerColor: #FFF4A3;
 
 /*.pageList.songTitles li, .pageList.years li { padding: 0; }
 .pageList.songTitles li a, .pageList.years li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; padding: 10px; }*/
+
+
+@media only screen and (max-device-width : 320px) {
+  .pageList .songTitle { font-size: 14px; display: inline-block; margin-top: 3px; }
+  .pageList .duration { right: 30px; top: 12px; font-size: 18px; }
+  .pageList .songTime time { display: none!important; }
+}

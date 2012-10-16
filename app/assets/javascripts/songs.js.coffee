@@ -162,7 +162,7 @@ class Scrubber
 
 class ScrubberManager
   constructor: ->
-    $('.songs').on 'mousedown', '.scrubber .handle', @_mouseDownHandler
+    $('.songs').on 'mousedown touchstart', '.scrubber .handle', @_mouseDownHandler
 
     # if a mouseup event is done on the handle, a click event bubbles
     # to the song <li>...this prevents it
@@ -198,14 +198,14 @@ class ScrubberManager
     $doc = $(document)
 
     if @scrubber?
-      $doc.on('mousemove', 
+      $doc.on('mousemove touchmove', 
               null, 
               loadingWidth: 
                 @scrubber.$loadingBar.width() 
               @_mouseMoveHandler)
-          .on('mouseup', @_mouseUpHandler)
+          .on('mouseup touchend', @_mouseUpHandler)
     else
-      $doc.off('mouseup mousemove')
+      $doc.off('mouseup mousemove touchend touchmove')
 
 
 class Marker
