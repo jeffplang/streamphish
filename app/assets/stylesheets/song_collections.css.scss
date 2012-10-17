@@ -23,6 +23,14 @@ $markerColor: #FFF4A3;
   background: linear-gradient(to bottom,  rgba(0,76,152,1) 0%,rgba(6,69,132,1) 44%,rgba(10,60,110,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004c98', endColorstr='#0a3c6e',GradientType=0 ); /* IE6-9 */
 }
+.pageList li.paused { -webkit-animation: adjustHue 0.5s ease-in-out infinite alternate; }
+
+@-webkit-keyframes adjustHue {  
+   from { -webkit-filter: saturate(100%); }  
+   /*50% { -webkit-filter: brightness(1%); }  */
+   to { -webkit-filter: saturate(85%); }
+
+}
 
 .pageList li.playing .songTime { opacity: 1; /*visibility: visible;*/ }
 .pageList li.playing .duration { opacity: 0; }

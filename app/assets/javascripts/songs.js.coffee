@@ -36,6 +36,7 @@ class Song
 
   togglePause: ->
     @sound.togglePause()
+    @$song.toggleClass 'paused'
     SP.SongM.toggleTitleAnimation()
 
   play: ->
