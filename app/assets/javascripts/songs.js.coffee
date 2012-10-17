@@ -53,7 +53,7 @@ class Song
     SP.SongM.toggleTitleAnimation()
 
   stop: ->
-    @$song.removeClass 'playing'
+    @$song.removeClass('playing').removeClass('paused')
     @sound.stop()
     SP.SongM.toggleTitleAnimation() if SP.SongM.isTitleAnimating()
 
