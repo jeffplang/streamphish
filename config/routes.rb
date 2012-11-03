@@ -4,7 +4,7 @@ Streamphish::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :shows
-  resources :song_collections, :path => "songs"
+  resources :songs
 
   match "/years" => "pages#years"
 

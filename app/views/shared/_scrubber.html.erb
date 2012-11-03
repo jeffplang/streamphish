@@ -4,8 +4,8 @@
     <div class="handle"></div>
     <div class="timeline">
       <div class="loadingProgress"></div>
-      <%= render :partial => "/shared/marker", :collection => song.section_markers, :locals => {:song => song} %>
+      <%= render :partial => "/shared/marker", :collection => track.section_markers, :locals => {:track => track} %>
     </div>
   </div>
-  <time class="totalTime"><%= ms_to_MMSS song.duration %></time>
+  <time class="totalTime"><%= ms_to_MMSS track.duration %></time>
 </div>

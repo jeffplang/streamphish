@@ -1,6 +1,6 @@
-<% content_for(:title) { "StreamPhish" } %>
+<% content_for(:title) { "phishTracks" } %>
 
-<h1 class="pageListHeader">StreamPhish</h1>
+<h1 class="pageListHeader">PhishTracks</h1>
 
 <div class="pageContainer">
   <h2>Years</h2>
@@ -10,10 +10,10 @@
   <% end %>
   </ul>
 
-  <h2>Songs <span>( <%= link_to 'view all', song_collections_path %> )</span></h2>
+  <h2>Songs <span>( <%= link_to 'view all', songs_path %> )</span></h2>
   <div class="songs">
-  <% @song_collections.each do |sc| %>
-    <%= render :partial => 'song_bubble', :locals => {:sc => sc} %>
+  <% @songs.each do |song| %>
+    <%= render :partial => 'song_bubble', :locals => {:song => song} %>
   <% end %>
   </div>
 <div>

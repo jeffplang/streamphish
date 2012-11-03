@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009174224) do
+ActiveRecord::Schema.define(:version => 20121031050608) do
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20121009174224) do
   create_table "section_markers", :force => true do |t|
     t.string   "title"
     t.integer  "position"
-    t.integer  "song_id"
+    t.integer  "track_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -43,20 +43,20 @@ ActiveRecord::Schema.define(:version => 20121009174224) do
     t.boolean  "sbd",        :default => false
   end
 
-  create_table "song_collections", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.string   "slug"
-    t.integer  "songs_count", :default => 0
-  end
-
-  create_table "song_collections_songs", :force => true do |t|
-    t.integer "song_collection_id"
-    t.integer "song_id"
-  end
-
   create_table "songs", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.string   "slug"
+    t.integer  "tracks_count", :default => 0
+  end
+
+  create_table "songs_tracks", :force => true do |t|
+    t.integer "song_id"
+    t.integer "track_id"
+  end
+
+  create_table "tracks", :force => true do |t|
     t.integer  "show_id"
     t.string   "title"
     t.integer  "position"

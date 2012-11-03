@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def index
     get_years
-    @song_collections = SongCollection.random 18
+    @songs = Song.random 18
   end
 
   def years

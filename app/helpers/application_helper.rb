@@ -15,8 +15,8 @@ module ApplicationHelper
       else
         text, href = thing.show_date.year, shows_path(:year => thing.show_date.year)
       end
-    elsif thing.is_a?(SongCollection)
-      text, href = "Songs", song_collections_path
+    elsif thing.is_a?(Song)
+      text, href = "Songs", songs_path
     else
       text, href = "Home", root_path
     end
@@ -46,10 +46,10 @@ module ApplicationHelper
                   "this.style.border='#{bg}!important';\"").html_safe
   end
 
-  def song_data_attribs(song, list_type)
-    (%!data-song-uri="#{song.song_file.url}" ! + \
-     %!data-duration="#{song.duration}" ! + \
-     %!data-title="#{song.title}"! + \
-     (list_type == :song ? %! data-show="#{song.show.to_s}"! : '')).html_safe
+  def track_data_attribs(track, list_type)
+    (%!data-song-uri="#{track.song_file.url}" ! + \
+     %!data-duration="#{track.duration}" ! + \
+     %!data-title="#{track.title}"! + \
+     (list_type == :song ? %! data-show="#{track.show.to_s}"! : '')).html_safe
   end
 end

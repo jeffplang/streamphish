@@ -1,7 +1,7 @@
 class Show < ActiveRecord::Base
   attr_accessible :show_date, :location, :sbd, :remastered
 
-  has_many :songs, :dependent => :destroy
+  has_many :tracks, :dependent => :destroy
 
   scope :for_year, lambda { |year|
     if year == '83-87'
