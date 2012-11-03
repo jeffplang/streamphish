@@ -3,10 +3,10 @@ class SongsTrack < ActiveRecord::Base
   belongs_to :song
 
   after_create do
-    SongsTrack.find(self.song_id).increment!(:songs_count)
+    Song.find(self.song_id).increment!(:tracks_count)
   end
 
   after_destroy do
-    SongsTrack.find(self.song_id).decrement!(:songs_count)
+    Song.find(self.song_id).decrement!(:tracks_count)
   end
 end
