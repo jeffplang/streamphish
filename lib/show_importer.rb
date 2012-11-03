@@ -32,7 +32,7 @@ module ShowImporter
 
       return if assimilating.nil? || receiving.nil?
 
-      receiving.merge_song(assimilating)
+      receiving.merge_track(assimilating)
       @songs.delete assimilating
 
       @songs.each { |song| song.decr_pos if song.pos > pos }
