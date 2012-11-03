@@ -40,7 +40,7 @@ module ShowImporter
 
     def insert_before(pos)
       @songs.each { |song| song.incr_pos if song.pos >= pos }
-      @songs.insert pos, SongProxy.new(pos)
+      @songs.insert pos, TrackProxy.new(pos)
     end
 
     def delete(pos)
@@ -70,59 +70,59 @@ module ShowImporter
       @show_info.songs.each do |pos, song|
         fn_match = matches.find{ |k,v| !v.nil? && v.title == song }
         if fn_match
-          @songs << SongProxy.new(pos, song, fn_match[0], fn_match[1])
+          @songs << TrackProxy.new(pos, song, fn_match[0], fn_match[1])
           matches.delete(fn_match[0])
         else
-          @songs << SongProxy.new(pos, song)
+          @songs << TrackProxy.new(pos, song)
         end
       end
     end
   end
 
 
-  class SongProxy
+  class TrackProxy
     attr_accessor :filename
 
     def initialize(pos=nil, title=nil, filename=nil, song_collection=nil)
-      @_song = ::Song.new(:position => pos, :title => title)
+      @_track = ::Track.new(:position => pos, :title => title)
 
-      song_collection ||= ::SongCollection.find_by_title(title)
+      song ||= ::Song.find_by_title(title)
 
-      @_song.song_collections << song_collection unless song_collection.nil?
+      @_track.song_collections << song_collection unless song_collection.nil?
 
       @filename = filename
     end
 
     def valid?
-      !@filename.nil? && !@_song.title.nil? && !@_song.position.nil? && !@_song.song_collections.empty?
+      !@filename.nil? && !@_track.title.nil? && !@_track.position.nil? && !@_track.songs.empty?
     end
 
     def to_s
       (!valid? ? '* ' : '  ') + 
-      ("%2d.) %-30.30s     %-30.30s     " % [pos, @_song.title, @filename]) + 
-      @_song.song_collections.map{ |sc| "SC: %-3d %-20.20s" % [sc.id, sc.title] }.join('   ')
+      ("%2d.) %-30.30s     %-30.30s     " % [pos, @_track.title, @filename]) + 
+      @_track.songs.map{ |sc| "SC: %-3d %-20.20s" % [sc.id, sc.title] }.join('   ')
     end
 
     def pos
-      @_song.position
+      @_track.position
     end
 
     def decr_pos
-      @_song.position -= 1
+      @_track.position -= 1
     end
 
     def incr_pos
-      @_song.position += 1
+      @_track.position += 1
     end
 
-    def merge_song(song)
-      @_song.title += " > #{song.title}"
-      @_song.song_collections << song.song_collections.reject{ |sc| @_song.song_collections.include?(sc) }
-      @filename = song.filename if @filename.nil? && !song.filename.nil?
+    def merge_track(track)
+      @_track.title += " > #{track.title}"
+      @_track.songs << track.songs.reject{ |s| @_track.songs.include?(s) }
+      @filename = track.filename if @filename.nil? && !track.filename.nil?
     end
 
     def method_missing(method, *args, &block)
-      @_song.send(method, *args)
+      @_track.send(method, *args)
     end
   end
 
@@ -220,8 +220,8 @@ module ShowImporter
       puts "Enter exact song title:"
       while line = Readline.readline('?> ', true)
         if match = @si.fm.find_match(line, :exact => true)
-          puts "Found \"#{match.title}\".  Adding SongCollection."
-          @si.get_song(pos).song_collections << match
+          puts "Found \"#{match.title}\".  Adding Song."
+          @si.get_song(pos).songs << match
         end
         break
       end
