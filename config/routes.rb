@@ -7,6 +7,8 @@ Streamphish::Application.routes.draw do
   resources :songs
 
   match "/years" => "pages#years"
+  
+  match "/taglib" => "sandboxes#taglib_test"
 
   root :to => 'pages#index'
   # The priority is based upon order of creation:

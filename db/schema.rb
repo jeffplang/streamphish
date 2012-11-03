@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031050608) do
+ActiveRecord::Schema.define(:version => 20120826163939) do
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -27,47 +27,56 @@ ActiveRecord::Schema.define(:version => 20121031050608) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "section_markers", :force => true do |t|
+    t.integer  "track_id"
     t.string   "title"
     t.integer  "position"
-    t.integer  "track_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+  add_index "section_markers", ["track_id"], :name => "index_section_markers_on_track_id"
+
   create_table "shows", :force => true do |t|
     t.date     "show_date"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
     t.string   "location"
     t.boolean  "remastered", :default => false
     t.boolean  "sbd",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "songs", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
     t.string   "slug"
     t.integer  "tracks_count", :default => 0
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
+
+  add_index "songs", ["title"], :name => "index_songs_on_title"
 
   create_table "songs_tracks", :force => true do |t|
     t.integer "song_id"
     t.integer "track_id"
   end
 
+  add_index "songs_tracks", ["song_id"], :name => "index_songs_tracks_on_song_id"
+  add_index "songs_tracks", ["track_id"], :name => "index_songs_tracks_on_track_id"
+
   create_table "tracks", :force => true do |t|
     t.integer  "show_id"
     t.string   "title"
     t.integer  "position"
+    t.integer  "duration"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
     t.string   "song_file_file_name"
     t.string   "song_file_content_type"
     t.integer  "song_file_file_size"
     t.datetime "song_file_updated_at"
-    t.integer  "duration"
   end
+
+  add_index "tracks", ["show_id"], :name => "index_tracks_on_show_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
