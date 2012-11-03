@@ -83,12 +83,12 @@ module ShowImporter
   class TrackProxy
     attr_accessor :filename
 
-    def initialize(pos=nil, title=nil, filename=nil, song_collection=nil)
+    def initialize(pos=nil, title=nil, filename=nil, song=nil)
       @_track = ::Track.new(:position => pos, :title => title)
 
       song ||= ::Song.find_by_title(title)
 
-      @_track.song_collections << song_collection unless song_collection.nil?
+      @_track.songs << song unless song.nil?
 
       @filename = filename
     end
