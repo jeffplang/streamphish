@@ -36,7 +36,7 @@ class Track < ActiveRecord::Base
   after_save :set_duration
 
   protected
-
+  
   def set_duration
     unless self.duration # this won't record the correct duration if we're uploading a new file
       Mp3Info.open song_file.path do |mp3|
