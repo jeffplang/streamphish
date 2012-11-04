@@ -44,9 +44,9 @@ class FilenameMatcher
 
   def find_match(q, opts={})
     if opts[:exact]
-      SongCollection.where('lower(title) = ?', q.downcase).first
+      Song.where('lower(title) = ?', q.downcase).first
     else
-      SongCollection.kinda_matching(q).first
+      Song.kinda_matching(q).first
     end
   end
 
