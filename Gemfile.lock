@@ -95,7 +95,6 @@ GEM
     mime-types (1.19)
     mp3info (0.6.18)
     multi_json (1.3.6)
-    mysql2 (0.3.11)
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
     paperclip (3.1.2)
@@ -193,13 +192,13 @@ DEPENDENCIES
   html5-rails
   jquery-rails
   mp3info
-  mysql2
   nokogiri
   paperclip
   pg
   pg_search
   rails (= 3.2.8)
   rails_admin
+  rubyzip
   sass-rails (~> 3.2.3)
   selenium-webdriver
   taglib-ruby

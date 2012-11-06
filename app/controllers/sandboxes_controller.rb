@@ -1,7 +1,6 @@
 class SandboxesController < ApplicationController
   require 'taglib'
   require 'zip/zip'
-  require 'zip/zipfilesystem'
   
   ##################################
   # Test download one or more tracks
@@ -15,7 +14,7 @@ class SandboxesController < ApplicationController
     ####################################################
     # Define which tracks will be included in the bundle
     tracks << Track.all[0]
-    # tracks << Track.all[1]
+    tracks << Track.all[1]
     
     ##################################
     # Make a temporary copy of each track, setting ID3 tags in the process
@@ -35,7 +34,7 @@ class SandboxesController < ApplicationController
         tag = file.id3v2_tag
         tag.title = track.title
         tag.artist = "Phish"
-        tag.albumartist = "Phish"
+        # tag.albumartist = "Phish"
         tag.album = track.show.show_date.to_s + " " + track.show.location
         tag.year = track.show.show_date.strftime("%Y").to_i
         tag.track = i + 1
