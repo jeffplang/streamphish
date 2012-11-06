@@ -1,4 +1,7 @@
 class ShowsController < ApplicationController
+  
+  include DownloadableTracks
+  
   def index
     if params[:year]
       get_shows_by_year
@@ -35,14 +38,7 @@ class ShowsController < ApplicationController
     tracks = []
     show = Show.where("show_date = ?", params[:id]).first
     if show
-      tracks = show.tracks.order(:position).all
-      data = Track.downloadable(tracks)
-      raise data.size.inspect
-      if tracks.size > 1
-        send_data data, :type => "application/zip", :disposition => "attachment", :filename => "Phish " + show.show_date.to_s + " " + show.location + ".zip"
-      else
-        send_data data, :type => "audio/mpeg", :disposition => "attachment", :filename => tracks.first.title + ".mp3"
-      end
+      download_tracks(show.tracks.order(:position).all, "Phish " + show.show_date.to_s + " " + show.location + ".zip")
     end
   end
 
