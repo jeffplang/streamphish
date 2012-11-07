@@ -1,77 +1,74 @@
 class SandboxesController < ApplicationController
-  require 'taglib'
-  require 'zip/zip'
+  require 'nokogiri'
+  require 'open-uri'
   
-  ##################################
-  # Test download one or more tracks
-  def download
+  # Scrape phish.net/venues
+  def parse_venues
     
-    tmpfile_paths = []
-    zipfile_path = ''
-    tmpdir = ''
-    tracks = []
+    num_venues_created = 0
+    num_venues_updated = 0
+    num_shows_found = 0
+    missing_shows = []
     
-    ####################################################
-    # Define which tracks will be included in the bundle
-    tracks << Track.all[0]
-    tracks << Track.all[1]
-    
-    ##################################
-    # Make a temporary copy of each track, setting ID3 tags in the process
-    tmpdir = Rails.root.to_s + '/tmp/' + (0...30).map{97.+(rand(26)).chr}.join + '/'
-    Dir.mkdir tmpdir
-    tracks.each_with_index do |track, i|
-      if tracks.size > 1
-        # Multiple mp3s should be ordered in filesystem by 01 - Title.mp3, 02 - Title2.mp3, etc for zipping
-        tmpfile_path = tmpdir + ((tracks.size >= 100) ? "%03d" : "%02d" % (i + 1)) + " - " + track.title + ".mp3"
-      else
-        tmpfile_path = tmpdir + track.title + '.mp3'
+    # Pull in basic details of all venues
+    doc = Nokogiri::HTML(open("http://www.phish.net/venues"))
+    rows = doc.css('table tr')
+    venue_list = rows.collect do |row|
+      detail = {}
+      [
+        [:name, 'td[1]/a/text()'],
+        [:url, 'td[1]/a/@href'],
+        [:city, 'td[2]/text()'],
+        [:state, 'td[3]/text()'],
+        [:country, 'td[4]/text()'],
+        [:show_count, 'td[5]/text()'],
+        [:first_date, 'td[6]/a/text()'],
+        [:last_date, 'td[7]/a/text()']
+      ].each do |name, xpath|
+        detail[name] = Iconv.conv('utf-8', 'latin1', row.at_xpath(xpath).to_s.strip)
       end
-      FileUtils.cp track.song_file.path, tmpfile_path
-      tmpfile_paths << tmpfile_path
-      TagLib::MPEG::File.open(tmpfile_path) do |file|
-        # Set basic ID3 tags
-        tag = file.id3v2_tag
-        tag.title = track.title
-        tag.artist = "Phish"
-        # tag.albumartist = "Phish"
-        tag.album = track.show.show_date.to_s + " " + track.show.location
-        tag.year = track.show.show_date.strftime("%Y").to_i
-        tag.track = i + 1
-        tag.genre = "Rock"
-        tag.comment = "Visit phishtracks.net for free legal Phish audio"
-        # Add cover art
-        apic = TagLib::ID3v2::AttachedPictureFrame.new
-        apic.mime_type = "image/jpeg"
-        apic.description = "Cover"
-        apic.type = TagLib::ID3v2::AttachedPictureFrame::FrontCover
-        apic.picture = File.open(Rails.root.to_s + '/app/assets/images/cover_generic.jpg', 'rb') { |f| f.read }
-        tag.add_frame(apic)
-        # Save
-        file.save
-      end
-    end
-
-    ####################################
-    # Send an mp3 or zipfile to the user
-    if tracks.size > 1
-      # Zip up all the files if requesting multiple
-      zipfile_path = tmpdir + 'playlist.zip'
-      Zip::ZipFile.open(zipfile_path, 'w') do |zipfile|
-        Dir["#{tmpdir}**/**"].reject { |f| f == zipfile_path }.each do |file|
-           zipfile.add file.sub(tmpdir, ''), file
-         end
-       end
-      
-      send_data File.read(zipfile_path), :type => "application/zip", :disposition => "attachment", :filename => 'PhishTracks Playlist.zip'
-    else
-      send_data File.read(tmpfile_paths.first), :type => "audio/mpeg", :disposition => "attachment", :filename => tracks.first.title + '.mp3'
+      detail
     end
     
-    ####################################
-    # Delete temporary directory / files
-    tmpfile_paths.each { |tmpfile| File.delete tmpfile }
-    File.delete zipfile_path if File.exists?(zipfile_path)
-    Dir.delete tmpdir
+    # Create/update venue records
+    venue_list.each do |v|
+      unless v[:name].empty?
+        venue = Venue.where("name = ?", v[:name]).first
+        venue_attributes = v.reject{|k,v| !Venue.new.attributes.keys.member?(k.to_s)}
+        if venue
+          venue.update_attributes(venue_attributes)
+          num_venues_updated += 1
+        else
+          venue = Venue.new(venue_attributes)
+          venue.save
+          num_venues_created += 1
+        end
+      end
+    end
+    venues_report = "VENUES: " + num_venues_updated.to_s + " updated, " + num_venues_created.to_s + " created"
+    # raise venues_report.inspect
+    
+    # Get list of shows for each venue
+    # WARNING: This cannot handle multiple shows on a single day...only one will have the correct venue association
+    venue_list.each_with_index do |v, i|
+      unless v[:url].empty? or v[:name].empty?
+        venue = Venue.where("name = ?", v[:name]).first
+        rows = Nokogiri::HTML(open("http://www.phish.net" + v[:url])).css('#mainContent ul li')
+        date_list = rows.collect { |row| row.at_xpath('a[1]/text()').to_s.strip }
+        date_list.each do |date|
+          show = Show.where("show_date = ?", date).first
+          if show
+            num_shows_found += 1
+            show.venue = venue
+            show.save
+          else
+            missing_shows << date
+          end
+        end
+        
+      end
+    end
+    raise missing_shows.inspect
   end
+  
 end

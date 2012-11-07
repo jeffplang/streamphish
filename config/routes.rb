@@ -18,7 +18,7 @@ Streamphish::Application.routes.draw do
   match "/years" => "pages#years"
   
   # SANDBOX TEST STUFF
-  match "/download" => "sandboxes#download"
+  match "/venues" => "sandboxes#parse_venues"
 
   root :to => 'pages#index'
 
