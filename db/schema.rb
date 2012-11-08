@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107055322) do
+ActiveRecord::Schema.define(:version => 20121108011416) do
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(:version => 20121107055322) do
     t.boolean  "remastered", :default => false
     t.boolean  "sbd",        :default => false
     t.integer  "venue_id"
+    t.integer  "tour_id"
   end
 
+  add_index "shows", ["tour_id"], :name => "index_shows_on_tour_id"
   add_index "shows", ["venue_id"], :name => "index_shows_on_venue_id"
 
   create_table "songs", :force => true do |t|
@@ -61,6 +63,17 @@ ActiveRecord::Schema.define(:version => 20121107055322) do
     t.integer "song_id"
     t.integer "track_id"
   end
+
+  create_table "tours", :force => true do |t|
+    t.string   "name"
+    t.date     "first_date"
+    t.date     "last_date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tours", ["first_date"], :name => "index_tours_on_first_date"
+  add_index "tours", ["name"], :name => "index_tours_on_name"
 
   create_table "tracks", :force => true do |t|
     t.integer  "show_id"

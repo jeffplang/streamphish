@@ -1,6 +1,7 @@
 class Show < ActiveRecord::Base
   attr_accessible :show_date, :location, :sbd, :remastered
 
+  belongs_to :tour
   belongs_to :venue
   has_many :tracks, :dependent => :destroy
 
