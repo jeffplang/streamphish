@@ -1,0 +1,11 @@
+<% content_for(:title) { "Cities :: StreamPhish" } %>
+
+<h1 class="pageListHeader">
+  Cities
+  <%= back_link_for @cities %>
+</h1>
+<ul class="pageList linkItems showsByYear">
+  <% @cities.each do |city| %>
+  <li><%= link_to "<span><strong>#{city}</strong></span>".html_safe, shows_path(:city => city) %></li>
+<% end %>
+</ul>

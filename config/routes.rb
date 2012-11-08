@@ -15,7 +15,12 @@ Streamphish::Application.routes.draw do
     end
   end
 
-  match "/years" => "pages#years"
+  get "/years" => "pages#years"
+  get "/venues" => "pages#venues"
+  get "/tours" => "pages#tours"
+  get "/cities" => "pages#cities"
+  get "/states" => "pages#states"
+  get "/countries" => "pages#countries"
 
   root :to => 'pages#index'
 
