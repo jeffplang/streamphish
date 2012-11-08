@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 source "http://gems.rubyforge.org"
 
-
 gem 'rails', '3.2.8'
 gem 'taglib-ruby'
 gem 'rubyzip'

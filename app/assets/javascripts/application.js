@@ -21,4 +21,11 @@ $(function() {
   $('.epd').on('click', function(e){
     e.preventDefault();
   });
+  
+  $('li').on('mouseover', function(e) {
+    $(this).children('.downloadButton').show();
+  });
+  $('.songs li').on('mouseout', function(e) {
+    $(this).children('.downloadButton').hide()
+  });
 });
