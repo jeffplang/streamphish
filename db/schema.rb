@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108011416) do
+ActiveRecord::Schema.define(:version => 20121111015203) do
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -66,14 +66,14 @@ ActiveRecord::Schema.define(:version => 20121108011416) do
 
   create_table "tours", :force => true do |t|
     t.string   "name"
-    t.date     "first_date"
-    t.date     "last_date"
+    t.date     "starts_on"
+    t.date     "ends_on"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "tours", ["first_date"], :name => "index_tours_on_first_date"
   add_index "tours", ["name"], :name => "index_tours_on_name"
+  add_index "tours", ["starts_on"], :name => "index_tours_on_first_date"
 
   create_table "tracks", :force => true do |t|
     t.integer  "show_id"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20121108011416) do
     t.integer  "song_file_file_size"
     t.datetime "song_file_updated_at"
     t.integer  "duration"
+    t.string   "set"
   end
 
   create_table "users", :force => true do |t|

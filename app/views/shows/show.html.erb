@@ -8,7 +8,13 @@ end %>
   <%= back_link_for(@show) %>
 </h1>
 <ul class="pageList songs">
+  <% current_set = "" %>
   <% @show.tracks.order(:position).each do |track| %>
+    <% if current_set != track.set %>
+      <% current_set = track.set %>
+      <%= render :partial => "shared/separator", :locals => { :title => track.set_name} %>
+    <% end %>
+      
     <%= render :partial => "shared/track", :object => track, :locals => { :list_type => :show } %>
   <% end %>
 </ul>

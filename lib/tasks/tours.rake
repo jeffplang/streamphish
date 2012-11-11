@@ -5,7 +5,7 @@ namespace :tours do
   # It updates or creates tours as necessary
   # It tries to sync show/tour associations
   desc "Sync Tours with phish.net"
-  task :sync do
+  task :sync => :environment do
 
     require 'nokogiri'
     require 'open-uri'

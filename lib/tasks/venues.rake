@@ -5,7 +5,7 @@ namespace :venues do
   # It updates or creates venues as necessary
   # It tries to sync show/venue associations
   desc "Sync Venues with phish.net"
-  task :sync do
+  task :sync => :environment do
     
     require 'nokogiri'
     require 'open-uri'

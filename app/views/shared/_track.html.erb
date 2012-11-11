@@ -13,7 +13,7 @@
     <% end %>
   </div>
   <div class="downloadButton" style="display: none;">
-    <%= link_to "Download", download_track_path(track) %>
+    <%= link_to "<span class=\"tag\">Download</span>".html_safe, download_track_path(track) %>
   </div>
   <%= render :partial => "/shared/scrubber", :locals => {:track => track} %>
   <%= render :partial => "/shared/duration", :locals => {:track => track} %>

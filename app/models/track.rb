@@ -19,6 +19,16 @@ class Track < ActiveRecord::Base
   belongs_to :show
   
   scope :chronological, order('shows.show_date ASC').joins(:show)
+  
+  include PgSearch
+  pg_search_scope :kinda_matching,
+                  :against => :title, 
+                  :using => {
+                    tsearch: {
+                      any_word: false,
+                      normalization: 16
+                    }
+                  }
 
   ##############
   # Validations
@@ -34,6 +44,19 @@ class Track < ActiveRecord::Base
   ############
   before_validation :populate_song, :populate_position
   after_save :set_duration
+  
+  def set_name
+    case set
+      when "1" then "Set 1"
+      when "2" then "Set 2"
+      when "3" then "Set 3"
+      when "4" then "Set 4"
+      when "E" then "Encore"
+      when "E2" then "Encore 2"
+      when "E3" then "Encore 3"
+      else "Unknown set"
+    end
+  end
 
   protected
   
@@ -65,5 +88,5 @@ class Track < ActiveRecord::Base
   def require_at_least_one_song
     errors.add(:songs, "Please add at least one song") if songs.empty?
   end
-
+  
 end
