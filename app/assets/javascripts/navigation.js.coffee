@@ -2,22 +2,31 @@
 
 class SPNav
   constructor: ->
-    @_popped = ('state' in window.history and window.history.state isnt null)
+    @_popped = true #('state' in window.history and window.history.state isnt null)
     @_initialURL = location.href
 
-    document.addEventListener 'click', @_navClickHandler
+    document.addEventListener 'click', @_globalClickHandler
     window.addEventListener 'popstate', @_historyPopState
 
-  _navClickHandler: (e) =>
-    linkEl = @_findParentLink e.target
+  _globalClickHandler: (e) =>
+    linkEl = @_findParentWithNodeName e.target, 'A'
 
     if linkEl
       e.preventDefault()
-      href = linkEl.getAttribute 'href'
-      Zepto.get linkEl.href, (resp) =>
-        history.pushState href, null, href
-        document.getElementById('main').innerHTML = resp
-        Zepto(document).trigger(Zepto.Event("SP:FrontPageLoaded")) if href is '/'
+      @_handleNavLink linkEl
+    else if (linkEl = @_findParentWithNodeName e.target, 'LI') and linkEl.hasAttribute('data-title')
+      @_handleSongLink linkEl
+
+  _handleNavLink: (linkEl) =>
+    href = linkEl.getAttribute 'href'
+    Zepto.get linkEl.href, (resp) =>
+      history.pushState href, null, href
+      document.getElementById('main').innerHTML = resp
+      Zepto(document).trigger(Zepto.Event("SP:FrontPageLoaded")) if href is '/'
+
+  _handleSongLink: (linkEl) =>
+    player = document.getElementById 'player'
+    player.innerText = linkEl.getAttribute 'data-title'
 
   _historyPopState: (e) =>
     # Handle Chrome's popState firing on page load
@@ -40,11 +49,11 @@ class SPNav
     @_popped = true
     initialPop
 
-  _findParentLink: (target) ->
-    if target is null or target.nodeName is 'A'
+  _findParentWithNodeName: (target, nodeName) ->
+    if target is null or target.nodeName is nodeName
       return target
     else
-      return @_findParentLink(target.parentElement)
+      return @_findParentWithNodeName(target.parentElement, nodeName)
 
 
 SP.Nav = new SPNav
