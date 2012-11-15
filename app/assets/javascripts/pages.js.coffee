@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 //= require 'util'
-$(document).on "ready SP:FrontPageLoaded", ->
+
+$(document).on "SP:FrontPageLoaded", ->
   $songsC    = $ 'div.songs'
   $songs     = $songsC.children 'a'
   $circles   = $ 'ul.yearsCircles li'
@@ -50,3 +51,7 @@ $(document).on "ready SP:FrontPageLoaded", ->
       $(el).css
         left: (i / $circles.length) * $(window).width() - i
         top: Math.round(Math.sin(i) / 2 * 30) + 10
+
+if location.pathname is '/'
+  $ ->
+    $(document).trigger 'SP:FrontPageLoaded' 

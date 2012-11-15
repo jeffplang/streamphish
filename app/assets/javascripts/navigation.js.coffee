@@ -13,9 +13,11 @@ class SPNav
 
     if linkEl
       e.preventDefault()
+      href = linkEl.getAttribute 'href'
       Zepto.get linkEl.href, (resp) =>
-        history.pushState linkEl.href, null, linkEl.href
+        history.pushState href, null, href
         document.getElementById('main').innerHTML = resp
+        Zepto(document).trigger(Zepto.Event("SP:FrontPageLoaded")) if href is '/'
 
   _historyPopState: (e) =>
     # Handle Chrome's popState firing on page load
@@ -23,16 +25,16 @@ class SPNav
     @_popped = true
     return if initialPop
 
+    url = e.state || "/"
     # Add date string to URL to prevent caching
-    url = e.state || ""
-    url += if /\?/.test(url) then "&" else "?"
-    url += (new Date).getTime()
+    if url is '/'
+      url += if /\?/.test(url) then "&" else "?"
+      url += (new Date).getTime()
 
     Zepto.get url, (resp) =>
       document.getElementById('main').innerHTML = resp
-
-      Zepto(document).trigger(Zepto.Event("SP:FrontPageLoaded")) if e.state is null
-
+      Zepto(document).trigger(Zepto.Event("SP:FrontPageLoaded")) if /^\/\?/.test url
+        
   _handleChromeOnloadPopstate: =>
     initialPop = !@_popped and @_initialURL is location.href
     @_popped = true

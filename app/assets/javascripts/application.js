@@ -13,8 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require h5bp
+//= require circle_event_manager
+//= require pages
 
-// global namespace for stuff
 
 $(function() {
   $('.epd').on('click', function(e){
