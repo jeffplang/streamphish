@@ -7,7 +7,8 @@
       <span class="songVenue"><%= track.show.location %></span>
     <% elsif list_type == :show %>
       <div class="songTitle">
-        <%= link_to ("%02d %s" % [track.position, track.title]), song_path(track.songs.first) %>
+        <% #link_to ("%02d %s" % [track.position, track.title]), song_path(track.songs.first) %>
+        <%= link_to track.title, song_path(track.songs.first) %>
         <%= li_tags_for(track) %>
       </div>
     <% end %>
