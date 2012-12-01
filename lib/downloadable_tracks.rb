@@ -1,7 +1,6 @@
 module DownloadableTracks
   
   require 'taglib'      # For setting ID3 tags on MP3s
-  require 'zip/zip'     # For compressing multiple MP3s into one ZIP file
   
   # Provide a filestream of a single MP3 or ZIP (multiple MP3s)
   def download_tracks(tracks, custom_album_name=nil)
