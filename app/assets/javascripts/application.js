@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require h5bp
+//= require ember
 
 // global namespace for stuff
 var SP = {};

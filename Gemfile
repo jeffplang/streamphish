@@ -38,7 +38,7 @@ end
 
 gem 'jquery-rails'
 gem 'html5-rails'
-
+gem 'ember-rails'
 
 
 # To use ActiveModel has_secure_password

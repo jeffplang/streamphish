@@ -35,6 +35,9 @@ Streamphish::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # Ember.js conifg
+  config.ember.variant = :development
+
   # config.action_controller.default_url_options = { :host => 'xydobiz.dev' }
 
   routes.default_url_options[:host] = 'localhost:3000'
