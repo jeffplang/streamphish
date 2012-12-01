@@ -15,6 +15,7 @@ gem 'pg_search'
 gem 'color', '>= 1.4.0', :require => ['color', 'color/palette/monocontrast']
 gem 'selenium-webdriver'
 gem 'xmpp4r'
+gem 'rails-backbone'
 # gem 'capybara'
 # gem 'capybara-webkit'
 
