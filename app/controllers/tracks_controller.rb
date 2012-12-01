@@ -1,12 +1,9 @@
 class TracksController < ApplicationController
   
-  include DownloadableTracks
-  
   # Provide the track as a downloadable MP3
   def download
-    tracks = []
-    tracks << Track.find(params[:id])
-    download_tracks(tracks)
+    track = Track.find(params[:id])
+    send_file track.song_file.path, :type => "audio/mpeg", :disposition => "attachment", :filename => (track.title + '.mp3'), :length => File.size(track.song_file.path)
   end
   
 end
