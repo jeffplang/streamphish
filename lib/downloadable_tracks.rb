@@ -4,7 +4,7 @@ module DownloadableTracks
   require 'zip/zip'     # For compressing multiple MP3s into one ZIP file
   
   # Provide a filestream of a single MP3 or ZIP (multiple MP3s)
-  def download_tracks(tracks, album_name=nil)
+  def download_tracks(tracks, custom_album_name=nil)
     
     tmpfile_paths = []
     zipfile_path = ''
@@ -23,8 +23,11 @@ module DownloadableTracks
         # Set basic ID3 tags
         tag = file.id3v2_tag
         if tag
-          album_name ||= how.show_date.to_s + " " + set_album_abbreviation + " " + show.location
-          tag.album = album_name
+          # Add the date/set to the song title if custom album name given
+          if custom_album_name
+            tag.title = "#{track.title} (#{track.show.show_date} #{track.set_album_abbreviation})"
+            tag.album = album_name
+          end
           tag.track = i + 1
         
           # Don't change the defaults (as set by rake tracks:save_default_id3)
@@ -48,20 +51,21 @@ module DownloadableTracks
     end
 
     ####################################
-    # Send a zipfile to the user
-    # zipfile_path = tmpdir + 'playlist.zip'
-    # Zip::ZipFile.open(zipfile_path, 'w') do |zipfile|
-    #   Dir["#{tmpdir}**/**"].reject { |f| f == zipfile_path }.each do |file|
-    #      zipfile.add file.sub(tmpdir, ''), file
-    #    end
-    #  end
-    # send_file zipfile_path, :type => "application/zip", :disposition => "attachment", :filename => filename, :length => File.size(zipfile_path)
-    # 
-    # ####################################
-    # # Delete temporary directory / files
-    # tmpfile_paths.each { |tmpfile| File.delete tmpfile }
-    # File.delete zipfile_path if File.exists?(zipfile_path)
-    # Dir.delete tmpdir
+    # Create and send a zipfile to the user
+    zipfile = "album.zip"
+    zipfile_path = "#{tmpdir}#{zipfile}"
+    zip_command = "cd #{tmpdir} && zip ./#{zipfile} ./*"
+    
+    if system zip_command
+      filename = "Phish - " + (custom_album_name ? "#{custom_album_name}" : tracks.first.show.show_date.to_s)
+      send_file zipfile_path, :type => "application/zip", :disposition => "attachment", :filename => filename, :length => File.size(zipfile_path)
+    end
+    
+    ####################################
+    # Delete temporary directory / files
+    tmpfile_paths.each { |tmpfile| File.delete tmpfile }
+    File.delete zipfile_path if File.exists?(zipfile_path)
+    Dir.delete tmpdir
 
   end
 

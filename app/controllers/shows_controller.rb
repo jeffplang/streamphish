@@ -38,7 +38,7 @@ class ShowsController < ApplicationController
     tracks = []
     show = Show.where("show_date = ?", params[:id]).first
     if show
-      download_tracks(show.tracks.order(:position).all, "Phish " + show.show_date.to_s + " " + show.location + ".zip")
+      download_tracks(show.tracks.order(:position).all)
     end
   end
 

@@ -61,36 +61,6 @@ class Track < ActiveRecord::Base
     end
   end
   
-  # Configure default ID3 tags on the track's song_file (livephish.com style)
-  # Assume track order is in context of entire show
-  def save_default_id3_tags
-    TagLib::MPEG::File.open(song_file.path) do |file|
-      # Set basic ID3 tags
-      tag = file.id3v2_tag
-      if tag
-        tag.title = title
-        tag.artist = "Phish"
-        tag.album = show.show_date.to_s + " " + set_album_abbreviation + " " + show.location
-        tag.year = show.show_date.strftime("%Y").to_i
-        tag.track = position
-        tag.genre = "Rock"
-        tag.comment = "Visit phishtracks.net for free Phish audio"
-        # Add cover art
-        # TODO turn this back on when we have decent site art
-        # apic = TagLib::ID3v2::AttachedPictureFrame.new
-        # apic.mime_type = "image/jpeg"
-        # apic.description = "Cover"
-        # apic.type = TagLib::ID3v2::AttachedPictureFrame::FrontCover
-        # apic.picture = File.open(Rails.root.to_s + '/app/assets/images/cover_generic.jpg', 'rb') { |f| f.read }
-        # tag.add_frame(apic)
-        # Save
-        file.save
-      end
-    end
-  end
-
-  protected
-  
   # Return the set abbreviation (livephish.com style)
   # Roman numerals; encores are part of last set
   def set_album_abbreviation
@@ -104,6 +74,36 @@ class Track < ActiveRecord::Base
       ""
     end
   end
+  
+  # Configure default ID3 tags on the track's song_file (livephish.com style)
+  # Assume track order is in context of entire show
+  def save_default_id3_tags
+    TagLib::MPEG::File.open(song_file.path) do |file|
+      # Set basic ID3 tags
+      tag = file.id3v2_tag
+      # if tag
+        tag.title = title
+        tag.artist = "Phish"
+        tag.album = show.show_date.to_s + " " + set_album_abbreviation + " " + show.location
+        tag.year = show.show_date.strftime("%Y").to_i
+        tag.track = position
+        tag.genre = "Rock"
+        # tag.comment = "Visit phishtracks.net for free Phish audio" //Doesn't seem to work
+        # Add cover art
+        # TODO turn this back on when we have decent site art
+        # apic = TagLib::ID3v2::AttachedPictureFrame.new
+        # apic.mime_type = "image/jpeg"
+        # apic.description = "Cover"
+        # apic.type = TagLib::ID3v2::AttachedPictureFrame::FrontCover
+        # apic.picture = File.open(Rails.root.to_s + '/app/assets/images/cover_generic.jpg', 'rb') { |f| f.read }
+        # tag.add_frame(apic)
+        # Save
+        file.save
+      # end
+    end
+  end
+
+  protected
   
   def set_duration
     unless self.duration # this won't record the correct duration if we're uploading a new file
