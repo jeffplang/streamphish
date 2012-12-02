@@ -1,7 +1,8 @@
 Streamphish::Application.routes.draw do
   devise_for :users
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount RailsAdmin::Engine => "/admin", :as => "rails_admin"
+  mount Resque::Server, :at => "/resque"
 
   resources :shows do
     member do
@@ -16,7 +17,7 @@ Streamphish::Application.routes.draw do
   end
   
   get "/download/:id" => "albums#download"
-  get "/test/" => "sandboxes#test"
+  get "/test/" => "sandboxes#test" # TODO Remove this
 
   get "/years" => "pages#years"
   get "/venues" => "pages#venues"

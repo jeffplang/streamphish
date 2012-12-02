@@ -16,12 +16,11 @@ module AlbumUtils
       status = 'Enqueuing'
       album = Album.create(:name => album_name, :md5 => checksum, :is_custom_playlist => is_custom_playlist)
       # Create zipfile asynchronously
-      album.delay.create_zip_file(tracks)
+      # album.delay.create_zip_file(tracks)
+      Resque.enqueue(AlbumCreator, album.id, tracks.map(&:id))
     end
     { :status => status, :url => "/download/#{checksum}" }
   end
-  
-  protected
   
   # Generate an MD5 checksum of an album using its tracks' song_file paths and album_name
   # Album_name will differentiate two identical playlists with different names (for unique id3 tagging)
@@ -32,5 +31,6 @@ module AlbumUtils
     digest.to_s
   end
   
+   protected
 
 end

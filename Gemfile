@@ -37,7 +37,8 @@ end
 
 gem 'jquery-rails'
 gem 'html5-rails'
-gem 'delayed_job_active_record'
+# gem 'delayed_job_active_record' # Was acting funky
+gem 'resque', :require => "resque/server"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
