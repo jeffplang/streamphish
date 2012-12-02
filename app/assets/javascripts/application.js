@@ -12,10 +12,27 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require h5bp
 
 // global namespace for stuff
 var SP = {};
+
+request_album = function(base_url) {
+  $.ajax({
+    url: base_url + 'request_download',
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == "Ready") {
+        $("#download_modal").modal('hide');
+        location.href = data.url;
+      } else {
+        $("#download_modal").modal('show');
+        setTimeout(function(){ request_album(base_url) }, 3000);
+      }
+    }
+  });
+}
 
 $(function() {
   $('.epd').on('click', function(e){
@@ -29,21 +46,8 @@ $(function() {
     $(this).children('.downloadButton').hide()
   });
 
-  
-  $("#test1").on('click', function(e) {
-    $.ajax({
-      url: '/shows/1984-12-01/request_download',
-      dataType: 'json',
-      success: function(data) {
-        if (data.status == "Ready") {
-          location.href = data.url;
-        } else {
-          alert(data.status);
-          // TODO Bring up a popover with ajax loader and poll every few seconds
-          // Close popover once file has started downloading
-        }
-      }
-    });
+  $(".download-album").on('click', function(e) {
+    request_album($(this).data('base-url'));
   });
   
 });

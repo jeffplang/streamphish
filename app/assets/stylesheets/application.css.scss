@@ -12,6 +12,7 @@
 //-----------------------------------------
 // @import "compass/css3"
 @import "h5bp";
+@import "twitter/bootstrap";
 
 //-----------------------------------------
 // Prepend includes
@@ -95,4 +96,9 @@ div.pageContainer { margin-top: 60px; position: relative; }
 
 p {
   color: white;
+}
+
+#download_modal_body {
+  text-align: center;
+  padding: 30px;
 }
