@@ -21,16 +21,8 @@
 window.App = {}
 window.SP = {}
 
-App.page_view = new Streamphish.Views.PageView(
-  el: $('#main')
-)
-App.router = new Streamphish.Routers.AppRouter()
+$ ->
+  App.page_view = new Streamphish.Views.PageView( el: $('#main') )
+  App.router    = new Streamphish.Routers.AppRouter()
 
-Backbone.history.start(
-  pushState: true
-)
-
-
-# $ ->
-#   $('.epd').on 'click', -> (e)
-#     e.preventDefault();
+  Backbone.history.start( pushState: true )

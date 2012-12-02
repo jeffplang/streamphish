@@ -12,6 +12,7 @@ window.Streamphish =
   Templates: {}
   Helpers:
     dateString: (date, fmt) ->
+      # Assumes date comes in the form '1993-4-16'
       date_s = date.split '-'
       d      = new Date(date_s[0], date_s[1] - 1, date_s[2])
 
