@@ -21,7 +21,13 @@ class PagesController < ApplicationController
 
   def years_map
     @years.map do |year|
-      { :year => year, :isEmpty => Show.for_year(year).count.zero? }
+      bg      = Color::RGB.new(rand(256), rand(256), rand(256))
+      palette = Color::Palette::MonoContrast.new(bg)
+
+      { :year => year, 
+        :isEmpty => Show.for_year(year).count.zero?,
+        :bg => palette.background[-2].html,
+        :fg => palette.foreground[-5].html }
     end
   end
 

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require h5bp
+//= require circle_event_manager
 //= require underscore
 //= require backbone
 //= require backbone/streamphish
@@ -22,7 +23,10 @@ window.App = {}
 window.SP = {}
 
 $ ->
-  App.page_view = new Streamphish.Views.PageView( el: $('#main') )
-  App.router    = new Streamphish.Routers.AppRouter()
+  App.models     = {}
+  App.views      = {}
+  App.router     = new Streamphish.Routers.AppRouter()
+
+  App.views.main = new Streamphish.Views.PageView( el: $('#main') )
 
   Backbone.history.start( pushState: true )

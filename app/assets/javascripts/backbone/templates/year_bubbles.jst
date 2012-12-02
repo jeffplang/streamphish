@@ -1,0 +1,9 @@
+<ul class="yearsCircles">
+  <% _.each(years, function(year) { %>
+    <li class="<%= (year.isEmpty ? 'empty' : '') %>" style="background: <%= year.bg %>; border: 1px solid <%= year.bg %>;">
+      <a href="/shows?year=<%= year.year %>" style="color: <%= year.fg %>;">
+        <span><%= year.year %></span>
+      </a>
+    </li>
+  <% }); %>
+</ul>
