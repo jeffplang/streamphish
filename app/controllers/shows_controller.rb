@@ -1,6 +1,6 @@
 class ShowsController < ApplicationController
   
-  include DownloadableTracks
+  include AlbumUtils
   
   def index
     if params[:year]
@@ -35,9 +35,9 @@ class ShowsController < ApplicationController
   
   # Respond to an AJAX request to create an album
   def request_download
-    show = Show.where("show_date = ?", params[:id]).first
+    show = Show.find_by_show_date(params[:id])
     if show
-      render :json => album_status(show.tracks.order(:position).all)
+      render :json => album_status(show.tracks.order(:position).all, show.show_date.to_s)
     else
       render :json => { :status => "Invalid show" }
     end

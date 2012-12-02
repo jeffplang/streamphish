@@ -11,7 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111015203) do
+ActiveRecord::Schema.define(:version => 20121202045026) do
+
+  create_table "albums", :force => true do |t|
+    t.string   "name"
+    t.string   "md5"
+    t.boolean  "is_custom_playlist",    :default => false
+    t.datetime "completed_at"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.string   "zip_file_file_name"
+    t.string   "zip_file_content_type"
+    t.integer  "zip_file_file_size"
+    t.datetime "zip_file_updated_at"
+  end
+
+  add_index "albums", ["md5"], :name => "index_albums_on_md5"
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"

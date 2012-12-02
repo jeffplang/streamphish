@@ -58,6 +58,11 @@ GEM
       compass
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    delayed_job (3.0.4)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.3.3)
+      activerecord (>= 2.1.0, < 4)
+      delayed_job (~> 3.0)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -196,6 +201,7 @@ DEPENDENCIES
   color (>= 1.4.0)
   compass-h5bp
   compass-rails
+  delayed_job_active_record
   devise
   friendly_id
   html5-rails
