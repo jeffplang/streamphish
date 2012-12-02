@@ -19,6 +19,8 @@ class Album < ActiveRecord::Base
   # Create the zipfile for an album, setting id3 tags in the process
   def create_zip_file(tracks)
     tmpdir = "#{TMP_PATH}album_#{md5}/"
+    # Delete temporary working directory (# TODO FIX THIS..shouldn't need it)
+    # FileUtils.rm_rf tmpdir
     Dir.mkdir tmpdir
     tracks.each_with_index do |track, i|
       tmpfile_path = tmpdir + ((tracks.size >= 100) ? "%03d" : "%02d" % (i + 1)) + " - " + track.title + ".mp3"

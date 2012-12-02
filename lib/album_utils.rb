@@ -16,7 +16,7 @@ module AlbumUtils
       status = 'Enqueuing'
       album = Album.create(:name => album_name, :md5 => checksum, :is_custom_playlist => is_custom_playlist)
       # Create zipfile asynchronously
-      album.create_zip_file(tracks)
+      album.delay.create_zip_file(tracks)
     end
     { :status => status, :url => "/download/#{checksum}" }
   end

@@ -6,6 +6,9 @@
 </h1>
 <ul class="pageList linkItems showsByYear">
 <% @shows.each do |show| %>
-  <li><%= link_to "<span><strong>#{show.show_date.strftime('%m/%d/%Y')}</strong> #{show.location}</span> #{li_tags_for(show)}".html_safe, show_path(show) %></li>
+  <li><%= link_to "<span><strong>#{show.show_date.strftime('%m/%d/%Y')}</strong> #{show.location}</span> #{li_tags_for(show)}".html_safe, show_path(show) %>
+    <% # TODO style the download button so it fits nicely (show only when rolled over) %>
+    <%# download_show_button(show) %>
+  </li>
 <% end %>
 </ul>

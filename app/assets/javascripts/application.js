@@ -18,7 +18,7 @@
 // global namespace for stuff
 var SP = {};
 
-request_album = function(base_url) {
+request_album = function(base_url, first_call) {
   $.ajax({
     url: base_url + 'request_download',
     dataType: 'json',
@@ -27,8 +27,8 @@ request_album = function(base_url) {
         $("#download_modal").modal('hide');
         location.href = data.url;
       } else {
-        $("#download_modal").modal('show');
-        setTimeout(function(){ request_album(base_url) }, 3000);
+        if (first_call) $("#download_modal").modal('show');
+        request_album_timeout = setTimeout(function(){ request_album(base_url, false) }, 3000);
       }
     }
   });
@@ -47,7 +47,8 @@ $(function() {
   });
 
   $(".download-album").on('click', function(e) {
-    request_album($(this).data('base-url'));
+    e.preventDefault();
+    request_album($(this).data('base-url'), true);
   });
   
 });
