@@ -1,0 +1,18 @@
+<h1 class="pageListHeader"><%= year %></h1>
+<ul class="pageList linkItems showsByYear">
+  <% _.each(shows, function(show) { %>
+    <li><a href="#">
+      <span>
+        <strong><%= Streamphish.Helpers.dateString(show.show_date, '%m/%d/%Y') %></strong>
+        <%= show.location %>
+      </span>
+      <% if(show.sbd) { %>
+        <span class="tag">SBD</span>
+      <% } %>
+
+      <% if(show.remastered) { %>
+        <span class="tag">Remastered</span>
+      <% } %>
+    </a></li>
+  <% }); %>
+</ul>

@@ -12,11 +12,11 @@
 
   <h2>Songs <span>( <%= link_to 'view all', songs_path %> )</span></h2>
   <div class="songs">
-  <% @songs.each do |song| %>
-    <%= render :partial => 'song_bubble', :locals => {:song => song} %>
-  <% end %>
+    <% @songs.each do |song| %>
+      <%= render :partial => 'song_bubble', :locals => {:song => song} %>
+    <% end %>
   </div>
-<div>
+</div>
 
 <% content_for :javascripts do %>
   <%= javascript_include_tag "circle_event_manager" %>

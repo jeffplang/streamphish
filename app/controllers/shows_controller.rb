@@ -1,10 +1,14 @@
 class ShowsController < ApplicationController
   def index
-    if params[:year]
-      get_shows_by_year
-      render "shows_by_year"
-    else
-      redirect_to root_path
+    redirect_to root_path and return unless params[:year]
+
+    get_shows_by_year
+
+    respond_to do |format|
+      format.html { render "shows_by_year" }
+      format.json { 
+        render :json => { :year => @year, :shows => @shows } 
+      }
     end
   end
 

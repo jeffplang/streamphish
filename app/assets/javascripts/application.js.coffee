@@ -18,11 +18,18 @@
 //= require backbone/streamphish
 
 # global namespace for stuff
+window.App = {}
 window.SP = {}
 
-window.page_view = new Streamphish.Views.PageView(
+App.page_view = new Streamphish.Views.PageView(
   el: $('#main')
 )
+App.router = new Streamphish.Routers.AppRouter()
+
+Backbone.history.start(
+  pushState: true
+)
+
 
 # $ ->
 #   $('.epd').on 'click', -> (e)
