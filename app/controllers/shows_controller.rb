@@ -33,12 +33,13 @@ class ShowsController < ApplicationController
     end
   end
   
-  # Provide the tracks as a downloadable ZIP
-  def download
-    tracks = []
+  # Respond to an AJAX request to create an album
+  def request_download
     show = Show.where("show_date = ?", params[:id]).first
     if show
-      download_tracks(show.tracks.order(:position).all)
+      render :json => album_status(show.tracks.order(:position).all)
+    else
+      render :json => { :status => "Invalid show" }
     end
   end
 

@@ -28,4 +28,22 @@ $(function() {
   $('.songs li').on('mouseout', function(e) {
     $(this).children('.downloadButton').hide()
   });
+
+  
+  $("#test1").on('click', function(e) {
+    $.ajax({
+      url: '/shows/1984-12-01/request_download',
+      dataType: 'json',
+      success: function(data) {
+        if (data.status == "Ready") {
+          location.href = data.url;
+        } else {
+          alert(data.status);
+          // TODO Bring up a popover with ajax loader and poll every few seconds
+          // Close popover once file has started downloading
+        }
+      }
+    });
+  });
+  
 });

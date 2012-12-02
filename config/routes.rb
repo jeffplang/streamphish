@@ -5,15 +5,18 @@ Streamphish::Application.routes.draw do
 
   resources :shows do
     member do
-      get 'download'
+      get "request_download", :as => "request_download"
     end
   end
   resources :songs
   resources :tracks do
     member do
-      get 'download'
+      get "download"
     end
   end
+  
+  get "/download/:id" => "albums#download"
+  get "/test/" => "sandboxes#test"
 
   get "/years" => "pages#years"
   get "/venues" => "pages#venues"
@@ -21,7 +24,7 @@ Streamphish::Application.routes.draw do
   get "/cities" => "pages#cities"
   get "/states" => "pages#states"
   get "/countries" => "pages#countries"
-
-  root :to => 'pages#index'
+  
+  root :to => "pages#index"
 
 end

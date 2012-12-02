@@ -12,7 +12,7 @@ end %>
   <% @show.tracks.order(:position).each do |track| %>
     <% if current_set != track.set %>
       <% current_set = track.set %>
-      <%= render :partial => "shared/separator", :locals => { :title => track.full_set_name} %>
+      <%= render :partial => "shared/separator", :locals => { :title => track.set_name} %>
     <% end %>
       
     <%= render :partial => "shared/track", :object => track, :locals => { :list_type => :show } %>

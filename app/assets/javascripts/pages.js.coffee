@@ -51,3 +51,4 @@ $ ->
       $(el).css
         left: (i / $circles.length) * $(window).width() - i
         top: Math.round(Math.sin(i) / 2 * 30) + 10
+    
