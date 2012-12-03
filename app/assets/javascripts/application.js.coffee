@@ -24,10 +24,9 @@ window.App = {}
 window.SP = {}
 
 $ ->
-  App.models     = {}
-  App.views      = {}
-  App.router     = new Streamphish.Routers.AppRouter()
-
-  App.views.main = new Streamphish.Views.PageView( el: $('#main') )
+  App.models      = {}
+  App.collections = {}
+  App.views       = {}
+  App.router      = new Streamphish.Routers.AppRouter()
 
   Backbone.history.start( pushState: true )

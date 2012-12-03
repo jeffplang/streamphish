@@ -1,10 +1,11 @@
-class Streamphish.Views.PageView extends Backbone.View
-  initialize: (options) ->
+class Streamphish.Views.ApplicationView extends Backbone.View
   events:
     "click a": "remoteLinkLoad"
 
+  initialize: (options) ->
+
   remoteLinkLoad: (e) ->
-    e.preventDefault();
+    e.preventDefault()
     href = e.currentTarget.getAttribute 'href'
     App.router.navigate href, true
 

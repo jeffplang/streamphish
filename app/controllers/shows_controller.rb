@@ -7,7 +7,7 @@ class ShowsController < ApplicationController
     respond_to do |format|
       format.html { render "shows_by_year" }
       format.json { 
-        render :json => { :year => @year, :shows => @shows } 
+        render :json => @shows
       }
     end
   end
