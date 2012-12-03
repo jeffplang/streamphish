@@ -27,4 +27,8 @@ class Show < ActiveRecord::Base
     "#{show_date.strftime('%m-%d-%Y')} - #{location}" if show_date && location
   end
   alias_method :title, :to_s # for rails admin
+  
+  def last_set
+    tracks.select { |t| /^\d$/.match t.set }.map(&:set).sort.last
+  end
 end

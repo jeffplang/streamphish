@@ -15,7 +15,7 @@ class AlbumCreator
     # FileUtils.rm_rf tmpdir
     Dir.mkdir tmpdir
     tracks.each_with_index do |track, i|
-      tmpfile_path = tmpdir + ((tracks.size >= 100) ? "%03d" : "%02d" % (i + 1)) + " - " + track.title + ".mp3"
+      tmpfile_path = tmpdir + ((tracks.size >= 100) ? "%03d" : "%02d" % (i + 1)) + " - " + track.title.gsub(/[^0-9A-Za-z.\-\s]/, '_') + ".mp3"
       FileUtils.cp track.song_file.path, tmpfile_path
       TagLib::MPEG::File.open(tmpfile_path) do |file|
         # Set basic ID3 tags

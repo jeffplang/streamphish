@@ -16,16 +16,16 @@ Streamphish::Application.routes.draw do
     end
   end
   
-  get "/download/:id" => "albums#download"
-  get "/test/" => "sandboxes#test" # TODO Remove this
+  get "/download/:id"   => "albums#download"
 
-  get "/years" => "pages#years"
-  get "/venues" => "pages#venues"
-  get "/tours" => "pages#tours"
-  get "/cities" => "pages#cities"
-  get "/states" => "pages#states"
-  get "/countries" => "pages#countries"
+  get "/years"          => "pages#years"
+  get "/venues"         => "pages#venues"
+  get "/tours"          => "pages#tours"
+  get "/cities"         => "pages#cities"
+  get "/states"         => "pages#states"
+  get "/countries"      => "pages#countries"
   
+  # ROOT
   root :to => "pages#index"
 
 end

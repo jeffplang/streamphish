@@ -1,5 +1,12 @@
 module AlbumUtils
   
+  ######
+  # Methods for handling status-checking and creation of albums
+  # Albums are zipfiles containing id3-tagged and ordered tracks
+  ######
+  
+  protected
+  
   # Check the status of album creation, spawning a new job if required
   # Return a hash including status and url of download if complete
   def album_status(tracks, album_name, is_custom_playlist=false)
@@ -15,8 +22,7 @@ module AlbumUtils
     else
       status = 'Enqueuing'
       album = Album.create(:name => album_name, :md5 => checksum, :is_custom_playlist => is_custom_playlist)
-      # Create zipfile asynchronously
-      # album.delay.create_zip_file(tracks)
+      # Create zipfile asynchronously using resque
       Resque.enqueue(AlbumCreator, album.id, tracks.map(&:id))
     end
     { :status => status, :url => "/download/#{checksum}" }
@@ -30,7 +36,5 @@ module AlbumUtils
     digest << album_name
     digest.to_s
   end
-  
-   protected
 
 end

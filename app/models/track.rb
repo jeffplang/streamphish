@@ -65,10 +65,10 @@ class Track < ActiveRecord::Base
   # Roman numerals; encores are part of last set
   def set_album_abbreviation
     # Encores
-    if /E[\d]*/.match(set)
-      romanize show.tracks.select { |t| /\d/.match(t.set) }.map(&:set).sort.last
+    if /^E[\d]*$/.match(set)
+      romanize show.last_set
     # Numbered sets
-    elsif /[\d]/.match(set)
+    elsif /^\d$/.match(set)
       romanize set
     else
       ""
