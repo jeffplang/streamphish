@@ -1,4 +1,8 @@
-<h1 class="pageListHeader"><%= year %></h1>
+<h1 class="pageListHeader">
+  <%= year %>
+</h1>
+<a href="/" class="backBtn">← Home</a>
+
 <ul class="pageList linkItems showsByYear">
   <% _.each(shows, function(show) { %>
     <li><a href="/shows/<%= Streamphish.Helpers.dateString(show.show_date, '%Y-%m-%d') %>">

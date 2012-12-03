@@ -39,6 +39,7 @@ body { background: $songBg; }
 h1.pageListHeader { 
   position: fixed; 
   top: 0; 
+  height: 44px;
   margin: 0; 
   color: #fff; 
   display: block; 
@@ -58,7 +59,7 @@ h1.pageListHeader {
   background: linear-gradient(to bottom,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31cd7a', endColorstr='#329862',GradientType=0 ); /* IE6-9 */
 }
-h1.pageListHeader a { font-size: 14px; color: #fff; text-decoration: none; top: 0; right: 0; z-index: 50; position: absolute; display: inline-block; height: 32px; padding: 12px 18px 0 6px; background: inherit; }
+a.backBtn { font-size: 14px; font-family: 'Audiowide', cursive; color: #fff; text-decoration: none; top: 0; right: 0; z-index: 50; position: absolute; display: inline-block; height: 32px; padding: 12px 18px 0 6px; background: inherit; }
 
 div.pageContainer { margin-top: 60px; position: relative; }
 
