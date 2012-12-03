@@ -21,8 +21,8 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
   showsByYear: (year) ->
     App.collections.shows       ?= {}
-    App.collections.shows[year]  = new Streamphish.Collections.Shows [], {year: year}
-    App.views.shows_by_year      = new Streamphish.Views.ShowsByYear(model: App.collections.shows[year])
+    App.collections.shows[year]  = new Streamphish.Collections.Shows( [], {year: year} )
+    App.views.shows_by_year      = new Streamphish.Views.ShowsByYear( model: App.collections.shows[year] )
 
     App.collections.shows[year].fetch
       success: (model, resp, opts) ->
