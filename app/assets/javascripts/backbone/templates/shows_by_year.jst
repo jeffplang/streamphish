@@ -1,7 +1,7 @@
 <h1 class="pageListHeader"><%= year %></h1>
 <ul class="pageList linkItems showsByYear">
   <% _.each(shows, function(show) { %>
-    <li><a href="#">
+    <li><a href="/shows/<%= Streamphish.Helpers.dateString(show.show_date, '%Y-%m-%d') %>">
       <span>
         <strong><%= Streamphish.Helpers.dateString(show.show_date, '%m/%d/%Y') %></strong>
         <%= show.location %>

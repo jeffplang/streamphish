@@ -1,4 +1,5 @@
 class Streamphish.Models.Show extends Backbone.Model
+  urlRoot: '/shows'
 
 class Streamphish.Collections.Shows extends Backbone.Collection
   url: '/shows'
@@ -12,7 +13,7 @@ class Streamphish.Collections.Shows extends Backbone.Collection
     if @year
       opts.data ?= {}
       opts.data.year = @year
-    super(opts)
+    super opts
 
   toJSON: ->
     year: @year

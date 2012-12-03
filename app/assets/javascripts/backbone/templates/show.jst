@@ -1,0 +1,13 @@
+<h1 class="pageListHeader"><%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %> - <%= location %></h1>
+
+<ul class="pageList songs">
+  <% _.each(tracks, function(track) { %>
+    <li>
+      <div class="songInfo">
+        <div class="songTitle">
+          <a href="#"><%= track.position %> <%= track.title %></a>
+        </div>
+      </div>
+    </li>
+  <% }); %>
+</ul>

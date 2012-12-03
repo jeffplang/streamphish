@@ -6,14 +6,23 @@ class ShowsController < ApplicationController
 
     respond_to do |format|
       format.html { render "shows_by_year" }
-      format.json { 
-        render :json => @shows
-      }
+      format.json { render :json => @shows }
     end
   end
 
   def show
     @show = Show.find params[:id]
+
+    respond_to do |format|
+      format.html
+      format.json do 
+        render :json => @show.to_json(
+          :include => {
+            :tracks => { :order => :position, :only => [:title, :position] }
+          }
+        )
+      end
+    end
   end
 
   def new

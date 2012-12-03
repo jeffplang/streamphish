@@ -29,3 +29,9 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
         App.views.shows_by_year.render()
 
   showByDate: (date) ->
+    App.models.show = new Streamphish.Models.Show( id: date )
+    App.views.show  = new Streamphish.Views.Show( model: App.models.show )
+
+    App.models.show.fetch
+      success: (model, resp, opts) ->
+        App.views.show.render()

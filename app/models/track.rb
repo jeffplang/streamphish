@@ -18,6 +18,7 @@ class Track < ActiveRecord::Base
   has_many :section_markers, :dependent => :destroy
   belongs_to :show
   
+  default_scope order('position')
   scope :chronological, order('shows.show_date ASC').joins(:show)
 
   ##############
