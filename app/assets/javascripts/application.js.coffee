@@ -29,4 +29,4 @@ $ ->
   App.views       = {}
   App.router      = new Streamphish.Routers.AppRouter()
 
-  Backbone.history.start( pushState: true )
+  Backbone.history.start()
