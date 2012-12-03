@@ -1,0 +1,7 @@
+<div class="songs">
+  <% _.each(songs, function(song) { %>
+    <a href="<%= song.url %>" style="background: <%= song.bg %>; color: <%= song.fg %>;">
+      <span><%= song.title %></span>
+    </a>
+  <% }); %>
+</div>

@@ -17,6 +17,7 @@
 //= require underscore
 //= require backbone
 //= require backbone/streamphish
+//= require util
 
 # global namespace for stuff
 window.App = {}
