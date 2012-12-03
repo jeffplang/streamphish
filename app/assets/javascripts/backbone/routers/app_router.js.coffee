@@ -9,10 +9,7 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
   index: ->
     App.models.index_data = new Streamphish.Models.IndexData
-
-    App.views.site_index  = new Streamphish.Views.SiteIndex
-      model: App.models.index_data
-      el: $('#main')
+    App.views.site_index  = new Streamphish.Views.SiteIndex(model: App.models.index_data)
 
     App.models.index_data.fetch
       success: (model, resp, opts) ->
@@ -24,16 +21,11 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
   showsByYear: (year) ->
     App.collections.shows       ?= {}
-
     App.collections.shows[year]  = new Streamphish.Collections.Shows [], {year: year}
-
-    App.views.shows_by_year      = new Streamphish.Views.ShowsByYear
-      model: App.collections.shows[year]
-      el: $('#main')
+    App.views.shows_by_year      = new Streamphish.Views.ShowsByYear(model: App.collections.shows[year])
 
     App.collections.shows[year].fetch
       success: (model, resp, opts) ->
         App.views.shows_by_year.render()
-
 
   showByDate: (date) ->

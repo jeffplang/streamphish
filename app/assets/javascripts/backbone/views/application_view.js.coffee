@@ -2,6 +2,8 @@ class Streamphish.Views.ApplicationView extends Backbone.View
   events:
     "click a": "remoteLinkLoad"
 
+  el: $("#main")
+
   initialize: (options) ->
 
   remoteLinkLoad: (e) ->
