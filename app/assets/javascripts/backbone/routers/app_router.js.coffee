@@ -9,7 +9,7 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
   index: ->
     App.models.index_data = new Streamphish.Models.IndexData
-    App.views.site_index  = new Streamphish.Views.SiteIndex(model: App.models.index_data)
+    App.views.site_index  = new Streamphish.Views.SiteIndex( model: App.models.index_data )
 
     App.models.index_data.fetch
       success: (model, resp, opts) ->
