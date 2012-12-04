@@ -2,11 +2,11 @@ class Streamphish.Models.Show extends Backbone.Model
   urlRoot: '/shows'
 
   year: =>
-    @.attributes.show_date.split('-')[0]
+    @get('show_date').split('-')[0]
 
   toJSON: ->
     json = super
-    json.year = @.year()
+    json.year = @year()
     json
 
 
@@ -18,12 +18,12 @@ class Streamphish.Collections.Shows extends Backbone.Collection
     @year = opts.year if opts.year
     super models, opts
 
+  toJSON: ->
+    year: @year
+    shows: super
+
   fetch: (opts = {}) ->
     if @year
       opts.data ?= {}
       opts.data.year = @year
     super opts
-
-  toJSON: ->
-    year: @year
-    shows: super

@@ -1,0 +1,10 @@
+<h1 class="pageListHeader">Songs</h1>
+<a href="/" class="backBtn">← Home</a>
+
+<ul class="pageList linkItems">
+<% _.each(data, function(song) { %>
+  <li>
+    <a href="/songs/<%= song.slug %>"><span><%= song.title %></span></a>
+  </li>
+<% }); %>
+</ul>

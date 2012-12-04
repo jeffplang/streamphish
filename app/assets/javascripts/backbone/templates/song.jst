@@ -1,0 +1,16 @@
+<h1 class="pageListHeader">
+  <%= title %>
+</h1>
+<a href="/songs" class="backBtn">← Songs</a>
+
+<ul class="pageList songs">
+  <% _.each(tracks, function(track) { %>
+    <li>
+      <div class="songInfo">
+        <span class="songDate"><%= track.show.show_date %></span>
+        <br>
+        <span class="songVenue"><%= track.show.location %></span>
+      </div>
+    </li>
+  <% }); %>
+</ul>

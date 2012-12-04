@@ -13,6 +13,7 @@ window.Streamphish =
   Helpers:
     dateString: (date, fmt) ->
       # Assumes date comes in the form '1993-4-16'
+      # Assumes fmt contains a '%m', '%d', and '%Y'
       date_s = date.split '-'
       d      = new Date(date_s[0], date_s[1] - 1, date_s[2])
 

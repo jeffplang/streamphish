@@ -21,7 +21,6 @@
 
 # global namespace for stuff
 window.App = {}
-window.SP = {}
 
 $ ->
   App.models      = {}

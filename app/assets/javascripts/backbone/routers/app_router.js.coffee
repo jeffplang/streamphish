@@ -3,7 +3,8 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
   routes:
     '':                 'index'
-    'songs/:song':      'song'
+    'songs':            'songs'         
+    'songs/:title':     'song'
     'shows?year=:year': 'showsByYear'
     'shows/:date':      'showByDate'
 
@@ -15,9 +16,21 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
       success: (model, resp, opts) ->
         App.views.site_index.render()
 
-  song: (song) ->
-    $.getJSON "/songs/#{song}", null, (resp) ->
-      console.log resp
+  songs: ->
+    App.collections.songs = new Streamphish.Collections.Songs
+    App.views.songs       = new Streamphish.Views.Songs( model: App.collections.songs )
+
+    App.collections.songs.fetch
+      success: (model, resp, opts) ->
+        App.views.songs.render()
+
+  song: (title) ->
+    App.models.song = new Streamphish.Models.Song( id: title )
+    App.views.song  = new Streamphish.Views.Song( model: App.models.song )
+
+    App.models.song.fetch
+      success: (model, resp, opts) ->
+        App.views.song.render()
 
   showsByYear: (year) ->
     App.collections.shows       ?= {}
