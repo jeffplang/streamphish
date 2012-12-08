@@ -10,41 +10,41 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
   index: ->
     App.models.index_data = new Streamphish.Models.IndexData
-    App.views.site_index  = new Streamphish.Views.SiteIndex( model: App.models.index_data )
+    App.current_view  = new Streamphish.Views.SiteIndex( model: App.models.index_data )
 
     App.models.index_data.fetch
       success: (model, resp, opts) ->
-        App.views.site_index.render()
+        App.current_view.render()
 
   songs: ->
     App.collections.songs = new Streamphish.Collections.Songs
-    App.views.songs       = new Streamphish.Views.Songs( model: App.collections.songs )
+    App.current_view       = new Streamphish.Views.Songs( model: App.collections.songs )
 
     App.collections.songs.fetch
       success: (model, resp, opts) ->
-        App.views.songs.render()
+        App.current_view.render()
 
   song: (title) ->
     App.models.song = new Streamphish.Models.Song( id: title )
-    App.views.song  = new Streamphish.Views.Song( model: App.models.song )
+    App.current_view  = new Streamphish.Views.Song( model: App.models.song )
 
     App.models.song.fetch
       success: (model, resp, opts) ->
-        App.views.song.render()
+        App.current_view.render()
 
   showsByYear: (year) ->
     App.collections.shows       ?= {}
     App.collections.shows[year]  = new Streamphish.Collections.Shows( [], {year: year} )
-    App.views.shows_by_year      = new Streamphish.Views.ShowsByYear( model: App.collections.shows[year] )
+    App.current_view      = new Streamphish.Views.ShowsByYear( model: App.collections.shows[year] )
 
     App.collections.shows[year].fetch
       success: (model, resp, opts) ->
-        App.views.shows_by_year.render()
+        App.current_view.render()
 
   showByDate: (date) ->
     App.models.show = new Streamphish.Models.Show( id: date )
-    App.views.show  = new Streamphish.Views.Show( model: App.models.show )
+    App.current_view  = new Streamphish.Views.Show( model: App.models.show )
 
     App.models.show.fetch
       success: (model, resp, opts) ->
-        App.views.show.render()
+        App.current_view.render()
