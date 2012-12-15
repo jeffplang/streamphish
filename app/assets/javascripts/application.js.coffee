@@ -23,9 +23,6 @@
 window.App = {}
 
 $ ->
-  App.models      = {}
-  App.collections = {}
-  App.views       = {}
   App.router      = new Streamphish.Routers.AppRouter()
 
   # Setup link hijacking to go through Backbone
