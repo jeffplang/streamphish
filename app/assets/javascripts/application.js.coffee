@@ -28,4 +28,13 @@ $ ->
   App.views       = {}
   App.router      = new Streamphish.Routers.AppRouter()
 
+  # Setup link hijacking to go through Backbone
+  $(document).on 'click', 'a:not([data-bypass])', (e) ->
+    href = prop: $(this).prop("href"), attr: $(this).attr("href")
+    root = "#{location.protocol}//#{location.host}"
+
+    if href.prop and (href.prop.slice(0, root.length) == root)
+      e.preventDefault()
+      App.router.navigate href.attr, true
+
   Backbone.history.start()

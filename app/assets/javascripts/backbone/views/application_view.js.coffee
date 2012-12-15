@@ -1,16 +1,6 @@
 class Streamphish.Views.ApplicationView extends Backbone.View
-  events:
-    "click a": "remoteLinkLoad"
-
   tagName: 'div'
   id: 'main'
-
-  initialize: (options) ->
-
-  remoteLinkLoad: (e) ->
-    e.preventDefault()
-    href = e.currentTarget.getAttribute 'href'
-    App.router.navigate href, true
 
   render: ->
     # This hack is if this.model is a collection.  Underscore templates expect
