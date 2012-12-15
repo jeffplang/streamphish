@@ -8,12 +8,12 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     'shows/:date':      'showByDate'
 
   index: ->
-    index_data = new Streamphish.Models.IndexData
-    view       = new Streamphish.Views.SiteIndex( model: index_data )
+    indexData = new Streamphish.Models.IndexData
+    view      = new Streamphish.Views.SiteIndex( model: indexData )
 
-    index_data.fetch
+    indexData.fetch
       success: (model, resp, opts) =>
-        @.swap(view)
+        @swap(view)
 
   songs: ->
     songs = new Streamphish.Collections.Songs
@@ -21,7 +21,7 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
     songs.fetch
       success: (model, resp, opts) =>
-        @.swap(view)
+        @swap(view)
 
   song: (title) ->
     song = new Streamphish.Models.Song( id: title )
@@ -29,15 +29,15 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
     song.fetch
       success: (model, resp, opts) =>
-        @.swap(view)
+        @swap(view)
 
   showsByYear: (year) ->
-    shows = new Streamphish.Collections.Shows( [], {year: year} )
+    shows = new Streamphish.Collections.Shows( [], year: year )
     view  = new Streamphish.Views.ShowsByYear( collection: shows )
 
     shows.fetch
       success: (model, resp, opts) =>
-        @.swap(view)
+        @swap(view)
 
   showByDate: (date) ->
     show = new Streamphish.Models.Show( id: date )
@@ -45,12 +45,12 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
     show.fetch
       success: (model, resp, opts) =>
-        @.swap(view)
+        @swap(view)
 
   swap: (view) ->
-    @current_view.remove() if @current_view
-    @current_view = view
-    @current_view.render()
+    @currentView.remove() if @currentView
+    @currentView = view
+    @currentView.render()
     $('#player')
-      .before( @current_view.$el )
+      .before( @currentView.$el )
       .trigger('rendered')
