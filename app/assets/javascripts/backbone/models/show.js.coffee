@@ -1,6 +1,16 @@
 class Streamphish.Models.Show extends Backbone.Model
   urlRoot: '/shows'
 
+  initialize: ->
+    super
+    @on 'change:tracks', (model, tracks) ->
+      _tracks = []
+
+      _.each tracks, (track) ->
+        _tracks.push new Streamphish.Models.Track(track)
+
+      @set 'tracks', new Streamphish.Collections.Tracks(_tracks), silent: true
+
   year: =>
     @get('show_date').split('-')[0]
 
@@ -8,7 +18,6 @@ class Streamphish.Models.Show extends Backbone.Model
     json = super
     json.year = @year()
     json
-
 
 class Streamphish.Collections.Shows extends Backbone.Collection
   url: '/shows'

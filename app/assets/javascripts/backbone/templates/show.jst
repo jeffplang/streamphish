@@ -2,11 +2,11 @@
 <a href="/shows?year=<%= year %>" class="backBtn">← <%= year %></a>
 
 <ul class="pageList songs">
-  <% _.each(tracks, function(track) { %>
+  <% _.each(tracks.models, function(track) { %>
     <li>
       <div class="songInfo">
         <div class="songTitle">
-          <a href="#"><%= track.position %> <%= track.title %></a>
+          <a href="#"><%= track.get('position') %> <%= track.get('title') %></a>
         </div>
       </div>
     </li>

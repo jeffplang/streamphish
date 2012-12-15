@@ -1,9 +1,8 @@
 class Streamphish.Routers.AppRouter extends Backbone.Router
-  initialize: (options) ->
 
   routes:
     '':                 'index'
-    'songs':            'songs'         
+    'songs':            'songs'
     'songs/:title':     'song'
     'shows?year=:year': 'showsByYear'
     'shows/:date':      'showByDate'
