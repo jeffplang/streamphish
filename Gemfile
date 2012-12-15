@@ -15,7 +15,7 @@ gem 'pg_search'
 gem 'color', '>= 1.4.0', :require => ['color', 'color/palette/monocontrast']
 gem 'selenium-webdriver'
 gem 'xmpp4r'
-gem 'rails-backbone'
+gem 'rails-backbone', :git => 'https://github.com/codebrew/backbone-rails.git'
 gem 'underscore-template-rails', :git => 'https://github.com/jeffplang/underscore-template-rails.git'
 # gem 'capybara'
 # gem 'capybara-webkit'
