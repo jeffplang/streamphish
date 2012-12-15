@@ -5,7 +5,6 @@ class Streamphish.Models.Show extends Backbone.Model
     super
     @on 'change:tracks', (model, tracks) ->
       _tracks = []
-
       _.each tracks, (track) ->
         _tracks.push new Streamphish.Models.Track(track)
 
@@ -18,6 +17,8 @@ class Streamphish.Models.Show extends Backbone.Model
     json = super
     json.year = @year()
     json
+
+
 
 class Streamphish.Collections.Shows extends Backbone.Collection
   url: '/shows'
