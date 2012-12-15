@@ -1,7 +1,9 @@
 class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
   template: Streamphish.Templates.show
-  events:
-    'click ul.songs li': 'songClick'
+
+  initialize: ->
+    super
+    @events = _.extend({}, @events, {"click ul.songs > li": "songClick"})
 
   songClick: (e) ->
     song = $.trim($(e.currentTarget).text())
