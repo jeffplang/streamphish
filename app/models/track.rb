@@ -40,6 +40,10 @@ class Track < ActiveRecord::Base
     song_file.to_s
   end
 
+  def slug
+    songs.first.slug
+  end
+
   protected
   
   def set_duration

@@ -6,7 +6,7 @@
     <li data-cid="<%= track.cid %>">
       <div class="songInfo">
         <div class="songTitle">
-          <a href="#"><%= track.get('position') %> <%= track.get('title') %></a>
+          <a href="/songs/<%= track.get('slug') %>"><%= track.get('position') %> <%= track.get('title') %></a>
         </div>
         <span class="duration"><%= Streamphish.Util.msToMMSS(track.get('duration')) %></span>
       </div>

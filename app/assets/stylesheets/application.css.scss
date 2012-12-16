@@ -84,6 +84,7 @@ div.pageContainer { margin-top: 60px; position: relative; }
 .pageList.linkItems li a span { top: 30px; position: relative; }
 
 #player { position: fixed; bottom: 0; left: 50%; height: 60px; width: 500px; margin-left: -250px; background: #008FFF; text-align: center; }
+#player button { cursor: default; }
 #player .btnNav { position: absolute; top: 5px; height: 40px; width: 40px; font-size: 20px; }
 #player .btnNav.prev { left: 5px; }
 #player .btnNav.next { right: 5px; }

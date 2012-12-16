@@ -11,14 +11,14 @@ class ShowsController < ApplicationController
   end
 
   def show
-    @show = Show.find params[:id]
+    @show = Show.includes(:tracks => :songs).find(params[:id])
 
     respond_to do |format|
       format.html
       format.json do 
         render :json => @show.to_json(
           :include => {
-            :tracks => { :methods => [:file_url], :only => [:title, :position, :duration] }
+            :tracks => { :methods => [:file_url, :slug], :only => [:title, :position, :duration] }
           }
         )
       end

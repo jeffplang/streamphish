@@ -7,7 +7,9 @@
   <% _.each(tracks, function(track) { %>
     <li>
       <div class="songInfo">
-        <span class="songDate"><%= track.show.show_date %></span>
+        <span class="songDate">
+          <a href="/shows/<%= track.show.show_date %>"><%= track.show.show_date %></a>
+        </span>
         <br>
         <span class="songVenue"><%= track.show.location %></span>
       </div>
