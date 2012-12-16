@@ -7,7 +7,7 @@ class Streamphish.Views.ApplicationView extends Backbone.View
     # data to come in an object (to be used in a with statement), or for the 
     # 'variable' option to be passed in during the compilation step.
 
-    json = (this.model || this.collection).toJSON()
+    json = (@model || @collection).toJSON()
     if json instanceof Array
       json = {data: json} 
 

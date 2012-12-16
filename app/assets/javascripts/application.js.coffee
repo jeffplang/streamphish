@@ -23,7 +23,9 @@
 window.App = {}
 
 $ ->
-  App.router      = new Streamphish.Routers.AppRouter()
+  App.router = new Streamphish.Routers.AppRouter
+  App.player = new Streamphish.Models.Player
+  App.player_view = new Streamphish.Views.Player(model: App.player)
 
   # Setup link hijacking to go through Backbone
   $(document).on 'click', 'a:not([data-bypass])', (e) ->

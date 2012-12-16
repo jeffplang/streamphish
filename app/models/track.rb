@@ -36,6 +36,10 @@ class Track < ActiveRecord::Base
   before_validation :populate_song, :populate_position
   after_save :set_duration
 
+  def file_url
+    song_file.to_s
+  end
+
   protected
   
   def set_duration

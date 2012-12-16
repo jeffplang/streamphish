@@ -5,5 +5,7 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
     'click ul.songs > li': 'songClick'
 
   songClick: (e) ->
-    song = $.trim($(e.currentTarget).text())
-    $('#player').html song
+    songCid = $(e.currentTarget).data 'cid'
+    song    = @model.get('tracks').get(songCid)
+
+    App.player.play song

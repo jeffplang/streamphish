@@ -3,7 +3,7 @@
 
 <ul class="pageList songs">
   <% _.each(tracks.models, function(track) { %>
-    <li>
+    <li data-cid="<%= track.cid %>">
       <div class="songInfo">
         <div class="songTitle">
           <a href="#"><%= track.get('position') %> <%= track.get('title') %></a>

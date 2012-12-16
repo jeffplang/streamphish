@@ -1,0 +1,12 @@
+<% if(playlist.length !== 0) { %>
+  <ul>
+    <% _.each(playlist.models, function(track) { %>
+      <li>
+        <% _playing = (track === currentTrack); %>
+        <%= _playing ? '<strong>' : '' %>
+        <%= track.get('title') %>
+        <%= _playing ? '</strong>' : '' %>
+      </li>
+    <% }); %>
+  </ul>
+<% } %>
