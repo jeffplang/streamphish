@@ -83,11 +83,12 @@ div.pageContainer { margin-top: 60px; position: relative; }
 .pageList.linkItems li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; font-size: 21px; padding: 0 0 0 18px; }
 .pageList.linkItems li a span { top: 30px; position: relative; }
 
-#player { position: fixed; bottom: 0; left: 50%; height: 60px; width: 500px; margin-left: -250px; background: #008FFF; text-align: center; }
+#player { position: fixed; bottom: 0; left: 50%; height: 60px; width: 500px; margin-left: -250px; background: #008FFF; text-align: center; border-top-left-radius: 35px; border-top-right-radius: 35px; }
 #player button { cursor: default; }
-#player .btnNav { position: absolute; top: 5px; height: 40px; width: 40px; font-size: 20px; }
-#player .btnNav.prev { left: 5px; }
-#player .btnNav.next { right: 5px; }
+#player h3 { margin: 0 auto; font-size: 2em; overflow: hidden; white-space: nowrap; width: 425px; }
+#player .btnNav { position: absolute; top: 5px; height: 30px; width: 30px; font-size: 15px; }
+#player .btnNav.prev { left: 5px; border-top-left-radius: 35px; }
+#player .btnNav.next { right: 5px; border-top-right-radius: 35px; }
 
 @media only screen and (max-device-width : 320px) {
   .pageList { margin-top: 26px; list-style-type: none; padding: 0; }
