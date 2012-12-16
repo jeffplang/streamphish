@@ -18,7 +18,7 @@ class ShowsController < ApplicationController
       format.json do 
         render :json => @show.to_json(
           :include => {
-            :tracks => { :methods => [:file_url], :only => [:title, :position] }
+            :tracks => { :methods => [:file_url], :only => [:title, :position, :duration] }
           }
         )
       end

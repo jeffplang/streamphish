@@ -8,6 +8,7 @@
         <div class="songTitle">
           <a href="#"><%= track.get('position') %> <%= track.get('title') %></a>
         </div>
+        <span class="duration"><%= Streamphish.Util.msToMMSS(track.get('duration')) %></span>
       </div>
     </li>
   <% }); %>

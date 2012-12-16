@@ -15,8 +15,16 @@ class Streamphish.Models.Player extends Backbone.Model
 
   playPrev: ->
     currIdx = @get('playlist').indexOf @get('currentTrack')
+    return if currIdx == 0
     @set 'currentTrack', @get('playlist').at(currIdx - 1)
 
-  playNext: ->
+  playNext: =>
     currIdx = @get('playlist').indexOf @get('currentTrack')
+    return if currIdx == @get('playlist').length - 1
     @set 'currentTrack', @get('playlist').at(currIdx + 1)
+
+  togglePause: ->
+    @get('currentTrack').sound.togglePause()
+
+  isPaused: ->
+    @get('currentTrack').sound.paused

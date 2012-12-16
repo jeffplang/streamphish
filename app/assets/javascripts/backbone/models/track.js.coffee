@@ -5,6 +5,7 @@ class Streamphish.Models.Track extends Backbone.Model
       id: @cid
       url: @get('file_url')
       autoPlay: false
+      onfinish: App.player.playNext
 
 
 
