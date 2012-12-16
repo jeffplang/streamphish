@@ -29,6 +29,6 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
 
     @model.togglePause()
     if @model.isPaused()
-      $btn.text 'play'
+      $btn.text '▶'
     else
-      $btn.text 'pause'
+      $btn.text '❚❚'

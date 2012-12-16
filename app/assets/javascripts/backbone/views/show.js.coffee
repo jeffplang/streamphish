@@ -10,7 +10,3 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
     song    = @model.get('tracks').get(songCid)
 
     App.player.play song
-
-  bypassLink: (e) ->
-    $(document).trigger e
-    false

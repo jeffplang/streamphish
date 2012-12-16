@@ -28,7 +28,7 @@ $ ->
   App.player_view = new Streamphish.Views.Player(model: App.player)
 
   # Setup link hijacking to go through Backbone
-  $(document).on 'click', 'a:not([data-bypass])', (e) ->
+  $(document).on 'click', '#main a:not([data-bypass])', (e) ->
     href = prop: $(this).prop("href"), attr: $(this).attr("href")
     root = "#{location.protocol}//#{location.host}"
 
