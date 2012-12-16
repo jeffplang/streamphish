@@ -1,4 +1,12 @@
 class Streamphish.Models.Track extends Backbone.Model
+  initialize: ->
+    super
+    @sound = soundManager.createSound
+      id: @cid
+      url: @get('file_url')
+      autoPlay: false
+
+
 
 class Streamphish.Collections.Tracks extends Backbone.Collection
   model: Streamphish.Models.Track

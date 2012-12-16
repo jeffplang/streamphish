@@ -1,8 +1,11 @@
-//= require soundmanager2
-
 class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
   el: '#player'
+
   template: Streamphish.Templates.player
+
+  events:
+    'click .btnNav.prev': 'playPrev'
+    'click .btnNav.next': 'playNext'
 
   initialize: (opts) ->
     soundManager.setup
@@ -10,5 +13,10 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
       preferFlash: false
       debugMode: false
 
-    @model.on 'change:playlist', @render, @
     @model.on 'change:currentTrack', @render, @
+
+  playPrev: ->
+    @model.playPrev()
+
+  playNext: ->
+    @model.playNext()
