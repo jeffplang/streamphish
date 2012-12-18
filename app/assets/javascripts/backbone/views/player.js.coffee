@@ -29,3 +29,7 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
 
     @model.togglePause()
     $btn.toggleClass('play').toggleClass('pause')
+
+  render: ->
+    $(document.body).removeClass 'hidePlayer'
+    super
