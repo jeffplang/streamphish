@@ -76,15 +76,7 @@ opacity: 0.20;           /* fx, safari, opera */
 .pageList li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; height: 57px; position: relative; border-bottom: 1px solid #1D314E; }
 
 .pageList li:hover { 
-  background: rgb(24,94,87); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(24,94,87,1) 0%, rgba(24,82,76,1) 44%, rgba(23,71,66,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(24,94,87,1)), color-stop(44%,rgba(24,82,76,1)), color-stop(100%,rgba(23,71,66,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(24,94,87,1) 0%,rgba(24,82,76,1) 44%,rgba(23,71,66,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(24,94,87,1) 0%,rgba(24,82,76,1) 44%,rgba(23,71,66,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(24,94,87,1) 0%,rgba(24,82,76,1) 44%,rgba(23,71,66,1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(24,94,87,1) 0%,rgba(24,82,76,1) 44%,rgba(23,71,66,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#185e57', endColorstr='#174742',GradientType=0 ); /* IE6-9 */
-
+  background: lighten($songBg, 4%);
   cursor:pointer;
 }
 
