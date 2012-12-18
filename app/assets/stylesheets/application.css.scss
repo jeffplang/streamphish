@@ -64,6 +64,13 @@ a.backBtn { font-size: 14px; font-family: 'Audiowide', cursive; color: #fff; tex
 div.pageContainer { margin-top: 60px; position: relative; }
 
 #main { padding-bottom: 53px; }
+#dim { height: 100%; width: 100%; position: fixed; left: 0; top: 0; z-index: 6000; background-color: #999; 
+filter: alpha(opacity=20); /* internet explorer */
+-khtml-opacity: 0.20;      /* khtml, old safari */
+-moz-opacity: 0.20;       /* mozilla, netscape */
+opacity: 0.20;           /* fx, safari, opera */
+}
+
 
 .pageList { margin-top: 44px; list-style-type: none; padding: 0; }
 .pageList li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; height: 57px; position: relative; border-bottom: 1px solid #1D314E; }
@@ -89,7 +96,7 @@ body.hidePlayer #player { bottom: -70px; }
 body.hidePlayer #main { padding-bottom: 0px; }
 #player, #main { -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -ms-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; }
 
-#player { position: fixed; bottom: 0; height: 50px; width: 100%; background: #25585A; padding: 10px; }
+#player { position: fixed; bottom: 0; height: 50px; width: 100%; background: #25585A; padding: 10px; z-index: 7000; }
 
 #player a.btn { position: relative; color: rgba(255,255,255,1); text-decoration: none; background-color: rgba(219,87,5,1); font-family: arial; font-weight: 700; display: inline-block; width: 39px; height: 28px; text-align: center;
   -webkit-border-radius: 38px; -moz-border-radius: 38px; border-radius: 8px;

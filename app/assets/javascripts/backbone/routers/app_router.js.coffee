@@ -11,46 +11,43 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     indexData = new Streamphish.Models.IndexData
     view      = new Streamphish.Views.SiteIndex( model: indexData )
 
-    indexData.fetch
-      success: (model, resp, opts) =>
-        @swap(view)
+    @swap view, indexData
 
   songs: ->
     songs = new Streamphish.Collections.Songs
     view  = new Streamphish.Views.Songs( collection: songs )
 
-    songs.fetch
-      success: (model, resp, opts) =>
-        @swap(view)
+    @swap view, songs
 
   song: (title) ->
     song = new Streamphish.Models.Song( id: title )
     view = new Streamphish.Views.Song( model: song )
 
-    song.fetch
-      success: (model, resp, opts) =>
-        @swap(view)
+    @swap view, song
 
   showsByYear: (year) ->
     shows = new Streamphish.Collections.Shows( [], year: year )
     view  = new Streamphish.Views.ShowsByYear( collection: shows )
 
-    shows.fetch
-      success: (model, resp, opts) =>
-        @swap(view)
+    @swap view, shows
 
   showByDate: (date) ->
     show = new Streamphish.Models.Show( id: date )
     view = new Streamphish.Views.Show( model: show )
 
-    show.fetch
-      success: (model, resp, opts) =>
-        @swap(view)
+    @swap view, show
 
-  swap: (view) ->
-    @currentView.remove() if @currentView
-    @currentView = view
-    @currentView.render()
-    $('#player')
-      .before( @currentView.$el )
-      .trigger('rendered')
+  swap: (view, fetchable) ->
+    $player = $('#player')
+    $player.before('<div id="dim"></div>') if @currentView
+
+    fetchable.fetch
+      success: (model, resp, opts) =>
+        @currentView.remove() if @currentView
+
+        @currentView = view
+        @currentView.render()
+        $player
+          .before( @currentView.$el )
+          .trigger('rendered')
+        $('#dim').remove()
