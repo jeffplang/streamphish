@@ -1,12 +1,31 @@
-<a class="btnNav prev">
-  <span class="vert-bar"></span>
-  <span class="triangle"></span>
-</a>
+<div class="controls" style="display: inline-block;">
+  <a class="btn prev" style="margin-right: 4px;">
+    <span class="arrowGrp">
+      <span class="arrow"></span><span class="arrow"></span>
+    </span>
+  </a>
+  <a class="btn playpause pause" style="margin-right: 4px;"></a>
+  <a class="btn next">
+    <span class="arrowGrp">
+      <span class="arrow"></span><span class="arrow"></span>
+    </span>
+  </a>
+</div>
 
-<h3><%= currentTrack.get('title') %></h3>
-<button class="btnPlayPause">❚❚</button>
+<% var show = (currentTrack.collection && currentTrack.collection.show) ? currentTrack.collection.show : null; %>
 
-<a class="btnNav next">
-  <span class="vert-bar"></span>
-  <span class="triangle"></span>
-</a>
+<h2>
+  <% if(show) { %>
+    <a href="/shows/<%= Streamphish.Helpers.dateString(show.get('show_date'), '%Y-%m-%d') %>"><%= currentTrack.get('title') %></a>
+  <% } else { %>
+    <%= currentTrack.get('title') %>
+  <% } %>
+</h2>
+<% if(show) { %>
+  <h3>
+    <a href="/shows/<%= Streamphish.Helpers.dateString(show.get('show_date'), '%Y-%m-%d') %>">
+      <%= Streamphish.Helpers.dateString(show.get('show_date'), '%m-%d-%Y') %> &middot;
+      <%= show.get('location') %>
+    </a>
+  </h3>
+<% } %>

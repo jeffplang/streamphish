@@ -3,11 +3,11 @@ class Streamphish.Models.Show extends Backbone.Model
 
   initialize: ->
     super
-    @on 'change:tracks', (model, tracks) ->
+    @on 'change:tracks', (model, tracks) =>
       @set 'tracks', 
-           new Streamphish.Collections.Tracks(
-            (new Streamphish.Models.Track(track) for track in tracks)), 
+           new Streamphish.Collections.Tracks( (new Streamphish.Models.Track(track) for track in tracks) )
            silent: true
+      @get('tracks').show = model
 
   year: =>
     @get('show_date').split('-')[0]

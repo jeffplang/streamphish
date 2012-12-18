@@ -8,7 +8,7 @@ class Streamphish.Models.Player extends Backbone.Model
 
   play: (track) ->
     @set 'playlist', track.collection if track.collection
-    @set('currentTrack', track)
+    @set 'currentTrack', track
 
   stop: ->
     soundManager.stopAll();

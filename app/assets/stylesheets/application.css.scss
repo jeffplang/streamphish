@@ -30,7 +30,7 @@
 //-----------------------------------------
 @include h5bp-helpers;
 @include h5bp-media;
-@import url(http://fonts.googleapis.com/css?family=Audiowide|Jacques+Francois|Allan);
+@import url(http://fonts.googleapis.com/css?family=Audiowide|Jacques+Francois|Allan|Economica:400,700);
 
 $songBg: #0F2340;
 
@@ -63,6 +63,8 @@ a.backBtn { font-size: 14px; font-family: 'Audiowide', cursive; color: #fff; tex
 
 div.pageContainer { margin-top: 60px; position: relative; }
 
+#main { padding-bottom: 53px; }
+
 .pageList { margin-top: 44px; list-style-type: none; padding: 0; }
 .pageList li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; height: 57px; position: relative; border-bottom: 1px solid #1D314E; }
 
@@ -83,24 +85,36 @@ div.pageContainer { margin-top: 60px; position: relative; }
 .pageList.linkItems li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; font-size: 21px; padding: 0 0 0 18px; }
 .pageList.linkItems li a span { top: 30px; position: relative; }
 
-#player { position: fixed; bottom: 0; left: 50%; height: 60px; width: 500px; margin-left: -250px; background: #008FFF; text-align: center; border-top-left-radius: 35px; border-top-right-radius: 35px; }
-#player button { cursor: default; }
-#player h3 { margin: 0 auto; font-size: 2em; overflow: hidden; white-space: nowrap; width: 425px; }
+#player { position: fixed; bottom: 0; height: 50px; width: 100%; background: #25585A; padding: 10px; }
 
-#player .btnNav { position: absolute; top: 15px; }
-#player .btnNav .vert-bar { position: absolute; top: 0px; background: #000; display: block; height: 16px; width: 4px; }
-#player .btnNav .triangle { width: 0; height: 0; display: block; border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
+#player a.btn { position: relative; color: rgba(255,255,255,1); text-decoration: none; background-color: rgba(219,87,5,1); font-family: arial; font-weight: 700; display: inline-block; width: 39px; height: 28px; text-align: center;
+  -webkit-border-radius: 38px; -moz-border-radius: 38px; border-radius: 8px;
+  -webkit-box-shadow: 0px 5px 0px rgba(219,31,5,1), 0px 5px 15px rgba(0,0,0,.7); -moz-box-shadow: 0px 5px 0px rgba(219,31,5,1), 0px 5px 15px rgba(0,0,0,.7); box-shadow: 0px 5px 0px rgba(219,31,5,1), 0px 5px 15px rgba(0,0,0,.7);
+  /* -webkit-transition: all .1s ease; -moz-transition: all .1s ease; -ms-transition: all .1s ease; -o-transition: all .1s ease; transition: all .1s ease; */
+}
+#player a.btn:active { position: relative; top: 2px;
+    -webkit-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9); -moz-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9); box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+}
 
-#player .btnNav.prev { left: 15px; }
-#player .btnNav.prev .vert-bar { left: 0px; }
-#player .btnNav.prev .triangle { border-right: 12px solid #000; }
-#player .btnNav.next { right: 15px; }
-#player .btnNav.next .vert-bar { right: 0px; }
-#player .btnNav.next .triangle { border-left: 12px solid #000; }
+#player a.btn.play { padding: 12px 3px 1px 3px; }
+#player a.btn.play:after { content: '▶'; }
+#player a.btn.pause { padding: 13px 3px 0 3px }
+#player a.btn.pause:after { content: '❚❚'; }
 
-/*#player .btnNav { position: absolute; top: 5px; height: 30px; width: 30px; font-size: 15px; }*/
-/*#player .btnNav.prev { left: 5px; border-top-left-radius: 35px; }*/
-/*#player .btnNav.next { right: 5px; border-top-right-radius: 35px; }*/
+#player a.btn.prev, #player a.btn.next { padding: 13px 3px 0 4px; }
+#player a.btn.prev span.arrow, 
+#player a.btn.next span.arrow { width: 0; height: 0; display: inline-block; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+#player a.btn.prev span.arrow { border-right: 8px solid #fff; }
+#player a.btn.next span.arrow { border-left: 8px solid #fff; }
+
+#player a.btn .arrowGrp { display: inline-block; height: 11px; padding: 0; line-height: 1px; position: relative; top: -2px; }
+#player a.btn.prev .arrowGrp { border-left: 3px solid #fff; }
+#player a.btn.next .arrowGrp { border-right: 3px solid #fff; }
+
+#player h2 { display: inline-block; font-family: 'Economica', cursive; font-weight: 700; font-size: 30px; vertical-align: top; margin-top: -2px; }
+#player h3 { display: inline-block; font-family: 'Economica', cursive; font-size: 15px; font-weight: 400; color: #fff; vertical-align: top; margin: 12px 0 0 10px; }
+#player h2 a, #player h3 a { color: #fff; text-decoration: none; }
+#player h2 a:hover, #player h3 a:hover { text-decoration: underline; }
 
 @media only screen and (max-device-width : 320px) {
   .pageList { margin-top: 26px; list-style-type: none; padding: 0; }

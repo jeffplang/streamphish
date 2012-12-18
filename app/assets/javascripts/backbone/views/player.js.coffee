@@ -6,9 +6,9 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
   template: Streamphish.Templates.player
 
   events:
-    'click .btnNav.prev':  'playPrev'
-    'click .btnNav.next':  'playNext'
-    'click .btnPlayPause': 'togglePause'
+    'click .btn.prev':  'playPrev'
+    'click .btn.next':  'playNext'
+    'click .btn.playpause': 'togglePause'
 
   initialize: (opts) ->
     soundManager.setup
@@ -28,7 +28,4 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     $btn = $(e.currentTarget)
 
     @model.togglePause()
-    if @model.isPaused()
-      $btn.text '▶'
-    else
-      $btn.text '❚❚'
+    $btn.toggleClass('play').toggleClass('pause')
