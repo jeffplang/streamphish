@@ -116,7 +116,8 @@ body.hidePlayer #main { padding-bottom: 0px; }
 #player a.btn.next .arrowGrp { border-right: 3px solid #fff; }
 
 #player h2 { display: inline-block; font-family: 'Economica', cursive; font-weight: 700; font-size: 30px; vertical-align: top; margin-top: -2px; }
-#player h3 { display: inline-block; font-family: 'Economica', cursive; font-size: 15px; font-weight: 400; color: #fff; vertical-align: top; margin: 12px 0 0 10px; }
+#player h3 { display: inline-block; font-family: 'Economica', cursive; font-size: 19px; font-weight: 400; color: #fff; vertical-align: top; margin: 8px 0 0 10px; }
+#player h3 small { font-size: 15px; }
 #player h2 a, #player h3 a { color: #fff; text-decoration: none; }
 #player h2 a:hover, #player h3 a:hover { text-decoration: underline; }
 

@@ -24,8 +24,8 @@
 <% if(show) { %>
   <h3>
     <a href="/shows/<%= Streamphish.Helpers.dateString(show.get('show_date'), '%Y-%m-%d') %>">
-      <%= Streamphish.Helpers.dateString(show.get('show_date'), '%m-%d-%Y') %> &middot;
-      <%= show.get('location') %>
+      <%= Streamphish.Helpers.dateString(show.get('show_date'), '%m-%d-%Y') %></span>&nbsp;
+      <small><%= show.get('location') %></small>
     </a>
   </h3>
 <% } %>
