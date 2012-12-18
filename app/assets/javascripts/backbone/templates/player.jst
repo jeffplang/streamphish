@@ -15,11 +15,7 @@
 <% var show = (currentTrack.collection && currentTrack.collection.show) ? currentTrack.collection.show : null; %>
 
 <h2>
-  <% if(show) { %>
-    <a href="/shows/<%= Streamphish.Helpers.dateString(show.get('show_date'), '%Y-%m-%d') %>"><%= currentTrack.get('title') %></a>
-  <% } else { %>
-    <%= currentTrack.get('title') %>
-  <% } %>
+  <a href="/songs/<%= currentTrack.get('slug') %>"><%= currentTrack.get('title') %></a>
 </h2>
 <% if(show) { %>
   <h3>
