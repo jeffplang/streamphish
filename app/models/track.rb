@@ -1,4 +1,6 @@
 class Track < ActiveRecord::Base
+  
+  require 'taglib'
 
   #########################
   # Attributes & Constants
@@ -20,6 +22,16 @@ class Track < ActiveRecord::Base
   
   default_scope order('position')
   scope :chronological, order('shows.show_date ASC').joins(:show)
+  
+  include PgSearch
+  pg_search_scope :kinda_matching,
+                  :against => :title, 
+                  :using => {
+                    tsearch: {
+                      any_word: false,
+                      normalization: 16
+                    }
+                  }
 
   ##############
   # Validations
@@ -35,6 +47,62 @@ class Track < ActiveRecord::Base
   ############
   before_validation :populate_song, :populate_position
   after_save :set_duration
+  
+  # Return the full name of the set given the stored codes
+  def set_name
+    case set
+      when "1" then "Set 1"
+      when "2" then "Set 2"
+      when "3" then "Set 3"
+      when "4" then "Set 4"
+      when "E" then "Encore"
+      when "E2" then "Encore 2"
+      when "E3" then "Encore 3"
+      else "Unknown set"
+    end
+  end
+  
+  # Return the set abbreviation (livephish.com style)
+  # Roman numerals; encores are part of last set
+  def set_album_abbreviation
+    # Encores
+    if /^E[\d]*$/.match(set)
+      romanize show.last_set
+    # Numbered sets
+    elsif /^\d$/.match(set)
+      romanize set
+    else
+      ""
+    end
+  end
+  
+  # Configure default ID3 tags on the track's song_file (livephish.com style)
+  # Assume track order is in context of entire show
+  def save_default_id3_tags
+    TagLib::MPEG::File.open(song_file.path) do |file|
+      # Set basic ID3 tags
+      tag = file.id3v2_tag
+      # if tag
+        tag.title = title
+        tag.artist = "Phish"
+        tag.album = show.show_date.to_s + " " + set_album_abbreviation + " " + show.location
+        tag.year = show.show_date.strftime("%Y").to_i
+        tag.track = position
+        tag.genre = "Rock"
+        # tag.comment = "Visit phishtracks.net for free Phish audio" //Doesn't seem to work
+        # Add cover art
+        # TODO turn this back on when we have decent site art
+        # apic = TagLib::ID3v2::AttachedPictureFrame.new
+        # apic.mime_type = "image/jpeg"
+        # apic.description = "Cover"
+        # apic.type = TagLib::ID3v2::AttachedPictureFrame::FrontCover
+        # apic.picture = File.open(Rails.root.to_s + '/app/assets/images/cover_generic.jpg', 'rb') { |f| f.read }
+        # tag.add_frame(apic)
+        # Save
+        file.save
+      # end
+    end
+  end
 
   def file_url
     song_file.to_s
@@ -74,4 +142,15 @@ class Track < ActiveRecord::Base
   def require_at_least_one_song
     errors.add(:songs, "Please add at least one song") if songs.empty?
   end
+  
+  def romanize(number)
+    case number
+      when "1" then "I"
+      when "2" then "II"
+      when "3" then "III"
+      when "4" then "IV"
+      else ""
+    end
+  end
+  
 end

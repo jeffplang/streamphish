@@ -6,9 +6,16 @@ end %>
 <h1 class="pageListHeader">
   <%= @show %>
   <%= back_link_for(@show) %>
+  <%= download_show_button(@show) %>
 </h1>
 <ul class="pageList songs">
+  <% current_set = "" %>
   <% @show.tracks.order(:position).each do |track| %>
+    <% if current_set != track.set %>
+      <% current_set = track.set %>
+      <%= render :partial => "shared/set_header", :locals => { :track => track} %>
+    <% end %>
+      
     <%= render :partial => "shared/track", :object => track, :locals => { :list_type => :show } %>
   <% end %>
 </ul>

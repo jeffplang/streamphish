@@ -21,7 +21,7 @@ module ApplicationHelper
       text, href = "Home", root_path
     end
 
-    link_to "&#8592; #{text}".html_safe, href
+    link_to "&#8592; #{text}".html_safe, href, :class => "link_back"
   end
 
   def random_css_color

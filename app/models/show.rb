@@ -1,6 +1,8 @@
 class Show < ActiveRecord::Base
   attr_accessible :show_date, :location, :sbd, :remastered
 
+  belongs_to :tour
+  belongs_to :venue
   has_many :tracks, :dependent => :destroy
 
   scope :for_year, lambda { |year|
@@ -25,4 +27,8 @@ class Show < ActiveRecord::Base
     "#{show_date.strftime('%m-%d-%Y')} - #{location}" if show_date && location
   end
   alias_method :title, :to_s # for rails admin
+  
+  def last_set
+    tracks.select { |t| /^\d$/.match t.set }.map(&:set).sort.last
+  end
 end

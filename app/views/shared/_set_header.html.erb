@@ -1,0 +1,8 @@
+<li>
+  <div class="songInfo">
+    <h2><%= track.set_name %></h2>
+  </div>
+  <div class="downloadButton" style="display: none;">
+    <%= download_set_button(@show, track.set) unless /^E\d?$/.match track.set %>
+  </div>
+</li>

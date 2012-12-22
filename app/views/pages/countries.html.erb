@@ -1,0 +1,11 @@
+<% content_for(:title) { "Countries :: PhishTracks" } %>
+
+<h1 class="pageListHeader">
+  Countries
+  <%= back_link_for @countries %>
+</h1>
+<ul class="pageList linkItems showsByYear">
+  <% @countries.each do |country| %>
+  <li><%= link_to "<span><strong>#{country}</strong></span>".html_safe, shows_path(:country => country) %></li>
+<% end %>
+</ul>

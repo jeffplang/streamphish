@@ -8,8 +8,8 @@ namespace :songs do
     song_table = doc.at_css('table.tablesorter')
 
     song_table.css('td:first-child').each do |cell| 
-      p "Adding SongCollection for #{cell.text}"
-      SongCollection.create(:title => cell.text)
+      p "Adding Song for #{cell.text}"
+      Song.create(:title => cell.text)
     end
   end
 
@@ -34,7 +34,7 @@ namespace :songs do
     entries = Dir.entries(dir_path).reject{ |e| e == '.' || e == '..' }
     entries.each do |filename|
       sfilename = scrub_filename(filename)
-      found = SongCollection.kinda_matching(sfilename).first
+      found = Song.kinda_matching(sfilename).first
 
       if found
         puts "FOUND:\n\t#{filename}\n\t#{found.title}"

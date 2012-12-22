@@ -1,16 +1,31 @@
 Streamphish::Application.routes.draw do
   devise_for :users
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount RailsAdmin::Engine => "/admin", :as => "rails_admin"
+  mount Resque::Server, :at => "/resque"
 
-  resources :shows
+  resources :shows do
+    member do
+      get "request_download", :as => "request_download"
+    end
+  end
   resources :songs
-
-  match "/years" => "pages#years"
+  resources :tracks do
+    member do
+      get "download"
+    end
+  end
   
-  # SANDBOX TEST STUFF
-  match "/download" => "sandboxes#download"
+  get "/download/:id"   => "albums#download"
 
-  root :to => 'pages#index'
+  get "/years"          => "pages#years"
+  get "/venues"         => "pages#venues"
+  get "/tours"          => "pages#tours"
+  get "/cities"         => "pages#cities"
+  get "/states"         => "pages#states"
+  get "/countries"      => "pages#countries"
+  
+  # ROOT
+  root :to => "pages#index"
 
 end

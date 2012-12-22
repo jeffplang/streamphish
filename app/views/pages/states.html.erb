@@ -1,0 +1,12 @@
+<% content_for(:title) { "States :: PhishTracks" } %>
+
+<h1 class="pageListHeader">
+  States
+  <%= back_link_for @states %>
+</h1>
+<ul class="pageList linkItems showsByYear">
+  <% @states.each do |state| %>
+  <% title = state.empty? ? '(No state)' : state %>
+  <li><%= link_to "<span><strong>#{title}</strong></span>".html_safe, shows_path(:state => title) %></li>
+<% end %>
+</ul>
