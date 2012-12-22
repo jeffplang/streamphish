@@ -20,6 +20,7 @@ namespace :tracks do
       show.tracks.order(:position).each_with_index do |t, i|
         t.position = i + 1
         t.save
+        t.save_default_id3_tags
       end
     end
   end

@@ -38,4 +38,52 @@ namespace :shows do
       p "#{i + 1}. #{song}"
     end
   end
+  
+  desc "Using phish.net, get list of shows we don't currently have audio for"
+  task :missing_report => :environment do
+    require 'open-uri'
+    require 'nokogiri'
+    require_relative '../pnet'
+    
+    PNET_API_KEY = '448345A7B7688DDE43D0'
+    pnet  = PNet.new PNET_API_KEY
+    
+    total_shows = {}
+    missing_list = {}
+    (1983..Time.now.year).each do |year|
+      total_shows[year] = 0
+      missing_list[year] = []
+      data = pnet.shows_query('year' => year);
+      data.each do |show_data|
+        unless show_data[1] == 0 or show_data[1] == "No Shows Found"
+          total_shows[year] += 1
+          show_date = show_data["showdate"]
+          missing_list[year] << show_date unless Show.find_by_show_date(show_date)
+        end
+      end
+      num_missing = missing_list[year].size
+      percent = (total_shows[year] > 0 ? (num_missing.to_f / total_shows[year].to_f) * 100.0 : 0)
+      puts "#{year}: missing #{num_missing} of #{total_shows[year]} (#{percent.round}%)"
+    end
+    total_missing = 0
+    missing_list.each {|y, a| total_missing += a.size}
+    overall_total_shows = 0
+    total_shows.each {|y, num| overall_total_shows += num }
+    percent = (overall_total_shows > 0 ? (total_missing.to_f / overall_total_shows.to_f) * 100.0 : 0)
+    puts "TOTAL: missing #{total_missing} of #{overall_total_shows} (#{percent.round}%)"
+
+  end
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 end
