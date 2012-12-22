@@ -1,7 +1,5 @@
 namespace :tracks do
 
-  #########################################################
-  # This task sets default ID3 tags on all tracks
   desc "Set default ID3 tags on all Tracks' song_files"
   task :save_default_id3 => :environment do
     tracks = Track.all
@@ -11,4 +9,19 @@ namespace :tracks do
     end
   end
   
+  desc "Remove all Intro tracks and re-order tracks in that show"
+  task :remove_intros => :environment do
+    tracks = Song.find_by_title("Intro").tracks
+    puts "Found #{tracks.size} Intros"
+    tracks.each do |track|
+      show = track.show
+      puts "Removing from #{show.show_date}"
+      track.destroy
+      show.tracks.order(:position).each_with_index do |t, i|
+        t.position = i + 1
+        t.save
+      end
+    end
+  end
+    
 end
