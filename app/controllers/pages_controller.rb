@@ -21,10 +21,6 @@ class PagesController < ApplicationController
     @venues = Venue.order(:name).all
   end
   
-  def tours
-    @tours = Tour.order(:name).all
-  end
-  
   def cities
     @cities = Venue.order(:city, :state).all.map(&:location).uniq
   end

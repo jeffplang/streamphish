@@ -1,0 +1,10 @@
+<h1 class="pageListHeader">Tours</h1>
+<a href="/" class="backBtn">← Home</a>
+
+<ul class="pageList linkItems">
+<% _.each(data, function(tour) { %>
+  <li>
+    <a href="/tours/<%= tour.id %>"><span><%= tour.name %></span></a>
+  </li>
+<% }); %>
+</ul>

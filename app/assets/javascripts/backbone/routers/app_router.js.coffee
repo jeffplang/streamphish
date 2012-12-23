@@ -6,6 +6,7 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     'songs/:title':     'song'
     'shows?year=:year': 'showsByYear'
     'shows/:date':      'showByDate'
+    'tours':            'tours'
 
   index: ->
     indexData = new Streamphish.Models.IndexData
@@ -18,6 +19,12 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     view  = new Streamphish.Views.Songs( collection: songs )
 
     @swap view, songs
+  
+  tours: ->
+    tours = new Streamphish.Collections.Tours
+    view  = new Streamphish.Views.Tours( collection: tours )
+    
+    @swap view, tours
 
   song: (title) ->
     song = new Streamphish.Models.Song( id: title )

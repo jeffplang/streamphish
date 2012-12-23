@@ -15,12 +15,11 @@ Streamphish::Application.routes.draw do
       get "download"
     end
   end
+  resources :tours
   
   get "/download/:id"   => "albums#download"
-
   get "/years"          => "pages#years"
   get "/venues"         => "pages#venues"
-  get "/tours"          => "pages#tours"
   get "/cities"         => "pages#cities"
   get "/states"         => "pages#states"
   get "/countries"      => "pages#countries"
