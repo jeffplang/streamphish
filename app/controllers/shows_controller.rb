@@ -9,7 +9,13 @@ class ShowsController < ApplicationController
 
     respond_to do |format|
       format.html { render "shows_by_year" }
-      format.json { render :json => @shows }
+      format.json do
+        render :json => @shows.to_json(
+          :include => {
+            :tour => { :only => [:name] }
+          }
+        )
+      end
     end
   end
 
@@ -75,6 +81,6 @@ class ShowsController < ApplicationController
 
   def get_shows_by_year
     @year = params[:year]
-    @shows = Show.for_year @year
+    @shows = Show.for_year(@year).includes(:tour)
   end
 end

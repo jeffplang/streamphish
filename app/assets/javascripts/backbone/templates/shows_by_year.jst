@@ -4,19 +4,32 @@
 <a href="/" class="backBtn">← Home</a>
 
 <ul class="pageList linkItems showsByYear">
+  <% tour_name = '' %>
   <% _.each(shows, function(show) { %>
+  
+    <% if (show.tour.name != tour_name) { %>
+      <% tour_name = show.tour.name %>
+      <li><h2><%= tour_name %></h2></li>
+    <% } %>
+    
     <li><a href="/shows/<%= Streamphish.Helpers.dateString(show.show_date, '%Y-%m-%d') %>">
       <span>
         <strong><%= Streamphish.Helpers.dateString(show.show_date, '%m/%d/%Y') %></strong>
         <%= show.location %>
       </span>
-      <% if(show.sbd) { %>
+      
+      <% if (show.sbd) { %>
         <span class="tag">SBD</span>
       <% } %>
 
-      <% if(show.remastered) { %>
+      <% if (show.remastered) { %>
         <span class="tag">Remastered</span>
       <% } %>
+      
+      <% if (show.special_tag) { %>
+        <span class="special_tag"><%= show.special_tag %></span>
+      <% } %>
+      
     </a></li>
   <% }); %>
 </ul>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202033002) do
+ActiveRecord::Schema.define(:version => 20121223015640) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -51,13 +51,14 @@ ActiveRecord::Schema.define(:version => 20121202033002) do
 
   create_table "shows", :force => true do |t|
     t.date     "show_date"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "location"
-    t.boolean  "remastered", :default => false
-    t.boolean  "sbd",        :default => false
+    t.boolean  "remastered",  :default => false
+    t.boolean  "sbd",         :default => false
     t.integer  "venue_id"
     t.integer  "tour_id"
+    t.string   "special_tag"
   end
 
   add_index "shows", ["tour_id"], :name => "index_shows_on_tour_id"

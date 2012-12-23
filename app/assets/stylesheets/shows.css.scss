@@ -63,6 +63,19 @@ position: relative;
 top: 11px!important;
 }
 
+.special_tag {
+background: rgb(156,60,60);
+margin-left: 3px;
+font-size: 10px!important;
+letter-spacing: 0.1em!important;
+text-transform: uppercase;
+color: rgba(255, 255, 255, 0.64);
+padding: 4px;
+border-radius: 5px;
+position: relative;
+top: 11px!important;
+}
+
 .songInfo .tag { top: -4px!important; margin-left: 3px;}
 
 @media only screen and (max-device-width : 320px) {
