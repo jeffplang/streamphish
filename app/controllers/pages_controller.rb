@@ -21,8 +21,7 @@ class PagesController < ApplicationController
 
   def years_map
     @years.map do |year|
-      { :year => year, 
-        :isEmpty => Show.for_year(year).count.zero? }.merge(random_bg_and_fg)
+      { :year => year }.merge(random_bg_and_fg)
     end
   end
 
