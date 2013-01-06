@@ -1,10 +1,8 @@
 class Streamphish.Models.Player extends Backbone.Model
   initialize: ->
     super
+
     @set 'currentTrack', null
-    @on 'change:currentTrack', (model, track) ->
-      @stop()
-      track.sound.play()
 
   play: (track) ->
     @set 'playlist', track.collection if track.collection
@@ -28,3 +26,5 @@ class Streamphish.Models.Player extends Backbone.Model
 
   isPaused: ->
     @get('currentTrack').sound.paused
+
+  trackLoading: ->

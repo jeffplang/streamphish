@@ -33,6 +33,8 @@
 @import url(http://fonts.googleapis.com/css?family=Audiowide|Jacques+Francois|Allan|Economica:400,700);
 
 $songBg: #0F2340;
+$sHandleSize: 12px;
+$sHandleHoverSize: 15px;
 
 body { background: $songBg; }
 
@@ -90,6 +92,8 @@ body.hidePlayer #main { padding-bottom: 0px; }
 
 #player { position: fixed; bottom: 0; height: 50px; width: 100%; background: #25585A; padding: 10px; z-index: 7000; }
 
+#player .controls { display: inline-block; margin-top: 3px; }
+
 #player a.btn { position: relative; color: rgba(255,255,255,1); text-decoration: none; background-color: rgba(219,87,5,1); font-family: arial; font-weight: 700; display: inline-block; width: 39px; height: 28px; text-align: center;
   -webkit-border-radius: 38px; -moz-border-radius: 38px; border-radius: 8px;
   -webkit-box-shadow: 0px 5px 0px rgba(219,31,5,1), 0px 5px 15px rgba(0,0,0,.7); -moz-box-shadow: 0px 5px 0px rgba(219,31,5,1), 0px 5px 15px rgba(0,0,0,.7); box-shadow: 0px 5px 0px rgba(219,31,5,1), 0px 5px 15px rgba(0,0,0,.7);
@@ -114,11 +118,27 @@ body.hidePlayer #main { padding-bottom: 0px; }
 #player a.btn.prev .arrowGrp { border-left: 3px solid #fff; }
 #player a.btn.next .arrowGrp { border-right: 3px solid #fff; }
 
-#player h2 { display: inline-block; font-family: 'Economica', cursive; font-weight: 700; font-size: 30px; vertical-align: top; margin-top: -2px; }
-#player h3 { display: inline-block; font-family: 'Economica', cursive; font-size: 19px; font-weight: 400; color: #fff; vertical-align: top; margin: 8px 0 0 10px; }
+#player h2 { display: inline-block; font-family: 'Economica', cursive; font-weight: 700; font-size: 30px; vertical-align: top; margin-left: 8px; }
+#player h3 { display: inline-block; font-family: 'Economica', cursive; font-size: 19px; font-weight: 400; color: #fff; vertical-align: top; margin: 10px 0 0 10px; }
 #player h3 small { font-size: 15px; }
 #player h2 a, #player h3 a { color: #fff; text-decoration: none; }
 #player h2 a:hover, #player h3 a:hover { text-decoration: underline; }
+
+#player .scrubber { height: 8px; background: #00f; position: absolute; left: 178px; right: 33px; top: 48px; border-radius: 3px; background: rgba(255,255,255,0.15);}
+#player .scrubber .loadProgress { width: 50%; height: inherit; border-radius: inherit; 
+background: rgb(234,185,45); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(234,185,45,1) 0%, rgba(199,152,16,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(234,185,45,1)), color-stop(100%,rgba(199,152,16,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eab92d', endColorstr='#c79810',GradientType=0 ); /* IE6-9 */
+}
+#player .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: -2px; border-radius: 6px; margin-left: -3px; left: 0%; }
+/*#player .scrubber .handle:hover { height: $sHandleHoverSize; width: $sHandleHoverSize; top: -4px; border-radius: 9px; left: -1px; }*/
+
+
 
 @media only screen and (max-device-width : 320px) {
   .pageList { margin-top: 26px; list-style-type: none; padding: 0; }
