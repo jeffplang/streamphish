@@ -10,3 +10,7 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
     song    = @model.get('tracks').get(songCid)
 
     App.player.play song
+
+  render: ->
+    super
+    this.el.scrollTop = 0;
