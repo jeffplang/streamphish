@@ -10,6 +10,7 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     'click .btn.prev':  'playPrev'
     'click .btn.next':  'playNext'
     'click .btn.playpause': 'togglePause'
+    'mousedown .scrubber': 'grabScrubberHandle'
     'mousedown .scrubber .handle': 'grabScrubberHandle'
     'touchdown .scrubber .handle': 'grabScrubberHandle'
 
@@ -34,6 +35,9 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     @model.togglePause()
     $btn.toggleClass('play').toggleClass('pause')
 
+  updateHandlePosition: (cssPos) ->
+    @$el.find('.handle').css('left', cssPos) unless @scrubbing
+
   trackChange: (player, track) ->
     @render()
     player.stop()
@@ -51,34 +55,40 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     maxScrubDistance = @$el.find('.scrubber').width() - 8
     cssPos = (track.sound.position / track.get('duration')) * maxScrubDistance
 
-    @$el.find('.handle').css('left', cssPos) unless @scrubbing
+    @updateHandlePosition cssPos
+
+  getScrubVars: ->
+    v = $scrubber: @$el.find('.scrubber')
+    v.$handle          = v.$scrubber.find('.handle')
+    v.scrubOffset      = v.$scrubber.offset().left + (v.$handle.width() / 4)
+    v.maxScrubDistance = v.$scrubber.width() - 8
+    v.scrubPosition    = 0
+    v
+
+  scrubToMousePos: (e, sv) ->
+    sv.scrubPosition = Streamphish.Helpers.clamp (e.clientX - sv.scrubOffset), 0, sv.maxScrubDistance
+    sv.$handle.css 'left', sv.scrubPosition
 
   grabScrubberHandle: (e) ->
     e.originalEvent.preventDefault()
     @scrubbing = true
-    @$el.find('.handle').addClass 'grabbed'
-    @._toggleHandleHandlers()
+    sv         = @getScrubVars()
 
-  _toggleHandleHandlers: ->
+    @scrubToMousePos e, sv
+    @._toggleHandleHandlers(sv)
+
+  _toggleHandleHandlers: (sv) ->
     $doc = $(document)
 
     if @scrubbing
-      $scrubber        = @$el.find('.scrubber')
-      $handle          = $scrubber.find('.handle')
-      scrubOffset      = $scrubber.offset().left + ($handle.width() / 4)
-      maxScrubDistance = $scrubber.width() - 8
-      scrubPosition    = 0
-
       $('body').addClass 'noTextSelect'
       $doc.on 'mouseup touchend', =>
-        @model.goToPercentage (scrubPosition / maxScrubDistance)
-        $handle.removeClass 'grabbed'
+        @model.goToPercentage (sv.scrubPosition / sv.maxScrubDistance)
         @scrubbing = false;
         @._toggleHandleHandlers()
 
-      $doc.on 'mousemove touchmove', (e) ->
-        scrubPosition = Streamphish.Helpers.clamp (e.clientX - scrubOffset), 0, maxScrubDistance
-        $handle.css 'left', scrubPosition
+      $doc.on 'mousemove touchmove', (e) =>
+        @scrubToMousePos e, sv
     else
       $doc.off 'mouseup mousemove touchend touchmove'
       $('body').removeClass 'noTextSelect'
