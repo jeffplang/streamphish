@@ -17,7 +17,14 @@ class Streamphish.Models.Show extends Backbone.Model
     json.year = @year()
     json
 
+  fetch: (opts) ->
+    _success = opts.success
+    _.extend opts, 
+      success: (model, resp, opts) =>
+        _success(model, resp, opts)
+        @fetched = true
 
+    super opts
 
 class Streamphish.Collections.Shows extends Backbone.Collection
   url: '/shows'

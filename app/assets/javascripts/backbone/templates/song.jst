@@ -4,8 +4,8 @@
 <a href="/songs" class="backBtn">← Songs</a>
 
 <ul class="pageList songs">
-  <% _.each(tracks, function(track) { %>
-    <li>
+  <% _.each(tracks, function(track, idx) { %>
+     <li data-track-idx="<%= idx %>" data-track-id="<%= track.id %>">
       <div class="songInfo">
         <span class="songDate">
           <a href="/shows/<%= track.show.show_date %>"><%= track.show.show_date %></a>

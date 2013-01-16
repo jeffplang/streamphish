@@ -17,7 +17,7 @@ class SongsController < ApplicationController
           :include => {
             :tracks => { 
               :methods => [:file_url, :slug],
-              :only => [:title, :position, :duration], 
+              :only => [:id, :title, :position, :duration, :file_url], 
               :include => {
                 :show => { :only => [:show_date, :location] }
               }

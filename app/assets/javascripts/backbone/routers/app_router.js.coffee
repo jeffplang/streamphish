@@ -7,6 +7,8 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     'shows?year=:year': 'showsByYear'
     'shows/:date':      'showByDate'
 
+  showCache: {}
+
   index: ->
     indexData = new Streamphish.Models.IndexData
     view      = new Streamphish.Views.SiteIndex( model: indexData )
@@ -32,22 +34,29 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     @swap view, shows
 
   showByDate: (date) ->
-    show = new Streamphish.Models.Show( id: date )
+    show = Streamphish.ShowCache.get( date, {autoFetch: false} )
     view = new Streamphish.Views.Show( model: show )
 
     @swap view, show
+
+  _swapCallback: (view) ->
+    @currentView.remove() if @currentView
+
+    @currentView = view
+    @currentView.render()
+
+    $('#player')
+      .before( @currentView.$el )
+      .trigger('rendered')
+    $('#dim').remove()
 
   swap: (view, fetchable) ->
     $player = $('#player')
     $player.before('<div id="dim"></div>') if @currentView
 
-    fetchable.fetch
-      success: (model, resp, opts) =>
-        @currentView.remove() if @currentView
-
-        @currentView = view
-        @currentView.render()
-        $player
-          .before( @currentView.$el )
-          .trigger('rendered')
-        $('#dim').remove()
+    if !fetchable.fetched
+      fetchable.fetch
+        success: (model, resp, opts) =>
+          @_swapCallback view
+    else
+      @_swapCallback view
