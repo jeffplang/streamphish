@@ -22,4 +22,6 @@ window.Streamphish =
       year   = d.getFullYear()
 
       fmt.replace('%m', month).replace('%d', day).replace('%Y', year)
-  
+
+    clamp: (val, min, max) ->
+      Math.max(min, Math.min(max, val))
