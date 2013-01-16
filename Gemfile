@@ -17,6 +17,7 @@ gem 'selenium-webdriver'
 gem 'xmpp4r'
 gem 'rails-backbone', :git => 'https://github.com/codebrew/backbone-rails.git'
 gem 'underscore-template-rails', :git => 'https://github.com/jeffplang/underscore-template-rails.git'
+gem 'jbuilder'
 # gem 'capybara'
 # gem 'capybara-webkit'
 

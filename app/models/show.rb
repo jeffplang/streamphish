@@ -25,4 +25,13 @@ class Show < ActiveRecord::Base
     "#{show_date.strftime('%m-%d-%Y')} - #{location}" if show_date && location
   end
   alias_method :title, :to_s # for rails admin
+
+  def bb_json
+    Jbuilder.encode do |json|
+      json.(self, :id, :location, :remastered, :sbd, :show_date, :special_tag, :tour_id, :venue_id)
+      json.tracks self.tracks.includes(:songs).order(:position) do |track|
+        json.(track, :id, :title, :position, :duration, :file_url, :slug)
+      end
+    end
+  end
 end

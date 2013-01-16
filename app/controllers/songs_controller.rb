@@ -8,22 +8,11 @@ class SongsController < ApplicationController
   end
 
   def show
-    @song = Song.find params[:id]
+    @song = Song.includes(:tracks).find params[:id]
     respond_to do |format|
       format.html
       format.json do 
-        render :json => @song.to_json(
-          :only => [:title], 
-          :include => {
-            :tracks => { 
-              :methods => [:file_url, :slug],
-              :only => [:id, :title, :position, :duration, :file_url], 
-              :include => {
-                :show => { :only => [:show_date, :location] }
-              }
-            }
-          }
-        )
+        render :json => @song.bb_json
       end
     end
   end

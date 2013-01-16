@@ -18,7 +18,7 @@ class Track < ActiveRecord::Base
   has_many :section_markers, :dependent => :destroy
   belongs_to :show
   
-  default_scope order('position')
+  # default_scope order('position')
   scope :chronological, order('shows.show_date ASC').joins(:show)
 
   ##############
@@ -74,4 +74,5 @@ class Track < ActiveRecord::Base
   def require_at_least_one_song
     errors.add(:songs, "Please add at least one song") if songs.empty?
   end
+
 end

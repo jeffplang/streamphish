@@ -16,11 +16,7 @@ class ShowsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do 
-        render :json => @show.to_json(
-          :include => {
-            :tracks => { :methods => [:file_url, :slug], :only => [:id, :title, :position, :duration] }
-          }
-        )
+        render :json => @show.bb_json
       end
     end
   end
