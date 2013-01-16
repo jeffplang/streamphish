@@ -1,4 +1,4 @@
-//= require soundmanager2
+//= require 'soundmanager2-nodebug'
 //= require util
 
 class Song

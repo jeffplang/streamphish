@@ -1,4 +1,4 @@
-//= require soundmanager2
+//= 'require soundmanager2-nodebug'
 
 function msToMMSS(ms) {
   var minutes = Math.floor(ms / (1000 * 60))
