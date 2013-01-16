@@ -10,7 +10,6 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     'click .btn.prev':  'playPrev'
     'click .btn.next':  'playNext'
     'click .btn.playpause': 'togglePause'
-    'click .scrubber': 'goToPosition'
     'mousedown .scrubber .handle': 'grabScrubberHandle'
     'touchdown .scrubber .handle': 'grabScrubberHandle'
 
@@ -49,11 +48,10 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     @$el.find('.loadProgress').width cssWidth
 
   trackPlaying: (track) ->
-    cssPos = "#{track.sound.position / track.get('duration') * 100}%"
-    @$el.find('.handle').css('left', cssPos) unless @scrubbing
+    maxScrubDistance = @$el.find('.scrubber').width() - 8
+    cssPos = (track.sound.position / track.get('duration')) * maxScrubDistance
 
-  goToPosition: (e) ->
-    $scrubber = @$el.find('.scrubber')
+    @$el.find('.handle').css('left', cssPos) unless @scrubbing
 
   grabScrubberHandle: (e) ->
     e.originalEvent.preventDefault()
@@ -67,20 +65,19 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     if @scrubbing
       $scrubber        = @$el.find('.scrubber')
       $handle          = $scrubber.find('.handle')
-      handleOffset     = $handle.width() / 4
-      scrubberOffset   = $scrubber.offset().left
-      maxScrubDistance = $scrubber.width() - 5
+      scrubOffset      = $scrubber.offset().left + ($handle.width() / 4)
+      maxScrubDistance = $scrubber.width() - 8
       scrubPosition    = 0
 
       $('body').addClass 'noTextSelect'
       $doc.on 'mouseup touchend', =>
-        @model.goToPercentage scrubPosition / maxScrubDistance
+        @model.goToPercentage (scrubPosition / maxScrubDistance)
         $handle.removeClass 'grabbed'
         @scrubbing = false;
         @._toggleHandleHandlers()
 
       $doc.on 'mousemove touchmove', (e) ->
-        scrubPosition = Streamphish.Helpers.clamp (e.clientX - scrubberOffset - handleOffset), 0, maxScrubDistance
+        scrubPosition = Streamphish.Helpers.clamp (e.clientX - scrubOffset), 0, maxScrubDistance
         $handle.css 'left', scrubPosition
     else
       $doc.off 'mouseup mousemove touchend touchmove'
