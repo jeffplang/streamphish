@@ -28,7 +28,7 @@ class Show < ActiveRecord::Base
 
   def bb_json
     Jbuilder.encode do |json|
-      json.(self, :id, :location, :remastered, :sbd, :show_date, :special_tag, :tour_id, :venue_id)
+      json.(self, :id, :location, :remastered, :sbd, :show_date)
       json.tracks self.tracks.includes(:songs).order(:position) do |track|
         json.(track, :id, :title, :position, :duration, :file_url, :slug)
       end
