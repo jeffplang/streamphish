@@ -1,4 +1,4 @@
-//= require soundmanager2
+//= require 'soundmanager2-nodebug'
 
 class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
   el:        '#player'
@@ -38,7 +38,7 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     @render()
     player.stop()
     track.sound.play
-      whileloading: => 
+      whileloading: =>
         @trackLoading track
       whileplaying: =>
         @trackPlaying track
