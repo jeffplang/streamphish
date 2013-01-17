@@ -13,6 +13,7 @@
         <br>
         <span class="songVenue"><%= track.show.location %></span>
       </div>
+      <span class="duration"><%= Streamphish.Helpers.msToMMSS(track.duration) %></span>
     </li>
   <% }); %>
 </ul>
