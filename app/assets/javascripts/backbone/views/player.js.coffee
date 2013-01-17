@@ -54,12 +54,13 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
   trackPlaying: (track) ->
     maxScrubDistance = @$el.find('.scrubber').width() - 8
     cssPos = (track.sound.position / track.get('duration')) * maxScrubDistance
-
+    @$el.find('.time .current').text Streamphish.Helpers.msToMMSS track.sound.position unless @scrubbing
     @updateHandlePosition cssPos
 
   getScrubVars: ->
     v = $scrubber: @$el.find('.scrubber')
     v.$handle          = v.$scrubber.find('.handle')
+    v.$currentTime     = @$el.find('.time .current')
     v.scrubOffset      = v.$scrubber.offset().left + (v.$handle.width() / 4)
     v.maxScrubDistance = v.$scrubber.width() - 8
     v.scrubPosition    = 0
@@ -67,7 +68,9 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
 
   scrubToMousePos: (e, sv) ->
     sv.scrubPosition = Streamphish.Helpers.clamp (e.clientX - sv.scrubOffset), 0, sv.maxScrubDistance
+    msPosition       = sv.scrubPosition / sv.maxScrubDistance * @model.get('currentTrack').get('duration')
     sv.$handle.css 'left', sv.scrubPosition
+    sv.$currentTime.text Streamphish.Helpers.msToMMSS(msPosition)
 
   grabScrubberHandle: (e) ->
     e.originalEvent.preventDefault()

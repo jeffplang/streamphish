@@ -134,7 +134,9 @@ body.hidePlayer #main { padding-bottom: 0px; }
 #player h2 a, #player h3 a { color: #fff; text-decoration: none; }
 #player h2 a:hover, #player h3 a:hover { text-decoration: underline; }
 
-#player .scrubber { height: 8px; background: #00f; position: absolute; left: 178px; right: 33px; top: 48px; border-radius: 3px; background: rgba(255,255,255,0.15);}
+#player .scrubContainer { position: absolute; left: 178px; right: 25px; top: 48px; }
+#player .scrubber { height: 8px; background: #00f; position: absolute; left: 178px; right: 122px; top: 48px; border-radius: 3px; background: rgba(255,255,255,0.15);}
+#player .scrubber.lt10Min { right: 107px; }
 #player .scrubber .loadProgress { width: 0; height: inherit; border-radius: inherit; 
 background: rgb(234,185,45); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(234,185,45,1) 0%, rgba(199,152,16,1) 100%); /* FF3.6+ */
@@ -149,7 +151,7 @@ background: rgb(234,185,45); /* Old browsers */
 
 /*#player .scrubber .handle:hover { height: $sHandleHoverSize; width: $sHandleHoverSize; top: -4px; border-radius: 9px; left: -1px; }*/
 
-
+#player .time { position: absolute; top: 39px; right: 28px; font-family: 'Economica', cursive; font-size: 20px; color: #fff; }
 
 @media only screen and (max-device-width : 320px) {
   .pageList { margin-top: 26px; list-style-type: none; padding: 0; }

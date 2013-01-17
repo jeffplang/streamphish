@@ -26,8 +26,12 @@
   </h3>
 <% } %>
 
-<div class="scrubber">
+<% var lt10MinClass = currentTrack.get('duration') < 600000 ? 'lt10Min' : '' %>
+<div class="scrubber <%= lt10MinClass %>">
   <div class="loadProgress">
     <div class="handle"></div>
   </div>
+</div>
+<div class="time">
+  <span class="current">0:00</span> / <span class="total"><%= Streamphish.Helpers.msToMMSS(currentTrack.get('duration')) %></span>
 </div>
