@@ -5,7 +5,7 @@
 
 <ul class="pageList songs">
   <% _.each(tracks, function(track, idx) { %>
-    <li data-track-idx="<%= idx %>" data-track-id="<%= track.id %>">
+    <li data-track-idx="<%= idx %>" data-track-id="<%= track.id %>" <% if(Streamphish.Helpers.isPlaying(track)) { %>class="playing"<% } %>>
       <a class="btn play"></a>
       <div class="songInfo">
         <span class="songDate">

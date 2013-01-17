@@ -30,5 +30,9 @@ window.Streamphish =
 
       "#{ minutes }:#{if seconds < 10 then '0' else '' }#{ seconds }"
 
+    isPlaying: (track) ->
+      ct = App.player.get('currentTrack')
+      ct && track.id == ct.get('id')
+
     clamp: (val, min, max) ->
       Math.max(min, Math.min(max, val))

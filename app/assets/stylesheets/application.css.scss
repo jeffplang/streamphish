@@ -87,14 +87,13 @@ opacity: 0.20;           /* fx, safari, opera */
 .pageList { margin-top: 44px; list-style-type: none; padding: 0; }
 .pageList li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; height: 57px; position: relative; border-bottom: 1px solid #1D314E; }
 
-.pageList li:hover { 
+.pageList li.playing { 
   background: lighten($songBg, 4%);
 }
 
 .pageList.linkItems li { padding: 0; height: 93px; position: relative; }
-.pageList.linkItems li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; font-size: 21px; padding: 0 0 0 18px; }
-.pageList.linkItems li a span { top: 30px; position: relative; }
-
+.pageList.linkItems li a { text-decoration: none; color: #3C9C7B; font-size: 21px; padding: 0 0 0 18px; margin-top: 20px; display: inline-block; }
+.pageList.linkItems li a:hover { color: #fff; }
 body.hidePlayer #player { bottom: -70px; }
 body.hidePlayer #main { padding-bottom: 0px; }
 #player, #main { -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -ms-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; }
@@ -134,7 +133,7 @@ a.btn.play:after { content: '▶'; }
 #player h2 a:hover, #player h3 a:hover { text-decoration: underline; }
 
 #player .scrubContainer { position: absolute; left: 178px; right: 25px; top: 48px; }
-#player .scrubber { height: 8px; background: #00f; position: absolute; left: 178px; right: 122px; top: 48px; border-radius: 3px; background: rgba(255,255,255,0.15);}
+#player .scrubber { height: 8px; background: #00f; position: absolute; left: 178px; right: 118px; top: 48px; border-radius: 3px; background: rgba(255,255,255,0.15);}
 #player .scrubber.lt10Min { right: 107px; }
 #player .scrubber .loadProgress { width: 0; height: inherit; border-radius: inherit; 
 background: rgb(234,185,45); /* Old browsers */

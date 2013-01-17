@@ -10,6 +10,9 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
     songCid = $li.data 'cid'
     song    = @model.get('tracks').get(songCid)
 
+    @$el.find('.playing').removeClass 'playing'
+    $li.addClass 'playing'
+
     App.player.play song
 
   render: ->

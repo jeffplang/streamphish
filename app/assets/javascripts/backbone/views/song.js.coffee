@@ -10,5 +10,8 @@ class Streamphish.Views.Song extends Streamphish.Views.ApplicationView
     trackIdx = $li.data 'track-idx'
     trackId  = $li.data 'track-id'
     Streamphish.ShowCache.get @model.get('tracks')[trackIdx].show.show_date,
-      fetchCallback: (show) ->
+      fetchCallback: (show) =>
+        @$el.find('.playing').removeClass 'playing'
+        $li.addClass 'playing'
+
         App.player.play show.get('tracks').get(trackId)
