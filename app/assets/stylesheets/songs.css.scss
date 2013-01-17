@@ -5,7 +5,7 @@
 $sHandleSize: 12px;
 $markerColor: #FFF4A3;
 
-.pageList .songInfo { float: left; margin-top: 5px; }
+.pageList .songInfo { float: left; margin: 5px 0 0 15px; }
 .pageList .songTime { float: right; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
 .pageList .songTime time { display: inline-block; line-height: 3px; }
@@ -43,6 +43,14 @@ $markerColor: #FFF4A3;
 .pageList .songTitle { font-size: 23px; display: inline-block; margin-top: 7px; }
 .pageList .songInfo a { color: inherit; text-decoration: none; }
 .pageList .songInfo a:hover { color: #fff; }
+
+.pageList .btn { float: left; margin-top: 6px; background-color: #213766; 
+                 webkit-box-shadow: 0px 5px 0px rgb(16, 39, 112), 0px 5px 15px rgba(0,0,0,.7); -moz-box-shadow: 0px 5px 0px rgb(16, 39, 112), 0px 5px 15px rgba(0,0,0,.7); box-shadow: 0px 5px 0px rgb(16, 39, 112), 0px 5px 15px rgba(0,0,0,.7);
+               }
+.pageList .btn:active { position: relative; top: 2px;
+    -webkit-box-shadow: 0px 3px 0px rgb(16, 39, 112), 0px 3px 6px rgba(0,0,0,.9); -moz-box-shadow: 0px 3px 0px rgb(16, 39, 112), 0px 3px 6px rgba(0,0,0,.9); box-shadow: 0px 3px 0px rgb(16, 39, 112), 0px 3px 6px rgba(0,0,0,.9);
+}
+
 
 .pageList .scrubber { display: inline-block; width: 265px; height: 16px; }
 .pageList .scrubber .timeline { 

@@ -5,7 +5,8 @@
 
 <ul class="pageList songs">
   <% _.each(tracks, function(track, idx) { %>
-     <li data-track-idx="<%= idx %>" data-track-id="<%= track.id %>">
+    <li data-track-idx="<%= idx %>" data-track-id="<%= track.id %>">
+      <a class="btn play"></a>
       <div class="songInfo">
         <span class="songDate">
           <a href="/shows/<%= track.show.show_date %>"><%= track.show.show_date %></a>

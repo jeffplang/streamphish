@@ -4,9 +4,11 @@
 <ul class="pageList songs">
   <% _.each(tracks.models, function(track) { %>
     <li data-cid="<%= track.cid %>">
+      <a class="btn play">
+      </a>
       <div class="songInfo">
         <div class="songTitle">
-          <a href="/songs/<%= track.get('slug') %>"><%= track.get('position') %> <%= track.get('title') %></a>
+          <a href="/songs/<%= track.get('slug') %>"><%= track.get('title') %></a>
         </div>
         <span class="duration"><%= Streamphish.Util.msToMMSS(track.get('duration')) %></span>
       </div>
