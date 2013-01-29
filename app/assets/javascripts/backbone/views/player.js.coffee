@@ -23,14 +23,18 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
 
     @model.on 'change:currentTrack', @trackChange, @
 
+    $(document).on 'keypress', (e) =>
+      @handleKeypress(e)
+
   playPrev: ->
     @model.playPrev()
 
   playNext: ->
     @model.playNext()
 
-  togglePause: (e) ->
-    $btn = $(e.currentTarget)
+  togglePause: ->
+    # $btn = $(e.currentTarget)
+    $btn = @$el.find('.btn.playpause')
 
     @model.togglePause()
     $btn.toggleClass('play').toggleClass('pause')
@@ -96,6 +100,11 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
       $doc.off 'mouseup mousemove touchend touchmove'
       $('body').removeClass 'noTextSelect'
       
+  handleKeypress: (e) ->
+    if e.charCode == 32
+      e.preventDefault()
+      @togglePause() if @model.get 'currentTrack'
+
 
   render: ->
     $(document.body).removeClass 'hidePlayer'
