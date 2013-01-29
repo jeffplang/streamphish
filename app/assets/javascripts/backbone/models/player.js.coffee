@@ -1,7 +1,10 @@
 class Streamphish.Models.Player extends Backbone.Model
+  # Private currently playing variable to terminate loading of current
+  # track on track change
+  _cSound:   null
+
   initialize: ->
     super
-
     @set 'currentTrack', null
 
     @on 'change:currentTrack', @stopLoadingCurrent
@@ -26,12 +29,13 @@ class Streamphish.Models.Player extends Backbone.Model
   togglePause: ->
     @get('currentTrack').sound.togglePause()
 
-  stopLoadingCurrent: ->
-    @get('currentTrack').sound.unload() if @has 'currentTrack'
-
   isPaused: ->
     @get('currentTrack').sound.paused
 
   goToPercentage: (percentage) ->
     duration = @get('currentTrack').get('duration')
     @get('currentTrack').sound.setPosition(duration * percentage)
+
+  stopLoadingCurrent: (player, newTrack) ->
+    @_cSound.unload() if @_cSound
+    @_cSound = newTrack.sound
