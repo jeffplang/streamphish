@@ -1,11 +1,11 @@
 class Streamphish.Routers.AppRouter extends Backbone.Router
 
   routes:
-    '':                 'index'
-    'songs':            'songs'
-    'songs/:title':     'song'
-    'shows?year=:year': 'showsByYear'
-    'shows/:date':      'showByDate'
+    '':                     'index'
+    'songs':                'songs'
+    'songs/:title':         'song'
+    'shows?year=:year':     'showsByYear'
+    'shows/:date(/:track)': 'showByDate'
 
   showCache: {}
 
@@ -33,9 +33,9 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
     @swap view, shows
 
-  showByDate: (date) ->
+  showByDate: (date, track) ->
     show = Streamphish.ShowCache.get( date, {autoFetch: false} )
-    view = new Streamphish.Views.Show( model: show )
+    view = new Streamphish.Views.Show( model: show, autoplayTrack: track )
 
     @swap view, show
 

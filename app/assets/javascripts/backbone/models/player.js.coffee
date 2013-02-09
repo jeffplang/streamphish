@@ -10,6 +10,7 @@ class Streamphish.Models.Player extends Backbone.Model
     @on 'change:currentTrack', @stopLoadingCurrent
 
   play: (track) ->
+    return if !track
     @set 'playlist', track.collection if track.collection
     @set 'currentTrack', track
 
