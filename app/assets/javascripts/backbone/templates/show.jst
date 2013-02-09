@@ -1,12 +1,13 @@
 <h1 class="pageListHeader"><%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %> - <%= location %></h1>
 <a href="/shows?year=<%= year %>" class="backBtn">← <%= year %></a>
 
+<!-- TODO: Remove # on track links once webserver is properly config'd -->
 <ul class="pageList songs">
   <% _.each(tracks.models, function(track) { %>
     <li data-cid="<%= track.cid %>">
       <div class="songInfo">
         <div class="songTitle">
-          <a href="/songs/<%= track.get('slug') %>"><%= track.get('position') %> <%= track.get('title') %></a>
+          <a href="/#shows/<%= show_date %>/<%= track.get('slug') %>"><%= track.get('position') %> <%= track.get('title') %></a>
         </div>
         <span class="duration"><%= Streamphish.Util.msToMMSS(track.get('duration')) %></span>
       </div>

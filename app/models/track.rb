@@ -6,6 +6,9 @@ class Track < ActiveRecord::Base
   FILE_NAME_HASH_SECRET = "CROUOPQNDKUCBVYTQYQLUSKCOMJAQFEWXMEX"
   attr_accessible :show_id, :title, :position, :song_file, :song_ids
 
+  extend FriendlyId
+  friendly_id :title, :use => [:slugged, :scoped], :scope => :show
+
   has_attached_file :song_file,
     :url => "/system/:class/:attachment/:id_partition/:style/:hash.:extension",
     :hash_secret => FILE_NAME_HASH_SECRET
@@ -38,10 +41,6 @@ class Track < ActiveRecord::Base
 
   def file_url
     song_file.to_s
-  end
-
-  def slug
-    songs.first.slug
   end
 
   protected

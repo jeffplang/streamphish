@@ -12,20 +12,6 @@ class Streamphish.Models.Show extends Backbone.Model
   year: =>
     @get('show_date').split('-')[0]
 
-  trackWithSlug: (slug) ->
-    # Valid slugs:
-    #   'wading-in-the-velvet-sea'
-    #   'wading-in-the-velvet-sea--2'
-
-    dupIdx = slug.search /--\d+$/
-    if dupIdx == -1
-      tIdx = 0
-    else
-      tIdx = parseInt(slug.substring(dupIdx + 2), 10) - 1
-      slug = slug.substring(dupIdx, -1)
-
-    @get('tracks').where(slug: slug)[tIdx]
-
   toJSON: ->
     json = super
     json.year = @year()

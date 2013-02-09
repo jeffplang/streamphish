@@ -2,10 +2,6 @@ class Streamphish.Views.ApplicationView extends Backbone.View
   tagName: 'div'
   id: 'main'
 
-  bypassLink: (e) ->
-    $(document).trigger e
-    false
-
   render: ->
     # This hack is if this.model is a collection.  Underscore templates expect
     # data to come in an object (to be used in a with statement), or for the 
