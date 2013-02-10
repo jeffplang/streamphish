@@ -1,7 +1,10 @@
 <h1 class="pageListHeader">
-<a href="/#shows/<%= show_date %>" data-bypass>
-  <%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %> - <%= location %>
-</a>
+  <a href="/#shows/<%= show_date %>" data-bypass>
+    <%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %> - <%= location %>
+  </a>
+  <a href="http://phish.net/setlists/?d=<%= show_date %>" class="pnet" target="_blank" data-bypass>
+    <img src="/assets/phishnetlogo.png" alt="Phish.net Logo">
+  </a>
 </h1>
 <a href="/shows?year=<%= year %>" class="backBtn">← <%= year %></a>
 
