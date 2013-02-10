@@ -33,10 +33,10 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     @model.playNext()
 
   togglePause: ->
-    # $btn = $(e.currentTarget)
     $btn = @$el.find('.btn.playpause')
 
     @model.togglePause()
+    @toggleTitleAnimation()
     $btn.toggleClass('play').toggleClass('pause')
 
   updateHandlePosition: (cssPos) ->
@@ -45,6 +45,7 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
   trackChange: (player, track) ->
     @render()
     player.stop()
+    @toggleTitleAnimation() unless @_animating
     track.sound.play
       whileloading: =>
         @trackLoading track
@@ -60,6 +61,23 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     cssPos = (track.sound.position / track.get('duration')) * maxScrubDistance
     @$el.find('.time .current').text Streamphish.Helpers.msToMMSS track.sound.position unless @scrubbing
     @updateHandlePosition cssPos
+
+  toggleTitleAnimation: ->
+    @_title ||= document.title
+    @_frames ||= ['*', '~', '>']
+
+    titleAnimation = =>
+      @_frames.unshift @_frames.pop()
+      document.title = @_frames[0] + " " + @_title
+
+    if @_animating
+      clearInterval @_titleAnimation
+      document.title = @_title
+      @_title = @_animating = null
+    else
+      titleAnimation()
+      @_titleAnimation = setInterval(titleAnimation, 500)
+      @_animating = true
 
   getScrubVars: ->
     v = $scrubber: @$el.find('.scrubber')
