@@ -8,6 +8,7 @@ class Streamphish.Models.Player extends Backbone.Model
     @set 'currentTrack', null
 
     @on 'change:currentTrack', @stopLoadingCurrent
+    @on 'change:currentTrack', @_pushTrackListenAnalytic
 
   play: (track) ->
     return if !track
@@ -40,3 +41,7 @@ class Streamphish.Models.Player extends Backbone.Model
   stopLoadingCurrent: (player, newTrack) ->
     @_cSound.unload() if @_cSound
     @_cSound = newTrack.sound
+
+  _pushTrackListenAnalytic: (player, track) =>
+    trackUrl = "/shows/#{track.collection.show.get('show_date')}/#{track.get('slug')}"
+    _gaq.push ['_trackEvent', 'track', 'listen', trackUrl]

@@ -9,35 +9,39 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
   showCache: {}
 
+  initialize: ->
+    super
+    @bind 'all', @_trackPageView
+
   index: ->
     indexData = new Streamphish.Models.IndexData
     view      = new Streamphish.Views.SiteIndex( model: indexData )
 
-    @swap view, indexData
+    @_swap view, indexData
 
   songs: ->
     songs = new Streamphish.Collections.Songs
     view  = new Streamphish.Views.Songs( collection: songs )
 
-    @swap view, songs
+    @_swap view, songs
 
   song: (title) ->
     song = new Streamphish.Models.Song( id: title )
     view = new Streamphish.Views.Song( model: song )
 
-    @swap view, song
+    @_swap view, song
 
   showsByYear: (year) ->
     shows = new Streamphish.Collections.Shows( [], year: year )
     view  = new Streamphish.Views.ShowsByYear( collection: shows )
 
-    @swap view, shows
+    @_swap view, shows
 
   showByDate: (date, track) ->
     show = Streamphish.ShowCache.get( date, {autoFetch: false} )
     view = new Streamphish.Views.Show( model: show, autoplayTrack: track )
 
-    @swap view, show
+    @_swap view, show
 
   _swapCallback: (view) ->
     @currentView.remove() if @currentView
@@ -50,7 +54,7 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
       .trigger('rendered')
     $('#dim').remove()
 
-  swap: (view, fetchable) ->
+  _swap: (view, fetchable) ->
     $player = $('#player')
     $player.before('<div id="dim"></div>') if @currentView
 
@@ -60,3 +64,7 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
           @_swapCallback view
     else
       @_swapCallback view
+
+  _trackPageView: ->
+    url = Backbone.history.getFragment()
+    _gaq.push ['_trackPageview', "/#{url}"]
