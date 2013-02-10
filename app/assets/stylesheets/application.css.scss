@@ -71,6 +71,8 @@ h1.pageListHeader {
   background: linear-gradient(to bottom,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31cd7a', endColorstr='#329862',GradientType=0 ); /* IE6-9 */
 }
+h1.pageListHeader a { text-decoration: none; color: inherit; }
+h1.pageListHeader a:hover { text-decoration: underline; }
 a.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #fff; text-decoration: none; top: 0; left: 0; z-index: 50; position: fixed; display: inline-block; height: 32px; padding: 9px 18px 0 6px; background: inherit; }
 
 div.pageContainer { margin-top: 60px; position: relative; }

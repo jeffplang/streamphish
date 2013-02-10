@@ -1,4 +1,8 @@
-<h1 class="pageListHeader"><%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %> - <%= location %></h1>
+<h1 class="pageListHeader">
+<a href="/#shows/<%= show_date %>" data-bypass>
+  <%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %> - <%= location %>
+</a>
+</h1>
 <a href="/shows?year=<%= year %>" class="backBtn">← <%= year %></a>
 
 <!-- TODO: Remove # on track links once webserver is properly config'd -->
