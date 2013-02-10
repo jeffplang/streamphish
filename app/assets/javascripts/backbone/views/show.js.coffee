@@ -17,10 +17,16 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
     songCid = $(e.currentTarget).data 'cid'
     song    = @model.get('tracks').get(songCid)
 
+    @updateUrl(song)
     App.player.play song
 
-  updateUrl: ->
-    App.router.navigate "/shows/#{@model.get('show_date')}/#{App.player.get('currentTrack').get('slug')}", replace: true
+  updateUrl: (obj) ->
+    if (obj instanceof Streamphish.Models.Player)
+      track = obj.get('currentTrack')
+    else
+      track = obj
+
+    App.router.navigate "/shows/#{@model.get('show_date')}/#{track.get('slug')}", replace: true
 
   remove: ->
     App.player.off 'change:currentTrack', null, @
