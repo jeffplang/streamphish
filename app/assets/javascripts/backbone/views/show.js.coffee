@@ -17,7 +17,7 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
     songCid = $(e.currentTarget).data 'cid'
     song    = @model.get('tracks').get(songCid)
 
-    @updateUrl(song)
+    @updateUrl(song) # For when you come back to a show view and click the currently playing song
     App.player.play song
 
   updateUrl: (obj) ->
