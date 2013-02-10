@@ -64,11 +64,13 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
 
   toggleTitleAnimation: ->
     @_title ||= document.title
-    @_frames ||= ['*', '~', '>']
+    # @_frames ||= ['▢', '▣', '▤', '▥']
+    # @_frames ||= ['▲', '△', '▶', '▷', '▼', '▽', '◀', '◁']
+    @_frames ||= ['◈', '▣', '◉', '◎']
 
     titleAnimation = =>
       @_frames.unshift @_frames.pop()
-      document.title = @_frames[0] + " " + @_title
+      document.title = @_frames[0] + " " + @_title + " " + @_frames[0]
 
     if @_animating
       clearInterval @_titleAnimation
@@ -76,7 +78,7 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
       @_title = @_animating = null
     else
       titleAnimation()
-      @_titleAnimation = setInterval(titleAnimation, 500)
+      @_titleAnimation = setInterval(titleAnimation, 400)
       @_animating = true
 
   getScrubVars: ->
