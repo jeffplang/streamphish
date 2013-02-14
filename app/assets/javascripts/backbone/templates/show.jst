@@ -15,6 +15,12 @@
       <div class="songInfo">
         <div class="songTitle">
           <a href="/#shows/<%= show_date %>/<%= track.get('slug') %>" data-bypass><%= track.get('position') %> <%= track.get('title') %></a>
+          <% if(sbd) { %>
+            <span class="tag">SBD</span>
+          <% } %>
+          <% if(remastered) { %>
+            <span class="tag">Remastered</span>
+          <% } %>
         </div>
         <span class="duration"><%= Streamphish.Util.msToMMSS(track.get('duration')) %></span>
       </div>
