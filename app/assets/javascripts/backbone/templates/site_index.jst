@@ -1,10 +1,16 @@
 <h1 class="pageListHeader">PhishTracks</h1>
 
 <div class="pageContainer">
-  <h2>Years</h2>
-  <%= Streamphish.Templates.year_bubbles({"years": years}) %>
-
-  <h2>Songs <span>( <a href="/songs">View All</a> )</span></h2>
-  <%= Streamphish.Templates.song_bubbles({"songs": songs}) %>
+  <ul class="pageList linkItems">
+    <% _.each(years, function(year) { %>
+      <li>
+        <a href="/shows?year=<%= year.year %>"><span><%= year.year %></span></a>
+      </li>
+    <% }); %>
+    <% _.each(songs, function(song) { %>
+      <li>
+        <a href="<%= song.url %>"><span><%= song.title %></span></a>
+      </li>
+    <% }); %>
+  </ul>
 </div>
-

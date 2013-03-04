@@ -18,22 +18,24 @@
 //= require backbone
 //= require backbone/streamphish
 //= require util
+//= require fast_touch_links
 
 # global namespace for stuff
 window.App = {}
 
 $ ->
+  App.FTL    = new Streamphish.FastTouchLinks
   App.router = new Streamphish.Routers.AppRouter
   App.player = new Streamphish.Models.Player
   App.player_view = new Streamphish.Views.Player(model: App.player)
 
   # Setup link hijacking to go through Backbone
-  $(document).on 'click', 'a:not([data-bypass])', (e) ->
-    href = prop: $(this).prop("href"), attr: $(this).attr("href")
-    root = "#{location.protocol}//#{location.host}"
+  # $(document).on 'click', 'a:not([data-bypass])', (e) ->
+  #   href = prop: $(this).prop("href"), attr: $(this).attr("href")
+  #   root = "#{location.protocol}//#{location.host}"
 
-    if href.prop and (href.prop.slice(0, root.length) == root)
-      e.preventDefault()
-      App.router.navigate href.attr, true
+  #   if href.prop and (href.prop.slice(0, root.length) == root)
+  #     e.preventDefault()
+  #     App.router.navigate href.attr, true
 
   Backbone.history.start()
