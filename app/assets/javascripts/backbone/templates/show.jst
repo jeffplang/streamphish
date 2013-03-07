@@ -1,10 +1,12 @@
-<h1 class="pageListHeader">
-  <%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %> - <%= location %>
-  <a href="http://phish.net/setlists/?d=<%= show_date %>" class="pnet" target="_blank" data-bypass>
-    <img src="/assets/phishnetlogo.png" alt="Phish.net Logo" height="18" width="20">
+<header>
+  <a href="/shows?year=<%= year %>" class="backBtn">← <%= year %></a>
+  <h1 class="pageListHeader">
+    <%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %> - <%= location %>
+  </h1>
+  <a href="http://phish.net/setlists/?d=<%= show_date %>" target="_blank" class="info" data-bypass>
+    info
   </a>
-</h1>
-<a href="/shows?year=<%= year %>" class="backBtn">← <%= year %></a>
+</header>
 
 <!-- TODO: Remove # on track links once webserver is properly config'd -->
 <ul class="pageList songs">

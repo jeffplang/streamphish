@@ -1,7 +1,7 @@
-<h1 class="pageListHeader">
-  <%= title %>
-</h1>
-<a href="/songs" class="backBtn">← Songs</a>
+<header>
+  <a href="/songs" class="backBtn">← Songs</a>
+  <h1><%= title %></h1>
+</header>
 
 <ul class="pageList songs">
   <% _.each(tracks, function(track, idx) { %>
