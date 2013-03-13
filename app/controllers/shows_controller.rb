@@ -5,7 +5,7 @@ class ShowsController < ApplicationController
     get_shows_by_year
 
     respond_to do |format|
-      format.html { render "shows_by_year" }
+      # format.html { render "shows_by_year" }
       format.json { render :json => @shows }
     end
   end
@@ -14,7 +14,7 @@ class ShowsController < ApplicationController
     @show = Show.includes(:tracks => :songs).find(params[:id])
 
     respond_to do |format|
-      format.html
+      # format.html
       format.json do 
         render :json => @show.bb_json
       end
