@@ -1,6 +1,6 @@
 class ShowsController < ApplicationController
 
-  caches_page :show
+  caches_action :show
   caches_action :index, :cache_path => Proc.new { |c| c.params.slice :controller, :action, :year },
                         :if => Proc.new { request.format.json? }
 
