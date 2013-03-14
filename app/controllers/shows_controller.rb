@@ -1,4 +1,8 @@
 class ShowsController < ApplicationController
+
+  caches_page :show
+  caches_action :index, :cache_path => Proc.new { |c| c.params.slice :controller, :action, :year }
+
   def index
     redirect_to root_path and return unless params[:year]
 

@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  caches_page :index, :show
+
   def index
     @songs = Song.where('tracks_count > 0').order(:title)
     respond_to do |format|
