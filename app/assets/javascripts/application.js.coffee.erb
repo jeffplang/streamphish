@@ -36,4 +36,4 @@ $ ->
       e.preventDefault()
       App.router.navigate href.attr, true
 
-  Backbone.history.start()
+  Backbone.history.start(pushState: <%= Rails.env.production? %>)
