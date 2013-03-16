@@ -1,5 +1,5 @@
 <header>
-  <a href="/shows?year=<%= year %>" class="backBtn">← <%= year %></a>
+  <a href="/shows/<%= year %>" class="backBtn">← <%= year %></a>
   <h1 class="pageListHeader">
     <%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %> - <%= location %>
   </h1>
