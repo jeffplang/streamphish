@@ -12,8 +12,12 @@ class Streamphish.Models.Player extends Backbone.Model
 
   play: (track) ->
     return if !track
-    @set 'playlist', track.collection if track.collection
-    @set 'currentTrack', track
+    # On FF (and other browsers that use flash?), @play may be called before 
+    # soundManager is ready, such as when a user directly visits a show page
+    # with an autoPlay track (i.e. /shows/1994-06-26/wilson)
+    soundManager.onready =>
+      @set 'playlist', track.collection if track.collection
+      @set 'currentTrack', track
 
   stop: ->
     soundManager.stopAll();
