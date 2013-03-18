@@ -8,13 +8,12 @@
   </a>
 </header>
 
-<!-- TODO: Remove # on track links once webserver is properly config'd -->
 <ul class="pageList songs">
   <% _.each(tracks.models, function(track) { %>
     <li data-cid="<%= track.cid %>">
       <div class="songInfo">
         <div class="songTitle">
-          <a href="/#shows/<%= show_date %>/<%= track.get('slug') %>" data-bypass><%= track.get('position') %> <%= track.get('title') %></a>
+          <a href="/shows/<%= show_date %>/<%= track.get('slug') %>" data-bypass><%= track.get('position') %> <%= track.get('title') %></a>
           <% if(sbd) { %>
             <span class="tag">SBD</span>
           <% } %>
