@@ -12,7 +12,7 @@ class Streamphish.Views.SiteIndex extends Streamphish.Views.ApplicationView
       $years  = $ 'ul.yearsCircles li'
       $win    = $ window
 
-      $songsC.height $win.height() - $songsC.offset().top
+      $songsC.height Math.min(300, ($win.height() - $songsC.offset().top))
 
       $songs
         .circlemouse
@@ -24,7 +24,7 @@ class Streamphish.Views.SiteIndex extends Streamphish.Views.ApplicationView
           $el   = $(el)
           $span = $el.children 'span'
           randomSize = Streamphish.Util.clamp($span.width() + 40, 80, 146)
-          maxHeight = Math.min 300, $songsC.height()
+          maxHeight = $songsC.height()
 
           $el.css
             width: randomSize

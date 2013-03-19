@@ -161,6 +161,9 @@ background: rgb(234,185,45); /* Old browsers */
 
 #player .time { position: absolute; top: 39px; right: 28px; font-family: 'Economica', cursive; font-size: 20px; color: #fff; }
 
+#bottom-msg { position: relative; margin: 50px 0 20px 0; text-align: center; font-family: 'Jacques Francois', serif; color: #436FA0; font-size: 14px; }
+#bottom-msg a { color: inherit; }
+
 @media only screen and (max-device-width : 320px) {
   .pageList { margin-top: 26px; list-style-type: none; padding: 0; }
   h1.pageListHeader { font-size: 18px; }
