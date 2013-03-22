@@ -1,4 +1,4 @@
-//= require 'soundmanager2-nodebug'
+//= require 'soundmanager2'
 
 class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
   el:        '#player'
@@ -19,6 +19,7 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
       url: '/assets/'
       useHTML5Audio: true
       preferFlash: false
+      flashVersion: 9
       debugMode: false
 
     @model.on 'change:currentTrack', @trackChange, @
