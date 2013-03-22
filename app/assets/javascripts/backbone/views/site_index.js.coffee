@@ -5,4 +5,3 @@ class Streamphish.Views.SiteIndex extends Streamphish.Views.ApplicationView
 
   render: ->
     super
-

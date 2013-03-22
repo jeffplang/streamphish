@@ -4,7 +4,7 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     '':                     'index'
     'songs':                'songs'
     'songs/:title':         'song'
-    'shows?year=:year':     'showsByYear'
+    # 'shows?:year_query':    'showsByYear'
     'shows/:date(/:track)': 'showByDate'
 
   showCache: {}
@@ -37,11 +37,16 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
     @_swap view, shows
 
-  showByDate: (date, track) ->
-    show = Streamphish.ShowCache.get( date, {autoFetch: false} )
-    view = new Streamphish.Views.Show( model: show, autoplayTrack: track )
 
-    @_swap view, show
+  showByDate: (date, track) ->
+    # determine if date is a year
+    if date.match(/^\d{4}$|^83-87$/)
+      @showsByYear(date)
+    else
+      show = Streamphish.ShowCache.get( date, {autoFetch: false} )
+      view = new Streamphish.Views.Show( model: show, autoplayTrack: track )
+
+      @_swap view, show
 
   _swapCallback: (view) ->
     @currentView.remove() if @currentView

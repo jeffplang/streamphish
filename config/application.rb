@@ -64,5 +64,7 @@ module Streamphish
     config.assets.precompile += %w(application.js polyfills.js songs.js circle_event_manager.js pages.js soundmanager2.js)
 
     config.underscore_templates.variable = 'Streamphish.Templates'
+
+    config.action_controller.page_cache_extension = '.json'
   end
 end

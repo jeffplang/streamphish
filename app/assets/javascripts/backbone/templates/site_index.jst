@@ -1,16 +1,16 @@
-<h1 class="pageListHeader">PhishTracks</h1>
+<header>
+  <h1>PhishTracks</h1>
+</header>
 
-<div class="pageContainer">
-  <ul class="pageList linkItems">
-    <% _.each(years, function(year) { %>
-      <li>
-        <a href="/shows?year=<%= year.year %>"><span><%= year.year %></span></a>
-      </li>
-    <% }); %>
-    <% _.each(songs, function(song) { %>
-      <li>
-        <a href="<%= song.url %>"><span><%= song.title %></span></a>
-      </li>
-    <% }); %>
-  </ul>
-</div>
+<ul class="pageList linkItems">
+  <% _.each(years, function(year) { %>
+    <li>
+      <a href="/shows/<%= year.year %>"><span><%= year.year %></span></a>
+    </li>
+  <% }); %>
+  <% _.each(songs, function(song) { %>
+    <li>
+      <a href="<%= song.url %>"><span><%= song.title %></span></a>
+    </li>
+  <% }); %>
+</ul>

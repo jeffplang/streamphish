@@ -7,7 +7,6 @@ gem 'taglib-ruby'
 gem 'rubyzip'
 gem 'pg'
 gem 'paperclip'
-gem 'rails_admin'
 gem 'nokogiri'
 gem 'friendly_id'
 gem 'mp3info'
@@ -42,6 +41,9 @@ end
 gem 'jquery-rails'
 gem 'html5-rails'
 
+group :development do
+  gem 'rails_admin'
+end
 
 
 # To use ActiveModel has_secure_password

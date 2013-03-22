@@ -1,11 +1,16 @@
 class ShowsController < ApplicationController
+
+  caches_action :show
+  caches_action :index, :cache_path => Proc.new { |c| c.params.slice :controller, :action, :year },
+                        :if => Proc.new { request.format.json? }
+
   def index
     redirect_to root_path and return unless params[:year]
 
     get_shows_by_year
 
     respond_to do |format|
-      format.html { render "shows_by_year" }
+      # format.html { render "shows_by_year" }
       format.json { render :json => @shows }
     end
   end
@@ -14,7 +19,7 @@ class ShowsController < ApplicationController
     @show = Show.includes(:tracks => :songs).find(params[:id])
 
     respond_to do |format|
-      format.html
+      # format.html
       format.json do 
         render :json => @show.bb_json
       end

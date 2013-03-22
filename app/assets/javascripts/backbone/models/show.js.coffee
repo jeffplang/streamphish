@@ -3,6 +3,7 @@ class Streamphish.Models.Show extends Backbone.Model
 
   initialize: ->
     super
+    # The 'tracks' attribute is just JSON data from the server at first..we want to convert it into a Backbone track collection
     @on 'change:tracks', (model, tracks) =>
       @set 'tracks', 
            new Streamphish.Collections.Tracks( (new Streamphish.Models.Track(track) for track in tracks) )
