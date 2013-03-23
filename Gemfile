@@ -17,6 +17,7 @@ gem 'xmpp4r'
 gem 'rails-backbone', :git => 'https://github.com/codebrew/backbone-rails.git'
 gem 'underscore-template-rails', :git => 'https://github.com/jeffplang/underscore-template-rails.git'
 gem 'jbuilder'
+gem 'rails_admin'
 # gem 'capybara'
 # gem 'capybara-webkit'
 
@@ -42,7 +43,7 @@ gem 'jquery-rails'
 gem 'html5-rails'
 
 group :development do
-  gem 'rails_admin'
+
 end
 
 
