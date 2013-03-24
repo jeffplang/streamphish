@@ -9,33 +9,11 @@ $markerColor: #FFF4A3;
 .pageList .songTime { float: right; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
 .pageList .songTime time { display: inline-block; line-height: 3px; }
-.pageList .songTime time.currentTime {  }
 .pageList .songTime time.totalTime { width: 40px; }
 /*.pageList li.playing { background: lighten($songBg, 15%) }*/
 
-.pageList li.playing { 
-  background: rgb(0,76,152); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(0,76,152,1) 0%, rgba(6,69,132,1) 44%, rgba(10,60,110,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,76,152,1)), color-stop(44%,rgba(6,69,132,1)), color-stop(100%,rgba(10,60,110,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(0,76,152,1) 0%,rgba(6,69,132,1) 44%,rgba(10,60,110,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(0,76,152,1) 0%,rgba(6,69,132,1) 44%,rgba(10,60,110,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(0,76,152,1) 0%,rgba(6,69,132,1) 44%,rgba(10,60,110,1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(0,76,152,1) 0%,rgba(6,69,132,1) 44%,rgba(10,60,110,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004c98', endColorstr='#0a3c6e',GradientType=0 ); /* IE6-9 */
-}
-.pageList li.paused { -webkit-animation: adjustHue 0.5s ease-in-out infinite alternate; }
-
-@-webkit-keyframes adjustHue {  
-   from { -webkit-filter: saturate(100%); }  
-   /*50% { -webkit-filter: brightness(1%); }  */
-   to { -webkit-filter: saturate(75%); }
-
-}
-
-.pageList li.playing .songTime { opacity: 1; /*visibility: visible;*/ }
-.pageList li.playing .duration { opacity: 0; }
 .pageList .songTime { /*visibility: hidden;*/opacity: 0; margin-top: 12px; -webkit-transition-duration: 0.5s; }
-.pageList .duration { position: absolute; right: 45px; top: 25px; font-size: 32px; color: #425F77; -webkit-transition-duration: 0.5s; opacity: 1; }
+.pageList .duration { float: right; margin-top: 8px; font-size: 32px; color: #425F77; -webkit-transition-duration: 0.5s; opacity: 1; }
 
 .pageList br { margin: 0; }
 .pageList .songDate { font-size: 20px; }
@@ -44,47 +22,8 @@ $markerColor: #FFF4A3;
 .pageList .songInfo a { color: inherit; text-decoration: none; }
 .pageList .songInfo a:hover { color: #fff; }
 
-.pageList .scrubber { display: inline-block; width: 265px; height: 16px; }
-.pageList .scrubber .timeline { 
-  background: rgb(88,88,88); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(88,88,88,1) 0%, rgba(140,140,140,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(88,88,88,1)), color-stop(100%,rgba(140,140,140,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(88,88,88,1) 0%,rgba(140,140,140,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(88,88,88,1) 0%,rgba(140,140,140,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(88,88,88,1) 0%,rgba(140,140,140,1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(88,88,88,1) 0%,rgba(140,140,140,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#585858', endColorstr='#8c8c8c',GradientType=0 ); /* IE6-9 */
-  height: 6px; margin: 0 7px 0 7px; 
-  border-radius: 2px;
-  position: relative;
-}
-
-.pageList .scrubber .loadingProgress {
-  background: rgb(234,185,45); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(234,185,45,1) 0%, rgba(199,152,16,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(234,185,45,1)), color-stop(100%,rgba(199,152,16,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eab92d', endColorstr='#c79810',GradientType=0 ); /* IE6-9 */
-  width: 0;
-  height: 100%;
-  border-radius: 2px;
-}
-
-.pageList .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: 9px; left: 0; border-radius: 6px; }
-
-.pageList .songTime .marker { position: absolute; float: left; top: -28px; }
-.pageList .songTime .marker a { color: #000; text-decoration: none; font-size: 10px; background: $markerColor; border-radius: 3px; border-bottom-left-radius: 0; padding: 1px 3px 1px 3px; }
-.pageList .songTime .marker .stick { height: 16px; border-left: 3px solid $markerColor; margin-top: -3px; }
-
-/*.pageList.songTitles li, .pageList.years li { padding: 0; }
-.pageList.songTitles li a, .pageList.years li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; padding: 10px; }*/
-
-
 @media only screen and (max-device-width : 320px) {
-  .pageList .songTitle { font-size: 14px; display: inline-block; margin-top: 3px; }
-  .pageList .duration { right: 30px; top: 12px; font-size: 18px; }
+  .pageList .songTitle { font-size: 16px; display: inline-block; margin-top: 4px; }
+  .pageList .duration { font-size: 18px; }
   .pageList .songTime time { display: none!important; }
 }

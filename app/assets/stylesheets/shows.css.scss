@@ -38,7 +38,7 @@ div.songs a {
 div.songs a.hover { z-index: 5000; text-decoration: none; }
 div.songs a span { position: relative; }
 
-.pageList.showsByYear li { height: 70px; }
+.pageList.showsByYear li { height: 70px; overflow-x: hidden; white-space: nowrap; }
 .pageList.showsByYear li a span { top: 16px; font-size: 18px; letter-spacing: -1.5px; }
 .pageList.showsByYear li a span strong { font-size: 27px; letter-spacing: 0em;}
 
@@ -63,11 +63,12 @@ position: relative;
 top: 11px!important;
 }
 
-.songInfo .tag { top: -4px!important; margin-left: 3px;}
+.songInfo .tag { top: -4px!important; }
 
 @media only screen and (max-device-width : 320px) {
   .pageList.showsByYear li { height: 50px; overflow: hidden; }
   .pageList.showsByYear li a span { top: 8px; font-size: 12px; letter-spacing: -1.5px; }
   .pageList.showsByYear li a span strong { font-size: 14px; letter-spacing: 0em; }
+  .tag { display: inline-block; overflow-x: hidden; width: 7px; letter-spacing: 0.5em!important; padding: 2px 4px; font-weight: bold;}
 }
 

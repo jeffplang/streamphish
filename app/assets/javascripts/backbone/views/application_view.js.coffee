@@ -1,6 +1,6 @@
 class Streamphish.Views.ApplicationView extends Backbone.View
   tagName: 'div'
-  id: 'main'
+  id: 'currentView'
 
   bypassLink: (e) ->
     $(document).trigger e

@@ -27,7 +27,6 @@ class Streamphish.FastTouchLinks
     e.stopPropagation()
 
     document.addEventListener 'touchend', @, false
-    # Why on body?  Maybe other listeners could also attach to body
     document.body.addEventListener 'touchmove', @, false
 
     @startX = e.touches[0].clientX
@@ -35,35 +34,40 @@ class Streamphish.FastTouchLinks
 
   onTouchMove: (e) ->
     if Math.abs(e.touches[0].clientX - @startX) > 10 || Math.abs(e.touches[0].clientY - @startY) > 10
-      console.log 'we resetin bro'
       @reset()
 
   onClick: (e) ->
     e.stopPropagation()
+    e.preventDefault() if e.type == 'click' # for desktop browsers, otherwise click event still goes through and does full page refresh
     @reset()
 
     # Actually handle click/touch here
-    App.router.navigate e.target.getAttribute('href'), true
-    @preventGhostClick(@startX, @startY) if e.type == 'touchend'
+    # This malarky is to get the actual <a> the user touched...sometimes e.target will be a <span> or <strong> otherwise
+    a = @getANode(e.target)
+    if a
+      App.router.navigate a.getAttribute('href'), true
+      @preventGhostClick(@startX, @startY) if e.type == 'touchend'
 
   reset: ->
     document.removeEventListener 'touchend', @, false
     document.body.removeEventListener 'touchmove', @, false
 
   preventGhostClick: (x, y) ->
-    console.log 'in prevent ghost'
     @cbCoords.push x, y
-    window.setTimeout @cbPop, 2500
+    window.setTimeout (=> @cbPop), 2500
 
-  cbPop: ->
+  cbPop: =>
     @cbCoords.splice 0, 2
 
-  cbOnClick: (e) ->
-    e.stopPropagation()
-    e.preventDefault()
-    # for coord, i in @cbCoords when (i % 2 == 0)
-    #   [x, y] = [@cbCoords[i], @cbCoords[i + 1]]
-    #   if Math.abs(e.clientX - x) < 25 && Math.abs(e.clientY - y) < 25
-    #     e.stopPropagation()
-    #     e.preventDefault()
+  cbOnClick: (e) =>
+    for coord, i in @cbCoords when (i % 2 == 0)
+      [x, y] = [@cbCoords[i], @cbCoords[i + 1]]
+      if Math.abs(e.clientX - x) < 25 && Math.abs(e.clientY - y) < 25
+        e.stopPropagation()
+        e.preventDefault()
 
+  getANode: (node) ->
+    if node == null or node.tagName == 'A'
+      return node
+    else
+      return @getANode(node.parentNode)

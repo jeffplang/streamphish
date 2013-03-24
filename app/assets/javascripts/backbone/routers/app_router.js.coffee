@@ -54,14 +54,14 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     @currentView = view
     @currentView.render()
 
-    $('#player')
-      .before( @currentView.$el )
-      .trigger('rendered')
+    $('#main').html( @currentView.$el )
+      # .trigger('rendered')
     $('#dim').remove()
 
   _swap: (view, fetchable) ->
-    $player = $('#player')
-    $player.before('<div id="dim"></div>') if @currentView
+    dim = document.createElement('div')
+    dim.id = 'dim'
+    document.getElementById('main').appendChild(dim) if @currentView
 
     if !fetchable.fetched
       fetchable.fetch

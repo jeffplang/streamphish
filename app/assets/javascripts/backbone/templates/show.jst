@@ -1,7 +1,7 @@
 <header>
   <a href="/shows/<%= year %>" class="backBtn">← <%= year %></a>
-  <h1 class="pageListHeader">
-    <%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %> - <%= location %>
+  <h1>
+    <%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %><span class="location"> - <%= location %>
   </h1>
   <a href="http://phish.net/setlists/?d=<%= show_date %>" target="_blank" class="info" data-bypass>
     info
@@ -21,8 +21,8 @@
             <span class="tag">Remastered</span>
           <% } %>
         </div>
-        <span class="duration"><%= Streamphish.Util.msToMMSS(track.get('duration')) %></span>
       </div>
+      <span class="duration"><%= Streamphish.Util.msToMMSS(track.get('duration')) %></span>
     </li>
   <% }); %>
 </ul>
