@@ -61,7 +61,7 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     @_dim.style.display = 'none'
 
   _swap: (view, fetchable) ->
-    @_dim.style.display = 'block'
+    @_dim.style.display = 'block' if @currentView
 
     if !fetchable.fetched
       fetchable.fetch
