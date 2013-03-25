@@ -46,7 +46,7 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
   trackChange: (player, track) ->
     @render()
     player.stop()
-    @toggleTitleAnimation() unless @_animating
+    @toggleTitleAnimation() unless @_animating || App.config.isMobile
     track.sound.play
       whileloading: =>
         @trackLoading track
@@ -57,11 +57,15 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     cssWidth = "#{Math.round(track.sound.duration / track.get('duration') * 100)}%"
     @$el.find('.loadProgress').width cssWidth
 
-  trackPlaying: (track) ->
-    maxScrubDistance = @$el.find('.scrubber').width() - 8
-    cssPos = (track.sound.position / track.get('duration')) * maxScrubDistance
+  _updateTime: (track) ->
     @$el.find('.time .current').text Streamphish.Helpers.msToMMSS track.sound.position unless @scrubbing
-    @updateHandlePosition cssPos
+
+  trackPlaying: (track) ->
+    @_updateTime track
+    unless App.config.isMobile
+      maxScrubDistance = @$el.find('.scrubber').width() - 8
+      cssPos = (track.sound.position / track.get('duration')) * maxScrubDistance
+      @updateHandlePosition cssPos
 
   toggleTitleAnimation: ->
     @_title ||= document.title

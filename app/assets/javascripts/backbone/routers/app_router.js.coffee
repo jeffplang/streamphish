@@ -13,7 +13,6 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     super
     @bind 'all', @_trackPageView
     @_dim = document.getElementById 'dim'
-    console.log @_dim
 
   index: ->
     indexData = new Streamphish.Models.IndexData

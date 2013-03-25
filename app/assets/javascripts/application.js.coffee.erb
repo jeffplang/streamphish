@@ -28,6 +28,7 @@ $ ->
   App.router = new Streamphish.Routers.AppRouter
   App.player = new Streamphish.Models.Player
   App.player_view = new Streamphish.Views.Player(model: App.player)
+  App.config = isMobile: (document.width <= 320)
 
   # Setup link hijacking to go through Backbone
   $(document).on 'click', 'a:not([data-bypass])', (e) ->
