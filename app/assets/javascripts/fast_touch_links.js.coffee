@@ -1,8 +1,9 @@
 class Streamphish.FastTouchLinks
   constructor: ->
-    document.addEventListener 'touchstart', @, false
-    document.addEventListener 'click', @, false
-    document.addEventListener 'click', @cbOnClick, true
+    @main = document.getElementById('main')
+    @main.addEventListener 'touchstart', @, false
+    @main.addEventListener 'click', @, false
+    @main.addEventListener 'click', @cbOnClick, true
     @cbCoords = []
 
     # document.addEventListener 'touchstart', (e) ->
@@ -26,7 +27,7 @@ class Streamphish.FastTouchLinks
   onTouchStart: (e) ->
     e.stopPropagation()
 
-    document.addEventListener 'touchend', @, false
+    @main.addEventListener 'touchend', @, false
     document.body.addEventListener 'touchmove', @, false
 
     @startX = e.touches[0].clientX
@@ -49,7 +50,7 @@ class Streamphish.FastTouchLinks
       @preventGhostClick(@startX, @startY) if e.type == 'touchend'
 
   reset: ->
-    document.removeEventListener 'touchend', @, false
+    @main.removeEventListener 'touchend', @, false
     document.body.removeEventListener 'touchmove', @, false
 
   preventGhostClick: (x, y) ->

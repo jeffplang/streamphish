@@ -137,8 +137,8 @@ div.songs a span { position: relative; }
 
 
 
-
-.pageList { margin: 44px 0 0 0; list-style-type: none; padding: 0; }
+#main { margin-top: 42px;}
+.pageList { margin: 0; list-style-type: none; padding: 0; }
 .pageList li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; height: 57px; position: relative; border-bottom: 1px solid #1D314E; font-size: 21px; }
 
 .pageList li:hover { 
@@ -211,6 +211,7 @@ background: rgb(234,185,45); /* Old browsers */
 #bottom-msg a { color: inherit; }
 
 @media only screen and (max-device-width : 320px) {
+  header { height: 42px; }
   header h1 { max-width: 228px; }
   header a.backBtn { padding-top: 0px; font-size: 35px; overflow-x: hidden; white-space: nowrap; vertical-align: top; width: 22px; margin-top: -2px; padding-left: 11px; }
   body { -webkit-tap-highlight-color: rgba(0,0,0,0); }
