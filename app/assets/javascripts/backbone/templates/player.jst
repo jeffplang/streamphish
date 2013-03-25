@@ -4,7 +4,9 @@
       <span class="arrow"></span><span class="arrow"></span>
     </span>
   </a>
-  <a class="btn playpause pause" style="margin-right: 4px;"></a>
+  <a class="btn playpause" style="margin-right: 4px;">
+    <span class="pause"></span>
+  </a>
   <a class="btn next">
     <span class="arrowGrp">
       <span class="arrow"></span><span class="arrow"></span>
@@ -15,14 +17,11 @@
 <% var show = (currentTrack.collection && currentTrack.collection.show) ? currentTrack.collection.show : null; %>
 
 <h2>
-  <a href="/songs/<%= currentTrack.get('slug') %>"><%= currentTrack.get('title') %></a>
+  <%= Streamphish.Helpers.linkTo(currentTrack.get('title'), "songs/" + currentTrack.get('slug')) %>
 </h2>
 <% if(show) { %>
   <h3>
-    <a href="/shows/<%= Streamphish.Helpers.dateString(show.get('show_date'), '%Y-%m-%d') %>">
-      <%= Streamphish.Helpers.dateString(show.get('show_date'), '%m-%d-%Y') %></span>&nbsp;
-      <small><%= show.get('location') %></small>
-    </a>
+    <%= Streamphish.Helpers.linkTo(Streamphish.Helpers.dateString(show.get('show_date'), '%m-%d-%Y') + '&nbsp;<small>' + show.get('location') + '</small>', 'shows/' + Streamphish.Helpers.dateString(show.get('show_date'), '%Y-%m-%d')) %>
   </h3>
 <% } %>
 

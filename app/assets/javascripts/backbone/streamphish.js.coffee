@@ -32,3 +32,9 @@ window.Streamphish =
 
     clamp: (val, min, max) ->
       Math.max(min, Math.min(max, val))
+
+    linkTo: (text, url) ->
+      if Backbone.history._wantsPushState
+        "<a href='/#{url}'>#{text}</a>"
+      else
+        "<a href='##{url}'>#{text}</a>"

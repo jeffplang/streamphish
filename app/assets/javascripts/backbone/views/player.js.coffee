@@ -38,7 +38,9 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
 
     @model.togglePause()
     @toggleTitleAnimation()
-    $btn.toggleClass('play').toggleClass('pause')
+    @$el.find('.btn.playpause span')
+      .toggleClass('play')
+      .toggleClass('pause')
 
   updateHandlePosition: (cssPos) ->
     @$el.find('.handle').css('left', cssPos) unless @scrubbing

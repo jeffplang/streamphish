@@ -167,12 +167,11 @@ body.hidePlayer #main { padding-bottom: 0px; }
     -webkit-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9); -moz-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9); box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
 }
 
-#player a.btn.play { padding: 12px 3px 1px 3px; }
-#player a.btn.play:after { content: '▶'; }
-#player a.btn.pause { padding: 13px 3px 0 3px }
-#player a.btn.pause:after { content: '❚❚'; }
+#player a.btn.playpause span { height: 11px; display: inline-block; }
+#player a.btn.playpause .pause { width: 3px; border-left: 6px solid #fff; border-right: 6px solid #fff; }
+#player a.btn.playpause .play { width: 0px; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 13px solid #fff; }
 
-#player a.btn.prev, #player a.btn.next { padding: 13px 3px 0 4px; }
+#player a.btn.prev, #player a.btn.next, a.btn.playpause { padding: 13px 3px 0 4px; }
 #player a.btn.prev span.arrow, 
 #player a.btn.next span.arrow { width: 0; height: 0; display: inline-block; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
 #player a.btn.prev span.arrow { border-right: 8px solid #fff; }
@@ -219,14 +218,15 @@ background: rgb(234,185,45); /* Old browsers */
   header a.info { display: none; }
 
   body.hidePlayer #player { display: none; }
+  #player { height: 46px; }
+  #player .controls { margin-top: 0; }
   #player a.btn.prev { display: none; }
   #player .scrubber { display: none; }
   #player .time .total { display: none; }
 
-  #player h2 { position: absolute; top: 13px; max-width: 154px; overflow: hidden; white-space: nowrap; font-size: 22px; }
-  #player h3 { position: absolute; top: 31px; left: 107px; overflow: hidden; white-space: nowrap; max-width: 192px; font-size: 16px; }
-
-  #player .time { top: 18px; }
+  #player h2 { position: absolute; top: 8px; max-width: 154px; overflow: hidden; white-space: nowrap; font-size: 22px; }
+  #player h3 { position: absolute; top: 28px; left: 107px; overflow: hidden; white-space: nowrap; max-width: 192px; font-size: 16px; }
+  #player .time { top: 12px; }
 
   .pageList li { height: 40px; font-size: 16px; }
   .pageList li:hover { background: inherit; }
