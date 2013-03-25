@@ -231,11 +231,15 @@ background: rgb(234,185,45); /* Old browsers */
   .pageList li { height: 40px; font-size: 16px; }
   .pageList li:hover { background: inherit; }
 
+  .pageList.linkItems li { height: 55px; }
+  .pageList.showsByYear li { height: 55px!important; }
+
   .pageList .songInfo { max-width: 223px; overflow-x: hidden; white-space: nowrap; }
+  .pageList.linkItems li a span { top: 17px; }
 
-  .pageList.linkItems li { height: 76px; }
-  .pageList.linkItems li a span { top: 27px; }
-
+  .pageList.songs li { height: 19px!important; }
+  .pageList.songs li .duration, .pageList.songs .songInfo { margin-top: -1px; }
+  .pageList.songs li .songTitle { margin-top: 0; }
 }
 
 @import "songs";
