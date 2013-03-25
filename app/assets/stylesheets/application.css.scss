@@ -217,6 +217,8 @@ background: rgb(234,185,45); /* Old browsers */
   header .location { display: none; }
   header a.info { display: none; }
 
+  #main { padding-bottom: 65px; }
+
   body.hidePlayer #player { display: none; }
   #player { height: 46px; }
   #player .controls { margin-top: 0; }
@@ -225,7 +227,7 @@ background: rgb(234,185,45); /* Old browsers */
   #player .time .total { display: none; }
 
   #player h2 { position: absolute; top: 8px; max-width: 154px; overflow: hidden; white-space: nowrap; font-size: 22px; }
-  #player h3 { position: absolute; top: 28px; left: 107px; overflow: hidden; white-space: nowrap; max-width: 192px; font-size: 16px; }
+  #player h3 { position: absolute; top: 28px; left: 109px; overflow: hidden; white-space: nowrap; max-width: 190px; font-size: 16px; }
   #player .time { top: 12px; }
 
   .pageList li { height: 40px; font-size: 16px; }
@@ -240,6 +242,12 @@ background: rgb(234,185,45); /* Old browsers */
   .pageList.songs li { height: 19px!important; }
   .pageList.songs li .duration, .pageList.songs .songInfo { margin-top: -1px; }
   .pageList.songs li .songTitle { margin-top: 0; }
+
+
+
+  .pageList.songs.song .songInfo { position: absolute; top: 6px; left: 18px; }
+  .pageList.songs .songInfo .songDate { font-size: 16px; font-weight: bold; position: relative; top: 5px;}
+  .pageList.songs .songInfo .songVenue { font-size: 12px; letter-spacing: -1.5px; display: inline-block; }
 }
 
 @import "songs";
