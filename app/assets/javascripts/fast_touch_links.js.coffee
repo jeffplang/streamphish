@@ -1,6 +1,6 @@
 class Streamphish.FastTouchLinks
-  constructor: ->
-    @main = document.getElementById('main')
+  constructor: (el) ->
+    @main = el
     @main.addEventListener 'touchstart', @, false
     @main.addEventListener 'click', @, false
     @main.addEventListener 'click', @cbOnClick, true
@@ -46,7 +46,13 @@ class Streamphish.FastTouchLinks
     # This malarky is to get the actual <a> the user touched...sometimes e.target will be a <span> or <strong> otherwise
     a = @getANode(e.target)
     if a
-      App.router.navigate a.getAttribute('href'), true
+      switch a.getAttribute('data-control')
+        when 'prev' then App.player_view.playPrev()
+        when 'togglePause' then App.player_view.togglePause()
+        when 'next' then App.player_view.playNext()
+        else
+          App.router.navigate a.getAttribute('href'), true
+
       @preventGhostClick(@startX, @startY) if e.type == 'touchend'
 
   reset: ->

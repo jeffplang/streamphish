@@ -1,13 +1,13 @@
 <div class="controls">
-  <a class="btn prev" style="margin-right: 4px;">
+  <a class="btn prev" data-control="prev" style="margin-right: 4px;">
     <span class="arrowGrp">
       <span class="arrow"></span><span class="arrow"></span>
     </span>
   </a>
-  <a class="btn playpause" style="margin-right: 4px;">
+  <a class="btn playpause" data-control="togglePause" style="margin-right: 4px;">
     <span class="pause"></span>
   </a>
-  <a class="btn next">
+  <a class="btn next" data-control="next">
     <span class="arrowGrp">
       <span class="arrow"></span><span class="arrow"></span>
     </span>
@@ -15,7 +15,6 @@
 </div>
 
 <% var show = (currentTrack.collection && currentTrack.collection.show) ? currentTrack.collection.show : null; %>
-
 <h2>
   <%= Streamphish.Helpers.linkTo(currentTrack.get('title'), "songs/" + currentTrack.get('slug')) %>
 </h2>
@@ -24,7 +23,6 @@
     <%= Streamphish.Helpers.linkTo(Streamphish.Helpers.dateString(show.get('show_date'), '%m-%d-%Y') + '&nbsp;<small>' + show.get('location') + '</small>', 'shows/' + Streamphish.Helpers.dateString(show.get('show_date'), '%Y-%m-%d')) %>
   </h3>
 <% } %>
-
 <% var lt10MinClass = currentTrack.get('duration') < 600000 ? 'lt10Min' : '' %>
 <div class="scrubber <%= lt10MinClass %>">
   <div class="loadProgress">

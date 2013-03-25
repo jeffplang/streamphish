@@ -31,7 +31,7 @@ $ ->
 
   # Setup link hijacking to go through Backbone
   if App.config.isMobile
-    App.FTL = new Streamphish.FastTouchLinks
+    App.FTL = new Streamphish.FastTouchLinks(document.body)
   else
     $(document).on 'click', 'a:not([data-bypass])', (e) ->
       href = prop: $(this).prop("href"), attr: $(this).attr("href")
