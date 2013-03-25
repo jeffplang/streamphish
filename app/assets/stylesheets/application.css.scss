@@ -91,6 +91,52 @@ filter: alpha(opacity=20); /* internet explorer */
 opacity: 0.20;           /* fx, safari, opera */
 }
 
+/**
+ ** Front page circles 
+**/
+
+h2 { color: #fff; margin: 0 0 0 13px; padding: 0; font-family: 'Jacques Francois', serif; font-size: 28px;}
+h2 span { font-size: 15px; }
+h2 span a { color: #fff!important; }
+ul.yearsCircles { margin: 0 0 40px 0; padding: 0; list-style-type: none; position: relative; left: 10px; height: 100px; }
+ul.yearsCircles li { width: 75px; height: 75px; border-radius: 50%; background: #fff; text-align: center; 
+  float: left; position: absolute; left: 0; top: 0; 
+  -webkit-transition-property: left, top, height, width, background, border;
+  -webkit-transition-duration: 1.5s, 1.5s, 0.175s, 0.175s, 0.175s, 0.175s;
+}
+ul.yearsCircles li a { display: block; height: 100%; width: 100%; border-radius: 50%; text-decoration: none; position: relative; }
+ul.yearsCircles li a:hover { text-decoration: none; }
+ul.yearsCircles li a span { position: relative; top: 19px; font-size: 20px; font-family: Georgia; 
+  -webkit-transition-property: font-size, top;  
+  -webkit-transition-duration: 0.175s, 0.175s; 
+}
+
+ul.yearsCircles li.hover { height: 100px; width: 100px; z-index: 5000; }
+ul.yearsCircles li.hover a { background: inherit; z-index: 5000; height: 100%; width: 100%; }
+ul.yearsCircles li.hover a span { font-size: 25px; top: 29px; }
+
+ul.yearsCircles li.empty { background: transparent!important; }
+
+div.songs { position: relative; margin: 15px 0 0 10px; }
+div.songs a { 
+  border-radius: 50%; 
+  text-align: center; 
+  display: block; 
+  text-decoration: none; 
+  color: #fff; 
+  position: absolute; 
+  height: 120px; 
+  width: 120px; 
+  font-family: 'Allan', cursive;
+  font-size: 21px;
+  -webkit-transition-property: left, top;
+  -webkit-transition-duration: 1.5s, 1.5s;
+}
+div.songs a.hover { z-index: 5000; text-decoration: none; }
+div.songs a span { position: relative; }
+
+
+
 
 .pageList { margin: 44px 0 0 0; list-style-type: none; padding: 0; }
 .pageList li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; height: 57px; position: relative; border-bottom: 1px solid #1D314E; font-size: 21px; }
@@ -165,7 +211,7 @@ background: rgb(234,185,45); /* Old browsers */
 #bottom-msg a { color: inherit; }
 
 @media only screen and (max-device-width : 320px) {
-  /*header h1 { font-size: 18px; }*/
+  header h1 { max-width: 228px; }
   header a.backBtn { padding-top: 0px; font-size: 35px; overflow-x: hidden; white-space: nowrap; vertical-align: top; width: 22px; margin-top: -2px; padding-left: 11px; }
   body { -webkit-tap-highlight-color: rgba(0,0,0,0); }
   header .location { display: none; }
@@ -177,7 +223,7 @@ background: rgb(234,185,45); /* Old browsers */
   .pageList .songInfo { max-width: 223px; overflow-x: hidden; white-space: nowrap; }
 
   .pageList.linkItems li { height: 76px; }
-  .pageList.linkItems li a span { top: 25px; }
+  .pageList.linkItems li a span { top: 27px; }
 
 }
 

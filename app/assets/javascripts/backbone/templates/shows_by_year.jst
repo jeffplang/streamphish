@@ -10,12 +10,18 @@
         <strong><%= Streamphish.Helpers.dateString(show.show_date, '%m/%d/%Y') %></strong>
         <%= show.location %>
       </span>
-      <% if(show.sbd) { %>
-        <span class="tag">SBD</span>
+      <% if(show.sbd || show.remastered) { %>
+        <div class="tagContainer">
       <% } %>
+        <% if(show.sbd) { %>
+          <span class="tag">SBD</span>
+        <% } %>
 
-      <% if(show.remastered) { %>
-        <span class="tag">Remastered</span>
+        <% if(show.remastered) { %>
+          <span class="tag">Remastered</span>
+        <% } %>
+      <% if(show.sbd || show.remastered) { %>
+        </div>
       <% } %>
     </a></li>
   <% }); %>
