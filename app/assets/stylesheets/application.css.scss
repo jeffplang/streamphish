@@ -84,7 +84,7 @@ header a.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #f
 div.pageContainer { margin-top: 60px; position: relative; }
 
 #main { padding-bottom: 53px; }
-#dim { height: 100%; width: 100%; position: fixed; left: 0; top: 0; z-index: 6000; background-color: #999; 
+#dim { display: none; height: 100%; width: 100%; position: fixed; left: 0; top: 0; z-index: 6000; background-color: #999; 
 filter: alpha(opacity=20); /* internet explorer */
 -khtml-opacity: 0.20;      /* khtml, old safari */
 -moz-opacity: 0.20;       /* mozilla, netscape */
@@ -150,11 +150,11 @@ div.songs a span { position: relative; }
 .pageList.linkItems li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; padding: 0 0 0 18px; }
 .pageList.linkItems li a span { top: 30px; position: relative; }
 
-body.hidePlayer #player { bottom: -70px; }
+body.hidePlayer #player { bottom: -70px; display: none; }
 body.hidePlayer #main { padding-bottom: 0px; }
 #player, #main { -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -ms-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; }
 
-#player { position: fixed; bottom: 0; height: 50px; width: 100%; background: #25585A; padding: 10px; z-index: 7000; }
+#player { position: fixed; bottom: 0; height: 50px; width: 100%; background: #25585A; padding: 10px; z-index: 7000; display: block; }
 
 #player .controls { display: inline-block; margin-top: 3px; }
 

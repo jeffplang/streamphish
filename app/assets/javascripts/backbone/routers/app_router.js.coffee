@@ -12,6 +12,8 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
   initialize: ->
     super
     @bind 'all', @_trackPageView
+    @_dim = document.getElementById 'dim'
+    console.log @_dim
 
   index: ->
     indexData = new Streamphish.Models.IndexData
@@ -56,12 +58,10 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
     $('#main').html( @currentView.$el )
       # .trigger('rendered')
-    $('#dim').remove()
+    @_dim.style.display = 'none'
 
   _swap: (view, fetchable) ->
-    dim = document.createElement('div')
-    dim.id = 'dim'
-    document.getElementById('main').appendChild(dim) if @currentView
+    @_dim.style.display = 'block'
 
     if !fetchable.fetched
       fetchable.fetch
