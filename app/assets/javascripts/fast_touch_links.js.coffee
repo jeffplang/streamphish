@@ -50,6 +50,8 @@ class Streamphish.FastTouchLinks
         when 'prev' then App.player_view.playPrev()
         when 'togglePause' then App.player_view.togglePause()
         when 'next' then App.player_view.playNext()
+        when 'song'
+          App.router.currentView.songClick(e)
         else
           App.router.navigate a.getAttribute('href'), true
 

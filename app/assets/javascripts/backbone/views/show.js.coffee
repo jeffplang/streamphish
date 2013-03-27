@@ -14,7 +14,7 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
 
   songClick: (e) ->
     e.preventDefault() # For clicks on <a>s within the <li>
-    songCid = $(e.currentTarget).data 'cid'
+    songCid = $(e.target).closest('li').data 'cid'
     song    = @model.get('tracks').get(songCid)
 
     @updateUrl(song) # For when you come back to a show view and click the currently playing song

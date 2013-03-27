@@ -13,7 +13,7 @@
     <li data-cid="<%= track.cid %>">
       <div class="songInfo">
         <div class="songTitle">
-          <a href="/shows/<%= show_date %>/<%= track.get('slug') %>" data-bypass><%= track.get('position') %> <%= track.get('title') %></a>
+          <a data-control="song" href="/shows/<%= show_date %>/<%= track.get('slug') %>" data-bypass><%= track.get('position') %> <%= track.get('title') %></a>
           <% if(sbd) { %>
             <span class="tag">SBD</span>
           <% } %>
