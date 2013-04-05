@@ -44,13 +44,8 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     if date.match(/^\d{4}$|^83-87$/)
       @showsByYear(date)
     else
-      trackPos = try
-        params.t.match(/(\d+)ms/)[1]
-      catch e
-        0
-
       show = Streamphish.ShowCache.get( date, {autoFetch: false} )
-      view = new Streamphish.Views.Show( model: show, autoplayTrack: track, trackPosition: trackPos )
+      view = new Streamphish.Views.Show( model: show, autoplayTrack: track, trackPosition: params?.t )
 
       @_swap view, show
 

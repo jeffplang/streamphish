@@ -7,8 +7,9 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
   initialize: (opts) ->
     super opts
     if opts.autoplayTrack
+      trackPos = @_parsePosition(opts.trackPosition)
       @model.once 'change:tracks', (model) ->
-        App.player.play model.get('tracks').where(slug: opts.autoplayTrack)[0], opts.trackPosition
+        App.player.play model.get('tracks').where(slug: opts.autoplayTrack)[0], trackPos
 
     App.player.on 'change:currentTrack', @updateUrl, @
 
@@ -27,6 +28,28 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
       track = obj
     return if track.get('initialPosition') && track.get('initialPosition') != 0
     App.router.navigate "/shows/#{@model.get('show_date')}/#{track.get('slug')}", replace: true
+
+  _parsePosition: (posStr) ->
+    # Valid position strings:
+    #   1m
+    #   1m30s
+    #   1m30000ms
+    #   90s
+    #   90000ms
+    return 0 if !posStr? || posStr == ''
+    pieces = posStr.match /((\d+)m(?!s))?((\d+)(s|ms))?/
+    pos    = 0
+    console.log pieces
+    if pieces[5] # seconds or milliseconds piece
+      if pieces[5] == 's'
+        pos += parseInt(pieces[4], 10) * 1000
+      else if pieces[5] == 'ms'
+        pos += parseInt(pieces[4], 10)
+    if pieces[2]
+      pos += parseInt(pieces[2], 10) * 60000
+
+    pos
+
 
   remove: ->
     App.player.off 'change:currentTrack', null, @
