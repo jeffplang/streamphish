@@ -9,6 +9,7 @@ class Streamphish.Models.Track extends Backbone.Model
           id: @cid
           url: @get('file_url')
           autoPlay: false
+          position: @get('initialPosition') || 0
           onfinish: App.player.playNext
       @sound.play opts
 

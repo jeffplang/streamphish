@@ -8,7 +8,7 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
     super opts
     if opts.autoplayTrack
       @model.once 'change:tracks', (model) ->
-        App.player.play model.get('tracks').where(slug: opts.autoplayTrack)[0]
+        App.player.play model.get('tracks').where(slug: opts.autoplayTrack)[0], opts.trackPosition
 
     App.player.on 'change:currentTrack', @updateUrl, @
 
@@ -25,7 +25,7 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
       track = obj.get('currentTrack')
     else
       track = obj
-
+    return if track.get('initialPosition') && track.get('initialPosition') != 0
     App.router.navigate "/shows/#{@model.get('show_date')}/#{track.get('slug')}", replace: true
 
   remove: ->

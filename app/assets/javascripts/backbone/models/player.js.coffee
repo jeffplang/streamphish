@@ -10,13 +10,14 @@ class Streamphish.Models.Player extends Backbone.Model
     @on 'change:currentTrack', @stopLoadingCurrent
     @on 'change:currentTrack', @_pushTrackListenAnalytic
 
-  play: (track) ->
+  play: (track, pos = 0) ->
     return if !track
     # On FF (and other browsers that use flash?), @play may be called before 
     # soundManager is ready, such as when a user directly visits a show page
     # with an autoPlay track (i.e. /shows/1994-06-26/wilson)
     soundManager.onready =>
       @set 'playlist', track.collection if track.collection
+      track.set 'initialPosition', pos
       @set 'currentTrack', track
 
   stop: ->
