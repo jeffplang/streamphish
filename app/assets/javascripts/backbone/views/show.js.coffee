@@ -39,7 +39,6 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
     return 0 if !posStr? || posStr == ''
     pieces = posStr.match /((\d+)m(?!s))?((\d+)(s|ms))?/
     pos    = 0
-    console.log pieces
     if pieces[5] # seconds or milliseconds piece
       if pieces[5] == 's'
         pos += parseInt(pieces[4], 10) * 1000
