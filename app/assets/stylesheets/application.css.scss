@@ -98,7 +98,7 @@ $yearSelectWidth: 300px;
 #yearSelect {
   display: none;
   width: $yearSelectWidth;
-  position: absolute;
+  position: fixed;
   top: 41px;
   left: 50%;
   margin-left: -($yearSelectWidth / 2);
