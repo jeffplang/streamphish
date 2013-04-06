@@ -5,10 +5,11 @@ class Streamphish.Models.Track extends Backbone.Model
   play: (opts) ->
     soundManager.onready =>
       if !@sound
-        if !@get('initialPosition') || @get('initialPosition') >= @get('duration')
-          pos = 0
-        else 
+        if !soundManager.html5.usingFlash && @get('initialPosition') && @get('initialPosition') < @get('duration')
           pos = @get('initialPosition')
+        else 
+          pos = 0
+
         @sound = soundManager.createSound
           id: @cid
           url: @get('file_url')
