@@ -52,6 +52,7 @@ class Streamphish.FastTouchLinks
         when 'next' then App.player_view.playNext()
         when 'song'
           App.router.currentView.songClick(e)
+        when 'toggleYearList' then App.router.currentView.toggleYearSelect()
         else
           App.router.navigate a.getAttribute('href'), true
 

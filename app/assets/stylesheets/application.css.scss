@@ -76,6 +76,9 @@ header h1 {
   margin: 0;
   display: inline-block;
 }
+header h1 a { color: #fff; text-decoration: none; }
+header h1 a:hover { text-decoration: underline; }
+header h1 a small { font-size: 13px; display:inline-block; vertical-align: top; margin-top: 13px; }
 header a.info { text-decoration: none; color: inherit; font-size: 12px; font-family: Arial; display: inline-block; vertical-align: top; margin: 14px 0 0 3px; }
 header a.info:hover { text-decoration: underline; }
 
@@ -91,6 +94,24 @@ filter: alpha(opacity=20); /* internet explorer */
 opacity: 0.20;           /* fx, safari, opera */
 }
 
+$yearSelectWidth: 300px;
+#yearSelect {
+  display: none;
+  width: $yearSelectWidth;
+  position: absolute;
+  top: 41px;
+  left: 50%;
+  margin-left: -($yearSelectWidth / 2);
+}
+#yearSelect ul { 
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+#yearSelect ul li { text-align: center; float: left; height: 50px; width: 50px; margin-right: 10px; margin-bottom: 10px; }
+#yearSelect ul li a { height: 100%; width: 100%; display: inline-block; background: #aaa; border-radius: 50px; text-decoration: none; color: #ddd; padding: 5px; }
+#yearSelect ul li a span { display: inline-block; margin-top: 15px; font-size: 14px; }
+/*#yearSelect ul li:first-child a span { margin-top: 3px; }*/
 /**
  ** Front page circles 
 **/

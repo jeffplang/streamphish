@@ -1,13 +1,15 @@
 class PagesController < ApplicationController
   def index
+    get_years
     respond_to do |format|
-      format.html
+      format.html do
+        @years = years_map
+      end
       format.json do
-        get_years
         @songs = Song.random 18
 
         render :json => {
-          :years => years_map,
+          :years => get_years,
           :songs => songs_map
         }
       end

@@ -1,6 +1,10 @@
 <header>
   <a href="/" class="backBtn">← Home</a>
-  <h1><%= year %></h1>
+  <h1>
+    <a href='#' data-control='toggleYearList' data-bypass='true'>
+      <%= year %> <small>▾</small>
+    </a>
+  </h1>
 </header>
 
 <ul class="pageList linkItems showsByYear">
