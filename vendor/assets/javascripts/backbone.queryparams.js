@@ -26,7 +26,7 @@ _.extend(Backbone.History.prototype, {
     fragment = _getFragment.apply(this, arguments);
     if (excludeQueryString) {
       fragment = fragment.replace(queryStrip, '');
-    } else if (! hasQueryString.test(fragment)) {
+    } else if (!hasQueryString.test(fragment) && this.location.pathname.replace(/^\//, '') === fragment) {
       fragment += this.location.search;
     }
     return fragment;
