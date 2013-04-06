@@ -26,7 +26,9 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
       track = obj.get('currentTrack')
     else
       track = obj
-    return if track.get('initialPosition') && track.get('initialPosition') != 0
+    if track.get('initialPosition') && track.get('initialPosition') != 0
+      track.unset 'initialPosition'
+      return 
     App.router.navigate "/shows/#{@model.get('show_date')}/#{track.get('slug')}", replace: true
 
   _parsePosition: (posStr) ->
