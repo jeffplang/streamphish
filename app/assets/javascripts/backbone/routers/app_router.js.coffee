@@ -45,7 +45,11 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
       @showsByYear(date)
     else
       show = Streamphish.ShowCache.get( date, {autoFetch: false} )
-      view = new Streamphish.Views.Show( model: show, autoplayTrack: track, trackPosition: params?.t )
+      view = new Streamphish.Views.Show
+        model:         show,
+        autoloadTrack: track,
+        autoPlay:      !(params?.autoplay == 'false') # 'true' if autoplay=true or autoplay isn't present in URL
+        trackPosition: params?.t
 
       @_swap view, show
 

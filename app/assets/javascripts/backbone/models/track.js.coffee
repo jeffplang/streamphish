@@ -5,7 +5,7 @@ class Streamphish.Models.Track extends Backbone.Model
   play: (opts) ->
     soundManager.onready =>
       if !@sound
-        if !soundManager.html5.usingFlash && @get('initialPosition') && @get('initialPosition') < @get('duration')
+        if @get('initialPosition') && @get('initialPosition') < @get('duration')
           pos = @get('initialPosition')
         else 
           pos = 0
@@ -16,7 +16,21 @@ class Streamphish.Models.Track extends Backbone.Model
           autoPlay: false
           position: pos
           onfinish: App.player.playNext
-      @sound.play opts
+
+      @sound.play
+        whileloading: =>
+          App.player_view.trackLoading @
+        whileplaying: =>
+          App.player_view.trackPlaying @
+
+  togglePause: ->
+    if !@sound
+      @play()
+    else
+      @sound.togglePause()
+
+  position: ->
+    @sound?.position or @get('initialPosition') or 0
 
 
 class Streamphish.Collections.Tracks extends Backbone.Collection

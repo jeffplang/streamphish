@@ -6,10 +6,10 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
 
   initialize: (opts) ->
     super opts
-    if opts.autoplayTrack
+    if opts.autoloadTrack
       trackPos = @_parsePosition(opts.trackPosition)
       @model.once 'change:tracks', (model) ->
-        App.player.play model.get('tracks').where(slug: opts.autoplayTrack)[0], trackPos
+        App.player.load model.get('tracks').where(slug: opts.autoloadTrack)[0], trackPos, opts.autoPlay
 
     App.player.on 'change:currentTrack', @updateUrl, @
 
@@ -26,10 +26,13 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
       track = obj.get('currentTrack')
     else
       track = obj
-    if track.get('initialPosition') && track.get('initialPosition') != 0
+    url = "/shows/#{@model.get('show_date')}/#{track.get('slug')}"
+    # We want to prevent the URL from being changed if we're calling this method
+    # from the playing of an auto-loaded track
+    if "/#{Backbone.history.fragment}" == url
       track.unset 'initialPosition'
       return 
-    App.router.navigate "/shows/#{@model.get('show_date')}/#{track.get('slug')}", replace: true
+    App.router.navigate url, replace: true
 
   _parsePosition: (posStr) ->
     # Valid position strings:

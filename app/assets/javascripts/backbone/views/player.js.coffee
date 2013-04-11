@@ -42,32 +42,28 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
       .toggleClass('play')
       .toggleClass('pause')
 
-  updateHandlePosition: (cssPos) ->
-    @$el.find('.handle').css('left', cssPos) unless @scrubbing
-
   trackChange: (player, track) ->
     @render()
     player.stop()
     @toggleTitleAnimation() unless @_animating || App.config.isMobile
-    track.play 
-      whileloading: =>
-        @trackLoading track
-      whileplaying: =>
-        @trackPlaying track
+    track.play()
 
   trackLoading: (track) ->
     cssWidth = "#{Math.round(track.sound.duration / track.get('duration') * 100)}%"
     @$el.find('.loadProgress').width cssWidth
 
   _updateTime: (track) ->
-    @$el.find('.time .current').text Streamphish.Helpers.msToMMSS track.sound.position unless @scrubbing
+    @$el.find('.time .current').text Streamphish.Helpers.msToMMSS track.position() unless @scrubbing
+
+  _updateHandlePosition: (track) ->
+    maxScrubDistance = @$el.find('.scrubber').width() - 8
+    cssPos = (track.position() / track.get('duration')) * maxScrubDistance
+    @$el.find('.handle').css('left', cssPos) unless @scrubbing
 
   trackPlaying: (track) ->
     @_updateTime track
     unless App.config.isMobile
-      maxScrubDistance = @$el.find('.scrubber').width() - 8
-      cssPos = (track.sound.position / track.get('duration')) * maxScrubDistance
-      @updateHandlePosition cssPos
+      @_updateHandlePosition track
 
   toggleTitleAnimation: ->
     @_title ||= document.title
@@ -136,3 +132,5 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
   render: ->
     $(document.body).removeClass 'hidePlayer'
     super
+    @_updateTime @model.get('currentTrack')
+    @_updateHandlePosition @model.get('currentTrack')
