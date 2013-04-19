@@ -24,6 +24,8 @@ module StreamPhish
                       nil
       if @_captcha
         @driver.execute_script "$('button.btn.secondary.cancelBtn').click()"
+        @driver.execute_script "$('#helpContainer').html('')"
+        
         puts screenshot
         if @_captcha.tag_name == 'select'
           @_captcha = nil

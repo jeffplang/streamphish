@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-source "http://gems.rubyforge.org"
+#source "http://gems.rubyforge.org"
 
 
 gem 'rails', '3.2.12'
@@ -12,7 +12,7 @@ gem 'friendly_id'
 gem 'mp3info'
 gem 'pg_search'
 gem 'color', '>= 1.4.0', :require => ['color', 'color/palette/monocontrast']
-gem 'selenium-webdriver'
+gem "selenium-webdriver", "~> 2.32.1"
 gem 'xmpp4r'
 # gem 'rails-backbone', :git => 'https://github.com/codebrew/backbone-rails.git'
 gem 'underscore-template-rails', :git => 'https://github.com/jeffplang/underscore-template-rails.git'
@@ -28,7 +28,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails'
