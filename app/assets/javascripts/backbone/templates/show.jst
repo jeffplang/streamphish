@@ -13,7 +13,7 @@
 <ul class="pageList songs">
   <% _.each(tracks.models, function(track, trackIdx) { %>
     <% if( (setIdx = _.indexOf(beforeTrackIdxs, trackIdx)) !== -1 ) { %>
-    <li class="sectionTitle"><h2><%= sets[setIdx].title %><h2></li>
+    <li class="sectionTitle"><h2><%= sets[setIdx].title %></h2></li>
     <% } %>
 
     <li data-cid="<%= track.cid %>">
