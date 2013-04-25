@@ -158,7 +158,7 @@ div.songs a span { position: relative; }
 
 
 
-#main { margin-top: 42px;}
+#main { margin-top: 44px; }
 .pageList { margin: 0; list-style-type: none; padding: 0; }
 .pageList li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; height: 57px; position: relative; border-bottom: 1px solid #1D314E; font-size: 21px; }
 
@@ -168,6 +168,12 @@ div.songs a span { position: relative; }
 }
 
 .pageList.linkItems li { padding: 0; height: 93px; position: relative; }
+
+.pageList li.sectionTitle { height: 25px; cursor: default; padding: 4px 0 0 18px;   background: rgb(32, 56, 92); }
+.pageList li.sectionTitle h2 { font-size: 18px; color: rgb(252, 225, 83); font-family: Arial; padding: 0; margin: 0; font-weight: normal; }
+.pageList li.sectionTitle:first-child { padding-top: 6px; }
+.pageList.linkItems li.sectionTitle:hover { background: default;}
+
 .pageList.linkItems li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; padding: 0 0 0 18px; }
 .pageList.linkItems li a span { top: 30px; position: relative; }
 

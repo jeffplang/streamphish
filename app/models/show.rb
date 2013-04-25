@@ -1,7 +1,8 @@
 class Show < ActiveRecord::Base
   attr_accessible :show_date, :location, :sbd, :remastered
 
-  has_many :tracks, :dependent => :destroy
+  has_many :concert_sets, :dependent => :destroy
+  has_many :tracks, :through => :concert_sets, :dependent => :destroy
 
   scope :for_year, lambda { |year|
     if year == '83-87'
@@ -29,8 +30,11 @@ class Show < ActiveRecord::Base
   def bb_json
     Jbuilder.encode do |json|
       json.(self, :id, :location, :remastered, :sbd, :show_date)
-      json.tracks self.tracks.includes(:songs).order(:position) do |track|
-        json.(track, :id, :title, :position, :duration, :file_url, :slug)
+      json.sets self.concert_sets do |concert_set|
+        json.(concert_set, :title)
+        json.tracks concert_set.tracks.includes(:songs).order(:position) do |track|
+          json.(track, :id, :title, :position, :duration, :file_url, :slug)
+        end
       end
     end
   end

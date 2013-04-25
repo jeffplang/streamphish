@@ -3,11 +3,13 @@
 </header>
 
 <ul class="pageList linkItems">
+  <li class="sectionTitle"><h2>Years</h2></li>
   <% _.each(years, function(year) { %>
     <li>
       <a href="/shows/<%= year %>"><span><%= year %></span></a>
     </li>
   <% }); %>
+  <li class="sectionTitle"><h2>Songs</h2></li>
   <% _.each(songs, function(song) { %>
     <li>
       <a href="<%= song.url %>"><span><%= song.title %></span></a>

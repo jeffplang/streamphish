@@ -8,12 +8,18 @@
   </a>
 </header>
 
+<% beforeTrackIdxs = _.map(sets, function(set) { return set.beforeTrackIdx; }); %>
+
 <ul class="pageList songs">
-  <% _.each(tracks.models, function(track) { %>
+  <% _.each(tracks.models, function(track, trackIdx) { %>
+    <% if( (setIdx = _.indexOf(beforeTrackIdxs, trackIdx)) !== -1 ) { %>
+    <li class="sectionTitle"><h2><%= sets[setIdx].title %><h2></li>
+    <% } %>
+
     <li data-cid="<%= track.cid %>">
       <div class="songInfo">
         <div class="songTitle">
-          <a data-control="song" href="/shows/<%= show_date %>/<%= track.get('slug') %>" data-bypass><%= track.get('position') %> <%= track.get('title') %></a>
+          <a data-control="song" href="/shows/<%= show_date %>/<%= track.get('slug') %>" data-bypass><%= track.get('title') %></a>
           <% if(sbd) { %>
             <span class="tag">SBD</span>
           <% } %>

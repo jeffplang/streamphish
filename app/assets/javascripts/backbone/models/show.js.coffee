@@ -9,6 +9,17 @@ class Streamphish.Models.Show extends Backbone.Model
            new Streamphish.Collections.Tracks( (new Streamphish.Models.Track(track) for track in tracks) )
            silent: true
       @get('tracks').show = model
+    # Strip out set info, set tracks as normally
+    @on 'change:sets', (model, sets) ->
+      _tracks = _.flatten( _.map(sets, (set) -> set.tracks) )
+      _sets   = []
+      _.reduce sets, ((beforeTrackIdx, set) -> 
+        _sets.push( {title: set.title, beforeTrackIdx: beforeTrackIdx} )
+        beforeTrackIdx + set.tracks.length), 0
+
+      @set 'sets', _sets, silent: true
+      @set 'tracks', _tracks
+
 
   year: =>
     @get('show_date').split('-')[0]

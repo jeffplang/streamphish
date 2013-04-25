@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209202930) do
+ActiveRecord::Schema.define(:version => 20130424203302) do
+
+  create_table "concert_sets", :force => true do |t|
+    t.integer  "show_id"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "position"
+  end
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -43,6 +51,8 @@ ActiveRecord::Schema.define(:version => 20130209202930) do
     t.boolean  "sbd",        :default => false
   end
 
+  add_index "shows", ["show_date"], :name => "shows_show_date_index"
+
   create_table "songs", :force => true do |t|
     t.string   "title"
     t.datetime "created_at",                  :null => false
@@ -56,6 +66,8 @@ ActiveRecord::Schema.define(:version => 20130209202930) do
     t.integer "track_id"
   end
 
+  add_index "songs_tracks", ["song_id"], :name => "songs_tracks_song_id_index"
+
   create_table "tracks", :force => true do |t|
     t.integer  "show_id"
     t.string   "title"
@@ -68,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130209202930) do
     t.datetime "song_file_updated_at"
     t.integer  "duration"
     t.string   "slug"
+    t.integer  "concert_set_id"
   end
 
   add_index "tracks", ["slug"], :name => "index_tracks_on_slug"
