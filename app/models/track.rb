@@ -21,7 +21,7 @@ class Track < ActiveRecord::Base
   has_many :section_markers, :dependent => :destroy
   belongs_to :concert_set
   delegate :show, :to => :concert_set
-  # belongs_to :show
+  belongs_to :show
   
   # default_scope order('position')
   scope :chronological, order('shows.show_date ASC').joins(:show)
