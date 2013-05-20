@@ -11,7 +11,7 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
   initialize: ->
     super
-    @bind 'all', @_trackPageView
+    @bind 'route', @_trackPageView
     @_dim = document.getElementById 'dim'
 
   index: ->
