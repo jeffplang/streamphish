@@ -7,12 +7,21 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     # 'shows?:year_query':    'showsByYear'
     'shows/:date(/:track)': 'showByDate'
 
-  showCache: {}
+  showCache:     {}
+  _scrollStates: {}
 
   initialize: ->
     super
+    @bind 'route:before', @_recordCurrentScrollState
     @bind 'route', @_trackPageView
     @_dim = document.getElementById 'dim'
+
+  route: (route, name, handler) -> 
+    console.log("#{route}, #{name}, #{handler}")
+    super
+    # super route, name, =>
+    #   @trigger 'route:before'
+    #   handler() if handler
 
   index: ->
     indexData = new Streamphish.Models.IndexData
@@ -61,11 +70,12 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
     $('#main').html( @currentView.$el )
       # .trigger('rendered')
+    @_setPageScroll()
     @_dim.style.display = 'none'
 
   _swap: (view, fetchable) ->
     @_dim.style.display = 'block' if @currentView
-
+    @_oldScroll = document.body.scrollTop;
     if !fetchable.fetched
       fetchable.fetch
         success: (model, resp, opts) =>
@@ -76,3 +86,15 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
   _trackPageView: ->
     url = Backbone.history.getFragment()
     _gaq.push ['_trackPageview', "/#{url}"]
+
+  _getScrollKey: ->
+    Backbone.history.getFragment().match(/(shows\/?(83\-87|[0-9]{4})?(-[0-9]{2}-[0-9]{2})?|songs\/?([\w\-]+)?).*/)?[1] or '/'
+
+  _recordCurrentScrollState: ->
+    key = @_getScrollKey()
+    console.log "@_scrollStates[#{key}] = #{document.body.scrollTop}"
+    @_scrollStates[@_getScrollKey()] = document.body.scrollTop
+
+  _setPageScroll: ->
+    document.body.scrollTop = @_scrollStates[@_getScrollKey()] || 0
+
