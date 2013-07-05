@@ -39,19 +39,18 @@ class Track < ActiveRecord::Base
   # Callbacks
   ############
   before_validation :populate_song, :populate_position
-  after_save :set_duration
+  before_save :set_duration
 
   def file_url
     song_file.to_s
   end
 
   protected
-  
+
   def set_duration
-    unless self.duration # this won't record the correct duration if we're uploading a new file
-      Mp3Info.open song_file.path do |mp3|
+    if song_file.dirty?
+      Mp3Info.open song_file.queued_for_write[:original].path do |mp3| 
         self.duration = (mp3.length * 1000).round
-        save
       end
     end
   end
