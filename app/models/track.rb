@@ -4,7 +4,7 @@ class Track < ActiveRecord::Base
   # Attributes & Constants
   #########################
   FILE_NAME_HASH_SECRET = "CROUOPQNDKUCBVYTQYQLUSKCOMJAQFEWXMEX"
-  attr_accessible :concert_set_id, :title, :position, :song_file, :song_ids
+  attr_accessible :concert_set_id, :title, :position, :song_file, :song_ids, :show
 
   extend FriendlyId
   friendly_id :title, :use => [:slugged, :scoped], :scope => :show
@@ -20,7 +20,7 @@ class Track < ActiveRecord::Base
   has_many :songs, :through => :songs_tracks
   has_many :section_markers, :dependent => :destroy
   belongs_to :concert_set
-  delegate :show, :to => :concert_set
+  # delegate :show, :to => :concert_set
   belongs_to :show
   
   # default_scope order('position')

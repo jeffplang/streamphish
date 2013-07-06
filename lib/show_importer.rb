@@ -5,7 +5,7 @@ require_relative 'filename_matcher'
 module ShowImporter
 
   class ShowImporter
-    attr_reader :show, :fm, :songs
+    attr_reader :show, :fm, :songs, :sets
 
     def initialize(date)
       puts "Fetching show info..."
@@ -17,13 +17,22 @@ module ShowImporter
               Show.new(:location => @show_info.location, :show_date => Date.strptime(date, '%m/%d/%Y'))
 
       @songs = []
-      populate_songs
+      @sets = []
+      populate_sets
     end
 
     def pp_list
-      @songs.sort{ |a,b| a.pos <=> b.pos }.each do |song|
-        puts song
+      @sets.each do |set|
+        puts "#{set.title} ::"
+        set.tracks.each do |track|
+          puts (!track.valid? ? '* ' : '  ') + 
+               ("%2d.) %-30.30s     %-30.30s     " % [track.position, track.title, track.song_file.queued_for_write[:original].original_filename]) + 
+               track.songs.map{ |sc| "SC: %-3d %-20.20s" % [sc.id, sc.title] }.join('   ')
+        end
       end
+      # @songs.sort{ |a,b| a.pos <=> b.pos }.each do |song|
+      #   puts song
+      # end
     end
 
     def combine_up(pos)
@@ -54,16 +63,35 @@ module ShowImporter
 
     def save
       @show.save
-      @songs.each do |s|
-        if s.valid?
-          s.show = @show
-          s.song_file = File.new("#{@fm.s_dir}/#{s.filename}")
-          s.save
-        end
-      end
+      @sets.each(&:save)
+      # @songs.each do |s|
+      #   if s.valid?
+      #     s.show = @show
+      #     s.song_file = File.new("#{@fm.s_dir}/#{s.filename}")
+      #     s.save
+      #   end
+      # end
     end
 
     private
+
+    def populate_sets
+      matches = @fm.matches.dup
+      @show_info.sets.each_with_index do |set, idx|
+        cset   = ConcertSet.new(:title => set[0], :position => idx + 1, :show => @show)
+        songs = set[1]
+
+        songs.each do |pos, song|
+          fn_match = matches.find{ |k,v| !v.nil? && v.title == song }
+          if fn_match
+            track = Track.new(:title => song, :position => pos, :song_file => File.new("#{@fm.s_dir}/#{fn_match[0]}"), :show => @show)
+            cset.tracks << track
+          end
+        end
+
+        @sets << cset
+      end
+    end
 
     def populate_songs
       matches = @fm.matches.dup
@@ -135,23 +163,26 @@ module ShowImporter
         @si = ShowImporter.new(date)
         main_menu
 
-        puts "\nPick a position to edit, Toggle S(b)D, Show (f)ilenames, Show song (l)ist, (i)nsert new, (d)elete song, (s)ave: "
-        while line = Readline.readline('#bflids> ', true)
+        # puts "\nPick a position to edit, Toggle S(b)D, Show (f)ilenames, Show song (l)ist, (i)nsert new, (d)elete song, (s)ave: "
+        puts "\n(s)ave: "
+        # while line = Readline.readline('#bflids> ', true)
+        while line = Readline.readline('s> ', true)
           pos = line.to_i
-          if pos > 0
-            edit_for_pos(pos)
-          elsif line == 'b'
-            toggle_sbd
-            puts "Is SBD: " + (@si.show.sbd ? 'YES' : 'NO')
-          elsif line == 'f'
-            print_filenames
-          elsif line == 'l'
-            main_menu
-          elsif line == 'i'
-            insert_new_song
-          elsif line == 'd'
-            delete_song
-          elsif line == 's'
+          # if pos > 0
+          #   edit_for_pos(pos)
+          # elsif line == 'b'
+          #   toggle_sbd
+          #   puts "Is SBD: " + (@si.show.sbd ? 'YES' : 'NO')
+          # elsif line == 'f'
+          #   print_filenames
+          # elsif line == 'l'
+          #   main_menu
+          # elsif line == 'i'
+          #   insert_new_song
+          # elsif line == 'd'
+          #   delete_song
+          # elsif line == 's'
+          if line == 's'
             puts "Saving..."
             @si.save
             break
