@@ -4,7 +4,7 @@
 
 <ul class="pageList linkItems">
   <li class="sectionTitle"><h2>Years</h2></li>
-  <% _.each(years, function(year) { %>
+  <% _.each(years.reverse(), function(year) { %>
     <li>
       <a href="/shows/<%= year %>"><span><%= year %></span></a>
     </li>
