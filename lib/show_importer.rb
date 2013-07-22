@@ -58,7 +58,12 @@ module ShowImporter
     end
 
     def get_song(pos)
-      @songs.find{|s| s.pos == pos}
+      found_song = nil
+      @sets.each do |set|
+        found_song = set.tracks.find{|t| t.position == pos}
+        break if found_song
+      end
+      found_song
     end
 
     def save
@@ -166,23 +171,23 @@ module ShowImporter
         # puts "\nPick a position to edit, Toggle S(b)D, Show (f)ilenames, Show song (l)ist, (i)nsert new, (d)elete song, (s)ave: "
         puts "\n(s)ave: "
         # while line = Readline.readline('#bflids> ', true)
-        while line = Readline.readline('s> ', true)
+        while line = Readline.readline('#ls> ', true)
           pos = line.to_i
-          # if pos > 0
-          #   edit_for_pos(pos)
+          if pos > 0
+            edit_for_pos(pos)
           # elsif line == 'b'
           #   toggle_sbd
           #   puts "Is SBD: " + (@si.show.sbd ? 'YES' : 'NO')
           # elsif line == 'f'
           #   print_filenames
-          # elsif line == 'l'
-          #   main_menu
+          elsif line == 'l'
+            main_menu
           # elsif line == 'i'
           #   insert_new_song
           # elsif line == 'd'
           #   delete_song
           # elsif line == 's'
-          if line == 's'
+          elsif line == 's'
             puts "Saving..."
             @si.save
             break
@@ -206,25 +211,26 @@ module ShowImporter
     end
 
     def edit_for_pos(pos)
-      help_str = "Combine (u)p, Choose (s)ong collection, Choose (f)ile, Change (t)itle"
-      puts "#{@si.get_song(pos)}"
+      # help_str = "Combine (u)p, Choose (s)ong collection, Choose (f)ile, Change (t)itle"
+      help_str = "Choose (f)ile"
+      puts @si.get_song(pos)
       puts help_str
 
       while line = Readline.readline('usft?> ', false)
 
-        if line == 'u'
-          puts "Combining up (#{pos}) #{@si.get_song(pos).title} into (#{pos - 1}) #{@si.get_song(pos - 1).title}"
-          @si.combine_up(pos)
-          break
-        elsif line == 's'
-          update_sc_for_pos(pos)
-        elsif line == 'f'
+        # if line == 'u'
+        #   puts "Combining up (#{pos}) #{@si.get_song(pos).title} into (#{pos - 1}) #{@si.get_song(pos - 1).title}"
+        #   @si.combine_up(pos)
+        #   break
+        # elsif line == 's'
+        #   update_sc_for_pos(pos)
+        if line == 'f'
           update_file_for_pos(pos)
-        elsif line == 't'
-          update_title_for_pos(pos)
-        elsif line == '?'
-          puts "#{@si.get_song(pos)}"
-          puts help_str
+        # elsif line == 't'
+        #   update_title_for_pos(pos)
+        # elsif line == '?'
+        #   puts "#{@si.get_song(pos)}"
+        #   puts help_str
         end
 
       end
@@ -281,7 +287,7 @@ module ShowImporter
         if choice > 0
           new_filename = filenames[choice - 1]
           puts "Updating filename to '#{new_filename}'"
-          @si.get_song(pos).filename = new_filename
+          @si.get_song(pos).song_file = File.new("#{@si.fm.s_dir}/#{new_filename}")
           break
         end
       end
@@ -290,6 +296,12 @@ module ShowImporter
   end
 end
 
+
+Track.send(:define_method, 'to_s') do
+  (!valid? ? '* ' : '  ') + 
+  ("%2d.) %-30.30s     %-30.30s     " % [position, title, song_file.queued_for_write[:original].original_filename]) + 
+  songs.map{ |sc| "SC: %-3d %-20.20s" % [sc.id, sc.title] }.join('   ')
+end
 
 
 if __FILE__ == $0
