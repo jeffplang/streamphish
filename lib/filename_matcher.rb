@@ -66,7 +66,7 @@ class FilenameMatcher
     else
       filename
         .gsub('.mp3', '')
-        .gsub(/^II?/, '')
+        .gsub(/^(II)?/, '')
         .gsub('_', ' ')
     end
   end
