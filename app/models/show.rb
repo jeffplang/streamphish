@@ -20,7 +20,7 @@ class Show < ActiveRecord::Base
   validates_presence_of :show_date, :location
 
   extend FriendlyId
-  friendly_id :show_date
+  friendly_id :show_date, use: [:finders]
 
   def to_s
     "#{show_date.strftime('%m-%d-%Y')} - #{location}" if show_date && location

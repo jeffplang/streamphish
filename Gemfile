@@ -2,45 +2,49 @@ source 'https://rubygems.org'
 #source "http://gems.rubyforge.org"
 
 
-gem 'rails', '3.2.12'
+# gem 'rails', '3.2.12'
+gem 'rails', '4.0.0'
+
+# Rails 4 deprecated features gems
+gem 'protected_attributes'
+gem 'actionpack-action_caching'
+
 gem 'taglib-ruby'
-gem 'rubyzip'
 gem 'pg'
 gem 'paperclip'
 gem 'nokogiri'
-gem 'friendly_id'
+gem 'friendly_id', '5.0.0.rc1'
 gem 'mp3info'
 gem 'pg_search'
 gem 'color', '>= 1.4.0', :require => ['color', 'color/palette/monocontrast']
-gem "selenium-webdriver", "~> 2.32.1"
+gem 'selenium-webdriver', '~> 2.35.1'
 gem 'xmpp4r'
 # gem 'rails-backbone', :git => 'https://github.com/codebrew/backbone-rails.git'
 gem 'underscore-template-rails', :git => 'https://github.com/jeffplang/underscore-template-rails.git'
 gem 'jbuilder'
-gem 'rails_admin'
+
 # gem 'capybara'
 # gem 'capybara-webkit'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails',   '~> 4.0.0'
+  gem 'coffee-rails', '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '>= 1.3.0'
   gem 'compass-rails'
   gem 'compass-h5bp'
-end
+
 
 group :production do
   # gem 'passenger'
 end
 
 gem 'jquery-rails'
-gem 'html5-rails'
+# gem 'html5-rails'
 
 group :development do
 
