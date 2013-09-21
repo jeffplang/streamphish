@@ -7,7 +7,7 @@ class Song < ActiveRecord::Base
   validates_presence_of :title
 
   extend FriendlyId
-  friendly_id :title, :use => :slugged
+  friendly_id :title, use: [:slugged, :finders]
 
   include PgSearch
   pg_search_scope :kinda_matching,
