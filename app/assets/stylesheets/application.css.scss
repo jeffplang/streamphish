@@ -41,6 +41,11 @@ $songBg: #0F2340;
 $sHandleSize: 12px;
 $sHandleHoverSize: 15px;
 
+//-----------------------------------------
+// SoundCloud sync styles
+//-----------------------------------------
+@import "soundcloud_sync";
+
 body { background: $songBg; }
 body.noTextSelect { 
   -webkit-touch-callout: none;

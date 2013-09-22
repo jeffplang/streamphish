@@ -6,16 +6,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
   <%= render "head" %>
-
+  
   <body class="pages hidePlayer">
     <%= render "chromeframe" %>
 
     <div id="main" role="main">
+      <header>
+        <h1>PhishTracks-SoundCloud Sync</h1>
+      </header>
       <%= yield %>
     </div>
-    <div id="dim"></div>
-    <div id="player"></div>
-
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-35768950-1']);
@@ -27,9 +27,6 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-
-    <%# Javascript at the bottom for fast page loading %>
-    <%= render "javascripts" %>
 
   </body>
 </html>
