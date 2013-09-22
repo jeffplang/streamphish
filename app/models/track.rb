@@ -24,7 +24,7 @@ class Track < ActiveRecord::Base
   belongs_to :show
   
   # default_scope order('position')
-  scope :chronological, order('shows.show_date ASC').joins(:show)
+  scope :chronological, Proc.new{ order('shows.show_date ASC').joins(:show) }
 
   ##############
   # Validations
