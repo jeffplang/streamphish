@@ -61,4 +61,4 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
 
   render: ->
     super
-    this.el.scrollTop = 0;
+    window.scrollTo 0, 0
