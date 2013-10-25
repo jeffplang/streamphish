@@ -36,10 +36,13 @@
 @include h5bp-media;
 
 @import url(http://fonts.googleapis.com/css?family=Jacques+Francois|Allan|Economica:400,700);
+@import "phishtracks-icons";
 
 $songBg: #0F2340;
 $sHandleSize: 12px;
 $sHandleHoverSize: 15px;
+
+.hide { display: none; }
 
 body { background: $songBg; }
 body.noTextSelect { 
@@ -85,9 +88,32 @@ header h1 a { color: #fff; text-decoration: none; }
 header h1 a:hover { text-decoration: underline; }
 header h1 a small { font-size: 13px; display:inline-block; vertical-align: top; margin-top: 13px; }
 header a.info { text-decoration: none; color: inherit; font-size: 12px; font-family: Arial; display: inline-block; vertical-align: top; margin: 14px 0 0 3px; }
+header a.info.mic { font-size: inherit; }
+
 header a.info:hover { text-decoration: underline; }
 
 header a.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #fff; text-decoration: none; top: 0; left: 0; z-index: 50; position: fixed; display: inline-block; height: 32px; padding: 9px 18px 0 6px; }
+
+header div.sourceContainer { display: inline-block; position: relative; vertical-align: top; }
+header div.sourceInfo { position: absolute; background: #fff; top: 52px; left: -112px; text-align: left; padding: 10px; color: #000; font-size: 14px; white-space: nowrap; }
+header div.sourceInfo:after {
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+header div.sourceInfo:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #ffffff;
+  border-width: 15px;
+  left: 50%;
+  margin-left: -15px;
+}
+
 
 div.pageContainer { margin-top: 60px; position: relative; }
 
