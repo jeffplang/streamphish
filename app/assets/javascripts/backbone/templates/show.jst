@@ -3,9 +3,19 @@
   <h1>
     <%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %><span class="location"> - <%= location %>
   </h1>
+  <div class="sourceContainer">
+    <a href="#" class="info mic"><i class="icon-mic"></i></a>
+    <div class="hide sourceInfo">
+      Source: Schoeps mk4v's(DIN)>kc5>m222>nt222>aeta psp-3>788t<br>
+      Location: FOB/DFC<br>
+      Transfer: 788t>Wavelab 6> CD Wave>Wavelab 6>Flac<br>
+      Taped and Transferred by: Derek Davis<br>
+    </div>
+  </div>
   <a href="http://phish.net/setlists/?d=<%= show_date %>" target="_blank" class="info" data-bypass>
     info
   </a>
+
 </header>
 
 <% beforeTrackIdxs = _.map(sets, function(set) { return set.beforeTrackIdx; }); %>

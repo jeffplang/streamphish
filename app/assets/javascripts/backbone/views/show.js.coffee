@@ -3,6 +3,7 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
 
   events:
     'click ul.songs li': 'songClick'
+    'click a.mic': 'showSourceInfo'
 
   initialize: (opts) ->
     super opts
@@ -33,6 +34,16 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
       track.unset 'initialPosition'
       return 
     App.router.navigate url, replace: true
+
+  showSourceInfo: (e) ->
+    # Used to prevent href='#' from being routed...kinda shitty
+    e.stopImmediatePropagation()
+    e.preventDefault()
+    $('header .sourceInfo')
+      .css('left', -> 
+        -$(this).width() / 2 + 4
+      )
+      .toggleClass('hide')
 
   _parsePosition: (posStr) ->
     # Valid position strings:
