@@ -97,9 +97,9 @@ header a.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #f
 
 header div.sourceContainer { display: inline-block; position: relative; vertical-align: top; }
 header div.sourceInfo { position: absolute; background: #463963; top: 52px; text-align: left; padding: 10px; color: #fff; font-size: 14px; white-space: nowrap; 
-  -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.3));
 }
 header div.sourceInfo:after {
   bottom: 100%;
