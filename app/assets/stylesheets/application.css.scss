@@ -96,7 +96,7 @@ header a.info:hover { text-decoration: underline; }
 header a.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #fff; text-decoration: none; top: 0; left: 0; z-index: 50; position: fixed; display: inline-block; height: 32px; padding: 9px 18px 0 6px; }
 
 header div.sourceContainer { display: inline-block; position: relative; vertical-align: top; }
-header div.sourceInfo { position: absolute; background: #463963; top: 52px; text-align: left; padding: 10px; color: #fff; font-size: 14px; white-space: nowrap; 
+header div.sourceInfo { position: absolute; background: #463963; top: 51px; text-align: left; padding: 10px; color: #fff; font-size: 14px; white-space: nowrap; 
   -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
   box-shadow: 0 1px 4px rgba(0,0,0,0.3);
   filter: drop-shadow(0 1px 4px rgba(0,0,0,0.3));
@@ -117,11 +117,6 @@ header div.sourceInfo:after {
   left: 50%;
   /*margin-left: -15px;*/ /* Defined in show.jst */
 }
-
-header div.sourceInfo:after {
-
-}
-
 
 div.pageContainer { margin-top: 60px; position: relative; }
 
