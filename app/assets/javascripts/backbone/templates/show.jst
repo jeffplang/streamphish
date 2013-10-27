@@ -5,15 +5,19 @@
   </h1>
   <div class="sourceContainer">
     <a href="#" class="info mic"><i class="icon-mic"></i></a>
-    <div class="hide sourceInfo">
-      Source: Schoeps mk4v's(DIN)>kc5>m222>nt222>aeta psp-3>788t<br>
-      Location: FOB/DFC<br>
-      Transfer: 788t>Wavelab 6> CD Wave>Wavelab 6>Flac<br>
-      Taped and Transferred by: Derek Davis<br>
+    <div class="invisible sourceInfo" data-arrow-pos="-15px">
+      Schoeps MK41>KC5>CMC6>Sonosax SX-R4 (24bit/96khz)<br>
+      mics were DIN<br>
+      <br>
+      Lineage:<br>
+      WAV>USB>Macbook Pro>Wave Editor(tracking,fades,resample(izotope)/dither(mbit+)to 16 bit/44.1k)>XAct(FLAC 8,ffp,fix sbe)<br>
+      <br>
+      Taped by: Andy Murray<br>
+      Transferred by: Andy Murray
     </div>
   </div>
   <a href="http://phish.net/setlists/?d=<%= show_date %>" target="_blank" class="info" data-bypass>
-    info
+    p.net
   </a>
 
 </header>
@@ -42,3 +46,5 @@
     </li>
   <% }); %>
 </ul>
+
+<style>header div.sourceInfo:after { margin-left: -15px; }</style>

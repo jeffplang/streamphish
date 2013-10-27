@@ -43,6 +43,7 @@ $sHandleSize: 12px;
 $sHandleHoverSize: 15px;
 
 .hide { display: none; }
+.invisible { visibility: hidden; }
 
 body { background: $songBg; }
 body.noTextSelect { 
@@ -95,23 +96,30 @@ header a.info:hover { text-decoration: underline; }
 header a.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #fff; text-decoration: none; top: 0; left: 0; z-index: 50; position: fixed; display: inline-block; height: 32px; padding: 9px 18px 0 6px; }
 
 header div.sourceContainer { display: inline-block; position: relative; vertical-align: top; }
-header div.sourceInfo { position: absolute; background: #fff; top: 52px; left: -112px; text-align: left; padding: 10px; color: #000; font-size: 14px; white-space: nowrap; }
+header div.sourceInfo { position: absolute; background: #463963; top: 52px; text-align: left; padding: 10px; color: #fff; font-size: 14px; white-space: nowrap; 
+  -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  -webkit-filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
 header div.sourceInfo:after {
   bottom: 100%;
-  border: solid transparent;
   content: " ";
   height: 0;
   width: 0;
   position: absolute;
   pointer-events: none;
+  border: solid transparent;
+
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #463963;
+  border-width: 15px;
+  left: 50%;
+  /*margin-left: -15px;*/ /* Defined in show.jst */
 }
 
 header div.sourceInfo:after {
-  border-color: rgba(136, 183, 213, 0);
-  border-bottom-color: #ffffff;
-  border-width: 15px;
-  left: 50%;
-  margin-left: -15px;
+
 }
 
 

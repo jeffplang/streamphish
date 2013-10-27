@@ -39,11 +39,24 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
     # Used to prevent href='#' from being routed...kinda shitty
     e.stopImmediatePropagation()
     e.preventDefault()
-    $('header .sourceInfo')
-      .css('left', -> 
-        -$(this).width() / 2 + 4
-      )
-      .toggleClass('hide')
+    $si = $('header .sourceInfo')
+    $arrowStyle = this.$el.find('style:first')
+
+    if $si.hasClass('invisible')
+      cssLeft = -$si.width() / 2 + 4
+      $si.css 'left', cssLeft
+
+      shiftLeftDist = Math.ceil($si.outerWidth() + $si.offset().left) - window.innerWidth + 6
+      styleStr = 'header div.sourceInfo:after { margin-left: Xpx; }'
+
+      if shiftLeftDist > 0
+        $si.css('left', cssLeft - shiftLeftDist)
+        $arrowStyle.text styleStr.replace('X', -15 + shiftLeftDist)
+      else
+        $arrowStyle.text styleStr.replace('X', -15)
+
+
+    $si.toggleClass('invisible')
 
   _parsePosition: (posStr) ->
     # Valid position strings:
