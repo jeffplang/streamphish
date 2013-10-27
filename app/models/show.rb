@@ -29,7 +29,7 @@ class Show < ActiveRecord::Base
 
   def bb_json
     Jbuilder.encode do |json|
-      json.(self, :id, :location, :remastered, :sbd, :show_date)
+      json.(self, :id, :location, :remastered, :sbd, :show_date, :source_info)
       json.sets self.concert_sets do |concert_set|
         json.(concert_set, :title)
         json.tracks concert_set.tracks.includes(:songs).order(:position) do |track|
