@@ -100,6 +100,7 @@ header div.sourceInfo { position: absolute; background: #463963; top: 52px; text
   -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
   box-shadow: 0 1px 4px rgba(0,0,0,0.3);
   filter: drop-shadow(0 1px 4px rgba(0,0,0,0.3));
+  border-radius: 3px;
 }
 header div.sourceInfo:after {
   bottom: 100%;
