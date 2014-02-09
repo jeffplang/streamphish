@@ -40,6 +40,7 @@ gem 'jbuilder'
   gem 'compass-h5bp'
 
 
+  gem 'unicorn'
 group :production do
   # gem 'passenger'
 end
