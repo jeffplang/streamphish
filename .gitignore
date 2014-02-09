@@ -17,7 +17,6 @@
 # Custom
 /.rvmrc
 /public/system/*
-/public/assets/*
 /public/screenshots
 config/database.yml
 rsync_exclude.txt
