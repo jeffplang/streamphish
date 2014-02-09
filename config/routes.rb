@@ -5,9 +5,6 @@ Streamphish::Application.routes.draw do
   resources :songs
 
   get "/years" => "pages#years"
-  
-  # SANDBOX TEST STUFF
-  get "/download" => "sandboxes#download"
 
   root :to => 'pages#index'
 
