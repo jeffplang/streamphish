@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 #source "http://gems.rubyforge.org"
 
+ruby '1.9.3p484'
 
 # gem 'rails', '3.2.12'
 gem 'rails', '4.0.0'
