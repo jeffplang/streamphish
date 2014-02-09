@@ -40,7 +40,9 @@ gem 'jbuilder'
   gem 'compass-h5bp'
 
 
-  gem 'unicorn'
+gem 'unicorn'
+gem 'newrelic_rpm'
+
 group :production do
   # gem 'passenger'
 end
