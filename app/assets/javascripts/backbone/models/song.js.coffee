@@ -1,4 +1,4 @@
-class Streamphish.Models.Song extends Backbone.Model
+class Streamphish.Models.Song extends Streamphish.Models.Base
   urlRoot: '/api/v1/songs'
 
   # initialize: ->
@@ -8,6 +8,6 @@ class Streamphish.Models.Song extends Backbone.Model
   #         (new Streamphish.Models.Track(track) for track in tracks)), 
   #       silent: true
 
-class Streamphish.Collections.Songs extends Backbone.Collection
+class Streamphish.Collections.Songs extends Streamphish.Collections.Base
   url: '/api/v1/songs'
   model: Streamphish.Models.Song

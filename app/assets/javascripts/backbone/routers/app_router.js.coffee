@@ -7,8 +7,6 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     # 'shows?:year_query':    'showsByYear'
     'shows/:date(/:track)': 'showByDate'
 
-  showCache: {}
-
   initialize: ->
     super
     @bind 'route', @_trackPageView
@@ -34,7 +32,7 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
   showsByYear: (year) ->
     shows = new Streamphish.Collections.Shows( [], year: year )
-    view  = new Streamphish.Views.ShowsByYear( collection: shows )
+    view = new Streamphish.Views.ShowsByYear( collection: shows )
 
     @_swap view, shows
 

@@ -1,4 +1,2 @@
-class Streamphish.Models.IndexData extends Backbone.Model
+class Streamphish.Models.IndexData extends Streamphish.Models.Base
   urlRoot: '/'
-  initialize: ->
-    # @.fetch()

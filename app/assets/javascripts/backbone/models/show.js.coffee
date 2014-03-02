@@ -1,4 +1,4 @@
-class Streamphish.Models.Show extends Backbone.Model
+class Streamphish.Models.Show extends Streamphish.Models.Base
   urlRoot: '/api/v1/shows'
 
   initialize: ->
@@ -38,7 +38,8 @@ class Streamphish.Models.Show extends Backbone.Model
 
     super opts
 
-class Streamphish.Collections.Shows extends Backbone.Collection
+
+class Streamphish.Collections.Shows extends Streamphish.Collections.Base
   url: '/api/v1/shows'
   model: Streamphish.Models.Show
 

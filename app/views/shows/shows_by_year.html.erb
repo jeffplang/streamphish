@@ -1,11 +1,1 @@
-<% content_for(:title) { "#{@year} :: StreamPhish" } %>
-
-<h1 class="pageListHeader">
-  <%= @year %>
-  <%= back_link_for @shows %>
-</h1>
-<ul class="pageList linkItems showsByYear">
-<% @shows.each do |show| %>
-  <li><%= link_to "<span><strong>#{show.show_date.strftime('%m/%d/%Y')}</strong> #{show.location}</span> #{li_tags_for(show)}".html_safe, show_path(show) %></li>
-<% end %>
-</ul>
+<%= render(:template => 'api/v1/shows/index', :formats => [:json]).html_safe %>

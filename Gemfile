@@ -51,7 +51,7 @@ gem 'jquery-rails'
 # gem 'html5-rails'
 
 group :development do
-
+  gem 'pry-rails'
 end
 
 

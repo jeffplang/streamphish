@@ -1,14 +1,1 @@
-<% content_for(:title) { @show.to_s } %>
-<% content_for(:javascripts) do 
-  javascript_include_tag "songs"
-end %>
-
-<h1 class="pageListHeader">
-  <%= @show %>
-  <%= back_link_for(@show) %>
-</h1>
-<ul class="pageList songs">
-  <% @show.tracks.order(:position).each do |track| %>
-    <%= render :partial => "shared/track", :object => track, :locals => { :list_type => :show } %>
-  <% end %>
-</ul>
+<%= render(:template => 'api/v1/shows/show', :formats => [:json]).html_safe %>

@@ -12,8 +12,10 @@
     <%= render "header" %>
 
     <div id="main" role="main">
-      <%#= render "flashes" %>
-      <%= yield %>
+      <script>
+        var PTData = PTData || {};
+        PTData = <%= yield %>;
+      </script>
     </div>
     <div id="dim"></div>
     <div id="yearSelect">
@@ -28,7 +30,6 @@
       </ul>
     </div>
     <div id="player"></div>
-    <%= render "footer" %>
 
     <script type="text/javascript">
       var _gaq = _gaq || [];

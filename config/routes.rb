@@ -7,10 +7,10 @@ Streamphish::Application.routes.draw do
     end
   end
 
+  get '/shows/:id/:song', to: 'shows#show', constraints: { id: /\d{4}-\d{1,2}-\d{1,2}/ }
+
   resources :shows, only: [:index, :show]
   resources :songs, only: [:index, :show]
-
-  get "/years" => "pages#years"
 
   root :to => 'pages#index'
 

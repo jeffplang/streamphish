@@ -1,8 +1,1 @@
-<h1 class="pageListHeader">
-  Songs <%= back_link_for @songs %>
-</h1>
-<ul class="pageList linkItems">
-<% @songs.each do |song| %>
-  <li><%= link_to "<span>#{song.title}</span>".html_safe, song_path(song) %></li>
-<% end %>
-</ul>
+<%= render(:template => 'api/v1/songs/index', :formats => [:json]).html_safe %>
