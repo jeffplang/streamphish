@@ -45,7 +45,7 @@ Streamphish::Application.configure do
   config.cache_store = :memory_store, { :size => 64.megabytes }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
+  config.action_controller.asset_host = "http://assets.phishtracks.com"
 
   config.eager_load = true
 
