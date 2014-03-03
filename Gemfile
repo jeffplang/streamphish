@@ -46,7 +46,7 @@ gem 'newrelic_rpm'
 
 group :production do
   # gem 'passenger'
-  gem 'heroku-deflater'
+  # gem 'heroku-deflater'
 end
 
 gem 'jquery-rails'
