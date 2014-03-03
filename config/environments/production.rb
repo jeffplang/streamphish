@@ -21,7 +21,7 @@ Streamphish::Application.configure do
   config.assets.digest = true
 
   config.assets.js_compressor = Uglifier.new({ :output => { :comments => :none } })
-
+  config.assets.css_compressor = :yui
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 

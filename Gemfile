@@ -36,6 +36,7 @@ gem 'jbuilder'
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.3.0'
+  gem 'yui-compressor'
   gem 'compass-rails'
   gem 'compass-h5bp'
 
