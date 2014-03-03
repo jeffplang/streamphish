@@ -49,7 +49,7 @@ group :production do
   # gem 'heroku-deflater'
 end
 
-gem 'jquery-rails'
+# gem 'jquery-rails'
 # gem 'html5-rails'
 
 group :development do
