@@ -6,7 +6,8 @@ class Streamphish.Models.Base extends Backbone.Model
         _success(model, resp, opts)
         @fetched = true
 
-    if window.PTData
+    # PTData won't be properly set in browsers that use hashbangs
+    if window.PTData && Backbone.history._wantsPushState
       @set window.PTData
       window.PTData = null
       _success @
