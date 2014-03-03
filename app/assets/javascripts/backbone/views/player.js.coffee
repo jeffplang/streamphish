@@ -1,5 +1,3 @@
-//= require 'soundmanager2-nodebug'
-
 class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
   el:        '#player'
   template:  Streamphish.Templates.player

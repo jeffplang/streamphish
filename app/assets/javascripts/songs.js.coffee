@@ -1,6 +1,3 @@
-//= require 'soundmanager2-nodebug'
-//= require util
-
 class Song
   constructor: (@$song) ->
     @title = @$song.data 'title'
