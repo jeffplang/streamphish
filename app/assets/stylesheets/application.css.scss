@@ -228,6 +228,7 @@ body.hidePlayer #main { padding-bottom: 0px; }
     -webkit-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9); -moz-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9); box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
 }
 
+#player a.btn.playpause, #player a.btn.prev { margin-right: 4px; }
 #player a.btn.playpause span { height: 11px; display: inline-block; }
 #player a.btn.playpause .pause { width: 3px; border-left: 6px solid #fff; border-right: 6px solid #fff; }
 #player a.btn.playpause .play { width: 0px; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 13px solid #fff; }
