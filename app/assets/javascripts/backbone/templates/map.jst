@@ -1,2 +1,6 @@
 <img src="/maps/<%= file %>">
-<svg></svg>
+<svg>
+<% _.each(regions, function(region) { %>
+  <polygon points="<%= _.map(region.points, function(coords) { return coords.join(','); }).join('  ') %>" data-time="<%= region.time %>"/>
+<% }); %>
+</svg>

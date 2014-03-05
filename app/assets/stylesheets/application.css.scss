@@ -132,7 +132,8 @@ opacity: 0.20;           /* fx, safari, opera */
 #map { display: none; height: 100%; width: 100%; position: fixed; left: 0; bottom: 0; z-index: 7000; background-color: #000; text-align: center; overflow: scroll; margin-bottom: 50px; }
 
 #map svg { position: absolute; top: 0; left: 0; height: 100%; }
-
+#map svg polygon { fill-opacity: 0; }
+#map svg polygon:hover { fill-opacity: 0.14; cursor: pointer; }
 $yearSelectWidth: 300px;
 #yearSelect {
   display: none;
