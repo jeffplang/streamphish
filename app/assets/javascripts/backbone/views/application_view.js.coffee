@@ -1,4 +1,4 @@
-class Streamphish.Views.ApplicationView extends Backbone.View
+class SP.Views.ApplicationView extends Backbone.View
   tagName: 'div'
   id: 'currentView'
 
@@ -15,5 +15,5 @@ class Streamphish.Views.ApplicationView extends Backbone.View
     if json instanceof Array
       json = {data: json} 
 
-    this.$el.html this.template(json)
-    this
+    @$el.html @template(json)
+    @

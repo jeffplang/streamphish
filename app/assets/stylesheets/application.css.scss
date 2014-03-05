@@ -54,7 +54,9 @@ body.noTextSelect {
   -ms-user-select: none;
   user-select: none;
 }
-
+body.noScroll {
+  overflow: hidden
+}
 header { 
   position: fixed; 
   top: 0; 
@@ -127,6 +129,9 @@ filter: alpha(opacity=20); /* internet explorer */
 -moz-opacity: 0.20;       /* mozilla, netscape */
 opacity: 0.20;           /* fx, safari, opera */
 }
+#map { display: none; height: 100%; width: 100%; position: fixed; left: 0; bottom: 0; z-index: 7000; background-color: #000; text-align: center; overflow: scroll; margin-bottom: 50px; }
+
+#map svg { position: absolute; top: 0; left: 0; height: 100%; }
 
 $yearSelectWidth: 300px;
 #yearSelect {

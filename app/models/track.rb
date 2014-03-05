@@ -7,7 +7,7 @@ class Track < ActiveRecord::Base
   attr_accessible :concert_set_id, :title, :position, :song_file, :song_ids, :show
 
   extend FriendlyId
-  friendly_id :title, :use => [:slugged, :scoped], :scope => :show
+  friendly_id :title, use: [:slugged, :scoped], scope: :show
 
   has_attached_file :song_file,
     :url => "/system/:class/:attachment/:id_partition/:style/:hash.:extension",
@@ -16,9 +16,9 @@ class Track < ActiveRecord::Base
   ########################
   # Associations & Scopes
   ########################
-  has_many :songs_tracks, :dependent => :destroy
-  has_many :songs, :through => :songs_tracks
-  has_many :section_markers, :dependent => :destroy
+  has_many :songs_tracks, dependent: :destroy
+  has_many :songs, through: :songs_tracks
+  has_many :section_markers, dependent: :destroy
   belongs_to :concert_set
   # delegate :show, :to => :concert_set
   belongs_to :show
@@ -29,10 +29,10 @@ class Track < ActiveRecord::Base
   ##############
   # Validations
   ##############
-  validates_attachment :song_file, :presence => true,
-    :content_type => {:content_type => ['application/mp3', 'application/x-mp3', 'audio/mpeg', 'audio/mp3']}
+  validates_attachment :song_file, presence: true,
+    content_type: { content_type: ['application/mp3', 'application/x-mp3', 'audio/mpeg', 'audio/mp3'] }
   validates_presence_of :show, :title, :position
-  validates_uniqueness_of :position, :scope => :show_id
+  validates_uniqueness_of :position, scope: :show_id
   validate :require_at_least_one_song
 
   ############

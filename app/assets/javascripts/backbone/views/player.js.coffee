@@ -1,6 +1,6 @@
-class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
+class SP.Views.Player extends SP.Views.ApplicationView
   el:        '#player'
-  template:  Streamphish.Templates.player
+  template:  SP.Templates.player
 
   scrubbing: false
 
@@ -8,6 +8,7 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     'click .btn.prev':  'playPrev'
     'click .btn.next':  'playNext'
     'click .btn.playpause': 'togglePause'
+    'click a.map': 'toggleMap'
     'mousedown .scrubber': 'grabScrubberHandle'
     'mousedown .scrubber .handle': 'grabScrubberHandle'
     'touchdown .scrubber .handle': 'grabScrubberHandle'
@@ -39,6 +40,14 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     @$el.find('.btn.playpause span')
       .toggleClass('play')
       .toggleClass('pause')
+
+  toggleMap: ->
+    if @mapView
+      @mapView.close()
+      @mapView = null
+    else
+      @mapView = new SP.Views.Map(@model.get('currentTrack').get('map'))
+      @mapView.render()
 
   trackChange: (player, track) ->
     @render()
@@ -92,10 +101,10 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     v
 
   scrubToMousePos: (e, sv) ->
-    sv.scrubPosition = Streamphish.Helpers.clamp (e.clientX - sv.scrubOffset), 0, sv.maxScrubDistance
+    sv.scrubPosition = SP.Helpers.clamp (e.clientX - sv.scrubOffset), 0, sv.maxScrubDistance
     msPosition       = sv.scrubPosition / sv.maxScrubDistance * @model.get('currentTrack').get('duration')
     sv.$handle.css 'left', sv.scrubPosition
-    sv.$currentTime.text Streamphish.Helpers.msToMMSS(msPosition)
+    sv.$currentTime.text SP.Helpers.msToMMSS(msPosition)
 
   grabScrubberHandle: (e) ->
     e.originalEvent.preventDefault()

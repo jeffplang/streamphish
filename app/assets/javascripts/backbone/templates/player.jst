@@ -17,6 +17,10 @@
 <% var show = (currentTrack.collection && currentTrack.collection.show) ? currentTrack.collection.show : null; %>
 <h2><%= SP.Helpers.linkTo(currentTrack.get('title'), "songs/" + currentTrack.get('slug')) %></h2>
 
+<% if(currentTrack.get('map')) { %>
+<a class="map">map</a>
+<% } %>
+
 <% if(show) { %>
   <h3><%= SP.Helpers.playerLinkToShow(show) %></h3>
 <% } %>
