@@ -32,6 +32,15 @@ class Streamphish.Models.Track extends Backbone.Model
   position: ->
     @sound?.position or @get('initialPosition') or 0
 
+  goToPosition: (ms) ->
+    @sound.pause()
+    positionCallback = (eventPosition) ->
+      @clearOnPosition 0, positionCallback
+      @resume()
+
+    @sound.onPosition 0, positionCallback
+    @sound.setPosition ms
+    
 
 class Streamphish.Collections.Tracks extends Backbone.Collection
   model: Streamphish.Models.Track

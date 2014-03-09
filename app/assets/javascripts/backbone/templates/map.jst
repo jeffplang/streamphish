@@ -1,6 +1,8 @@
-<img src="/maps/<%= file %>">
-<svg>
-<% _.each(regions, function(region) { %>
-  <polygon points="<%= _.map(region.points, function(coords) { return coords.join(','); }).join('  ') %>" data-time="<%= region.time %>"/>
-<% }); %>
-</svg>
+<div class="wrapper">
+  <img src="/maps/<%= file %>">
+  <svg>
+    <% _.each(regions, function(region) { %>
+    <polygon points="<%= _.map(region.points, function(coords) { return coords.join(','); }).join('  ') %>" data-time="<%= region.time %>" />
+    <% }); %>
+  </svg>
+</div>

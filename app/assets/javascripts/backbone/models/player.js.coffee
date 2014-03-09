@@ -56,7 +56,7 @@ class Streamphish.Models.Player extends Backbone.Model
 
   goToPercentage: (percentage) ->
     duration = @get('currentTrack').get('duration')
-    @get('currentTrack').sound.setPosition(duration * percentage)
+    @get('currentTrack').goToPosition(duration * percentage)
 
   stopLoadingCurrent: (player, newTrack) ->
     @_cSound.unload() if @_cSound

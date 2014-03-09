@@ -12,8 +12,11 @@ class SP.Views.Map extends SP.Views.ApplicationView
     playerHeight = App.player_view.$el.height()
 
     mapImageHeight = @$el.find('img:first').height()
-    @$el.find('svg:first').attr 'height', mapImageHeight
-    # @$el.css 'height', h - playerHeight - 20
+    mapImageWidth = @$el.find('img:first').width()
+    @$el.find('svg:first')
+      .attr('height', mapImageHeight)
+      .attr('width', mapImageWidth)
+    @$el.find('.wrapper').css 'width', mapImageWidth
 
   close: ->
     $('body').removeClass 'noScroll'
@@ -21,7 +24,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
 
   scrubToRegion: (e) ->
     time = $(e.currentTarget).data('time')
-    App.player.get('currentTrack').sound.setPosition(time)
+    App.player.get('currentTrack').goToPosition(time)
 
   render: ->
     @$el.html @template(@data)
