@@ -69,6 +69,7 @@ class SP.Views.Player extends SP.Views.ApplicationView
 
   trackPlaying: (track) ->
     @_updateTime track
+    @trigger 'trackPlaying'
     unless App.config.isMobile
       @_updateHandlePosition track
 
