@@ -1,4 +1,4 @@
-class Streamphish.Models.Track extends Backbone.Model
+class SP.Models.Track extends Backbone.Model
   initialize: ->
     super
 
@@ -42,8 +42,8 @@ class Streamphish.Models.Track extends Backbone.Model
     @sound.setPosition ms
     
 
-class Streamphish.Collections.Tracks extends Backbone.Collection
-  model: Streamphish.Models.Track
+class SP.Collections.Tracks extends Backbone.Collection
+  model: SP.Models.Track
 
   # setPlaying: (track) ->
   #   currPlaying = _.find @models, (model) ->
