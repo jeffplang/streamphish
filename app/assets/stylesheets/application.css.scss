@@ -269,7 +269,8 @@ background: rgb(234,185,45); /* Old browsers */
   background: linear-gradient(to bottom,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eab92d', endColorstr='#c79810',GradientType=0 ); /* IE6-9 */
 }
-#player .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: relative; z-index: 3; top: -2px; border-radius: 6px; margin-left: -3px; left: 0%; }
+#player .scrubber .handle { background: #fff; height: $sHandleSize; width: $sHandleSize; position: absolute; z-index: 3; top: -2px; border-radius: 6px; margin-left: -3px; left: 0%; }
+#player .scrubber .handle.ghost { opacity: 0.5; display: none; }
 
 /*#player .scrubber .handle:hover { height: $sHandleHoverSize; width: $sHandleHoverSize; top: -4px; border-radius: 9px; left: -1px; }*/
 

@@ -62,10 +62,13 @@ class SP.Views.Player extends SP.Views.ApplicationView
   _updateTime: (track) ->
     @$el.find('.time .current').text Streamphish.Helpers.msToMMSS track.position() unless @scrubbing
 
+  cssPosForPercentage: (percentage) ->
+    (@$el.find('.scrubber').width() - 8) * percentage
+
   _updateHandlePosition: (track) ->
-    maxScrubDistance = @$el.find('.scrubber').width() - 8
-    cssPos = (track.position() / track.get('duration')) * maxScrubDistance
-    @$el.find('.handle').css('left', cssPos) unless @scrubbing
+    unless @scrubbing
+      cssPos = @cssPosForPercentage(track.position() / track.get('duration'))
+      @$el.find('.handle:first').css('left', cssPos) 
 
   trackPlaying: (track) ->
     @_updateTime track
@@ -107,6 +110,8 @@ class SP.Views.Player extends SP.Views.ApplicationView
     sv.$handle.css 'left', sv.scrubPosition
     sv.$currentTime.text SP.Helpers.msToMMSS(msPosition)
 
+    msPosition
+
   grabScrubberHandle: (e) ->
     e.originalEvent.preventDefault()
     @scrubbing = true
@@ -126,7 +131,8 @@ class SP.Views.Player extends SP.Views.ApplicationView
         @._toggleHandleHandlers()
 
       $doc.on 'mousemove touchmove', (e) =>
-        @scrubToMousePos e, sv
+        msPos = @scrubToMousePos e, sv
+        @trigger 'scrubbing', msPos
     else
       $doc.off 'mouseup mousemove touchend touchmove'
       $('body').removeClass 'noTextSelect'

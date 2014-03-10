@@ -2,7 +2,10 @@ class SP.Views.Map extends SP.Views.ApplicationView
   el: '#map'
   template: SP.Templates.map
 
-  events: 'click polygon': 'scrubToRegion'
+  events:
+    'click polygon': 'scrubToRegion'
+    'mouseover polygon': 'hoverOnRegion'
+    'mouseout polygon': 'hideGhostHandle'
 
   initialize: (@data) ->
     super
@@ -10,6 +13,8 @@ class SP.Views.Map extends SP.Views.ApplicationView
       region.time
 
     App.player_view.on 'trackPlaying', @highlightCurrentRegion
+    App.player_view.on 'scrubbing', @highlightRegionForPos
+      
 
   adjustHeight: ->
     viewportHeight = Math.max document.documentElement.clientHeight, window.innerHeight or 0
@@ -33,6 +38,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
   close: ->
     $('body').removeClass 'noScroll'
     App.player_view.off 'trackPlaying', @highlightCurrentRegion
+    App.player_view.off 'scrubbing', @highlightRegionForPos
     @$el.hide()
 
   scrubToRegion: (e) ->
@@ -40,11 +46,24 @@ class SP.Views.Map extends SP.Views.ApplicationView
     @highlightRegionForTime time
     App.player.get('currentTrack').goToPosition(time)
 
+  hoverOnRegion: (e) ->
+    percentageIn = $(e.currentTarget).data('time') / App.player.get('currentTrack').get('duration')
+    cssPos = App.player_view.cssPosForPercentage(percentageIn)
+    App.player_view.$el.find('.handle.ghost')
+      .css('left', cssPos)
+      .show()
+
+  hideGhostHandle: ->
+    App.player_view.$el.find('.handle.ghost').hide()
+
   render: ->
     @$el.html @template(@data)
     $('body').addClass 'noScroll'    
     @$el.toggle()
     @adjustHeight()
+
+  highlightRegionForPos: (pos) =>
+    @highlightRegionForTime @_regionTimeForPos(pos)
 
   highlightRegionForTime: (time) ->
     $el = @_$elForTime(time)
