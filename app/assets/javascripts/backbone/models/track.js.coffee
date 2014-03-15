@@ -36,7 +36,7 @@ class SP.Models.Track extends Backbone.Model
     @sound.pause()
     positionCallback = (eventPosition) ->
       @clearOnPosition 0, positionCallback
-      @resume()
+      # @resume()
 
     @sound.onPosition 0, positionCallback
     @sound.setPosition ms
