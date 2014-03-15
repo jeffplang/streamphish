@@ -40,7 +40,6 @@ class SP.Views.Player extends SP.Views.ApplicationView
     $btn = @$el.find('.btn.playpause')
 
     @model.togglePause()
-    @toggleTitleAnimation()
     @$el.find('.btn.playpause span')
       .toggleClass('play')
       .toggleClass('pause')
@@ -62,7 +61,6 @@ class SP.Views.Player extends SP.Views.ApplicationView
   trackChange: (player, track) ->
     @render()
     player.stop()
-    @toggleTitleAnimation() unless @_animating || App.config.isMobile
     track.play()
 
   trackLoading: (track) ->
@@ -85,25 +83,6 @@ class SP.Views.Player extends SP.Views.ApplicationView
     @trigger 'trackPlaying'
     unless App.config.isMobile
       @_updateHandlePosition track
-
-  toggleTitleAnimation: ->
-    @_title ||= document.title
-    # @_frames ||= ['▢', '▣', '▤', '▥']
-    # @_frames ||= ['▲', '△', '▶', '▷', '▼', '▽', '◀', '◁']
-    @_frames ||= ['◈', '▣', '◉', '◎']
-
-    titleAnimation = =>
-      @_frames.unshift @_frames.pop()
-      document.title = @_frames[0] + " " + @_title + " " + @_frames[0]
-
-    if @_animating
-      clearInterval @_titleAnimation
-      document.title = @_title
-      @_title = @_animating = null
-    else
-      titleAnimation()
-      @_titleAnimation = setInterval(titleAnimation, 400)
-      @_animating = true
 
   getScrubVars: ->
     v = $scrubber: @$el.find('.scrubber')
