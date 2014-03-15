@@ -45,6 +45,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
     time = $(e.currentTarget).data('time')
     @highlightRegionForTime time
     App.player.get('currentTrack').goToPosition(time)
+    App.player_view.play()
 
   hoverOnRegion: (e) ->
     percentageIn = $(e.currentTarget).data('time') / App.player.get('currentTrack').get('duration')
@@ -55,12 +56,6 @@ class SP.Views.Map extends SP.Views.ApplicationView
 
   hideGhostHandle: ->
     App.player_view.$el.find('.handle.ghost').hide()
-
-  render: ->
-    @$el.html @template(@data)
-    $('body').addClass 'noScroll'    
-    @$el.toggle()
-    @adjustHeight()
 
   highlightRegionForPos: (pos) =>
     @highlightRegionForTime @_regionTimeForPos(pos)
@@ -86,3 +81,9 @@ class SP.Views.Map extends SP.Views.ApplicationView
 
   _$elForTime: (time) ->
     @$el.find "polygon[data-time=#{time}]"
+
+  render: ->
+    @$el.html @template(@data)
+    $('body').addClass 'noScroll'
+    @$el.toggle()
+    @adjustHeight()

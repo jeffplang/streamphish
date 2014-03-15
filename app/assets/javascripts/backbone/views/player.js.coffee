@@ -32,6 +32,10 @@ class SP.Views.Player extends SP.Views.ApplicationView
   playNext: ->
     @model.playNext()
 
+  play: ->
+    @model.play()
+    @setPlayBtnState 'pause'
+
   togglePause: ->
     $btn = @$el.find('.btn.playpause')
 
@@ -40,6 +44,12 @@ class SP.Views.Player extends SP.Views.ApplicationView
     @$el.find('.btn.playpause span')
       .toggleClass('play')
       .toggleClass('pause')
+
+  setPlayBtnState: (state) ->
+    rm_state = if state == 'play' then 'pause' else 'play'
+
+    @$el.find('.btn.playpause span').addClass(state).removeClass(rm_state)
+      
 
   toggleMap: ->
     if @mapView
