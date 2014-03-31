@@ -7,14 +7,16 @@ class SP.Views.Map extends SP.Views.ApplicationView
     'mouseover polygon': 'hoverOnRegion'
     'mouseout polygon': 'hideGhostHandle'
 
-  initialize: (@data) ->
+  initialize: ->
     super
-    @regionTimes = _.map @data.regions, (region) ->
-      region.time
+
+    @regions = {}
+
+    for region in @model.get('regions').models
+      @regions[region.cid] = new SP.Views.MapRegion(model: region, parent: @)
 
     App.player_view.on 'trackPlaying', @highlightCurrentRegion
     App.player_view.on 'scrubbing', @highlightRegionForPos
-      
 
   adjustHeight: ->
     viewportHeight = Math.max document.documentElement.clientHeight, window.innerHeight or 0
@@ -28,10 +30,13 @@ class SP.Views.Map extends SP.Views.ApplicationView
     @$el.find('.wrapper').css 'width', mapImageWidth
 
   highlightCurrentRegion: =>
-    pos = App.player.get('currentTrack').sound.position
-    regionTime = @_regionTimeForPos pos
-    if regionTime?
-      @highlightRegionForTime regionTime
+    return if App.player_view.scrubbing
+    currRegion = @model.get('regions').regionForTime(App.player.get('currentTrack').sound.position)
+
+    if currRegion?
+      unless currRegion.get('highlighted')
+        @_unhighlightRegions()
+        currRegion.set('highlighted', true)      
     else
       @_unhighlightRegions()
 
@@ -42,13 +47,14 @@ class SP.Views.Map extends SP.Views.ApplicationView
     @$el.hide()
 
   scrubToRegion: (e) ->
-    time = $(e.currentTarget).data('time')
-    @highlightRegionForTime time
-    App.player.get('currentTrack').goToPosition(time)
+    region = @model.get('regions').get($(e.currentTarget).data('cid'))
+
+    App.player.get('currentTrack').goToPosition(region.get('time'))
     App.player_view.play()
 
   hoverOnRegion: (e) ->
-    percentageIn = $(e.currentTarget).data('time') / App.player.get('currentTrack').get('duration')
+    region = @model.get('regions').get($(e.currentTarget).data('cid'))
+    percentageIn = region.get('time') / App.player.get('currentTrack').get('duration')
     cssPos = App.player_view.cssPosForPercentage(percentageIn)
     App.player_view.$el.find('.handle.ghost')
       .css('left', cssPos)
@@ -58,32 +64,29 @@ class SP.Views.Map extends SP.Views.ApplicationView
     App.player_view.$el.find('.handle.ghost').hide()
 
   highlightRegionForPos: (pos) =>
-    @highlightRegionForTime @_regionTimeForPos(pos)
+    currRegion = @model.get('regions').regionForTime(pos)
 
-  highlightRegionForTime: (time) ->
-    $el = @_$elForTime(time)
-    return if $el.attr('class') == 'highlight'
-    @_unhighlightRegions()
-    @_$elForTime(time).attr 'class', 'highlight'
+    if currRegion?
+      unless currRegion.get('highlighted')
+        @_unhighlightRegions()
+        currRegion.set('highlighted', true)
+    else
+      @_unhighlightRegions()
 
-  _regionTimeForPos: (pos) ->
-    currRegionTime = null
-    for regionTime in @regionTimes
-      if pos >= regionTime
-        currRegionTime = regionTime
-      else if pos < regionTime
-        break
-
-    currRegionTime
 
   _unhighlightRegions: ->
-    @$el.find('polygon.highlight').attr 'class', null
-
-  _$elForTime: (time) ->
-    @$el.find "polygon[data-time=#{time}]"
+    for region in @model.get('regions').models
+      if region.get('highlighted')
+        region.set 'highlighted', false
+        break
 
   render: ->
-    @$el.html @template(@data)
+    super
+
+    _.each @regions, (region) ->
+      region.render()
+
     $('body').addClass 'noScroll'
+
     @$el.toggle()
     @adjustHeight()

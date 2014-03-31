@@ -49,13 +49,13 @@ class SP.Views.Player extends SP.Views.ApplicationView
 
     @$el.find('.btn.playpause span').addClass(state).removeClass(rm_state)
       
-
   toggleMap: ->
     if @mapView
       @mapView.close()
       @mapView = null
     else
-      @mapView = new SP.Views.Map(@model.get('currentTrack').get('map'))
+      @mapView = new SP.Views.Map(model: @model.get('currentTrack').get('map'))
+
       @mapView.render()
 
   trackChange: (player, track) ->

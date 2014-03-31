@@ -1,6 +1,7 @@
 class SP.Models.Track extends Backbone.Model
   initialize: ->
     super
+    @set 'map', new SP.Models.Map(@get('map')) if @has('map')
 
   play: (opts) ->
     soundManager.onready =>
@@ -36,7 +37,7 @@ class SP.Models.Track extends Backbone.Model
     @sound.pause()
     positionCallback = (eventPosition) ->
       @clearOnPosition 0, positionCallback
-      # @resume()
+      @resume()
 
     @sound.onPosition 0, positionCallback
     @sound.setPosition ms
