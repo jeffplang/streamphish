@@ -255,6 +255,7 @@ body.hidePlayer #main { padding-bottom: 0px; }
 #player h3 small { font-size: 15px; }
 #player h2 a, #player h3 a { color: #fff; text-decoration: none; }
 #player h2 a:hover, #player h3 a:hover { text-decoration: underline; }
+#player a.map { color: #fff; position: relative; top: -4px; left: 2px; cursor: pointer; }
 
 #player .scrubContainer { position: absolute; left: 178px; right: 25px; top: 48px; }
 #player .scrubber { height: 8px; background: #00f; position: absolute; left: 178px; right: 122px; top: 48px; border-radius: 3px; background: rgba(255,255,255,0.15);}

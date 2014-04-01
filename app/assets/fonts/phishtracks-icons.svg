@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="phishtracks-icons" horiz-adv-x="1000" >
+<font-face font-family="phishtracks-icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="map" unicode="&#xe800;" d="m0 663l313 125v-750l-313-126z m688 0v-751l-313 105v750z m312 125v-750l-250-101v751z" horiz-adv-x="1000" />
+<glyph glyph-name="mic" unicode="&#xe801;" d="m643 457v-71q0-124-82-215t-204-104v-74h143q15 0 25-11t11-25t-11-25t-25-11h-357q-15 0-25 11t-11 25t11 25t25 11h143v74q-121 13-204 104t-82 215v71q0 15 11 25t25 11t25-11t10-25v-71q0-104 74-177t176-73t177 73t73 177v71q0 15 11 25t25 11t25-11t11-25z m-143 214v-285q0-74-52-126t-127-53t-126 53t-52 126v285q0 74 52 127t126 52t127-52t52-127z" horiz-adv-x="642.9" />
+</font>
+</defs>
+</svg>
