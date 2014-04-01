@@ -36,16 +36,18 @@ class SP.Views.Map extends SP.Views.ApplicationView
     if currRegion?
       unless currRegion.get('highlighted')
         @_unhighlightRegions()
-        currRegion.set('highlighted', true)      
+        currRegion.set 'highlighted', true
     else
       @_unhighlightRegions()
 
   close: ->
     $('body').removeClass 'noScroll'
+    @$el.hide()
+
     App.player_view.off 'trackPlaying', @highlightCurrentRegion
     App.player_view.off 'scrubbing', @highlightRegionForPos
     @$el.unbind()
-    @$el.hide()
+    @_unhighlightRegions()
 
   scrubToRegion: (e) ->
     region = @model.get('regions').get($(e.currentTarget).data('cid'))
@@ -88,6 +90,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
       region.render()
 
     $('body').addClass 'noScroll'
+    @highlightCurrentRegion()
 
     @$el.toggle()
     @adjustHeight()
