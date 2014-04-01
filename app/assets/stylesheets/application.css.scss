@@ -130,6 +130,8 @@ filter: alpha(opacity=20); /* internet explorer */
 opacity: 0.20;           /* fx, safari, opera */
 }
 #map { display: none; height: 100%; width: 100%; position: fixed; left: 0; bottom: 0; z-index: 7000; background-color: #000; text-align: center; overflow: scroll; }
+#map .closeBtn { position: fixed; right: 16px; top: 16px; font-size: 35px; color: #fff; cursor: pointer; }
+#map .closeBtn i:before { margin: 0; }
 #map .wrapper { margin: 0 auto; position: relative; padding-bottom: 66px; }
 #map svg { position: absolute; top: 0; left: 0; height: 100%; }
 #map svg polygon { fill-opacity: 0; }

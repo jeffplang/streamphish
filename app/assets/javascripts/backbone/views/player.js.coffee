@@ -51,7 +51,7 @@ class SP.Views.Player extends SP.Views.ApplicationView
       
   toggleMap: ->
     if @mapView
-      @mapView.close()
+      @mapView.exit()
       @mapView = null
     else
       @mapView = new SP.Views.Map(model: @model.get('currentTrack').get('map'))

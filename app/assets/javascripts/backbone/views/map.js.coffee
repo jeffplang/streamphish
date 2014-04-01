@@ -4,6 +4,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
 
   events:
     'click polygon': 'scrubToRegion'
+    'click a.closeBtn': 'closeHandler'
     'mouseover polygon': 'hoverOnRegion'
     'mouseout polygon': 'hideGhostHandle'
 
@@ -40,7 +41,10 @@ class SP.Views.Map extends SP.Views.ApplicationView
     else
       @_unhighlightRegions()
 
-  close: ->
+  closeHandler: ->
+    App.player_view.toggleMap()
+
+  exit: ->
     $('body').removeClass 'noScroll'
     @$el.hide()
 
@@ -94,3 +98,4 @@ class SP.Views.Map extends SP.Views.ApplicationView
 
     @$el.toggle()
     @adjustHeight()
+
