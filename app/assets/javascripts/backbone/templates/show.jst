@@ -28,7 +28,11 @@
     <li data-cid="<%= track.cid %>">
       <div class="songInfo">
         <div class="songTitle">
-          <a data-control="song" href="/shows/<%= show_date %>/<%= track.get('slug') %>" data-bypass><%= track.get('title') %></a>
+          <a data-control="song" href="/shows/<%= show_date %>/<%= track.get('slug') %>" data-bypass><%= track.get('title') %>
+            <% if(track.has('map')) { %>
+              <i class="icon-map"></i>
+            <% } %>
+          </a>
           <% if(sbd) { %>
             <span class="tag">SBD</span>
           <% } %>
