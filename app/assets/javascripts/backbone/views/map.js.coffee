@@ -42,7 +42,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
       @_unhighlightRegions()
 
   closeHandler: ->
-    App.player_view.toggleMap()
+    App.player_view.closeMap()
 
   exit: ->
     $('body').removeClass 'noScroll'

@@ -48,6 +48,9 @@ class SP.Views.Player extends SP.Views.ApplicationView
     rm_state = if state == 'play' then 'pause' else 'play'
 
     @$el.find('.btn.playpause span').addClass(state).removeClass(rm_state)
+
+  closeMap: ->
+    @toggleMap() if @mapView
       
   toggleMap: ->
     if @mapView
@@ -60,7 +63,7 @@ class SP.Views.Player extends SP.Views.ApplicationView
 
   trackChange: (player, track) ->
     @render()
-    @toggleMap() if @mapView
+    @closeMap()
     player.stop()
     track.play()
 
