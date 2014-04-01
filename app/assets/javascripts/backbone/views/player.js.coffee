@@ -60,6 +60,7 @@ class SP.Views.Player extends SP.Views.ApplicationView
 
   trackChange: (player, track) ->
     @render()
+    @toggleMap() if @mapView
     player.stop()
     track.play()
 
