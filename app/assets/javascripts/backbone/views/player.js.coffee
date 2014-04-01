@@ -63,7 +63,6 @@ class SP.Views.Player extends SP.Views.ApplicationView
 
   trackChange: (player, track) ->
     @render()
-    @closeMap()
     player.stop()
     track.play()
 

@@ -1,7 +1,9 @@
 class SP.Models.Track extends Backbone.Model
   initialize: ->
     super
-    @set 'map', new SP.Models.Map(@get('map')) if @has('map')
+    if @has('map')
+      @set 'map', new SP.Models.Map(@get('map'))
+      @get('map').track = @
 
   play: (opts) ->
     soundManager.onready =>
