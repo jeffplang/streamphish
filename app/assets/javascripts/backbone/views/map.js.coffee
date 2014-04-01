@@ -44,6 +44,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
     $('body').removeClass 'noScroll'
     App.player_view.off 'trackPlaying', @highlightCurrentRegion
     App.player_view.off 'scrubbing', @highlightRegionForPos
+    @$el.unbind()
     @$el.hide()
 
   scrubToRegion: (e) ->
