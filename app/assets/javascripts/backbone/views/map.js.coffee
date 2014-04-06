@@ -20,6 +20,8 @@ class SP.Views.Map extends SP.Views.ApplicationView
     App.player_view.on 'scrubbing', @highlightRegionForPos
     App.player.on 'change:currentTrack', @resetState
 
+    $(document).on('keyup', @handleKeypress)
+
   adjustHeight: ->
     viewportHeight = Math.max document.documentElement.clientHeight, window.innerHeight or 0
     playerHeight = App.player_view.$el.height()
@@ -56,6 +58,9 @@ class SP.Views.Map extends SP.Views.ApplicationView
     else
       @model.get('regions').attr('_hlRegion', null)
 
+  handleKeypress: (e) =>
+    @closeHandler() if e.keyCode == 27
+
   closeHandler: ->
     App.player_view.closeMap()
 
@@ -68,6 +73,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
     App.player_view.off 'trackPlaying', @activateCurrentRegion
     App.player_view.off 'scrubbing', @highlightRegionForPos
     App.player.off 'change:currentTrack', @resetState
+    $(document).off 'keyup', @handleKeypress
     @resetState()
     @$el.unbind()
 
