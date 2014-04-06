@@ -26,12 +26,10 @@ class SP.Views.Map extends SP.Views.ApplicationView
     viewportHeight = Math.max document.documentElement.clientHeight, window.innerHeight or 0
     playerHeight = App.player_view.$el.height()
 
-    mapImageHeight = @$el.find('img:first').height()
-    mapImageWidth = @$el.find('img:first').width()
     @$el.find('svg:first')
-      .attr('height', mapImageHeight)
-      .attr('width', mapImageWidth)
-    @$el.find('.wrapper').css 'width', mapImageWidth
+      .attr('height', @model.get('height'))
+      .attr('width', @model.get('width'))
+    @$el.find('.wrapper').css 'width', @model.get('width')
 
   activateCurrentRegion: =>
     return if App.player_view.scrubbing or !@trackIsPlaying()
@@ -114,6 +112,6 @@ class SP.Views.Map extends SP.Views.ApplicationView
     $('body').addClass 'noScroll'
     @activateCurrentRegion()
 
-    @$el.toggle()
     @adjustHeight()
+    @$el.show()
 
