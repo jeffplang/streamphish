@@ -16,7 +16,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
     for region in @model.get('regions').models
       @regions[region.cid] = new SP.Views.MapRegion(model: region, parent: @)
 
-    App.player_view.on 'trackPlaying', @highlightCurrentRegion
+    App.player_view.on 'trackPlaying', @activateCurrentRegion
     App.player_view.on 'scrubbing', @highlightRegionForPos
     App.player.on 'change:currentTrack', @resetState
 
@@ -31,17 +31,30 @@ class SP.Views.Map extends SP.Views.ApplicationView
       .attr('width', mapImageWidth)
     @$el.find('.wrapper').css 'width', mapImageWidth
 
-  highlightCurrentRegion: =>
-    return if App.player_view.scrubbing
-    return unless App.player.get('currentTrack').get('id') == @model.track.get('id')
+  activateCurrentRegion: =>
+    return if App.player_view.scrubbing or !@trackIsPlaying()
+
     currRegion = @model.get('regions').regionForTime(App.player.get('currentTrack').sound.position)
 
     if currRegion?
-      unless currRegion.get('highlighted')
-        @_unhighlightRegions()
-        currRegion.set 'highlighted', true
+      unless currRegion.get('state') == 2
+        @model.get('regions').attr('_aRegion', currRegion.cid)
     else
-      @_unhighlightRegions()
+      @model.get('regions').attr('_aRegion', null)
+
+  highlightRegionForPos: (pos) =>
+    return unless @trackIsPlaying()
+
+    currRegion = @model.get('regions').regionForTime(pos)
+
+    if currRegion?
+      return if currRegion.get('state') == 1
+      if currRegion.get('state') == 2
+        @model.get('regions').attr('_hlRegion', null)
+      else
+        @model.get('regions').attr('_hlRegion', currRegion.cid)
+    else
+      @model.get('regions').attr('_hlRegion', null)
 
   closeHandler: ->
     App.player_view.closeMap()
@@ -50,11 +63,13 @@ class SP.Views.Map extends SP.Views.ApplicationView
     $('body').removeClass 'noScroll'
     @$el.hide()
 
-    App.player_view.off 'trackPlaying', @highlightCurrentRegion
+    region.exit() for cid, region of @regions
+
+    App.player_view.off 'trackPlaying', @activateCurrentRegion
     App.player_view.off 'scrubbing', @highlightRegionForPos
     App.player.off 'change:currentTrack', @resetState
+    @resetState()
     @$el.unbind()
-    @_unhighlightRegions()
 
   scrubToRegion: (e) ->
     region = @model.get('regions').get($(e.currentTarget).data('cid'))
@@ -79,26 +94,11 @@ class SP.Views.Map extends SP.Views.ApplicationView
   hideGhostHandle: ->
     App.player_view.$el.find('.handle.ghost').hide()
 
-  highlightRegionForPos: (pos) =>
-    return unless @trackIsPlaying()
-    currRegion = @model.get('regions').regionForTime(pos)
-
-    if currRegion?
-      unless currRegion.get('highlighted')
-        @_unhighlightRegions()
-        currRegion.set('highlighted', true)
-    else
-      @_unhighlightRegions()
 
   resetState: =>
-    @_unhighlightRegions()
-
-  _unhighlightRegions: ->
-    for region in @model.get('regions').models
-      if region.get('highlighted')
-        region.set 'highlighted', false
-        break
-
+    @model.get('regions').attr('_hlRegion', null)
+    @model.get('regions').attr('_aRegion', null)
+  
   render: ->
     super
 
@@ -106,7 +106,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
       region.render()
 
     $('body').addClass 'noScroll'
-    @highlightCurrentRegion()
+    @activateCurrentRegion()
 
     @$el.toggle()
     @adjustHeight()

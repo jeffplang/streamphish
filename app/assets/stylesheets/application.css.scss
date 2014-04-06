@@ -130,13 +130,14 @@ filter: alpha(opacity=20); /* internet explorer */
 opacity: 0.20;           /* fx, safari, opera */
 }
 #map { display: none; height: 100%; width: 100%; position: fixed; left: 0; bottom: 0; z-index: 7000; background-color: #000; text-align: center; overflow: scroll; }
-#map .closeBtn { position: fixed; right: 16px; top: 16px; font-size: 35px; color: #fff; cursor: pointer; }
+#map .closeBtn { position: fixed; right: 16px; top: 16px; font-size: 35px; color: #EE5600; cursor: pointer; }
 #map .closeBtn i:before { margin: 0; }
 #map .wrapper { margin: 0 auto; position: relative; padding-bottom: 66px; }
 #map svg { position: absolute; top: 0; left: 0; height: 100%; }
-#map svg polygon { fill-opacity: 0; }
+#map svg polygon { fill-opacity: 0; stroke-width: 2px; }
 #map svg polygon:hover { fill-opacity: 0.14; }
-#map svg polygon.highlight { stroke: #000; }
+#map svg polygon.active { fill-opacity: 0.24; stroke: #5087AC; fill: #51B4D3; /* fill: #FFFF25; stroke: #FDE800;*/ }
+#map svg polygon.highlighted { stroke: #808080; stroke-dasharray: 8 4; }
 $yearSelectWidth: 300px;
 #yearSelect {
   display: none;

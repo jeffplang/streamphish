@@ -8,18 +8,18 @@ class SP.Views.MapRegion extends SP.Views.ApplicationView
     @map = opts.parent
     @setElement document.createElementNS('http://www.w3.org/2000/svg', 'polygon')
 
-    @listenTo @model, 'change:highlighted', @updateHighlight
+    @listenTo @model, 'change:state', @updateState
 
   _pointsStr: ->
     _.map(@model.get('points'), (coords) ->
       coords.join ','
     ).join '  '
 
-  updateHighlight: =>
-    if @model.get('highlighted')
-      @$el.attr 'class', 'highlight'
-    else
-      @$el.attr 'class', ''
+  updateState: (model, stateIdx) =>
+    @$el.attr 'class', SP.Models.MapRegion.STATES[stateIdx]
+
+  exit: =>
+    @stopListening @model
 
   render: =>
     @$el.attr 'points',    @_pointsStr()
