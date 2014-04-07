@@ -23,13 +23,12 @@ class SP.Views.Map extends SP.Views.ApplicationView
     $(document).on('keyup', @handleKeypress)
 
   adjustHeight: ->
-    viewportHeight = Math.max document.documentElement.clientHeight, window.innerHeight or 0
-    playerHeight = App.player_view.$el.height()
-
     @$el.find('svg:first')
       .attr('height', @model.get('height'))
       .attr('width', @model.get('width'))
     @$el.find('.wrapper').css 'width', @model.get('width')
+
+  
 
   activateCurrentRegion: =>
     return if App.player_view.scrubbing or !@trackIsPlaying()
