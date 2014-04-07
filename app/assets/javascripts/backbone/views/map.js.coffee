@@ -3,7 +3,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
   template: SP.Templates.map
 
   events:
-    'click polygon': 'scrubToRegion'
+    'click polygon': 'regionClick'
     'click a.closeBtn': 'closeHandler'
     'mouseover polygon': 'hoverOnRegion'
     'mouseout polygon': 'hideGhostHandle'
@@ -28,7 +28,12 @@ class SP.Views.Map extends SP.Views.ApplicationView
       .attr('width', @model.get('width'))
     @$el.find('.wrapper').css 'width', @model.get('width')
 
-  
+  regionClick: (e) ->
+    region = @model.get('regions').get($(e.currentTarget).data('cid'))
+    if region.has('url')
+      window.open region.get('url'), '_blank'
+    else
+      @scrubToRegion region
 
   activateCurrentRegion: =>
     return if App.player_view.scrubbing or !@trackIsPlaying()
@@ -74,17 +79,16 @@ class SP.Views.Map extends SP.Views.ApplicationView
     @resetState()
     @$el.unbind()
 
-  scrubToRegion: (e) ->
-    region = @model.get('regions').get($(e.currentTarget).data('cid'))
-
+  scrubToRegion: (region) ->
     @model.track.goToPosition(region.get('time'))
     App.player.set('currentTrack', @model.track) unless @trackIsPlaying()
 
     App.player_view.play()
 
   hoverOnRegion: (e) ->
-    return unless @trackIsPlaying()
+    return unless @trackIsPlaying() 
     region = @model.get('regions').get($(e.currentTarget).data('cid'))
+    return if region.has('url')
     percentageIn = region.get('time') / App.player.get('currentTrack').get('duration')
     cssPos = App.player_view.cssPosForPercentage(percentageIn)
     App.player_view.$el.find('.handle.ghost')
