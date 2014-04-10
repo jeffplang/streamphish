@@ -134,7 +134,7 @@ opacity: 0.20;           /* fx, safari, opera */
 #map .closeBtn i:before { margin: 0; }
 #map .wrapper { margin: 0 auto; position: relative; padding-bottom: 66px; }
 #map svg { position: absolute; top: 0; left: 0; height: 100%; }
-#map svg polygon { fill-opacity: 0; stroke-width: 2px; }
+#map svg polygon { fill-opacity: 0; stroke-width: 2px; cursor: pointer; }
 #map svg polygon:hover { fill-opacity: 0.14; }
 #map svg polygon.active { fill-opacity: 0.24; stroke: #5087AC; fill: #51B4D3; /* fill: #FFFF25; stroke: #FDE800;*/ }
 #map svg polygon.highlighted { stroke: #808080; stroke-dasharray: 8 4; }
