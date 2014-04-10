@@ -41,10 +41,10 @@ class SP.Views.Map extends SP.Views.ApplicationView
     currRegion = @model.get('regions').regionForTime(App.player.get('currentTrack').sound.position)
 
     if currRegion?
-      unless currRegion.get('state') == 2
-        @model.get('regions').attr('_aRegion', currRegion.cid)
+      return if currRegion.get('state') == 2
+      @model.get('regions').setActive(currRegion.cid)
     else
-      @model.get('regions').attr('_aRegion', null)
+      @model.get('regions').setActive(null)
 
   highlightRegionForPos: (pos) =>
     return unless @trackIsPlaying()
@@ -52,13 +52,9 @@ class SP.Views.Map extends SP.Views.ApplicationView
     currRegion = @model.get('regions').regionForTime(pos)
 
     if currRegion?
-      return if currRegion.get('state') == 1
-      if currRegion.get('state') == 2
-        @model.get('regions').attr('_hlRegion', null)
-      else
-        @model.get('regions').attr('_hlRegion', currRegion.cid)
+      @model.get('regions').setHighlight(currRegion.cid)
     else
-      @model.get('regions').attr('_hlRegion', null)
+      @model.get('regions').setHighlight(null)
 
   handleKeypress: (e) =>
     @closeHandler() if e.keyCode == 27
@@ -103,8 +99,8 @@ class SP.Views.Map extends SP.Views.ApplicationView
 
 
   resetState: =>
-    @model.get('regions').attr('_hlRegion', null)
-    @model.get('regions').attr('_aRegion', null)
+    @model.get('regions').setHighlight(null);
+    @model.get('regions').setActive(null);
   
   render: ->
     super

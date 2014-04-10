@@ -17,30 +17,33 @@ class SP.Models.MapRegion extends Backbone.Model
 
 
 class SP.Collections.MapRegion extends Backbone.Collection
-  initialize: ->
-    super
+  clearHighlight: ->
+    region = @findWhere(state: 1)
+    region.set('state', 0) if region?
 
-    @_attributes = {}
-
-    @on 'change:_hlRegion', @highlightChange
-    @on 'change:_aRegion', @activeChange
-
-  highlightChange: (val, oldVal) ->
-    @get(oldVal)?.set 'state', 0
-    @get(val)?.set 'state', 1
-
-  activeChange: (val, oldVal) ->
-    @get(oldVal)?.set 'state', 0
-    @get(val)?.set 'state', 2
-
-  attr: (prop, val) ->
-    if val == undefined
-      return @_attributes[prop]
+  setHighlight: (cid) ->
+    if cid?
+      region = @get(cid)
+      if region.get('state') == 2
+        @clearHighlight()
+      else
+        @clearHighlight()
+        region.set('state', 1)
     else
-      oldVal = @_attributes[prop]
-      return if val == oldVal
-      @_attributes[prop] = val
-      @trigger "change:#{prop}", val, oldVal
+      @clearHighlight()
+
+  clearActive: ->
+    region = @findWhere(state: 2)
+    region.set('state', 0) if region?
+
+  setActive: (cid) ->
+    if cid?
+      region = @get(cid)
+      unless region.get('state') == 2
+        @clearActive()
+        region.set('state', 2)
+    else
+      @clearActive()
 
   regionForTime: (ms) ->
     _region = null
