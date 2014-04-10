@@ -65,6 +65,7 @@ class SP.Views.Map extends SP.Views.ApplicationView
   exit: ->
     $('body').removeClass 'noScroll'
     @$el.hide()
+    @hideGhostHandle()
 
     region.exit() for cid, region of @regions
 
