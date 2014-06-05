@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 
 # gem 'rails', '3.2.12'
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.5'
 
 # Rails 4 deprecated features gems
 gem 'protected_attributes'
@@ -29,7 +29,7 @@ gem 'jbuilder'
 
 # Gems used only for assets and not required
 # in production environments by default.
-  gem 'sass-rails',   '~> 4.0.0'
+  gem 'sass-rails',   '~> 4.0.3'
   gem 'coffee-rails', '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
