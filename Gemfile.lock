@@ -131,6 +131,7 @@ GEM
     raindrops (0.12.0)
     rake (10.1.1)
     ref (1.0.5)
+    ruby-mp3info (0.8.4)
     rubyzip (0.9.9)
     sass (3.2.10)
     sass-rails (4.0.0)
@@ -196,6 +197,7 @@ DEPENDENCIES
   protected_attributes
   pry-rails
   rails (= 4.0.3)
+  ruby-mp3info
   sass-rails (~> 4.0.0)
   selenium-webdriver (~> 2.35.1)
   therubyracer
