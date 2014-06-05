@@ -15,7 +15,7 @@ gem 'pg'
 gem 'paperclip'
 gem 'nokogiri'
 gem 'friendly_id', '5.0.0.rc1'
-# gem 'mp3info'
+gem 'ruby-mp3info', require: 'mp3info'
 gem 'pg_search'
 gem 'color', '>= 1.4.0', :require => ['color', 'color/palette/monocontrast']
 gem 'selenium-webdriver', '~> 2.35.1'

@@ -1,10 +1,10 @@
 <div class="controls">
-  <a class="btn prev" data-control="prev" style="margin-right: 4px;">
+  <a class="btn prev" data-control="prev">
     <span class="arrowGrp">
       <span class="arrow"></span><span class="arrow"></span>
     </span>
   </a>
-  <a class="btn playpause" data-control="togglePause" style="margin-right: 4px;" id="playBtn">
+  <a class="btn playpause" data-control="togglePause" id="playBtn">
     <span class="pause"></span>
   </a>
   <a class="btn next" data-control="next">
@@ -15,13 +15,10 @@
 </div>
 
 <% var show = (currentTrack.collection && currentTrack.collection.show) ? currentTrack.collection.show : null; %>
-<h2>
-  <%= Streamphish.Helpers.linkTo(currentTrack.get('title'), "songs/" + currentTrack.get('slug')) %>
-</h2>
+<h2><%= SP.Helpers.linkTo(currentTrack.get('title'), "songs/" + currentTrack.get('slug')) %></h2>
+
 <% if(show) { %>
-  <h3>
-    <%= Streamphish.Helpers.linkTo(Streamphish.Helpers.dateString(show.get('show_date'), '%m-%d-%Y') + '&nbsp;<small>' + show.get('location') + '</small>', 'shows/' + Streamphish.Helpers.dateString(show.get('show_date'), '%Y-%m-%d')) %>
-  </h3>
+  <h3><%= SP.Helpers.playerLinkToShow(show) %></h3>
 <% } %>
 <% var lt10MinClass = currentTrack.get('duration') < 600000 ? 'lt10Min' : '' %>
 <div class="scrubber <%= lt10MinClass %>">
@@ -30,5 +27,5 @@
   </div>
 </div>
 <div class="time">
-  <span class="current">0:00</span><span class="total"> / <%= Streamphish.Helpers.msToMMSS(currentTrack.get('duration')) %></span>
+  <span class="current">0:00</span><span class="total"> / <%= SP.Helpers.msToMMSS(currentTrack.get('duration')) %></span>
 </div>

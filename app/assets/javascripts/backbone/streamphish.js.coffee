@@ -4,7 +4,7 @@
 #= require_tree ./views
 #= require_tree ./routers
 
-window.Streamphish =
+window.SP =
   Models: {}
   Collections: {}
   Routers: {}
@@ -38,3 +38,9 @@ window.Streamphish =
         "<a href='/#{url}'>#{text}</a>"
       else
         "<a href='##{url}'>#{text}</a>"
+
+    playerLinkToShow: (show) ->
+      this.linkTo "#{this.dateString(show.get('show_date'), '%m-%d-%Y')}&nbsp;<small>#{show.get('location')}</small>", show.show_url()
+
+
+window.Streamphish = window.SP

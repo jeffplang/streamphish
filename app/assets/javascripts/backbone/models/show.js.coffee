@@ -1,4 +1,4 @@
-class Streamphish.Models.Show extends Streamphish.Models.Base
+class SP.Models.Show extends SP.Models.Base
   urlRoot: '/api/v1/shows'
 
   initialize: ->
@@ -23,6 +23,9 @@ class Streamphish.Models.Show extends Streamphish.Models.Base
 
   year: =>
     @get('show_date').split('-')[0]
+
+  show_url: ->
+    "shows/#{SP.Helpers.dateString(@get('show_date'), '%Y-%m-%d')}"
 
   toJSON: ->
     json = super
