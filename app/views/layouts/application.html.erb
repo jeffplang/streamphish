@@ -17,7 +17,9 @@
         PTData = <%= yield %>;
       </script>
     </div>
+
     <div id="dim"></div>
+    <div id="map"></div>
     <div id="yearSelect">
       <ul>
         <% @years.each do |year| %>
@@ -29,6 +31,7 @@
         <% end %>
       </ul>
     </div>
+
     <div id="player"></div>
 
     <script type="text/javascript">

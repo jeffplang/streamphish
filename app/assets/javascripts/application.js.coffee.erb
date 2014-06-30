@@ -38,6 +38,7 @@ $ ->
 
       if href.prop and (href.prop.slice(0, root.length) == root)
         e.preventDefault()
+        App.player_view.closeMap()
         App.router.navigate href.attr, true
 
   Backbone.history.start(pushState: true)

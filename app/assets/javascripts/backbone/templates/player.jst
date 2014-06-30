@@ -17,6 +17,10 @@
 <% var show = (currentTrack.collection && currentTrack.collection.show) ? currentTrack.collection.show : null; %>
 <h2><%= SP.Helpers.linkTo(currentTrack.get('title'), "songs/" + currentTrack.get('slug')) %></h2>
 
+<% if(currentTrack.has('map')) { %>
+<a class="map"><i class="icon-map"></i></a>
+<% } %>
+
 <% if(show) { %>
   <h3><%= SP.Helpers.playerLinkToShow(show) %></h3>
 <% } %>
@@ -24,6 +28,7 @@
 <div class="scrubber <%= lt10MinClass %>">
   <div class="loadProgress">
     <div class="handle"></div>
+    <div class="handle ghost"></div>
   </div>
 </div>
 <div class="time">

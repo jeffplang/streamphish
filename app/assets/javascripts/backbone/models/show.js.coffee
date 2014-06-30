@@ -6,7 +6,7 @@ class SP.Models.Show extends SP.Models.Base
     # The 'tracks' attribute is just JSON data from the server at first..we want to convert it into a Backbone track collection
     @on 'change:tracks', (model, tracks) =>
       @set 'tracks', 
-           new Streamphish.Collections.Tracks( (new Streamphish.Models.Track(track) for track in tracks) )
+           new SP.Collections.Tracks( (new SP.Models.Track(track) for track in tracks) )
            silent: true
       @get('tracks').show = model
     # Strip out set info, set tracks as normally
@@ -42,9 +42,9 @@ class SP.Models.Show extends SP.Models.Base
     super opts
 
 
-class Streamphish.Collections.Shows extends Streamphish.Collections.Base
+class SP.Collections.Shows extends SP.Collections.Base
   url: '/api/v1/shows'
-  model: Streamphish.Models.Show
+  model: SP.Models.Show
 
   initialize: (models, opts) ->
     @year = opts.year if opts.year

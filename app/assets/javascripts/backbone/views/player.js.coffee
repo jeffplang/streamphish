@@ -1,6 +1,6 @@
-class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
+class SP.Views.Player extends SP.Views.ApplicationView
   el:        '#player'
-  template:  Streamphish.Templates.player
+  template:  SP.Templates.player
 
   scrubbing: false
 
@@ -8,6 +8,7 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     'click .btn.prev':  'playPrev'
     'click .btn.next':  'playNext'
     'click .btn.playpause': 'togglePause'
+    'click a.map': 'toggleMap'
     'mousedown .scrubber': 'grabScrubberHandle'
     'mousedown .scrubber .handle': 'grabScrubberHandle'
     'touchdown .scrubber .handle': 'grabScrubberHandle'
@@ -31,19 +32,38 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
   playNext: ->
     @model.playNext()
 
+  play: ->
+    @model.play()
+    @setPlayBtnState 'pause'
+
   togglePause: ->
     $btn = @$el.find('.btn.playpause')
 
     @model.togglePause()
-    @toggleTitleAnimation()
     @$el.find('.btn.playpause span')
       .toggleClass('play')
       .toggleClass('pause')
 
+  setPlayBtnState: (state) ->
+    rm_state = if state == 'play' then 'pause' else 'play'
+
+    @$el.find('.btn.playpause span').addClass(state).removeClass(rm_state)
+
+  closeMap: ->
+    @toggleMap() if @mapView
+      
+  toggleMap: ->
+    if @mapView
+      @mapView.exit()
+      @mapView = null
+    else
+      @mapView = new SP.Views.Map(model: @model.get('currentTrack').get('map'))
+
+      @mapView.render()
+
   trackChange: (player, track) ->
     @render()
     player.stop()
-    @toggleTitleAnimation() unless @_animating || App.config.isMobile
     track.play()
 
   trackLoading: (track) ->
@@ -53,34 +73,19 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
   _updateTime: (track) ->
     @$el.find('.time .current').text Streamphish.Helpers.msToMMSS track.position() unless @scrubbing
 
+  cssPosForPercentage: (percentage) ->
+    (@$el.find('.scrubber').width() - 8) * percentage
+
   _updateHandlePosition: (track) ->
-    maxScrubDistance = @$el.find('.scrubber').width() - 8
-    cssPos = (track.position() / track.get('duration')) * maxScrubDistance
-    @$el.find('.handle').css('left', cssPos) unless @scrubbing
+    unless @scrubbing
+      cssPos = @cssPosForPercentage(track.position() / track.get('duration'))
+      @$el.find('.handle:first').css('left', cssPos) 
 
   trackPlaying: (track) ->
     @_updateTime track
+    @trigger 'trackPlaying'
     unless App.config.isMobile
       @_updateHandlePosition track
-
-  toggleTitleAnimation: ->
-    @_title ||= document.title
-    # @_frames ||= ['▢', '▣', '▤', '▥']
-    # @_frames ||= ['▲', '△', '▶', '▷', '▼', '▽', '◀', '◁']
-    @_frames ||= ['◈', '▣', '◉', '◎']
-
-    titleAnimation = =>
-      @_frames.unshift @_frames.pop()
-      document.title = @_frames[0] + " " + @_title + " " + @_frames[0]
-
-    if @_animating
-      clearInterval @_titleAnimation
-      document.title = @_title
-      @_title = @_animating = null
-    else
-      titleAnimation()
-      @_titleAnimation = setInterval(titleAnimation, 400)
-      @_animating = true
 
   getScrubVars: ->
     v = $scrubber: @$el.find('.scrubber')
@@ -92,10 +97,12 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
     v
 
   scrubToMousePos: (e, sv) ->
-    sv.scrubPosition = Streamphish.Helpers.clamp (e.clientX - sv.scrubOffset), 0, sv.maxScrubDistance
+    sv.scrubPosition = SP.Helpers.clamp (e.clientX - sv.scrubOffset), 0, sv.maxScrubDistance
     msPosition       = sv.scrubPosition / sv.maxScrubDistance * @model.get('currentTrack').get('duration')
     sv.$handle.css 'left', sv.scrubPosition
-    sv.$currentTime.text Streamphish.Helpers.msToMMSS(msPosition)
+    sv.$currentTime.text SP.Helpers.msToMMSS(msPosition)
+
+    msPosition
 
   grabScrubberHandle: (e) ->
     e.originalEvent.preventDefault()
@@ -116,7 +123,8 @@ class Streamphish.Views.Player extends Streamphish.Views.ApplicationView
         @._toggleHandleHandlers()
 
       $doc.on 'mousemove touchmove', (e) =>
-        @scrubToMousePos e, sv
+        msPos = @scrubToMousePos e, sv
+        @trigger 'scrubbing', msPos
     else
       $doc.off 'mouseup mousemove touchend touchmove'
       $('body').removeClass 'noTextSelect'
