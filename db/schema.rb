@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305030822) do
+ActiveRecord::Schema.define(version: 20140629202438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(version: 20140305030822) do
     t.integer  "show_id"
     t.string   "title"
     t.integer  "position"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "song_file_file_name"
     t.string   "song_file_content_type"
     t.integer  "song_file_file_size"
@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(version: 20140305030822) do
     t.string   "slug"
     t.integer  "concert_set_id"
     t.json     "map"
+    t.string   "song_file_m4a_file_name"
+    t.string   "song_file_m4a_content_type"
+    t.integer  "song_file_m4a_file_size"
+    t.datetime "song_file_m4a_updated_at"
+    t.string   "song_file_ogx_file_name"
+    t.string   "song_file_ogx_content_type"
+    t.integer  "song_file_ogx_file_size"
+    t.datetime "song_file_ogx_updated_at"
   end
 
   add_index "tracks", ["slug"], name: "index_tracks_on_slug", using: :btree

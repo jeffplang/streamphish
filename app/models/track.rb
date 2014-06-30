@@ -13,6 +13,15 @@ class Track < ActiveRecord::Base
     :url => "/system/:class/:attachment/:id_partition/:style/:hash.:extension",
     :hash_secret => FILE_NAME_HASH_SECRET
 
+  has_attached_file :song_file_m4a,
+    :url => "/system/:class/:attachment/:id_partition/:style/:hash.:extension",
+    :hash_secret => FILE_NAME_HASH_SECRET
+
+  has_attached_file :song_file_ogx,
+    :url => "/system/:class/:attachment/:id_partition/:style/:hash.:extension",
+    :hash_secret => FILE_NAME_HASH_SECRET
+
+
   ########################
   # Associations & Scopes
   ########################
@@ -30,7 +39,9 @@ class Track < ActiveRecord::Base
   # Validations
   ##############
   validates_attachment :song_file, presence: true,
-    content_type: { content_type: ['application/mp3', 'application/x-mp3', 'audio/mpeg', 'audio/mp3'] }
+    content_type: { content_type: ['application/mp3', 'application/x-mp3', 'audio/mpeg', 'audio/mp3', 'application/ogg', 'audio/mp4'] }
+  validates_attachment :song_file_m4a, content_type: { content_type: ['audio/mp4'] }
+  validates_attachment :song_file_ogx, content_type: { content_type: ['application/ogg'] }
   validates_presence_of :show, :title, :position
   validates_uniqueness_of :position, scope: :show_id
   validate :require_at_least_one_song

@@ -15,16 +15,26 @@ class SP.Models.Track extends Backbone.Model
 
         @sound = soundManager.createSound
           id: @cid
-          url: @get('file_url')
+          url: @fileUrl()
           autoPlay: false
           position: pos
           onfinish: App.player.playNext
+          multiShot: false
 
       @sound.play
         whileloading: =>
           App.player_view.trackLoading @
         whileplaying: =>
           App.player_view.trackPlaying @
+
+  fileUrl: ->
+    format = if SP.Util.isFirefox() then 'ogx' else 'm4a'
+
+    if @has('map')
+      return @get("file_url_#{format}") || @get('file_url')
+    else
+      return @get('file_url')
+
 
   togglePause: ->
     if !@sound

@@ -8,3 +8,6 @@ class Streamphish.Util
 
   @clamp: (val, min, max) ->
     Math.max(min, Math.min(max, val))
+
+  @isFirefox: ->
+    navigator.userAgent.toLowerCase().indexOf('firefox') > -1
