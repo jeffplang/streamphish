@@ -61,7 +61,7 @@ module Streamphish
 
     config.assets.initialize_on_precompile = false
 
-    config.assets.precompile += %w(application.js polyfills.js songs.js circle_event_manager.js pages.js soundmanager2.js)
+    config.assets.precompile += %w(application.js polyfills.js songs.js circle_event_manager.js pages.js soundmanager2.js dancer.js)
 
     config.underscore_templates.variable = 'Streamphish.Templates'
 
