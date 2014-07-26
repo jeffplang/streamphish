@@ -1,0 +1,1755 @@
+@charset "UTF-8";
+/* line 32, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/* line 39, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+/* line 47, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/* line 55, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+[hidden] {
+  display: none;
+}
+
+/* line 69, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* line 82, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+html,
+button,
+input,
+select,
+textarea {
+  font-family: sans-serif;
+}
+
+/* line 88, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+body {
+  margin: 0;
+}
+
+/* line 103, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+a:focus {
+  outline: thin dotted;
+}
+
+/* line 109, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* line 122, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* line 127, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+h2 {
+  font-size: 1.5em;
+  margin: 0.83em 0;
+}
+
+/* line 132, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+h3 {
+  font-size: 1.17em;
+  margin: 1em 0;
+}
+
+/* line 137, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+h4 {
+  font-size: 1em;
+  margin: 1.33em 0;
+}
+
+/* line 142, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+h5 {
+  font-size: 0.83em;
+  margin: 1.67em 0;
+}
+
+/* line 147, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+h6 {
+  font-size: 0.75em;
+  margin: 2.33em 0;
+}
+
+/* line 153, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/* line 159, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/* line 163, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+blockquote {
+  margin: 1em 40px;
+}
+
+/* line 168, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+dfn {
+  font-style: italic;
+}
+
+/* line 173, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/* line 180, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+p,
+pre {
+  margin: 1em 0;
+}
+
+/* line 188, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  _font-family: 'courier new', monospace;
+  font-size: 1em;
+}
+
+/* line 195, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* line 202, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+q {
+  quotes: none;
+}
+
+/* line 208, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+/* line 214, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+small {
+  font-size: 80%;
+}
+
+/* line 220, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 227, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 231, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* line 245, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+dl,
+menu,
+ol,
+ul {
+  margin: 1em 0;
+}
+
+/* line 249, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+dd {
+  margin: 0 0 0 40px;
+}
+
+/* line 256, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+menu,
+ol,
+ul {
+  padding: 0 0 0 40px;
+}
+
+/* line 268, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+img {
+  border: 0;
+  /* 1 */
+  -ms-interpolation-mode: bicubic;
+  /* 2 */
+}
+
+/* line 274, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* line 285, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+figure {
+  margin: 0;
+}
+
+/* line 296, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+form {
+  margin: 0;
+}
+
+/* line 301, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/* line 310, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+legend {
+  border: 0;
+  padding: 0;
+  white-space: normal;
+  *margin-left: -7px;
+}
+
+/* line 323, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+
+/* line 333, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+button,
+input {
+  line-height: normal;
+}
+
+/* line 347, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  *overflow: visible;
+}
+
+/* line 355, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+
+/* line 364, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  *height: 13px;
+  *width: 13px;
+}
+
+/* line 374, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* line 384, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* line 390, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* line 397, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+
+/* line 409, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/normalize.css.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 9, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/chromeframe.css.scss */
+.chromeframe {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: black;
+  padding: 0.2em 0;
+}
+
+/* line 7, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/helpers.css.scss */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  *text-indent: -9999px;
+}
+/* line 27, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/helpers.css.scss */
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 100%;
+}
+
+/* line 9, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/helpers.css.scss */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/* line 11, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/helpers.css.scss */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+/* line 67, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/helpers.css.scss */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* line 13, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/helpers.css.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/* line 93, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/helpers.css.scss */
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+/* line 98, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/helpers.css.scss */
+.clearfix:after {
+  clear: both;
+}
+/* line 104, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/helpers.css.scss */
+.clearfix {
+  *zoom: 1;
+}
+
+@media print {
+  /* line 11, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/media.css.scss */
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* line 19, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/media.css.scss */
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  /* line 23, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/media.css.scss */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 27, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/media.css.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /* line 37, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/media.css.scss */
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  /* line 42, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/media.css.scss */
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /* line 47, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/media.css.scss */
+  thead {
+    display: table-header-group;
+  }
+
+  /* line 52, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/media.css.scss */
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  /* line 56, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/media.css.scss */
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 66, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/media.css.scss */
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 72, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application/media.css.scss */
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+@font-face {
+  font-family: 'phishtracks-icons';
+  src: url("phishtracks-icons.eot?65823889");
+  src: url("phishtracks-icons.eot?65823889#iefix") format("embedded-opentype"), url("phishtracks-icons.svg?65823889#phishtracks-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'phishtracks-icons';
+  src: url("data:application/octet-stream;base64,d09GRgABAAAAAAUQAAoAAAAAB8QAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAAA9AAAAEQAAABWPgtJEWNtYXAAAAE4AAAAOgAAAUrQExm3Z2x5ZgAAAXQAAAE+AAABZCTeELNoZWFkAAACtAAAADIAAAA2Acgl8WhoZWEAAALoAAAAHgAAACQHlwNVaG10eAAAAwgAAAAQAAAAEA37AABsb2NhAAADGAAAAAoAAAAKAQAAlG1heHAAAAMkAAAAHwAAACABEQBAbmFtZQAAA0QAAAGdAAADOWN+uv5wb3N0AAAE5AAAACkAAAA621XeqHicY2BkrmecwMDKwMFUxbSHgYGhB0IzPmAwZGRiYGBiYGVmwAoC0lxTGBxeMLxgYg76n8UQxRzMUAkUZgTJAQDp5wuaeJxjYGBgZoBgGQZGBhBwAfIYwXwWBg0gzQakGRmYGBheMP3/D1LwggFESzBC1QMBIxvDiAcAZgEGsAAAeJxjYPr///9GpmbmYAZ1BmMGBkZRETZ2UWMjOUY2ZUUlPUYza0ZTPUZzUxM7RjF2URExIzN1MFtdUISPUU1d0MRMjpGpeUlVP78IkwTvv9lgqr9yGaOYjBjjlDPTmIB0f8a0NMaMKVmMJ91rtvF6AUWAyIt3W407WLV7xqRJGWDmyX+PvTKYcjwYZb2ymNIYGJgYGP63M69iNmYQYNBlYBA0sWOSY+Zj0WNiBTrEnlEc6BoTfUZzMxM1JX5GdTUlNhF5RnY2r7p1+9bV+DB5NKw6tKrJjZFZToe/vIxfR46/rIwfyC4rh7IZ4+KR1LH4VW2yE5PnLy/nl4cpArIhmhkYmIFuWcH8glkEyGJn4Aa6RlWQlRFIqAqyCzJa/jvOtAGIC38xTa/9K1TH9P6vYCbTO9G/QqlM7wFEflaHAAB4nGNgZGBgAOJ+BeFb8fw2Xxm4mV8ARRjOJ3yUhNH///9vZ37BHAzkcjAwgUQBY2MNdQAAeJxjYGRgYA76n8UQxfyCgeH/PyAJFEEBLACRNgXyAAAD6AAAAoIAAAOpAAAD6AAAAAAAAABOAJQAsgAAeJxjYGRgYGBhMGFgZgABJiDmAkIGhv9gPgMADg8BUgB4nI2SzUrDQBSFT9qqaEFQwfXgQlrE9Ee76apQaFduCnYpxDFNUtNMmJkW6t6VD+IbuPMBfAl9FU/TQZQimpDku+feM3fuEACHeIeH9dXhs2YPB4zWXMIOBo7L1K8cV8g3jrdQhXK8Tf3B8R7O8OS4iiO8cAWvsstoijfHHk68C8cl7HvXjsvUpeMK+dHxFo69Z8fb1F8d72HsfTiu4rTU6at8qZMotqLWr4t2s3UpbpdCUUqyIBXB3MZKG9ETE5XZME2VL9UsjxMTWx3Ie3OeSJWZURjN00Bv6BvCONQmUZlo+c2N3DDMQh3Y8G61A7OI2tZOxESrmRi43iLXahpK68fW5t1G4/ue0Ofh5lhCI0GEGBYCNap1fttoooVL0i0rBCvXVQkyBEipBJjTERcZw7jHZ8IooxqyIiX7kHzP2CWm0xQ9NJ0S94zOqcnCYTCiJ+KKKbP6H/V/V4y54mpnSRELTuNzpr99Q/qywhsUk9x9nYHBgntsU7WcdDWtLqYT/JF/zi3YZ5WbUpHU/aKfpdpFg/cv5/QJ3VujMgAAAHicY2BigAAuBuyAhYGBkYmRmZGFOTczmTU5J784lTk3sYCBAQAtMwS1AAAA") format("woff"), url("data:application/octet-stream;base64,AAEAAAAKAIAAAwAgT1MvMj4LSREAAAEoAAAAVmNtYXDQExm3AAABkAAAAUpnbHlmJN4QswAAAugAAAFkaGVhZAHIJfEAAADQAAAANmhoZWEHlwNVAAAArAAAACRobXR4DfsAAAAAAYAAAAAQbG9jYQEAAJQAAALcAAAACm1heHABEQBAAAABCAAAACBuYW1lY366/gAABEwAAAM5cG9zdNtV3qgAAAeIAAAAOgABAAADUv9qAFoD6AAA//4D6AABAAAAAAAAAAAAAAAAAAAABAABAAAAAQAAjyAT2l8PPPUACwPoAAAAAM9g8RkAAAAAz2DxGf///4cD6ANTAAAACAACAAAAAAAAAAEAAAAEADQAAwAAAAAAAgAAAAoACgAAAP8AAAAAAAAAAQN/AZAABQAIAnoCvAAAAIwCegK8AAAB4AAxAQIAAAIABQMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUGZFZABA6ADoAgNS/2oAWgNTAHkAAAABAAAAAAAAA+gAAAKCAAADqQAAA+gAAAAAAAMAAAADAAAAHAABAAAAAABEAAMAAQAAABwABAAoAAAABgAEAAEAAgAA6AL//wAAAADoAP//AAAYAQABAAAAAAAAAAABBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABOAJQAsgAAAAL///+xAoMDUwAnADMAAAEVFAYHFTMyHgEGIyEiLgE2OwE1LgE3NTQ+ARYHFRQWMjYnNTQ+ARYnERQOASYnETQ2HgECg6R6jw8UAhgN/psPFAIYDY95pgEWHBYBlMyWAhYcFo9olmYBaJRqAclHfLYNShYcFhYcFkoNtnxHDxQCGA1HaJKSaEcPFAIYyf7jSmgCbEgBHUpqAmYAAAIAAP+HA6oDMwAQAC0AABE0PgIeAw4ELgIFFBYyPwEXFjI2NC8BNzY0JiIPAScmIgYUHwEHBkp+rr6ufEwCSICqwqqCRgEDHiwPd3YPLB4PdnYPHiwPdncPLB4PdnYPAV5frnxMAkiAqsKqgkYETnqyPhYfD3d3Dx8sD3Z3DyweD3d3Dx4sD3d2DwAAAwAA/6gD6AMUAAMABwALAAARJREFARElESURBxEBOf7HArD+xwJx+gKXff0SfgLv/RFpAu4V/RJlAu8AAAASAN4AAQAAAAAAAAA1AAAAAQAAAAAAAQARADUAAQAAAAAAAgAHAEYAAQAAAAAAAwARAE0AAQAAAAAABAARAF4AAQAAAAAABQALAG8AAQAAAAAABgARAHoAAQAAAAAACgArAIsAAQAAAAAACwATALYAAwABBAkAAABqAMkAAwABBAkAAQAiATMAAwABBAkAAgAOAVUAAwABBAkAAwAiAWMAAwABBAkABAAiAYUAAwABBAkABQAWAacAAwABBAkABgAiAb0AAwABBAkACgBWAd8AAwABBAkACwAmAjVDb3B5cmlnaHQgKEMpIDIwMTQgYnkgb3JpZ2luYWwgYXV0aG9ycyBAIGZvbnRlbGxvLmNvbXBoaXNodHJhY2tzLWljb25zUmVndWxhcnBoaXNodHJhY2tzLWljb25zcGhpc2h0cmFja3MtaWNvbnNWZXJzaW9uIDEuMHBoaXNodHJhY2tzLWljb25zR2VuZXJhdGVkIGJ5IHN2ZzJ0dGYgZnJvbSBGb250ZWxsbyBwcm9qZWN0Lmh0dHA6Ly9mb250ZWxsby5jb20AQwBvAHAAeQByAGkAZwBoAHQAIAAoAEMAKQAgADIAMAAxADQAIABiAHkAIABvAHIAaQBnAGkAbgBhAGwAIABhAHUAdABoAG8AcgBzACAAQAAgAGYAbwBuAHQAZQBsAGwAbwAuAGMAbwBtAHAAaABpAHMAaAB0AHIAYQBjAGsAcwAtAGkAYwBvAG4AcwBSAGUAZwB1AGwAYQByAHAAaABpAHMAaAB0AHIAYQBjAGsAcwAtAGkAYwBvAG4AcwBwAGgAaQBzAGgAdAByAGEAYwBrAHMALQBpAGMAbwBuAHMAVgBlAHIAcwBpAG8AbgAgADEALgAwAHAAaABpAHMAaAB0AHIAYQBjAGsAcwAtAGkAYwBvAG4AcwBHAGUAbgBlAHIAYQB0AGUAZAAgAGIAeQAgAHMAdgBnADIAdAB0AGYAIABmAHIAbwBtACAARgBvAG4AdABlAGwAbABvACAAcAByAG8AagBlAGMAdAAuAGgAdAB0AHAAOgAvAC8AZgBvAG4AdABlAGwAbABvAC4AYwBvAG0AAAAAAgAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAABAgEDAQQDbWljBWNsb3NlA21hcAAAAAA=") format("truetype");
+}
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'phishtracks-icons';
+    src: url('../font/phishtracks-icons.svg?65823889#phishtracks-icons') format('svg');
+  }
+}
+*/
+/* line 25, /Users/jeff/Projects/streamphish/app/assets/stylesheets/phishtracks-icons.css */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "phishtracks-icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+/* line 55, /Users/jeff/Projects/streamphish/app/assets/stylesheets/phishtracks-icons.css */
+.icon-map:before {
+  content: '\e802';
+}
+
+/* '' */
+/* line 56, /Users/jeff/Projects/streamphish/app/assets/stylesheets/phishtracks-icons.css */
+.icon-mic:before {
+  content: '\e800';
+}
+
+/* '' */
+/* line 57, /Users/jeff/Projects/streamphish/app/assets/stylesheets/phishtracks-icons.css */
+.icon-close:before {
+  content: '\e801';
+}
+
+/* '' */
+@font-face {
+  font-family: 'Economica';
+  src: url("Economica-Bold.eot");
+  /* IE9 Compat Modes */
+  src: url("Economica-Bold.eot?#iefix") format("embedded-opentype"), url("Economica-Bold.woff") format("woff"), url("Economica-Bold.ttf") format("truetype"), url("Economica-Bold.svg#d9532a473398f70deb182a9f6b5ed782") format("svg");
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Economica';
+  src: url("Economica-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("Economica-Regular.eot?#iefix") format("embedded-opentype"), url("Economica-Regular.woff") format("woff"), url("Economica-Regular.ttf") format("truetype"), url("Economica-Regular.svg#1b8abc1602823d353989443dbeda359c") format("svg");
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* line 45, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.hide {
+  display: none;
+}
+
+/* line 46, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/* line 48, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+body {
+  background: #0f2340;
+}
+
+/* line 49, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+body.noTextSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* line 57, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+body.noScroll {
+  overflow: hidden;
+}
+
+/* line 60, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header {
+  position: fixed;
+  top: 0;
+  height: 44px;
+  margin: 0;
+  color: #fff;
+  display: block;
+  width: 100%;
+  z-index: 5;
+  text-align: center;
+  background: #31cd7a;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #31cd7a 0%, #33b36f 44%, #329862 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #31cd7a), color-stop(44%, #33b36f), color-stop(100%, #329862));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #31cd7a 0%, #33b36f 44%, #329862 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #31cd7a 0%, #33b36f 44%, #329862 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #31cd7a 0%, #33b36f 44%, #329862 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #31cd7a 0%, #33b36f 44%, #329862 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#31cd7a', endColorstr='#329862',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 81, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header h1 {
+  font-family: 'Economica', cursive;
+  font-size: 2.25em;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  display: inline-block;
+}
+
+/* line 90, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header h1 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* line 91, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header h1 a:hover {
+  text-decoration: underline;
+}
+
+/* line 92, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header h1 a small {
+  font-size: 13px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 13px;
+}
+
+/* line 93, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header a.info {
+  text-decoration: none;
+  color: inherit;
+  font-size: 12px;
+  font-family: Arial;
+  display: inline-block;
+  vertical-align: top;
+  margin: 14px 0 0 3px;
+}
+
+/* line 94, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header a.info.mic {
+  font-size: inherit;
+}
+
+/* line 96, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header a.info:hover {
+  text-decoration: underline;
+}
+
+/* line 98, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header a.backBtn {
+  font-size: 21px;
+  font-family: 'Economica', cursive;
+  color: #fff;
+  text-decoration: none;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  position: fixed;
+  display: inline-block;
+  height: 32px;
+  padding: 9px 18px 0 6px;
+}
+
+/* line 100, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header div.sourceContainer {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+
+/* line 101, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header div.sourceInfo {
+  position: absolute;
+  background: #463963;
+  top: 51px;
+  text-align: left;
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  white-space: nowrap;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3));
+  border-radius: 3px;
+}
+
+/* line 107, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+header div.sourceInfo:after {
+  bottom: 100%;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border: solid transparent;
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #463963;
+  border-width: 15px;
+  left: 50%;
+  /*margin-left: -15px;*/
+  /* Defined in show.jst */
+}
+
+/* line 123, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+div.pageContainer {
+  margin-top: 60px;
+  position: relative;
+}
+
+/* line 125, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#main {
+  padding-bottom: 69px;
+}
+
+/* line 126, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#dim {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 6000;
+  background-color: #999;
+  filter: alpha(opacity=20);
+  /* internet explorer */
+  -khtml-opacity: 0.20;
+  /* khtml, old safari */
+  -moz-opacity: 0.20;
+  /* mozilla, netscape */
+  opacity: 0.20;
+  /* fx, safari, opera */
+}
+
+/* line 132, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#map {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 7000;
+  background-color: #000;
+  text-align: center;
+  overflow: scroll;
+}
+
+/* line 133, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#map .closeBtn {
+  position: fixed;
+  right: 16px;
+  top: 16px;
+  font-size: 35px;
+  color: #EE5600;
+  cursor: pointer;
+}
+
+/* line 134, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#map .closeBtn i:before {
+  margin: 0;
+}
+
+/* line 135, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#map .wrapper {
+  margin: 0 auto;
+  position: relative;
+  padding-bottom: 66px;
+}
+
+/* line 136, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#map svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+/* line 137, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#map svg polygon {
+  fill-opacity: 0;
+  stroke-width: 2px;
+  cursor: pointer;
+}
+
+/* line 138, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#map svg polygon:hover {
+  fill-opacity: 0.14;
+}
+
+/* line 139, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#map svg polygon.active {
+  fill-opacity: 0.24;
+  stroke: #5087AC;
+  fill: #51B4D3;
+  /* fill: #FFFF25; stroke: #FDE800;*/
+}
+
+/* line 140, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#map svg polygon.highlighted {
+  stroke: #808080;
+  stroke-dasharray: 8 4;
+}
+
+/* line 142, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#yearSelect {
+  display: none;
+  width: 300px;
+  position: fixed;
+  top: 41px;
+  left: 50%;
+  margin-left: -150px;
+}
+
+/* line 150, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#yearSelect ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* line 155, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#yearSelect ul li {
+  text-align: center;
+  float: left;
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 156, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#yearSelect ul li a {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  background: #aaa;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #ddd;
+  padding: 5px;
+}
+
+/* line 157, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#yearSelect ul li a span {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/*#yearSelect ul li:first-child a span { margin-top: 3px; }*/
+/**
+ ** Front page circles 
+**/
+/* line 163, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+h2 {
+  color: #fff;
+  margin: 0 0 0 13px;
+  padding: 0;
+  font-family: 'Jacques Francois', serif;
+  font-size: 28px;
+}
+
+/* line 164, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+h2 span {
+  font-size: 15px;
+}
+
+/* line 165, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+h2 span a {
+  color: white !important;
+}
+
+/* line 166, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+ul.yearsCircles {
+  margin: 0 0 40px 0;
+  padding: 0;
+  list-style-type: none;
+  position: relative;
+  left: 10px;
+  height: 100px;
+}
+
+/* line 167, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+ul.yearsCircles li {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #fff;
+  text-align: center;
+  float: left;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transition-property: left, top, height, width, background, border;
+  -webkit-transition-duration: 1.5s, 1.5s, 0.175s, 0.175s, 0.175s, 0.175s;
+}
+
+/* line 172, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+ul.yearsCircles li a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  text-decoration: none;
+  position: relative;
+}
+
+/* line 173, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+ul.yearsCircles li a:hover {
+  text-decoration: none;
+}
+
+/* line 174, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+ul.yearsCircles li a span {
+  position: relative;
+  top: 19px;
+  font-size: 20px;
+  font-family: Georgia;
+  -webkit-transition-property: font-size, top;
+  -webkit-transition-duration: 0.175s, 0.175s;
+}
+
+/* line 179, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+ul.yearsCircles li.hover {
+  height: 100px;
+  width: 100px;
+  z-index: 5000;
+}
+
+/* line 180, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+ul.yearsCircles li.hover a {
+  background: inherit;
+  z-index: 5000;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 181, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+ul.yearsCircles li.hover a span {
+  font-size: 25px;
+  top: 29px;
+}
+
+/* line 183, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+ul.yearsCircles li.empty {
+  background: transparent !important;
+}
+
+/* line 185, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+div.songs {
+  position: relative;
+  margin: 15px 0 0 10px;
+}
+
+/* line 186, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+div.songs a {
+  border-radius: 50%;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  font-family: 'Allan', cursive;
+  font-size: 21px;
+  -webkit-transition-property: left, top;
+  -webkit-transition-duration: 1.5s, 1.5s;
+}
+
+/* line 200, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+div.songs a.hover {
+  z-index: 5000;
+  text-decoration: none;
+}
+
+/* line 201, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+div.songs a span {
+  position: relative;
+}
+
+/* line 205, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#main {
+  margin-top: 44px;
+}
+
+/* line 206, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.pageList {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+/* line 207, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.pageList li {
+  display: block;
+  text-decoration: none;
+  padding: 18px;
+  background: #0f2340;
+  color: #3C9C7B;
+  height: 57px;
+  position: relative;
+  border-bottom: 1px solid #1D314E;
+  font-size: 21px;
+}
+
+/* line 209, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.pageList li:hover {
+  background: #132c51;
+  cursor: pointer;
+}
+
+/* line 214, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.pageList.linkItems li {
+  padding: 0;
+  height: 93px;
+  position: relative;
+}
+
+/* line 216, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.pageList li.sectionTitle {
+  height: 25px;
+  cursor: default;
+  padding: 4px 0 0 18px;
+  background: #20385c;
+}
+
+/* line 217, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.pageList li.sectionTitle h2 {
+  font-size: 18px;
+  color: #fce153;
+  font-family: Arial;
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+}
+
+/* line 218, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.pageList li.sectionTitle:first-child {
+  padding-top: 6px;
+}
+
+/* line 219, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.pageList li.sectionTitle:hover {
+  background: #20385c;
+}
+
+/* line 221, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.pageList.linkItems li a {
+  display: block;
+  text-decoration: none;
+  color: #3C9C7B;
+  height: 100%;
+  padding: 0 0 0 18px;
+}
+
+/* line 222, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+.pageList.linkItems li a span {
+  top: 30px;
+  position: relative;
+}
+
+/* line 224, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+body.hidePlayer #player {
+  bottom: -70px;
+}
+
+/* line 225, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+body.hidePlayer #main {
+  padding-bottom: 0px;
+}
+
+/* line 226, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player, #main {
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+/* line 228, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player {
+  position: fixed;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background: #25585A;
+  padding: 10px;
+  z-index: 7000;
+  display: block;
+}
+
+/* line 230, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player .controls {
+  display: inline-block;
+  margin-top: 3px;
+}
+
+/* line 232, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  background-color: #db5705;
+  font-family: arial;
+  font-weight: 700;
+  display: inline-block;
+  width: 39px;
+  height: 28px;
+  text-align: center;
+  -webkit-border-radius: 38px;
+  -moz-border-radius: 38px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 5px 0px #db1f05, 0px 5px 15px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 5px 0px #db1f05, 0px 5px 15px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 5px 0px #db1f05, 0px 5px 15px rgba(0, 0, 0, 0.7);
+  /* -webkit-transition: all .1s ease; -moz-transition: all .1s ease; -ms-transition: all .1s ease; -o-transition: all .1s ease; transition: all .1s ease; */
+}
+
+/* line 237, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn:active {
+  position: relative;
+  top: 2px;
+  -webkit-box-shadow: 0px 3px 0px #db1f05, 0px 3px 6px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: 0px 3px 0px #db1f05, 0px 3px 6px rgba(0, 0, 0, 0.9);
+  box-shadow: 0px 3px 0px #db1f05, 0px 3px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* line 241, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn.playpause, #player a.btn.prev {
+  margin-right: 4px;
+}
+
+/* line 242, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn.playpause span {
+  height: 11px;
+  display: inline-block;
+}
+
+/* line 243, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn.playpause .pause {
+  width: 3px;
+  border-left: 6px solid #fff;
+  border-right: 6px solid #fff;
+}
+
+/* line 244, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn.playpause .play {
+  width: 0px;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 13px solid #fff;
+}
+
+/* line 246, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn.prev, #player a.btn.next, a.btn.playpause {
+  padding: 13px 3px 0 4px;
+}
+
+/* line 248, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn.prev span.arrow,
+#player a.btn.next span.arrow {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+/* line 249, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn.prev span.arrow {
+  border-right: 8px solid #fff;
+}
+
+/* line 250, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn.next span.arrow {
+  border-left: 8px solid #fff;
+}
+
+/* line 252, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn .arrowGrp {
+  display: inline-block;
+  height: 11px;
+  padding: 0;
+  line-height: 1px;
+  position: relative;
+  top: -2px;
+}
+
+/* line 253, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn.prev .arrowGrp {
+  border-left: 3px solid #fff;
+}
+
+/* line 254, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.btn.next .arrowGrp {
+  border-right: 3px solid #fff;
+}
+
+/* line 256, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player h2 {
+  display: inline-block;
+  font-family: 'Economica', cursive;
+  font-weight: 700;
+  font-size: 30px;
+  vertical-align: top;
+  margin-left: 8px;
+}
+
+/* line 257, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player h3 {
+  display: inline-block;
+  font-family: 'Economica', cursive;
+  font-size: 19px;
+  font-weight: 400;
+  color: #fff;
+  vertical-align: top;
+  margin: 10px 0 0 10px;
+}
+
+/* line 258, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player h3 small {
+  font-size: 15px;
+}
+
+/* line 259, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player h2 a, #player h3 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* line 260, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player h2 a:hover, #player h3 a:hover {
+  text-decoration: underline;
+}
+
+/* line 261, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player a.map {
+  color: #fff;
+  position: relative;
+  top: -4px;
+  left: 2px;
+  cursor: pointer;
+}
+
+/* line 263, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player .scrubContainer {
+  position: absolute;
+  left: 178px;
+  right: 25px;
+  top: 48px;
+}
+
+/* line 264, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player .scrubber {
+  height: 8px;
+  background: #00f;
+  position: absolute;
+  left: 178px;
+  right: 122px;
+  top: 48px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* line 265, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player .scrubber.lt10Min {
+  right: 107px;
+}
+
+/* line 266, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player .scrubber .loadProgress {
+  width: 0;
+  height: inherit;
+  border-radius: inherit;
+  background: #eab92d;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eab92d), color-stop(100%, #c79810));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #eab92d 0%, #c79810 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eab92d', endColorstr='#c79810',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 276, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player .scrubber .handle {
+  background: #fff;
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  z-index: 3;
+  top: -2px;
+  border-radius: 6px;
+  margin-left: -3px;
+  left: 0%;
+}
+
+/* line 277, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player .scrubber .handle.ghost {
+  opacity: 0.5;
+  display: none;
+}
+
+/*#player .scrubber .handle:hover { height: $sHandleHoverSize; width: $sHandleHoverSize; top: -4px; border-radius: 9px; left: -1px; }*/
+/* line 281, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#player .time {
+  position: absolute;
+  top: 39px;
+  right: 28px;
+  font-family: 'Economica', cursive;
+  font-size: 20px;
+  color: #fff;
+}
+
+/* line 283, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#bottom-msg {
+  position: relative;
+  margin: 50px 0 20px 0;
+  text-align: center;
+  font-family: 'Jacques Francois', serif;
+  color: #436FA0;
+  font-size: 14px;
+}
+
+/* line 284, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+#bottom-msg a {
+  color: inherit;
+}
+
+@media only screen and (max-device-width: 320px) {
+  /* line 287, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  header {
+    height: 42px;
+  }
+
+  /* line 288, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  header h1 {
+    max-width: 228px;
+  }
+
+  /* line 289, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  header a.backBtn {
+    padding-top: 0px;
+    font-size: 35px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    vertical-align: top;
+    width: 22px;
+    margin-top: -2px;
+    padding-left: 11px;
+  }
+
+  /* line 290, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  body {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  /* line 291, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  header .location {
+    display: none;
+  }
+
+  /* line 292, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  header a.info {
+    display: none;
+  }
+
+  /* line 293, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  header .sourceContainer {
+    display: none;
+  }
+
+  /* line 295, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  #main {
+    padding-bottom: 65px;
+    margin-top: 42px;
+  }
+
+  /* line 297, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  body.hidePlayer #player {
+    display: none;
+  }
+
+  /* line 298, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  #player {
+    height: 46px;
+  }
+
+  /* line 299, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  #player .controls {
+    margin-top: 0;
+  }
+
+  /* line 300, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  #player a.btn.prev {
+    display: none;
+  }
+
+  /* line 301, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  #player .scrubber {
+    display: none;
+  }
+
+  /* line 302, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  #player .time .total {
+    display: none;
+  }
+
+  /* line 304, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  #player h2 {
+    position: absolute;
+    top: 8px;
+    max-width: 154px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 22px;
+  }
+
+  /* line 305, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  #player h3 {
+    position: absolute;
+    top: 28px;
+    left: 109px;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 190px;
+    font-size: 16px;
+  }
+
+  /* line 306, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  #player .time {
+    top: 12px;
+  }
+
+  /* line 308, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList li {
+    height: 40px;
+    font-size: 16px;
+  }
+
+  /* line 309, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList li:hover {
+    background: inherit;
+  }
+
+  /* line 311, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList li.sectionTitle {
+    height: 18px !important;
+    padding-top: 2px;
+  }
+
+  /* line 312, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList li.sectionTitle:first-child {
+    padding-top: 3px;
+  }
+
+  /* line 313, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList li.sectionTitle h2 {
+    font-size: 14px;
+  }
+
+  /* line 315, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList.linkItems li {
+    height: 55px;
+  }
+
+  /* line 316, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList.showsByYear li {
+    height: 55px !important;
+  }
+
+  /* line 318, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList .songInfo {
+    max-width: 223px;
+    overflow-x: hidden;
+    white-space: nowrap;
+  }
+
+  /* line 319, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList.linkItems li a span {
+    top: 17px;
+  }
+
+  /* line 321, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList.songs li {
+    height: 19px !important;
+  }
+
+  /* line 322, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList.songs li .duration, .pageList.songs .songInfo {
+    margin-top: -1px;
+  }
+
+  /* line 323, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList.songs li .songTitle {
+    margin-top: 0;
+  }
+
+  /* line 327, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList.songs.song .songInfo {
+    position: absolute;
+    top: 6px;
+    left: 18px;
+  }
+
+  /* line 328, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList.songs .songInfo .songDate {
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    top: 5px;
+  }
+
+  /* line 329, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+  .pageList.songs .songInfo .songVenue {
+    font-size: 12px;
+    letter-spacing: -1.5px;
+    display: inline-block;
+  }
+}
+/* line 8, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList .songInfo {
+  float: left;
+  margin-top: 5px;
+}
+
+/* line 9, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList .songTime {
+  float: right;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* line 11, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList .songTime time {
+  display: inline-block;
+  line-height: 3px;
+}
+
+/* line 12, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList .songTime time.totalTime {
+  width: 40px;
+}
+
+/*.pageList li.playing { background: lighten($songBg, 15%) }*/
+/* line 15, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList .songTime {
+  /*visibility: hidden;*/
+  opacity: 0;
+  margin-top: 12px;
+  -webkit-transition-duration: 0.5s;
+}
+
+/* line 16, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList .duration {
+  float: right;
+  margin-top: 8px;
+  font-size: 32px;
+  color: #425F77;
+  -webkit-transition-duration: 0.5s;
+  opacity: 1;
+}
+
+/* line 18, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList br {
+  margin: 0;
+}
+
+/* line 19, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList .songDate {
+  font-size: 20px;
+}
+
+/* line 20, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList .songVenue {
+  font-size: 15px;
+}
+
+/* line 21, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList .songTitle {
+  font-size: 23px;
+  display: inline-block;
+  margin-top: 7px;
+}
+
+/* line 22, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList .songInfo a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* line 23, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+.pageList .songInfo a:hover {
+  color: #fff;
+}
+
+@media only screen and (max-device-width: 320px) {
+  /* line 26, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+  .pageList .songTitle {
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 4px;
+  }
+
+  /* line 27, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+  .pageList .duration {
+    font-size: 18px;
+  }
+
+  /* line 28, /Users/jeff/Projects/streamphish/app/assets/stylesheets/songs.css.scss */
+  .pageList .songTime time {
+    display: none !important;
+  }
+}
+/* line 1, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+.pageList.showsByYear li {
+  height: 70px;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+/* line 2, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+.pageList.showsByYear li a span {
+  top: 16px;
+  font-size: 18px;
+  letter-spacing: -1.5px;
+}
+
+/* line 3, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+.pageList.showsByYear li a span strong {
+  font-size: 27px;
+  letter-spacing: 0em;
+}
+
+/* line 5, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+.tag {
+  background: #3c9c7b;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #3c9c7b 0%, #4a9b7f 56%, #529b81 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3c9c7b), color-stop(56%, #4a9b7f), color-stop(100%, #529b81));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #3c9c7b 0%, #4a9b7f 56%, #529b81 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #3c9c7b 0%, #4a9b7f 56%, #529b81 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #3c9c7b 0%, #4a9b7f 56%, #529b81 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #3c9c7b 0%, #4a9b7f 56%, #529b81 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3c9c7b', endColorstr='#529b81',GradientType=0 );
+  /* IE6-9 */
+  margin-left: 3px;
+  font-size: 10px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.64);
+  padding: 4px;
+  border-radius: 5px;
+  position: relative;
+  top: 11px !important;
+}
+
+/* line 26, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+.songInfo .tag {
+  top: -4px !important;
+}
+
+/* line 27, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+.pageList .tagContainer {
+  display: inline-block;
+}
+
+@media only screen and (max-device-width: 320px) {
+  /* line 29, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+  .pageList.showsByYear li {
+    height: 57px;
+    overflow: hidden;
+  }
+
+  /* line 30, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+  .pageList.showsByYear li a span {
+    top: 18px;
+    font-size: 12px;
+    letter-spacing: -1.3px;
+    display: inline-block;
+    max-width: 285px;
+    overflow: hidden;
+  }
+
+  /* line 31, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+  .pageList.showsByYear li a span strong {
+    font-size: 16px;
+    letter-spacing: 0em;
+  }
+
+  /* line 32, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+  .pageList.showsByYear .tagContainer {
+    position: absolute;
+    right: 10px;
+    top: 17px;
+    background: #0f2340;
+    padding-left: 4px;
+  }
+
+  /* line 33, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+  .pageList.showsByYear .tag {
+    top: 0 !important;
+  }
+
+  /* line 35, /Users/jeff/Projects/streamphish/app/assets/stylesheets/shows.css.scss */
+  .tag {
+    display: inline-block;
+    overflow-x: hidden;
+    width: 7px;
+    letter-spacing: 0.5em !important;
+    padding: 2px 4px;
+    font-weight: bold;
+    margin-left: 0;
+  }
+}
+/* Following for tinkering purposes */
+/* line 337, /Users/jeff/Projects/streamphish/app/assets/stylesheets/application.css.scss */
+p {
+  color: white;
+}
