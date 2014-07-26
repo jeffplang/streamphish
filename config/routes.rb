@@ -9,7 +9,7 @@ Streamphish::Application.routes.draw do
 
   get '/shows/:id/:song', to: 'shows#show', constraints: { id: /\d{4}-\d{1,2}-\d{1,2}/ }
 
-  resources :shows, only: [:index, :show]
+  resources :shows, only: [:show]
   resources :songs, only: [:index, :show]
 
   resources :sitemaps, only: [:index, :show] do

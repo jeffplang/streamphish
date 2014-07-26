@@ -1,6 +1,6 @@
 class ShowsController < ApplicationController
-  def index
-  end
+
+  caches_action :show, :cache_path => Proc.new { |c| show_url(id: c.params[:id]).gsub(/^http\:\/\//, '') }
 
   def show
     if is_valid_year?(params[:id])
