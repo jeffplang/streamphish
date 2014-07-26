@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <%- @shows.each do |show| %>
+  <url> 
+    <loc><%= show_url(show) %></loc> 
+    <lastmod><%= show.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ") %></lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <%- end %>
+</urlset>
