@@ -5,4 +5,16 @@
     <lastmod><%= Time.now.strftime("%Y-%m-%dT%H:%M:%SZ") %></lastmod>
     <changefreq>daily</changefreq>
   </url>
+  <url> 
+    <loc><%= songs_url %></loc> 
+    <lastmod><%= Time.now.strftime("%Y-%m-%dT%H:%M:%SZ") %></lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  <%- @years.each do |year| %>
+  <url> 
+    <loc><%= show_url(year[:year]) %></loc> 
+    <lastmod><%= Time.now.strftime("%Y-%m-%dT%H:%M:%SZ") %></lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  <% end %>
 </urlset>
