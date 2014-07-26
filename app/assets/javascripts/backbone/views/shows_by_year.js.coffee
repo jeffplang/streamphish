@@ -11,5 +11,9 @@ class Streamphish.Views.ShowsByYear extends Streamphish.Views.ApplicationView
     else
       @yearSelect.style.display = 'block'
 
+  pageTitle: ->
+    "#{@collection.year} - PhishTracks"
+
   remove: ->
     @yearSelect?.style?.display = 'none'
+

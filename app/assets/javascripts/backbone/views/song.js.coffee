@@ -12,3 +12,6 @@ class Streamphish.Views.Song extends Streamphish.Views.ApplicationView
     Streamphish.ShowCache.get @model.get('tracks')[trackIdx].show.show_date,
       fetchCallback: (show) ->
         App.player.play show.get('tracks').get(trackId)
+
+  pageTitle: ->
+    "#{@model.get('title')} - PhishTracks"

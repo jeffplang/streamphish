@@ -59,6 +59,9 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
 
     $('#main').html( @currentView.$el )
       # .trigger('rendered')
+
+    @_setTitleForView view
+
     @_dim.style.display = 'none'
 
   _swap: (view, fetchable) ->
@@ -70,6 +73,9 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
           @_swapCallback view
     else
       @_swapCallback view
+
+  _setTitleForView: (view) ->
+    $('title').text( view.pageTitle?() or 'PhishTracks' )
 
   _trackPageView: ->
     url = Backbone.history.getFragment()

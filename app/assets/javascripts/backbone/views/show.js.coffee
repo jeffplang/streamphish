@@ -78,6 +78,8 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
 
     pos
 
+  pageTitle: ->
+    "#{SP.Helpers.dateString(@model.get('show_date'), '%m/%d/%Y')} #{@model.get('location')}"
 
   remove: ->
     App.player.off 'change:currentTrack', null, @
