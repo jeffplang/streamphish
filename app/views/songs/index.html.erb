@@ -1,1 +1,18 @@
-<%= render(:template => 'api/v1/songs/index', :formats => [:json]).html_safe %>
+<% content_for :pt_data do %>
+  <%= render(:template => 'api/v1/songs/index', :formats => [:json]).html_safe %>
+<% end %>
+
+<div id="currentView">
+  <header>
+    <a href="/" class="backBtn">← Home</a>
+    <h1>Songs</h1>
+  </header>
+
+  <ul class="pageList linkItems">
+    <% @songs.each do |song|  %>
+    <li>
+      <a href="/songs/<%= song.slug %>"><span><%= song.title %></span></a>
+    </li>
+    <% end %>
+  </ul>
+</div>

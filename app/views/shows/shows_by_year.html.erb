@@ -1,1 +1,47 @@
-<%= render(:template => 'api/v1/shows/index', :formats => [:json]).html_safe %>
+<% content_for :pt_data do %>
+  <%= render(:template => 'api/v1/shows/index', :formats => [:json]).html_safe %>
+<% end %>
+
+<% content_for(:title) { "#{@year} - PhishTracks" } %>
+
+<div id="currentView">
+  <header>
+    <a href="/" class="backBtn">← Home</a>
+    <h1>
+      <a href='#' data-control='toggleYearList' data-bypass='true'>
+        <%= @year %> <small>▾</small>
+      </a>
+    </h1>
+  </header>
+
+  <ul class="pageList linkItems showsByYear">
+    <% @shows.each do |show| %>
+    <li><a href="<%= show_path show %>">
+        <span>
+          <strong><%= show.show_date.strftime '%m/%d/%Y' %></strong>
+          <%= show.location %>
+        </span>
+        <% if(show.sbd || show.remastered) %>
+        <div class="tagContainer">
+          <% if(show.sbd) %>       <span class="tag">SBD</span>       <% end %>
+          <% if(show.remastered) %><span class="tag">Remastered</span><% end %>
+        </div>
+        <% end %>
+    </a></li>
+    <% end %>
+  </ul>
+
+  <div id="yearSelect">
+    <ul>
+      <% @years.each do |year| %>
+      <li>
+        <a href="/shows/<%= year[:year] %>" style="background: <%= year[:bg] %>; color: <%= year[:fg] %>;">
+          <span><%= year[:year] %></span>
+        </a>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+

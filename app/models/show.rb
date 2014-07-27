@@ -26,6 +26,12 @@ class Show < ActiveRecord::Base
     "#{show_date.strftime('%m-%d-%Y')} - #{location}" if show_date && location
   end
 
+  def set_break_indexes
+    concert_sets.each_with_object([]) do |set, indexes|
+      indexes << (indexes.last ? indexes.last + set.tracks.length : 0)
+    end
+  end
+
   alias_method :title, :to_s # for rails admin
 
 end
