@@ -2,7 +2,7 @@
   <%= render(:template => 'api/v1/songs/show', :formats => [:json]).html_safe %>
 <% end %>
 
-<% content_for :title do "#{@song.title} - PhishTracks" end %>
+<% content_for(:title) { "#{@song.title} - PhishTracks" } %>
 
 <div id="currentView">
   <header>

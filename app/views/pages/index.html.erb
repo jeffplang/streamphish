@@ -2,6 +2,8 @@
   <%= render(:template => 'pages/index', :formats => [:json]).html_safe %>
 <% end %>
 
+<% content_for(:title) { "PhishTracks" } %>
+
 <div id="currentView">
   <header>
     <h1>PhishTracks</h1>

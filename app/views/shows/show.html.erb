@@ -4,6 +4,8 @@
 
 <% content_for(:title) { "#{@show.show_date.strftime('%m/%d/%Y')} #{@show.location} - PhishTracks" } %>
 
+<% content_for(:og_title) { @og_title } %>
+
 <div id="currentView">
   <header>
     <% year = @show.show_date.year < 1988 ? '83-87' : @show.show_date.year %>

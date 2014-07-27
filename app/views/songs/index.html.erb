@@ -2,6 +2,8 @@
   <%= render(:template => 'api/v1/songs/index', :formats => [:json]).html_safe %>
 <% end %>
 
+<% content_for(:title) { "Songs - PhishTracks" } %>
+
 <div id="currentView">
   <header>
     <a href="/" class="backBtn">← Home</a>
