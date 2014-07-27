@@ -25,7 +25,7 @@
     <li class="sectionTitle"><h2><%= sets[setIdx].title %></h2></li>
     <% } %>
 
-    <li data-cid="<%= track.cid %>">
+    <li data-id="<%= track.id %>">
       <div class="songInfo">
         <div class="songTitle">
           <a data-control="song" href="/shows/<%= show_date %>/<%= track.get('slug') %>" data-bypass><%= track.get('title') %>

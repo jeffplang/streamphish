@@ -30,3 +30,17 @@
     </a></li>
   <% }); %>
 </ul>
+
+
+<div id="yearSelect">
+  <ul>
+    <% _.each(App.active_years, function(year) { %>
+    <li>
+      <a style="<%= SP.Helpers.cssComplementaryColors() %>" href="/shows/<%= year %>">
+        <span><%= year %></span>
+      </a>
+    </li>
+    <% }); %>
+  </ul>
+</div>
+

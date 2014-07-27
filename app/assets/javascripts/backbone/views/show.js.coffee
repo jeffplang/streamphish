@@ -16,8 +16,8 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
 
   songClick: (e) ->
     e.preventDefault() # For clicks on <a>s within the <li>
-    songCid = $(e.target).closest('li').data 'cid'
-    song    = @model.get('tracks').get(songCid)
+    songId = $(e.target).closest('li').data 'id'
+    song    = @model.get('tracks').get(songId)
 
     @updateUrl(song) # For when you come back to a show view and click the currently playing song
     App.player.play song
@@ -27,6 +27,7 @@ class Streamphish.Views.Show extends Streamphish.Views.ApplicationView
       track = obj.get('currentTrack')
     else
       track = obj
+
     url = "/shows/#{@model.get('show_date')}/#{track.get('slug')}"
     # We want to prevent the URL from being changed if we're calling this method
     # from the playing of an auto-loaded track

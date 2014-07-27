@@ -1,1 +1,50 @@
-<%= render(:template => 'api/v1/shows/show', :formats => [:json]).html_safe %>
+<% content_for :pt_data do %>
+  <%= render(:template => 'api/v1/shows/show', :formats => [:json]).html_safe %>
+<% end %>
+
+<% content_for(:title) { "#{@show.show_date.strftime('%m/%d/%Y')} #{@show.location} - PhishTracks" } %>
+
+<div id="currentView">
+  <header>
+    <% year = @show.show_date.year < 1988 ? '83-87' : @show.show_date.year %>
+    <a href="/shows/<%= year %>" class="backBtn">← <%= year %></a>
+    <h1>
+      <%= @show.show_date.strftime('%m-%d-%Y') %><span class="location"> - <%= @show.location %>
+    </h1>
+    <% if @show.source_info %>
+    <div class="sourceContainer">
+      <a href="#" class="info mic"><i class="icon-mic"></i></a>
+      <div class="invisible sourceInfo" data-arrow-pos="-15px">
+        <%= @show.source_info.gsub(/\n/, '<br>') %>
+      </div>
+    </div>
+    <% end %>
+    <a href="http://phish.net/setlists/?d=<%= @show.show_date.strftime('%Y-%m-%d') %>" target="_blank" class="info" data-bypass>
+      p.net
+    </a>
+
+  </header>
+
+  <% before_track_idxs = @show.set_break_indexes %>
+
+  <ul class="pageList songs">
+    <% @show.concert_sets.each do |concert_set| %>
+      <li class="sectionTitle"><h2><%= concert_set.title %></h2></li>
+      <% concert_set.tracks.order(:position).each do |track| %>
+        <li data-id="<%= track.id %>">
+          <div class="songInfo">
+            <div class="songTitle">
+              <a data-control="song" href="/shows/<%= @show.show_date %>/<%= track.slug %>" data-bypass><%= track.title %>
+                <% if track.map %><i class="icon-map"></i><% end %>
+              </a>
+              <% if @show.sbd %><span class="tag">SBD</span><% end %>
+              <% if @show.remastered %><span class="tag">Remastered</span><% end %>
+            </div>
+          </div>
+          <span class="duration"><%= ms_to_MMSS track.duration %></span>
+        </li>
+      <% end %>
+    <% end %>
+
+  <style>header div.sourceInfo:after { margin-left: -15px; }</style>
+</div>

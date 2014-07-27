@@ -1,1 +1,27 @@
-<%= render(:template => 'api/v1/songs/show', :formats => [:json]).html_safe %>
+<% content_for :pt_data do %>
+  <%= render(:template => 'api/v1/songs/show', :formats => [:json]).html_safe %>
+<% end %>
+
+<% content_for :title do "#{@song.title} - PhishTracks" end %>
+
+<div id="currentView">
+  <header>
+    <a href="/songs" class="backBtn">← Songs</a>
+    <h1><%= @song.title %></h1>
+  </header>
+
+  <ul class="pageList songs song">
+    <% @song.tracks.each.with_index do |track, idx| %>
+    <li data-track-idx="<%= idx %>" data-track-id="<%= track.id %>">
+      <div class="songInfo">
+        <span class="songDate">
+          <a href="/shows/<%= track.show.show_date %>"><%= track.show.show_date %></a>
+        </span>
+        <br>
+        <span class="songVenue"><%= track.show.location %></span>
+      </div>
+      <span class="duration"><%= ms_to_MMSS(track.duration) %></span>
+    </li>
+    <% end %>
+  </ul>
+</div>

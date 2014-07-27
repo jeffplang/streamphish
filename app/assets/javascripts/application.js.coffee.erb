@@ -18,7 +18,7 @@
 //= require backbone/streamphish
 //= require util
 //= require fast_touch_links
-
+//= require please.min
 # global namespace for stuff
 window.App = {}
 
@@ -27,6 +27,7 @@ $ ->
   App.player = new Streamphish.Models.Player
   App.player_view = new Streamphish.Views.Player(model: App.player)
   App.config = isMobile: (document.width <= 320)
+  App.active_years = <%= Streamphish::Application.config.phish_active_years.to_json.html_safe %>;
 
   # Setup link hijacking to go through Backbone
   if App.config.isMobile

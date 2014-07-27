@@ -1,1 +1,25 @@
-<%= render(:template => 'pages/index', :formats => [:json]).html_safe %>
+<% content_for :pt_data do %>
+  <%= render(:template => 'pages/index', :formats => [:json]).html_safe %>
+<% end %>
+
+<div id="currentView">
+  <header>
+    <h1>PhishTracks</h1>
+  </header>
+
+  <ul class="pageList linkItems">
+    <li class="sectionTitle"><h2>Years</h2></li>
+    <% @years.each do |year| %>
+    <li>
+      <a href="/shows/<%= year[:year] %>"><span><%= year[:year] %></span></a>
+    </li>
+    <% end %>
+
+    <li class="sectionTitle"><h2>Songs</h2></li>
+    <% @songs.each do |song| %>
+    <li>
+      <a href="/songs/<%= song.slug %>"><span><%= song.title %></span></a>
+    </li>
+    <% end %>
+  </ul>
+</div>

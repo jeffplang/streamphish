@@ -11,6 +11,11 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     super
     @bind 'route', @_trackPageView
     @_dim = document.getElementById 'dim'
+    @sequence = 0
+
+  execute: ->
+    super
+    @sequence = @sequence + 1
 
   index: ->
     indexData = new Streamphish.Models.IndexData
@@ -55,12 +60,12 @@ class Streamphish.Routers.AppRouter extends Backbone.Router
     @currentView.remove() if @currentView
 
     @currentView = view
-    @currentView.render()
 
-    $('#main').html( @currentView.$el )
-      # .trigger('rendered')
 
-    @_setTitleForView view
+    unless @sequence == 0
+      @currentView.render()
+      $('#main').html( @currentView.$el )
+      @_setTitleForView view
 
     @_dim.style.display = 'none'
 

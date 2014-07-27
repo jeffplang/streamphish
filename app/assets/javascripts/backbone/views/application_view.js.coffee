@@ -2,6 +2,10 @@ class SP.Views.ApplicationView extends Backbone.View
   tagName: 'div'
   id: 'currentView'
 
+  initialize: ->
+    this.$el = $('#currentView') if App.router.sequence == 0
+    super
+
   bypassLink: (e) ->
     $(document).trigger e
     false

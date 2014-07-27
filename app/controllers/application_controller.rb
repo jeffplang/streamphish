@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def get_years
-    @years ||= (['83-87'] + (1988..2014).to_a - [2001, 2005, 2006, 2007, 2008]).map do |year|
+    @years ||= Streamphish::Application.config.phish_active_years.map do |year|
       bg = Color::RGB.new rand(256), rand(256), rand(256)
       palette = Color::Palette::MonoContrast.new bg
 

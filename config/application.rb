@@ -61,10 +61,12 @@ module Streamphish
 
     config.assets.initialize_on_precompile = false
 
-    config.assets.precompile += %w(application.js polyfills.js songs.js circle_event_manager.js pages.js soundmanager2.js)
+    config.assets.precompile += %w(application.js polyfills.js soundmanager2.js)
 
     config.underscore_templates.variable = 'Streamphish.Templates'
 
     config.action_controller.page_cache_extension = '.json'
+
+    config.phish_active_years = ['83-87'] + (1988..2014).to_a - [2001, 2005, 2006, 2007, 2008]
   end
 end
