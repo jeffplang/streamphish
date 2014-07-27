@@ -8,10 +8,22 @@ class ShowsController < ApplicationController
       render 'shows_by_year'
     else
       @show = Show.includes(:tracks => :songs).find(params[:id])
+
+      @og_title = og_title
     end
   end
 
   private
+
+  def og_title
+    og_title = ''
+    if params[:song]
+      song = @show.tracks.find_by_slug(params[:song])
+      og_title = "#{song.title} - " if song
+    end
+
+    "#{og_title}#{@show.show_date.strftime('%m/%d/%Y')} #{@show.location}"
+  end
 
   def get_shows_by_year
     @year = params[:id]

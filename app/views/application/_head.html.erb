@@ -5,8 +5,13 @@
   <%# More info: h5bp.com/b/378 %>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title><%= yield :title || 'PhishTracks' %></title>
+  <% title = yield :title || 'PhishTracks' %>
+
+  <title><%= title %></title>
   <meta name="description" content="">
+  <meta name="og:site_name" content="PhishTracks">
+  <meta name="og:title" content="<%= content_for?(:og_title) ? yield(:og_title) : title %>">
+  <meta name="article:author" content="Phish">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <%# Mobile viewport optimized: h5bp.com/viewport %>
   <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
