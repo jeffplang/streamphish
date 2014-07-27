@@ -11,7 +11,7 @@
 
   <ul class="pageList linkItems">
     <li class="sectionTitle"><h2>Years</h2></li>
-    <% @years.each do |year| %>
+    <% @years.reverse.each do |year| %>
     <li>
       <a href="/shows/<%= year[:year] %>"><span><%= year[:year] %></span></a>
     </li>

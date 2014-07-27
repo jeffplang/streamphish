@@ -11,7 +11,7 @@
     <% year = @show.show_date.year < 1988 ? '83-87' : @show.show_date.year %>
     <a href="/shows/<%= year %>" class="backBtn">← <%= year %></a>
     <h1>
-      <%= @show.show_date.strftime('%m-%d-%Y') %><span class="location"> - <%= @show.location %>
+      <%= @show.show_date.strftime('%m-%d-%Y') %><span class="location"> - <%= @show.location %></span>
     </h1>
     <% if @show.source_info %>
     <div class="sourceContainer">
@@ -29,21 +29,29 @@
 
   <% before_track_idxs = @show.set_break_indexes %>
 
-  <ul class="pageList songs">
+  <ul class="pageList songs" itemscope itemtype="http://schema.org/MusicGroup">
     <% @show.concert_sets.each do |concert_set| %>
       <li class="sectionTitle"><h2><%= concert_set.title %></h2></li>
       <% concert_set.tracks.order(:position).each do |track| %>
-        <li data-id="<%= track.id %>">
+        <li itemscope itemtype="http://schema.org/MusicRecording" data-id="<%= track.id %>">
           <div class="songInfo">
             <div class="songTitle">
-              <a data-control="song" href="/shows/<%= @show.show_date %>/<%= track.slug %>" data-bypass><%= track.title %>
+              <a data-control="song" href="/shows/<%= @show.show_date %>/<%= track.slug %>" itemprop="url" data-bypass>
+                <meta itemprop="name" content="<%= track.title %>">
+                <meta itemprop="audio" content="http://assets.phishtracks.com<%= track.file_url %>">
+                <meta itemprop="inAlbum" content="<%= @show.show_date.strftime('%m-%d-%Y') %> - <%= @show.location %>">
+                <%= track.title %>
                 <% if track.map %><i class="icon-map"></i><% end %>
               </a>
               <% if @show.sbd %><span class="tag">SBD</span><% end %>
               <% if @show.remastered %><span class="tag">Remastered</span><% end %>
             </div>
           </div>
-          <span class="duration"><%= ms_to_MMSS track.duration %></span>
+          <span class="duration">
+            <% duration = ms_to_MMSS(track.duration) %>
+            <%= duration %>
+            <meta itemprop="duration" content="PT<%= duration.split(':')[0] %>M<%= duration.split(':')[1] %>S">
+          </span>
         </li>
       <% end %>
     <% end %>
