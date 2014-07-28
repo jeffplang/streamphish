@@ -36,7 +36,8 @@
 @include h5bp-media;
 
 @import "phishtracks-icons";
-@import "custom-fonts";
+@import url(https://fonts.googleapis.com/css?family=Economica:400,700);
+//@import "custom-fonts";
 
 $songBg: #0F2340;
 $sHandleSize: 12px;
