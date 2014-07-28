@@ -9,20 +9,22 @@ class ShowsController < ApplicationController
     else
       @show = Show.includes(:tracks => :songs).find(params[:id])
 
-      @og_title = og_title
+      set_og
     end
   end
 
   private
 
-  def og_title
-    og_title = ''
-    if params[:song]
-      song = @show.tracks.find_by_slug(params[:song])
-      og_title = "#{song.title} - " if song
-    end
+  def set_og
+    @og = { 
+      title: "#{@show.show_date.strftime('%m/%d/%Y')} #{@show.location}",
+      url: request.url
+    }
 
-    "#{og_title}#{@show.show_date.strftime('%m/%d/%Y')} #{@show.location}"
+    if params[:song]
+      @song = @show.tracks.find_by_slug(params[:song])
+      @og[:title] = @song.title if @song
+    end
   end
 
   def get_shows_by_year
