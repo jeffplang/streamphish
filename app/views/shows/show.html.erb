@@ -2,9 +2,10 @@
   <%= render(:template => 'api/v1/shows/show', :formats => [:json]).html_safe %>
 <% end %>
 
-<% content_for(:title) { "#{@show.show_date.strftime('%m/%d/%Y')} #{@show.location} - PhishTracks" } %>
+<% content_for(:title) { title } %>
 
-<% content_for(:og_title) { @og_title } %>
+<% content_for(:og_title) { @og[:title] } %>
+<% content_for(:description) { meta_description } %>
 
 <div id="currentView">
   <header>
