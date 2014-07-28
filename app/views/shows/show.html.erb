@@ -34,7 +34,7 @@
     <% @show.concert_sets.each do |concert_set| %>
       <li class="sectionTitle"><h2><%= concert_set.title %></h2></li>
       <% concert_set.tracks.order(:position).each do |track| %>
-        <li>
+        <li data-id="<%= track.id %>">
           <div class="songInfo">
             <div class="songTitle">
               <a data-control="song" href="/shows/<%= @show.show_date %>/<%= track.slug %>" data-bypass>
