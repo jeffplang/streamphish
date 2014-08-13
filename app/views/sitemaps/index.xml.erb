@@ -11,6 +11,7 @@
   <%- @years.each do |year| %>
   <sitemap>
     <loc><%= shows_by_year_sitemaps_url(year: year[:year], format: :xml) %></loc>
+    <lastmod><%= Time.now.strftime("%Y-%m-%dT%H:%M:%SZ") %></lastmod>
   </sitemap>
   <% end %>
 </sitemapindex>
