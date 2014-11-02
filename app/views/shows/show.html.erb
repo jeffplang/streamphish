@@ -24,7 +24,7 @@
     <div class="sourceContainer">
       <a href="#" class="info mic"><i class="icon-mic"></i></a>
       <div class="invisible sourceInfo" data-arrow-pos="-15px">
-        <%= @show.source_info.gsub(/\n/, '<br>') %>
+        <%= @show.source_info.gsub(/\n/, '<br>').html_safe %>
       </div>
     </div>
     <% end %>
