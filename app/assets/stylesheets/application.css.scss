@@ -10,34 +10,21 @@
 //-----------------------------------------
 // Imports
 //-----------------------------------------
-// @import "compass/css3"
-// @import "h5bp";
 @import "application/normalize";
 @import "application/helpers";
-@import "application/media";
 
 //-----------------------------------------
 // Prepend includes
 //-----------------------------------------
 @include h5bp-normalize;
 
-
 //-----------------------------------------
 // Custom application partials
 //-----------------------------------------
 @import "application/chromeframe";
-@import "application/document";
-@import "application/media_queries"; // Media queries last
-
-//-----------------------------------------
-// Append includes
-//-----------------------------------------
-@include h5bp-helpers;
-@include h5bp-media;
 
 @import "phishtracks-icons";
 @import url(https://fonts.googleapis.com/css?family=Economica:400,700);
-//@import "custom-fonts";
 
 $songBg: #0F2340;
 $sHandleSize: 12px;
@@ -46,18 +33,21 @@ $sHandleHoverSize: 15px;
 .hide { display: none; }
 .invisible { visibility: hidden; }
 
-body { background: $songBg; }
-body.noTextSelect { 
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+body { 
+  background: $songBg; 
+  .noTextSelect { 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .noScroll {
+    overflow: hidden
+  }
 }
-body.noScroll {
-  overflow: hidden
-}
+
 header { 
   position: fixed; 
   top: 0; 
@@ -156,32 +146,6 @@ $yearSelectWidth: 300px;
 #yearSelect ul li { text-align: center; float: left; height: 50px; width: 50px; margin-right: 10px; margin-bottom: 10px; }
 #yearSelect ul li a { height: 100%; width: 100%; display: inline-block; background: #aaa; border-radius: 50px; text-decoration: none; color: #ddd; padding: 5px; }
 #yearSelect ul li a span { display: inline-block; margin-top: 15px; font-size: 14px; }
-/*#yearSelect ul li:first-child a span { margin-top: 3px; }*/
-/**
- ** Front page circles 
-**/
-
-h2 { color: #fff; margin: 0 0 0 13px; padding: 0; font-family: 'Jacques Francois', serif; font-size: 28px;}
-h2 span { font-size: 15px; }
-h2 span a { color: #fff!important; }
-ul.yearsCircles { margin: 0 0 40px 0; padding: 0; list-style-type: none; position: relative; left: 10px; height: 100px; }
-ul.yearsCircles li { width: 75px; height: 75px; border-radius: 50%; background: #fff; text-align: center; 
-  float: left; position: absolute; left: 0; top: 0; 
-  -webkit-transition-property: left, top, height, width, background, border;
-  -webkit-transition-duration: 1.5s, 1.5s, 0.175s, 0.175s, 0.175s, 0.175s;
-}
-ul.yearsCircles li a { display: block; height: 100%; width: 100%; border-radius: 50%; text-decoration: none; position: relative; }
-ul.yearsCircles li a:hover { text-decoration: none; }
-ul.yearsCircles li a span { position: relative; top: 19px; font-size: 20px; font-family: Georgia; 
-  -webkit-transition-property: font-size, top;  
-  -webkit-transition-duration: 0.175s, 0.175s; 
-}
-
-ul.yearsCircles li.hover { height: 100px; width: 100px; z-index: 5000; }
-ul.yearsCircles li.hover a { background: inherit; z-index: 5000; height: 100%; width: 100%; }
-ul.yearsCircles li.hover a span { font-size: 25px; top: 29px; }
-
-ul.yearsCircles li.empty { background: transparent!important; }
 
 div.songs { position: relative; margin: 15px 0 0 10px; }
 div.songs a { 
@@ -222,6 +186,50 @@ div.songs a span { position: relative; }
 .pageList.linkItems li a { display: block; text-decoration: none; color: #3C9C7B; height: 100%; padding: 0 0 0 18px; }
 .pageList.linkItems li a span { top: 30px; position: relative; }
 
+.pageList .songInfo { float: left; margin-top: 5px; }
+.pageList .songTime { float: right; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.pageList .songTime time { display: inline-block; line-height: 3px; }
+.pageList .songTime time.totalTime { width: 40px; }
+.pageList .songTime { opacity: 0; margin-top: 12px; -webkit-transition-duration: 0.5s; }
+.pageList .duration { float: right; margin-top: 8px; font-size: 32px; color: #425F77; -webkit-transition-duration: 0.5s; opacity: 1; }
+
+.pageList br { margin: 0; }
+.pageList .songDate { font-size: 20px; }
+.pageList .songVenue { font-size: 15px; }
+.pageList .songTitle { font-size: 23px; display: inline-block; margin-top: 7px; }
+.pageList .songInfo a { color: inherit; text-decoration: none; }
+.pageList .songInfo a:hover { color: #fff; }
+
+.pageList.showsByYear li { height: 70px; overflow-x: hidden; white-space: nowrap; }
+.pageList.showsByYear li a span { top: 16px; font-size: 18px; letter-spacing: -1.5px; }
+.pageList.showsByYear li a span strong { font-size: 27px; letter-spacing: 0em;}
+
+.tag {
+  background: rgb(60,156,123); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(60,156,123,1) 0%, rgba(74,155,127,1) 56%, rgba(82,155,129,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(60,156,123,1)), color-stop(56%,rgba(74,155,127,1)), color-stop(100%,rgba(82,155,129,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(60,156,123,1) 0%,rgba(74,155,127,1) 56%,rgba(82,155,129,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(60,156,123,1) 0%,rgba(74,155,127,1) 56%,rgba(82,155,129,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(60,156,123,1) 0%,rgba(74,155,127,1) 56%,rgba(82,155,129,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(60,156,123,1) 0%,rgba(74,155,127,1) 56%,rgba(82,155,129,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c9c7b', endColorstr='#529b81',GradientType=0 ); /* IE6-9 */
+
+  margin-left: 3px;
+  font-size: 10px!important;
+  letter-spacing: 0.1em!important;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.64);
+  padding: 4px;
+  border-radius: 5px;
+  position: relative;
+  top: 11px!important;
+}
+
+.songInfo .tag { top: -4px!important; }
+.pageList .tagContainer { display: inline-block; }
+
+
+
 body.hidePlayer #player { bottom: -70px; }
 body.hidePlayer #main { padding-bottom: 0px; }
 #player, #main { -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -ms-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; }
@@ -254,7 +262,8 @@ body.hidePlayer #main { padding-bottom: 0px; }
 #player a.btn.prev .arrowGrp { border-left: 3px solid #fff; }
 #player a.btn.next .arrowGrp { border-right: 3px solid #fff; }
 
-#player h2 { display: inline-block; font-family: 'Economica', cursive; font-weight: 700; font-size: 30px; vertical-align: top; margin-left: 8px; }
+#player h2 { display: inline-block; font-family: 'Economica', cursive; font-weight: 700; font-size: 30px; vertical-align: top; margin: 0 0 0 8px; padding: 0; }
+
 #player h3 { display: inline-block; font-family: 'Economica', cursive; font-size: 19px; font-weight: 400; color: #fff; vertical-align: top; margin: 10px 0 0 10px; }
 #player h3 small { font-size: 15px; }
 #player h2 a, #player h3 a { color: #fff; text-decoration: none; }
@@ -317,6 +326,14 @@ background: rgb(234,185,45); /* Old browsers */
   .pageList.linkItems li { height: 55px; }
   .pageList.showsByYear li { height: 55px!important; }
 
+  .pageList.showsByYear li { height: 57px; overflow: hidden; }
+  .pageList.showsByYear li a span { top: 18px; font-size: 12px; letter-spacing: -1.3px; display: inline-block; max-width: 285px; overflow: hidden; }
+  .pageList.showsByYear li a span strong { font-size: 16px; letter-spacing: 0em; }
+  .pageList.showsByYear .tagContainer { position: absolute; right: 10px; top: 17px; background: #0f2340; padding-left: 4px; }
+  .pageList.showsByYear .tag { top: 0!important; }
+
+  .tag { display: inline-block; overflow-x: hidden; width: 7px; letter-spacing: 0.5em!important; padding: 2px 4px; font-weight: bold; margin-left: 0; }
+
   .pageList .songInfo { max-width: 223px; overflow-x: hidden; white-space: nowrap; }
   .pageList.linkItems li a span { top: 17px; }
 
@@ -329,13 +346,8 @@ background: rgb(234,185,45); /* Old browsers */
   .pageList.songs.song .songInfo { position: absolute; top: 6px; left: 18px; }
   .pageList.songs .songInfo .songDate { font-size: 16px; font-weight: bold; position: relative; top: 5px;}
   .pageList.songs .songInfo .songVenue { font-size: 12px; letter-spacing: -1.5px; display: inline-block; }
-}
 
-@import "songs";
-@import "shows";
-
-/* Following for tinkering purposes */
-
-p {
-  color: white;
+  .pageList .songTitle { font-size: 16px; display: inline-block; margin-top: 4px; }
+  .pageList .duration { font-size: 18px; }
+  .pageList .songTime time { display: none!important; }
 }
