@@ -35,30 +35,12 @@ $sHandleHoverSize: 15px;
 
 body { 
   background: $songBg; 
-  .noTextSelect { 
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  .noScroll {
-    overflow: hidden
-  }
+  .noTextSelect { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+  .noScroll { overflow: hidden }
 }
 
 header { 
-  position: fixed; 
-  top: 0; 
-  height: 44px;
-  margin: 0; 
-  color: #fff; 
-  display: block;
-  width: 100%;
-  z-index: 5;
-  text-align: center;
-
+  position: fixed; top: 0; height: 44px; margin: 0; color: #fff; display: block; width: 100%; z-index: 5; text-align: center;
   background: rgb(49,205,122); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(49,205,122,1) 0%, rgba(51,179,111,1) 44%, rgba(50,152,98,1) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(49,205,122,1)), color-stop(44%,rgba(51,179,111,1)), color-stop(100%,rgba(50,152,98,1))); /* Chrome,Safari4+ */
@@ -67,59 +49,41 @@ header {
   background: -ms-linear-gradient(top,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* IE10+ */
   background: linear-gradient(to bottom,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31cd7a', endColorstr='#329862',GradientType=0 ); /* IE6-9 */
-}
 
-header h1 { 
-  font-family: 'Economica', cursive;
-  font-size: 2.25em;
-  text-align: center;
-  overflow: hidden;
-  white-space: nowrap;
-  margin: 0;
-  display: inline-block;
-}
-header h1 a { color: #fff; text-decoration: none; }
-header h1 a:hover { text-decoration: underline; }
-header h1 a small { font-size: 13px; display:inline-block; vertical-align: top; margin-top: 13px; }
-header a.info { text-decoration: none; color: inherit; font-size: 12px; font-family: Arial; display: inline-block; vertical-align: top; margin: 14px 0 0 3px; }
-header a.info.mic { font-size: inherit; }
-header a.info:hover { text-decoration: underline; }
-header a.showNav { font-size: 25px; margin-top: 6px; }
-header a.showNav:hover { text-decoration: none; }
-header a.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #fff; text-decoration: none; top: 0; left: 0; z-index: 50; position: fixed; display: inline-block; height: 32px; padding: 9px 18px 0 6px; }
+  h1 { 
+    font-family: 'Economica', cursive; font-size: 2.25em; text-align: center; overflow: hidden; white-space: nowrap; margin: 0; display: inline-block;
 
-header div.sourceContainer { display: inline-block; position: relative; vertical-align: top; }
-header div.sourceInfo { position: absolute; background: #463963; top: 51px; text-align: left; padding: 10px; color: #fff; font-size: 14px; white-space: nowrap; 
-  -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.3));
-  border-radius: 3px;
-}
-header div.sourceInfo:after {
-  bottom: 100%;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border: solid transparent;
+    a { 
+      color: #fff; text-decoration: none; 
+      small { font-size: 13px; display:inline-block; vertical-align: top; margin-top: 13px; }
+    }
+    a:hover { text-decoration: underline; }
+  }
 
-  border-color: rgba(136, 183, 213, 0);
-  border-bottom-color: #463963;
-  border-width: 15px;
-  left: 50%;
-  /*margin-left: -15px;*/ /* Defined in show.jst */
+  a.info { 
+    text-decoration: none; color: inherit; font-size: 12px; font-family: Arial; display: inline-block; vertical-align: top; margin: 14px 0 0 3px; 
+    :hover { text-decoration: underline; }
+  }
+  a.info.mic { font-size: inherit; }
+  a.showNav {
+    font-size: 25px; margin-top: 6px; 
+    :hover { text-decoration: none; }
+  }
+  a.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #fff; text-decoration: none; top: 0; left: 0; z-index: 50; position: fixed; display: inline-block; height: 32px; padding: 9px 18px 0 6px; }
+
+
+  div.sourceContainer { display: inline-block; position: relative; vertical-align: top; }
+  div.sourceInfo { position: absolute; background: #463963; top: 51px; text-align: left; padding: 10px; color: #fff; font-size: 14px; white-space: nowrap; border-radius: 3px; 
+                   -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+                   box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+                   filter: drop-shadow(0 1px 4px rgba(0,0,0,0.3));
+                 }
 }
 
 div.pageContainer { margin-top: 60px; position: relative; }
-
 #main { padding-bottom: 69px; }
-#dim { display: none; height: 100%; width: 100%; position: fixed; left: 0; top: 0; z-index: 6000; background-color: #999; 
-filter: alpha(opacity=20); /* internet explorer */
--khtml-opacity: 0.20;      /* khtml, old safari */
--moz-opacity: 0.20;       /* mozilla, netscape */
-opacity: 0.20;           /* fx, safari, opera */
-}
+#dim { display: none; height: 100%; width: 100%; position: fixed; left: 0; top: 0; z-index: 6000; background-color: #999; filter: alpha(opacity=20); -khtml-opacity: 0.20; -moz-opacity: 0.20; opacity: 0.20; }
+
 #map { display: none; height: 100%; width: 100%; position: fixed; left: 0; bottom: 0; z-index: 7000; background-color: #000; text-align: center; overflow: scroll; }
 #map .closeBtn { position: fixed; right: 16px; top: 16px; font-size: 35px; color: #EE5600; cursor: pointer; }
 #map .closeBtn i:before { margin: 0; }
