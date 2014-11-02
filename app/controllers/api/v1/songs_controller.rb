@@ -8,5 +8,6 @@ class Api::V1::SongsController < Api::V1Controller
 
   def show
     @song = Song.includes(:tracks).find params[:id]
+    @tracks = @song.tracks.includes(:show).chronological
   end
 end
