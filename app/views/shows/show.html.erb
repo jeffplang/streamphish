@@ -11,9 +11,15 @@
   <header>
     <% year = @show.show_date.year < 1988 ? '83-87' : @show.show_date.year %>
     <a href="/shows/<%= year %>" class="backBtn">← <%= year %></a>
+    <% unless @show.prev_show.nil? %>
+      <%= link_to '&laquo;'.html_safe, @show.prev_show, class: 'info showNav L' %>
+    <% end %>
     <h1>
       <%= @show.show_date.strftime('%m-%d-%Y') %><span class="location"> - <%= @show.location %></span>
     </h1>
+    <% unless @show.next_show.nil? %>
+      <%= link_to '&raquo;'.html_safe, @show.next_show, class: 'info showNav R' %>
+    <% end %>
     <% if @show.source_info %>
     <div class="sourceContainer">
       <a href="#" class="info mic"><i class="icon-mic"></i></a>

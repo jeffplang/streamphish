@@ -8,5 +8,6 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.includes(:tracks).find params[:id]
+    @tracks = @song.tracks.includes(:show).chronological
   end
 end

@@ -10,3 +10,6 @@ json.sets @show.concert_sets do |concert_set|
     json.file_url_ogx "http://assets.phishtracks.com#{track.song_file_ogx.to_s}" if track.song_file_ogx.present?
   end
 end
+
+json.prev_show @show.prev_show.try(:show_date)
+json.next_show @show.next_show.try(:show_date)

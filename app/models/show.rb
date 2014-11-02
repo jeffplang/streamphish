@@ -26,6 +26,14 @@ class Show < ActiveRecord::Base
     "#{show_date.strftime('%m-%d-%Y')} - #{location}" if show_date && location
   end
 
+  def next_show
+    @_next_show ||= self.class.where('show_date > ?', show_date).order('show_date ASC').first
+  end
+
+  def prev_show
+    @_prev_show ||= self.class.where('show_date < ?', show_date).order('show_date DESC').first
+  end
+
   def set_break_indexes
     concert_sets.each_with_object([]) do |set, indexes|
       indexes << (indexes.last ? indexes.last + set.tracks.length : 0)
