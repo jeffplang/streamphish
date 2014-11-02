@@ -1,8 +1,14 @@
 <header>
   <a href="/shows/<%= year %>" class="backBtn">← <%= year %></a>
+  <% if(prev_show) { %>
+    <a href="/shows/<%= prev_show %>" class="info showNav L">&laquo;</a>
+  <% } %>
   <h1>
-    <%= Streamphish.Helpers.dateString(show_date, '%m-%d-%Y') %><span class="location"> - <%= location %>
+    <%= SP.Helpers.dateString(show_date, '%m-%d-%Y') %><span class="location"> - <%= location %>
   </h1>
+  <% if(next_show) { %>
+    <a href="/shows/<%= next_show %>" class="info showNav R">&raquo;</a>
+  <% } %>
   <% if(source_info) { %>
     <div class="sourceContainer">
       <a href="#" class="info mic"><i class="icon-mic"></i></a>

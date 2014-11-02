@@ -93,9 +93,9 @@ header h1 a:hover { text-decoration: underline; }
 header h1 a small { font-size: 13px; display:inline-block; vertical-align: top; margin-top: 13px; }
 header a.info { text-decoration: none; color: inherit; font-size: 12px; font-family: Arial; display: inline-block; vertical-align: top; margin: 14px 0 0 3px; }
 header a.info.mic { font-size: inherit; }
-
 header a.info:hover { text-decoration: underline; }
-
+header a.showNav { font-size: 25px; margin-top: 6px; }
+header a.showNav:hover { text-decoration: none; }
 header a.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #fff; text-decoration: none; top: 0; left: 0; z-index: 50; position: fixed; display: inline-block; height: 32px; padding: 9px 18px 0 6px; }
 
 header div.sourceContainer { display: inline-block; position: relative; vertical-align: top; }
@@ -291,6 +291,7 @@ background: rgb(234,185,45); /* Old browsers */
   body { -webkit-tap-highlight-color: rgba(0,0,0,0); }
   header .location { display: none; }
   header a.info { display: none; }
+  header a.info.showNav { display: inline-block; }
   header .sourceContainer { display: none; }
 
   #main { padding-bottom: 65px; margin-top: 42px; }
