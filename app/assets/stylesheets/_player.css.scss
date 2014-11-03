@@ -1,0 +1,75 @@
+/*******************
+
+ Player
+
+ ******************/
+#player { 
+  position: fixed; bottom: 0; height: 50px; width: 100%; background: #25585A; padding: 10px; z-index: 7000; display: block; 
+  .controls { display: inline-block; margin-top: 3px; }
+
+  h2, h3 { 
+    a {
+      color: #fff; text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+  }
+  h2 { display: inline-block; font-family: 'Economica', cursive; font-weight: 700; font-size: 30px; vertical-align: top; margin: 0 0 0 8px; padding: 0; }
+  h3 { 
+    display: inline-block; font-family: 'Economica', cursive; font-size: 19px; font-weight: 400; color: #fff; vertical-align: top; margin: 10px 0 0 10px; 
+    small { font-size: 15px; }
+  }
+
+  a {
+    &.btn { 
+      position: relative; color: rgba(255,255,255,1); text-decoration: none; background-color: rgba(219,87,5,1); font-family: arial; font-weight: 700; display: inline-block; width: 39px; height: 28px; text-align: center;
+      -webkit-border-radius: 38px; -moz-border-radius: 38px; border-radius: 8px;
+      -webkit-box-shadow: 0px 5px 0px rgba(219,31,5,1), 0px 5px 15px rgba(0,0,0,.7); -moz-box-shadow: 0px 5px 0px rgba(219,31,5,1), 0px 5px 15px rgba(0,0,0,.7); box-shadow: 0px 5px 0px rgba(219,31,5,1), 0px 5px 15px rgba(0,0,0,.7);
+      &:active { 
+        position: relative; top: 2px;
+        -webkit-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9); -moz-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9); box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+      }
+      &.playpause, &.prev { margin-right: 4px; }
+      &.playpause, &.prev, &.next { padding: 13px 3px 0 4px; }
+      &.playpause {
+        span { height: 11px; display: inline-block; }
+        .pause { width: 3px; border-left: 6px solid #fff; border-right: 6px solid #fff; }
+        .play { width: 0px; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 13px solid #fff; }
+      }
+
+      .arrowGrp { display: inline-block; height: 11px; padding: 0; line-height: 1px; position: relative; top: -2px; }
+      &.prev span.arrow, &.next span.arrow { width: 0; height: 0; display: inline-block; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+      &.prev {
+        span.arrow { border-right: 8px solid #fff; }
+        .arrowGrp { border-left: 3px solid #fff; }
+      }
+      &.next {
+        span.arrow { border-left: 8px solid #fff; }
+        .arrowGrp { border-right: 3px solid #fff; }
+      }
+    }
+
+    &.map { color: #fff; position: relative; top: -4px; left: 2px; cursor: pointer; }
+  }
+
+  .scrubContainer { position: absolute; left: 178px; right: 25px; top: 48px; }
+  .scrubber { 
+    height: 8px; background: #00f; position: absolute; left: 178px; right: 122px; top: 48px; border-radius: 3px; background: rgba(255,255,255,0.15);
+    &.lt10Min { right: 107px; }
+    .loadProgress { 
+      width: 0; height: inherit; border-radius: inherit; 
+      background: rgb(234,185,45); /* Old browsers */
+      background: -moz-linear-gradient(top,  rgba(234,185,45,1) 0%, rgba(199,152,16,1) 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(234,185,45,1)), color-stop(100%,rgba(199,152,16,1))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* IE10+ */
+      background: linear-gradient(to bottom,  rgba(234,185,45,1) 0%,rgba(199,152,16,1) 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eab92d', endColorstr='#c79810',GradientType=0 ); /* IE6-9 */
+    }
+    .handle { 
+      background: #fff; height: $sHandleSize; width: $sHandleSize; position: absolute; z-index: 3; top: -2px; border-radius: 6px; margin-left: -3px; left: 0%; 
+      &.ghost { opacity: 0.5; display: none; }
+    }
+  }
+  .time { position: absolute; top: 39px; right: 28px; font-family: 'Economica', cursive; font-size: 20px; color: #fff; }
+}

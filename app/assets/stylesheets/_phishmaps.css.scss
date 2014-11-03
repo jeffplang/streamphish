@@ -1,0 +1,22 @@
+/*********************
+
+ PhishMaps Integration
+
+ *********************/
+#map { 
+  display: none; height: 100%; width: 100%; position: fixed; left: 0; bottom: 0; z-index: 7000; background-color: #000; text-align: center; overflow: scroll;
+  .closeBtn { 
+    position: fixed; right: 16px; top: 16px; font-size: 35px; color: #EE5600; cursor: pointer; 
+    i:before { margin: 0; }
+  }
+  .wrapper { margin: 0 auto; position: relative; padding-bottom: 66px; }
+  svg { 
+    position: absolute; top: 0; left: 0; height: 100%; 
+    polygon { 
+      fill-opacity: 0; stroke-width: 2px; cursor: pointer; 
+      &:hover { fill-opacity: 0.14; }
+      &.active { fill-opacity: 0.24; stroke: #5087AC; fill: #51B4D3; }
+      &.highlighted { stroke: #808080; stroke-dasharray: 8 4; }
+    }
+  }
+}
