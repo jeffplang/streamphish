@@ -21,53 +21,7 @@ body {
   }
 }
 
-
-/********************
-
-   Green header strip 
-
- ********************/
-header { 
-  position: fixed; top: 0; height: 44px; margin: 0; color: #fff; display: block; width: 100%; z-index: 5; text-align: center;
-  background: rgb(49,205,122); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(49,205,122,1) 0%, rgba(51,179,111,1) 44%, rgba(50,152,98,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(49,205,122,1)), color-stop(44%,rgba(51,179,111,1)), color-stop(100%,rgba(50,152,98,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(49,205,122,1) 0%,rgba(51,179,111,1) 44%,rgba(50,152,98,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31cd7a', endColorstr='#329862',GradientType=0 ); /* IE6-9 */
-
-  h1 { 
-    font-family: 'Economica', cursive; font-size: 2.25em; text-align: center; overflow: hidden; white-space: nowrap; margin: 0; display: inline-block;
-
-    a { 
-      color: #fff; text-decoration: none; 
-      small { font-size: 13px; display:inline-block; vertical-align: top; margin-top: 13px; }
-    }
-    a:hover { text-decoration: underline; }
-  }
-
-  a {
-    &.info { 
-      text-decoration: none; color: inherit; font-size: 12px; font-family: Arial; display: inline-block; vertical-align: top; margin: 14px 0 0 3px; 
-      &:hover { text-decoration: underline; }
-      &.mic { font-size: inherit; }
-    }
-    &.showNav {
-      font-size: 25px; margin-top: 6px; 
-      &:hover { text-decoration: none; }
-    }
-    &.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #fff; text-decoration: none; top: 0; left: 0; z-index: 50; position: fixed; display: inline-block; height: 32px; padding: 9px 18px 0 6px; }
-  }
-
-  div.sourceContainer { display: inline-block; position: relative; vertical-align: top; }
-  div.sourceInfo { position: absolute; background: #463963; top: 51px; text-align: left; padding: 10px; color: #fff; font-size: 14px; white-space: nowrap; border-radius: 3px; 
-                   -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-                   box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-                   filter: drop-shadow(0 1px 4px rgba(0,0,0,0.3));
-                 }
-}
+@import "header";
 
 
 /*************************
