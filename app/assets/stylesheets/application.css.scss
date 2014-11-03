@@ -60,17 +60,18 @@ header {
     a:hover { text-decoration: underline; }
   }
 
-  a.info { 
-    text-decoration: none; color: inherit; font-size: 12px; font-family: Arial; display: inline-block; vertical-align: top; margin: 14px 0 0 3px; 
-    :hover { text-decoration: underline; }
+  a {
+    &.info { 
+      text-decoration: none; color: inherit; font-size: 12px; font-family: Arial; display: inline-block; vertical-align: top; margin: 14px 0 0 3px; 
+      &:hover { text-decoration: underline; }
+      &.mic { font-size: inherit; }
+    }
+    &.showNav {
+      font-size: 25px; margin-top: 6px; 
+      &:hover { text-decoration: none; }
+    }
+    &.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #fff; text-decoration: none; top: 0; left: 0; z-index: 50; position: fixed; display: inline-block; height: 32px; padding: 9px 18px 0 6px; }
   }
-  a.info.mic { font-size: inherit; }
-  a.showNav {
-    font-size: 25px; margin-top: 6px; 
-    :hover { text-decoration: none; }
-  }
-  a.backBtn { font-size: 21px; font-family: 'Economica', cursive; color: #fff; text-decoration: none; top: 0; left: 0; z-index: 50; position: fixed; display: inline-block; height: 32px; padding: 9px 18px 0 6px; }
-
 
   div.sourceContainer { display: inline-block; position: relative; vertical-align: top; }
   div.sourceInfo { position: absolute; background: #463963; top: 51px; text-align: left; padding: 10px; color: #fff; font-size: 14px; white-space: nowrap; border-radius: 3px; 
@@ -84,10 +85,19 @@ div.pageContainer { margin-top: 60px; position: relative; }
 #main { padding-bottom: 69px; }
 #dim { display: none; height: 100%; width: 100%; position: fixed; left: 0; top: 0; z-index: 6000; background-color: #999; filter: alpha(opacity=20); -khtml-opacity: 0.20; -moz-opacity: 0.20; opacity: 0.20; }
 
-#map { display: none; height: 100%; width: 100%; position: fixed; left: 0; bottom: 0; z-index: 7000; background-color: #000; text-align: center; overflow: scroll; }
-#map .closeBtn { position: fixed; right: 16px; top: 16px; font-size: 35px; color: #EE5600; cursor: pointer; }
-#map .closeBtn i:before { margin: 0; }
-#map .wrapper { margin: 0 auto; position: relative; padding-bottom: 66px; }
+#map { 
+  display: none; height: 100%; width: 100%; position: fixed; left: 0; bottom: 0; z-index: 7000; background-color: #000; text-align: center; overflow: scroll;
+  .closeBtn { 
+    position: fixed; right: 16px; top: 16px; font-size: 35px; color: #EE5600; cursor: pointer; 
+    i:before { margin: 0; }
+  }
+  .wrapper { margin: 0 auto; position: relative; padding-bottom: 66px; }
+  svg { 
+    position: absolute; top: 0; left: 0; height: 100%; 
+    polygon { fill-opacity: 0; stroke-width: 2px; cursor: pointer; }
+  }
+}
+
 #map svg { position: absolute; top: 0; left: 0; height: 100%; }
 #map svg polygon { fill-opacity: 0; stroke-width: 2px; cursor: pointer; }
 #map svg polygon:hover { fill-opacity: 0.14; }
