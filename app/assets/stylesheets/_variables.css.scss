@@ -22,3 +22,11 @@ $invalid-background-color: #f0dddd;
 $songBg: #0F2340;
 $sHandleSize: 12px;
 $sHandleHoverSize: 15px;
+
+$iphone5-down:          "screen and (max-width : 320px)";
+$galaxy-s3-down:        "screen and (max-width : 360px)";
+$large-phone-down:      "screen and (max-width : 480px)";
+$tablet-portrait-up:    "screen and (min-width : 768px)";
+$medium-screen-up:      "screen and (min-width : 980px)";
+$tablet-landscape-up:   "screen and (min-width : 1024px)";
+$large-screen-up:       "screen and (min-width : 1100px)";

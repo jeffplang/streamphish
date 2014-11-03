@@ -3,7 +3,7 @@
  Media Queries
 
  *************/
-@media only screen and (max-device-width : 320px) {
+@media only #{$galaxy-s3-down} {
   body { 
     -webkit-tap-highlight-color: rgba(0,0,0,0); 
     &.hidePlayer #player { display: none; }
@@ -74,9 +74,18 @@
     .time { top: 12px; }
 
     h2, h3 { position: absolute; overflow: hidden; white-space: nowrap; }
-    h2 { top: 8px; max-width: 154px; font-size: 22px; }
-    h3 { top: 28px; left: 109px; max-width: 190px; font-size: 16px; }
+    h2 { top: 8px; max-width: 198px; font-size: 22px; }
+    h3 { top: 28px; left: 109px; max-width: 230px; font-size: 16px; }
 
     a.btn.prev, .scrubber, .time .total { display: none; }
+  }
+
+  
+}
+
+@media only #{$iphone5-down} {
+  #player {
+    h2 { max-width: 154px; }
+    h3 { max-width: 190px; }
   }
 }
