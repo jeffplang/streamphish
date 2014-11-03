@@ -11,10 +11,12 @@
   header { 
     height: 42px; 
     h1 { max-width: 228px; }
-    a.backBtn { padding-top: 0px; font-size: 35px; overflow-x: hidden; white-space: nowrap; vertical-align: top; width: 22px; margin-top: -2px; padding-left: 11px; }
-
-    .location, .info, .sourceContainer { display: none; }
-    .showNav { display: inline-block; }
+    .location, .sourceContainer { display: none; }
+    a {
+      &.backBtn { padding-top: 0px; font-size: 35px; overflow-x: hidden; white-space: nowrap; vertical-align: top; width: 22px; margin-top: -2px; padding-left: 11px; }
+      &.info { display: none; }
+      &.showNav { display: inline-block; }
+    }
   }
   #main { padding-bottom: 65px; margin-top: 42px; }
 
