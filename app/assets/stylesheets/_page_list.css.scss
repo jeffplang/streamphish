@@ -1,0 +1,73 @@
+/***********************
+
+ Generic pageList styles
+
+ **********************/
+.pageList { 
+  margin: 0; list-style-type: none; padding: 0; 
+  br { margin: 0; }
+  li { 
+    display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; height: 57px; position: relative; border-bottom: 1px solid #1D314E; font-size: 21px;
+    &:hover { 
+      background: lighten($songBg, 4%);
+      cursor:pointer;
+    }
+
+    &.sectionTitle { 
+      height: 25px!important; cursor: default; padding: 4px 0 0 18px!important; background: rgb(32, 56, 92);
+      &:first-child { padding-top: 6px; }
+      &:hover { background: rgb(32, 56, 92); }
+      h2 { font-size: 18px; color: rgb(252, 225, 83); font-family: Arial; padding: 0; margin: 0; font-weight: normal; }
+    }
+  }
+
+  &.linkItems li { 
+    padding: 0; height: 93px; position: relative;
+
+    a { 
+      display: block; text-decoration: none; color: #3C9C7B; height: 100%; padding: 0 0 0 18px; 
+      span { top: 30px; position: relative; }
+    }
+  }
+
+  &.showsByYear li { 
+    height: 70px; overflow-x: hidden; white-space: nowrap; 
+    a span { 
+      top: 16px; font-size: 18px; letter-spacing: -1.5px; 
+      strong { font-size: 27px; letter-spacing: 0em; }
+    }
+  }
+
+  .songInfo { float: left; margin-top: 5px; }
+  .songTime { 
+    float: right; opacity: 0; margin-top: 12px;
+    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-transition-duration: 0.5s;
+    time { 
+      display: inline-block; line-height: 3px;
+      &.totalTime { width: 40px; }
+    }
+  }
+  .duration { float: right; margin-top: 8px; font-size: 32px; color: #425F77; -webkit-transition-duration: 0.5s; opacity: 1; }
+  .songDate { font-size: 20px; }
+  .songVenue { font-size: 15px; }
+  .songTitle { font-size: 23px; display: inline-block; margin-top: 7px; }
+  .songInfo {
+    a { 
+      color: inherit; text-decoration: none;
+      &:hover { color: #fff; }
+    }
+    .tag { top: -4px!important; }
+  }
+  .tagContainer { display: inline-block; }
+  .tag {
+    margin-left: 3px; font-size: 10px!important; letter-spacing: 0.1em!important; text-transform: uppercase; color: rgba(255, 255, 255, 0.64); padding: 4px; border-radius: 5px; position: relative; top: 11px!important; 
+    background: rgb(60,156,123); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(60,156,123,1) 0%, rgba(74,155,127,1) 56%, rgba(82,155,129,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(60,156,123,1)), color-stop(56%,rgba(74,155,127,1)), color-stop(100%,rgba(82,155,129,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(60,156,123,1) 0%,rgba(74,155,127,1) 56%,rgba(82,155,129,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(60,156,123,1) 0%,rgba(74,155,127,1) 56%,rgba(82,155,129,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(60,156,123,1) 0%,rgba(74,155,127,1) 56%,rgba(82,155,129,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(60,156,123,1) 0%,rgba(74,155,127,1) 56%,rgba(82,155,129,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c9c7b', endColorstr='#529b81',GradientType=0 ); /* IE6-9 */
+  }
+}
