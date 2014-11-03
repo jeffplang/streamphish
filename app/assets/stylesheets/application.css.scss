@@ -120,7 +120,7 @@ $yearSelectWidth: 300px;
  ****************/
 
 div.pageContainer { margin-top: 60px; position: relative; }
-#main { padding-bottom: 69px; }
+#main { padding-bottom: 69px; margin-top: 44px; }
 #dim { display: none; height: 100%; width: 100%; position: fixed; left: 0; top: 0; z-index: 6000; background-color: #999; filter: alpha(opacity=20); -khtml-opacity: 0.20; -moz-opacity: 0.20; opacity: 0.20; }
 
 
@@ -149,30 +149,6 @@ div.pageContainer { margin-top: 60px; position: relative; }
   }
 }
 
-
-
-
-div.songs { position: relative; margin: 15px 0 0 10px; }
-div.songs a { 
-  border-radius: 50%; 
-  text-align: center; 
-  display: block; 
-  text-decoration: none; 
-  color: #fff; 
-  position: absolute; 
-  height: 120px; 
-  width: 120px; 
-  font-family: 'Allan', cursive;
-  font-size: 21px;
-  -webkit-transition-property: left, top;
-  -webkit-transition-duration: 1.5s, 1.5s;
-}
-div.songs a.hover { z-index: 5000; text-decoration: none; }
-div.songs a span { position: relative; }
-
-
-
-#main { margin-top: 44px; }
 .pageList { margin: 0; list-style-type: none; padding: 0; }
 .pageList li { display: block; text-decoration: none; padding: 18px; background: $songBg; color: #3C9C7B; height: 57px; position: relative; border-bottom: 1px solid #1D314E; font-size: 21px; }
 
