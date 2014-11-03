@@ -39,6 +39,14 @@ body {
   .noScroll { overflow: hidden }
 }
 
+
+/********************
+
+   Green header strip 
+
+ ********************/
+
+
 header { 
   position: fixed; top: 0; height: 44px; margin: 0; color: #fff; display: block; width: 100%; z-index: 5; text-align: center;
   background: rgb(49,205,122); /* Old browsers */
@@ -81,9 +89,47 @@ header {
                  }
 }
 
+
+/*************************
+
+  Years dropdown in header
+
+ ************************/
+
+
+$yearSelectWidth: 300px;
+#yearSelect { 
+  display: none; width: $yearSelectWidth; position: fixed; top: 41px; left: 50%; margin-left: -($yearSelectWidth / 2); 
+  ul { 
+    margin: 0; padding: 0; list-style-type: none;
+    li { 
+      text-align: center; float: left; height: 50px; width: 50px; margin-right: 10px; margin-bottom: 10px; 
+      a { 
+        height: 100%; width: 100%; display: inline-block; background: #aaa; border-radius: 50px; text-decoration: none; color: #ddd; padding: 5px; 
+        span { display: inline-block; margin-top: 15px; font-size: 14px; }
+      }
+    }
+  }
+}
+
+
+/****************
+  
+  Page containers
+
+ ****************/
+
 div.pageContainer { margin-top: 60px; position: relative; }
 #main { padding-bottom: 69px; }
 #dim { display: none; height: 100%; width: 100%; position: fixed; left: 0; top: 0; z-index: 6000; background-color: #999; filter: alpha(opacity=20); -khtml-opacity: 0.20; -moz-opacity: 0.20; opacity: 0.20; }
+
+
+/*********************
+
+ PhishMaps Integration
+
+ *********************/
+
 
 #map { 
   display: none; height: 100%; width: 100%; position: fixed; left: 0; bottom: 0; z-index: 7000; background-color: #000; text-align: center; overflow: scroll;
@@ -94,32 +140,17 @@ div.pageContainer { margin-top: 60px; position: relative; }
   .wrapper { margin: 0 auto; position: relative; padding-bottom: 66px; }
   svg { 
     position: absolute; top: 0; left: 0; height: 100%; 
-    polygon { fill-opacity: 0; stroke-width: 2px; cursor: pointer; }
+    polygon { 
+      fill-opacity: 0; stroke-width: 2px; cursor: pointer; 
+      &:hover { fill-opacity: 0.14; }
+      &.active { fill-opacity: 0.24; stroke: #5087AC; fill: #51B4D3; }
+      &.highlighted { stroke: #808080; stroke-dasharray: 8 4; }
+    }
   }
 }
 
-#map svg { position: absolute; top: 0; left: 0; height: 100%; }
-#map svg polygon { fill-opacity: 0; stroke-width: 2px; cursor: pointer; }
-#map svg polygon:hover { fill-opacity: 0.14; }
-#map svg polygon.active { fill-opacity: 0.24; stroke: #5087AC; fill: #51B4D3; /* fill: #FFFF25; stroke: #FDE800;*/ }
-#map svg polygon.highlighted { stroke: #808080; stroke-dasharray: 8 4; }
-$yearSelectWidth: 300px;
-#yearSelect {
-  display: none;
-  width: $yearSelectWidth;
-  position: fixed;
-  top: 41px;
-  left: 50%;
-  margin-left: -($yearSelectWidth / 2);
-}
-#yearSelect ul { 
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-#yearSelect ul li { text-align: center; float: left; height: 50px; width: 50px; margin-right: 10px; margin-bottom: 10px; }
-#yearSelect ul li a { height: 100%; width: 100%; display: inline-block; background: #aaa; border-radius: 50px; text-decoration: none; color: #ddd; padding: 5px; }
-#yearSelect ul li a span { display: inline-block; margin-top: 15px; font-size: 14px; }
+
+
 
 div.songs { position: relative; margin: 15px 0 0 10px; }
 div.songs a { 
