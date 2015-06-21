@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 #source "http://gems.rubyforge.org"
 
-ruby '2.1.1'
+ruby '2.1.6'
 
 # gem 'rails', '3.2.12'
 gem 'rails', '4.0.5'
@@ -33,7 +33,7 @@ gem 'jbuilder'
   gem 'coffee-rails', '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
+  # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.3.0'
   gem 'yui-compressor'
@@ -54,6 +54,7 @@ end
 
 group :development do
   gem 'pry-rails'
+  gem 'rack-cors', require: 'rack/cors'
 end
 
 

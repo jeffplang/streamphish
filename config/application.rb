@@ -69,5 +69,12 @@ module Streamphish
 
     config.phish_active_years = ['83-87'] + (1988..2015).to_a - [2001, 2005, 2006, 2007, 2008]
 
+    config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+
   end
 end
