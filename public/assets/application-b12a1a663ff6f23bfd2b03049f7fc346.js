@@ -2669,11 +2669,7 @@ window.soundManager = soundManager;
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 //     Underscore may be freely distributed under the MIT license.
 (function(){var n=this,t=n._,r={},e=Array.prototype,u=Object.prototype,i=Function.prototype,a=e.push,o=e.slice,c=e.concat,l=u.toString,f=u.hasOwnProperty,s=e.forEach,p=e.map,h=e.reduce,v=e.reduceRight,g=e.filter,d=e.every,m=e.some,y=e.indexOf,b=e.lastIndexOf,x=Array.isArray,w=Object.keys,_=i.bind,j=function(n){return n instanceof j?n:this instanceof j?void(this._wrapped=n):new j(n)};"undefined"!=typeof exports?("undefined"!=typeof module&&module.exports&&(exports=module.exports=j),exports._=j):n._=j,j.VERSION="1.6.0";var A=j.each=j.forEach=function(n,t,e){if(null==n)return n;if(s&&n.forEach===s)n.forEach(t,e);else if(n.length===+n.length){for(var u=0,i=n.length;i>u;u++)if(t.call(e,n[u],u,n)===r)return}else for(var a=j.keys(n),u=0,i=a.length;i>u;u++)if(t.call(e,n[a[u]],a[u],n)===r)return;return n};j.map=j.collect=function(n,t,r){var e=[];return null==n?e:p&&n.map===p?n.map(t,r):(A(n,function(n,u,i){e.push(t.call(r,n,u,i))}),e)};var O="Reduce of empty array with no initial value";j.reduce=j.foldl=j.inject=function(n,t,r,e){var u=arguments.length>2;if(null==n&&(n=[]),h&&n.reduce===h)return e&&(t=j.bind(t,e)),u?n.reduce(t,r):n.reduce(t);if(A(n,function(n,i,a){u?r=t.call(e,r,n,i,a):(r=n,u=!0)}),!u)throw new TypeError(O);return r},j.reduceRight=j.foldr=function(n,t,r,e){var u=arguments.length>2;if(null==n&&(n=[]),v&&n.reduceRight===v)return e&&(t=j.bind(t,e)),u?n.reduceRight(t,r):n.reduceRight(t);var i=n.length;if(i!==+i){var a=j.keys(n);i=a.length}if(A(n,function(o,c,l){c=a?a[--i]:--i,u?r=t.call(e,r,n[c],c,l):(r=n[c],u=!0)}),!u)throw new TypeError(O);return r},j.find=j.detect=function(n,t,r){var e;return k(n,function(n,u,i){return t.call(r,n,u,i)?(e=n,!0):void 0}),e},j.filter=j.select=function(n,t,r){var e=[];return null==n?e:g&&n.filter===g?n.filter(t,r):(A(n,function(n,u,i){t.call(r,n,u,i)&&e.push(n)}),e)},j.reject=function(n,t,r){return j.filter(n,function(n,e,u){return!t.call(r,n,e,u)},r)},j.every=j.all=function(n,t,e){t||(t=j.identity);var u=!0;return null==n?u:d&&n.every===d?n.every(t,e):(A(n,function(n,i,a){return(u=u&&t.call(e,n,i,a))?void 0:r}),!!u)};var k=j.some=j.any=function(n,t,e){t||(t=j.identity);var u=!1;return null==n?u:m&&n.some===m?n.some(t,e):(A(n,function(n,i,a){return u||(u=t.call(e,n,i,a))?r:void 0}),!!u)};j.contains=j.include=function(n,t){return null==n?!1:y&&n.indexOf===y?n.indexOf(t)!=-1:k(n,function(n){return n===t})},j.invoke=function(n,t){var r=o.call(arguments,2),e=j.isFunction(t);return j.map(n,function(n){return(e?t:n[t]).apply(n,r)})},j.pluck=function(n,t){return j.map(n,j.property(t))},j.where=function(n,t){return j.filter(n,j.matches(t))},j.findWhere=function(n,t){return j.find(n,j.matches(t))},j.max=function(n,t,r){if(!t&&j.isArray(n)&&n[0]===+n[0]&&n.length<65535)return Math.max.apply(Math,n);var e=-1/0,u=-1/0;return A(n,function(n,i,a){var o=t?t.call(r,n,i,a):n;o>u&&(e=n,u=o)}),e},j.min=function(n,t,r){if(!t&&j.isArray(n)&&n[0]===+n[0]&&n.length<65535)return Math.min.apply(Math,n);var e=1/0,u=1/0;return A(n,function(n,i,a){var o=t?t.call(r,n,i,a):n;u>o&&(e=n,u=o)}),e},j.shuffle=function(n){var t,r=0,e=[];return A(n,function(n){t=j.random(r++),e[r-1]=e[t],e[t]=n}),e},j.sample=function(n,t,r){return null==t||r?(n.length!==+n.length&&(n=j.values(n)),n[j.random(n.length-1)]):j.shuffle(n).slice(0,Math.max(0,t))};var E=function(n){return null==n?j.identity:j.isFunction(n)?n:j.property(n)};j.sortBy=function(n,t,r){return t=E(t),j.pluck(j.map(n,function(n,e,u){return{value:n,index:e,criteria:t.call(r,n,e,u)}}).sort(function(n,t){var r=n.criteria,e=t.criteria;if(r!==e){if(r>e||r===void 0)return 1;if(e>r||e===void 0)return-1}return n.index-t.index}),"value")};var F=function(n){return function(t,r,e){var u={};return r=E(r),A(t,function(i,a){var o=r.call(e,i,a,t);n(u,o,i)}),u}};j.groupBy=F(function(n,t,r){j.has(n,t)?n[t].push(r):n[t]=[r]}),j.indexBy=F(function(n,t,r){n[t]=r}),j.countBy=F(function(n,t){j.has(n,t)?n[t]++:n[t]=1}),j.sortedIndex=function(n,t,r,e){r=E(r);for(var u=r.call(e,t),i=0,a=n.length;a>i;){var o=i+a>>>1;r.call(e,n[o])<u?i=o+1:a=o}return i},j.toArray=function(n){return n?j.isArray(n)?o.call(n):n.length===+n.length?j.map(n,j.identity):j.values(n):[]},j.size=function(n){return null==n?0:n.length===+n.length?n.length:j.keys(n).length},j.first=j.head=j.take=function(n,t,r){return null==n?void 0:null==t||r?n[0]:0>t?[]:o.call(n,0,t)},j.initial=function(n,t,r){return o.call(n,0,n.length-(null==t||r?1:t))},j.last=function(n,t,r){return null==n?void 0:null==t||r?n[n.length-1]:o.call(n,Math.max(n.length-t,0))},j.rest=j.tail=j.drop=function(n,t,r){return o.call(n,null==t||r?1:t)},j.compact=function(n){return j.filter(n,j.identity)};var M=function(n,t,r){return t&&j.every(n,j.isArray)?c.apply(r,n):(A(n,function(n){j.isArray(n)||j.isArguments(n)?t?a.apply(r,n):M(n,t,r):r.push(n)}),r)};j.flatten=function(n,t){return M(n,t,[])},j.without=function(n){return j.difference(n,o.call(arguments,1))},j.partition=function(n,t){var r=[],e=[];return A(n,function(n){(t(n)?r:e).push(n)}),[r,e]},j.uniq=j.unique=function(n,t,r,e){j.isFunction(t)&&(e=r,r=t,t=!1);var u=r?j.map(n,r,e):n,i=[],a=[];return A(u,function(r,e){(t?e&&a[a.length-1]===r:j.contains(a,r))||(a.push(r),i.push(n[e]))}),i},j.union=function(){return j.uniq(j.flatten(arguments,!0))},j.intersection=function(n){var t=o.call(arguments,1);return j.filter(j.uniq(n),function(n){return j.every(t,function(t){return j.contains(t,n)})})},j.difference=function(n){var t=c.apply(e,o.call(arguments,1));return j.filter(n,function(n){return!j.contains(t,n)})},j.zip=function(){for(var n=j.max(j.pluck(arguments,"length").concat(0)),t=new Array(n),r=0;n>r;r++)t[r]=j.pluck(arguments,""+r);return t},j.object=function(n,t){if(null==n)return{};for(var r={},e=0,u=n.length;u>e;e++)t?r[n[e]]=t[e]:r[n[e][0]]=n[e][1];return r},j.indexOf=function(n,t,r){if(null==n)return-1;var e=0,u=n.length;if(r){if("number"!=typeof r)return e=j.sortedIndex(n,t),n[e]===t?e:-1;e=0>r?Math.max(0,u+r):r}if(y&&n.indexOf===y)return n.indexOf(t,r);for(;u>e;e++)if(n[e]===t)return e;return-1},j.lastIndexOf=function(n,t,r){if(null==n)return-1;var e=null!=r;if(b&&n.lastIndexOf===b)return e?n.lastIndexOf(t,r):n.lastIndexOf(t);for(var u=e?r:n.length;u--;)if(n[u]===t)return u;return-1},j.range=function(n,t,r){arguments.length<=1&&(t=n||0,n=0),r=arguments[2]||1;for(var e=Math.max(Math.ceil((t-n)/r),0),u=0,i=new Array(e);e>u;)i[u++]=n,n+=r;return i};var R=function(){};j.bind=function(n,t){var r,e;if(_&&n.bind===_)return _.apply(n,o.call(arguments,1));if(!j.isFunction(n))throw new TypeError;return r=o.call(arguments,2),e=function(){if(!(this instanceof e))return n.apply(t,r.concat(o.call(arguments)));R.prototype=n.prototype;var u=new R;R.prototype=null;var i=n.apply(u,r.concat(o.call(arguments)));return Object(i)===i?i:u}},j.partial=function(n){var t=o.call(arguments,1);return function(){for(var r=0,e=t.slice(),u=0,i=e.length;i>u;u++)e[u]===j&&(e[u]=arguments[r++]);for(;r<arguments.length;)e.push(arguments[r++]);return n.apply(this,e)}},j.bindAll=function(n){var t=o.call(arguments,1);if(0===t.length)throw new Error("bindAll must be passed function names");return A(t,function(t){n[t]=j.bind(n[t],n)}),n},j.memoize=function(n,t){var r={};return t||(t=j.identity),function(){var e=t.apply(this,arguments);return j.has(r,e)?r[e]:r[e]=n.apply(this,arguments)}},j.delay=function(n,t){var r=o.call(arguments,2);return setTimeout(function(){return n.apply(null,r)},t)},j.defer=function(n){return j.delay.apply(j,[n,1].concat(o.call(arguments,1)))},j.throttle=function(n,t,r){var e,u,i,a=null,o=0;r||(r={});var c=function(){o=r.leading===!1?0:j.now(),a=null,i=n.apply(e,u),e=u=null};return function(){var l=j.now();o||r.leading!==!1||(o=l);var f=t-(l-o);return e=this,u=arguments,0>=f?(clearTimeout(a),a=null,o=l,i=n.apply(e,u),e=u=null):a||r.trailing===!1||(a=setTimeout(c,f)),i}},j.debounce=function(n,t,r){var e,u,i,a,o,c=function(){var l=j.now()-a;t>l?e=setTimeout(c,t-l):(e=null,r||(o=n.apply(i,u),i=u=null))};return function(){i=this,u=arguments,a=j.now();var l=r&&!e;return e||(e=setTimeout(c,t)),l&&(o=n.apply(i,u),i=u=null),o}},j.once=function(n){var t,r=!1;return function(){return r?t:(r=!0,t=n.apply(this,arguments),n=null,t)}},j.wrap=function(n,t){return j.partial(t,n)},j.compose=function(){var n=arguments;return function(){for(var t=arguments,r=n.length-1;r>=0;r--)t=[n[r].apply(this,t)];return t[0]}},j.after=function(n,t){return function(){return--n<1?t.apply(this,arguments):void 0}},j.keys=function(n){if(!j.isObject(n))return[];if(w)return w(n);var t=[];for(var r in n)j.has(n,r)&&t.push(r);return t},j.values=function(n){for(var t=j.keys(n),r=t.length,e=new Array(r),u=0;r>u;u++)e[u]=n[t[u]];return e},j.pairs=function(n){for(var t=j.keys(n),r=t.length,e=new Array(r),u=0;r>u;u++)e[u]=[t[u],n[t[u]]];return e},j.invert=function(n){for(var t={},r=j.keys(n),e=0,u=r.length;u>e;e++)t[n[r[e]]]=r[e];return t},j.functions=j.methods=function(n){var t=[];for(var r in n)j.isFunction(n[r])&&t.push(r);return t.sort()},j.extend=function(n){return A(o.call(arguments,1),function(t){if(t)for(var r in t)n[r]=t[r]}),n},j.pick=function(n){var t={},r=c.apply(e,o.call(arguments,1));return A(r,function(r){r in n&&(t[r]=n[r])}),t},j.omit=function(n){var t={},r=c.apply(e,o.call(arguments,1));for(var u in n)j.contains(r,u)||(t[u]=n[u]);return t},j.defaults=function(n){return A(o.call(arguments,1),function(t){if(t)for(var r in t)n[r]===void 0&&(n[r]=t[r])}),n},j.clone=function(n){return j.isObject(n)?j.isArray(n)?n.slice():j.extend({},n):n},j.tap=function(n,t){return t(n),n};var S=function(n,t,r,e){if(n===t)return 0!==n||1/n==1/t;if(null==n||null==t)return n===t;n instanceof j&&(n=n._wrapped),t instanceof j&&(t=t._wrapped);var u=l.call(n);if(u!=l.call(t))return!1;switch(u){case"[object String]":return n==String(t);case"[object Number]":return n!=+n?t!=+t:0==n?1/n==1/t:n==+t;case"[object Date]":case"[object Boolean]":return+n==+t;case"[object RegExp]":return n.source==t.source&&n.global==t.global&&n.multiline==t.multiline&&n.ignoreCase==t.ignoreCase}if("object"!=typeof n||"object"!=typeof t)return!1;for(var i=r.length;i--;)if(r[i]==n)return e[i]==t;var a=n.constructor,o=t.constructor;if(a!==o&&!(j.isFunction(a)&&a instanceof a&&j.isFunction(o)&&o instanceof o)&&"constructor"in n&&"constructor"in t)return!1;r.push(n),e.push(t);var c=0,f=!0;if("[object Array]"==u){if(c=n.length,f=c==t.length)for(;c--&&(f=S(n[c],t[c],r,e)););}else{for(var s in n)if(j.has(n,s)&&(c++,!(f=j.has(t,s)&&S(n[s],t[s],r,e))))break;if(f){for(s in t)if(j.has(t,s)&&!c--)break;f=!c}}return r.pop(),e.pop(),f};j.isEqual=function(n,t){return S(n,t,[],[])},j.isEmpty=function(n){if(null==n)return!0;if(j.isArray(n)||j.isString(n))return 0===n.length;for(var t in n)if(j.has(n,t))return!1;return!0},j.isElement=function(n){return!(!n||1!==n.nodeType)},j.isArray=x||function(n){return"[object Array]"==l.call(n)},j.isObject=function(n){return n===Object(n)},A(["Arguments","Function","String","Number","Date","RegExp"],function(n){j["is"+n]=function(t){return l.call(t)=="[object "+n+"]"}}),j.isArguments(arguments)||(j.isArguments=function(n){return!(!n||!j.has(n,"callee"))}),"function"!=typeof/./&&(j.isFunction=function(n){return"function"==typeof n}),j.isFinite=function(n){return isFinite(n)&&!isNaN(parseFloat(n))},j.isNaN=function(n){return j.isNumber(n)&&n!=+n},j.isBoolean=function(n){return n===!0||n===!1||"[object Boolean]"==l.call(n)},j.isNull=function(n){return null===n},j.isUndefined=function(n){return n===void 0},j.has=function(n,t){return f.call(n,t)},j.noConflict=function(){return n._=t,this},j.identity=function(n){return n},j.constant=function(n){return function(){return n}},j.property=function(n){return function(t){return t[n]}},j.matches=function(n){return function(t){if(t===n)return!0;for(var r in n)if(n[r]!==t[r])return!1;return!0}},j.times=function(n,t,r){for(var e=Array(Math.max(0,n)),u=0;n>u;u++)e[u]=t.call(r,u);return e},j.random=function(n,t){return null==t&&(t=n,n=0),n+Math.floor(Math.random()*(t-n+1))},j.now=Date.now||function(){return(new Date).getTime()};var T={escape:{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;"}};T.unescape=j.invert(T.escape);var I={escape:new RegExp("["+j.keys(T.escape).join("")+"]","g"),unescape:new RegExp("("+j.keys(T.unescape).join("|")+")","g")};j.each(["escape","unescape"],function(n){j[n]=function(t){return null==t?"":(""+t).replace(I[n],function(t){return T[n][t]})}}),j.result=function(n,t){if(null==n)return void 0;var r=n[t];return j.isFunction(r)?r.call(n):r},j.mixin=function(n){A(j.functions(n),function(t){var r=j[t]=n[t];j.prototype[t]=function(){var n=[this._wrapped];return a.apply(n,arguments),z.call(this,r.apply(j,n))}})};var N=0;j.uniqueId=function(n){var t=++N+"";return n?n+t:t},j.templateSettings={evaluate:/<%([\s\S]+?)%>/g,interpolate:/<%=([\s\S]+?)%>/g,escape:/<%-([\s\S]+?)%>/g};var q=/(.)^/,B={"'":"'","\\":"\\","\r":"r","\n":"n","	":"t","\u2028":"u2028","\u2029":"u2029"},D=/\\|'|\r|\n|\t|\u2028|\u2029/g;j.template=function(n,t,r){var e;r=j.defaults({},r,j.templateSettings);var u=new RegExp([(r.escape||q).source,(r.interpolate||q).source,(r.evaluate||q).source].join("|")+"|$","g"),i=0,a="__p+='";n.replace(u,function(t,r,e,u,o){return a+=n.slice(i,o).replace(D,function(n){return"\\"+B[n]}),r&&(a+="'+\n((__t=("+r+"))==null?'':_.escape(__t))+\n'"),e&&(a+="'+\n((__t=("+e+"))==null?'':__t)+\n'"),u&&(a+="';\n"+u+"\n__p+='"),i=o+t.length,t}),a+="';\n",r.variable||(a="with(obj||{}){\n"+a+"}\n"),a="var __t,__p='',__j=Array.prototype.join,"+"print=function(){__p+=__j.call(arguments,'');};\n"+a+"return __p;\n";try{e=new Function(r.variable||"obj","_",a)}catch(o){throw o.source=a,o}if(t)return e(t,j);var c=function(n){return e.call(this,n,j)};return c.source="function("+(r.variable||"obj")+"){\n"+a+"}",c},j.chain=function(n){return j(n).chain()};var z=function(n){return this._chain?j(n).chain():n};j.mixin(j),A(["pop","push","reverse","shift","sort","splice","unshift"],function(n){var t=e[n];j.prototype[n]=function(){var r=this._wrapped;return t.apply(r,arguments),"shift"!=n&&"splice"!=n||0!==r.length||delete r[0],z.call(this,r)}}),A(["concat","join","slice"],function(n){var t=e[n];j.prototype[n]=function(){return z.call(this,t.apply(this._wrapped,arguments))}}),j.extend(j.prototype,{chain:function(){return this._chain=!0,this},value:function(){return this._wrapped}}),"function"==typeof define&&define.amd&&define("underscore",[],function(){return j})}).call(this);
-//# sourceMappingURL=underscore-min.map
-;
 (function(t,e){if(typeof define==="function"&&define.amd){define(["underscore","jquery","exports"],function(i,r,s){t.Backbone=e(t,s,i,r)})}else if(typeof exports!=="undefined"){var i=require("underscore");e(t,exports,i)}else{t.Backbone=e(t,{},t._,t.jQuery||t.Zepto||t.ender||t.$)}})(this,function(t,e,i,r){var s=t.Backbone;var n=[];var a=n.push;var o=n.slice;var h=n.splice;e.VERSION="1.1.2";e.$=r;e.noConflict=function(){t.Backbone=s;return this};e.emulateHTTP=false;e.emulateJSON=false;var u=e.Events={on:function(t,e,i){if(!c(this,"on",t,[e,i])||!e)return this;this._events||(this._events={});var r=this._events[t]||(this._events[t]=[]);r.push({callback:e,context:i,ctx:i||this});return this},once:function(t,e,r){if(!c(this,"once",t,[e,r])||!e)return this;var s=this;var n=i.once(function(){s.off(t,n);e.apply(this,arguments)});n._callback=e;return this.on(t,n,r)},off:function(t,e,r){var s,n,a,o,h,u,l,f;if(!this._events||!c(this,"off",t,[e,r]))return this;if(!t&&!e&&!r){this._events=void 0;return this}o=t?[t]:i.keys(this._events);for(h=0,u=o.length;h<u;h++){t=o[h];if(a=this._events[t]){this._events[t]=s=[];if(e||r){for(l=0,f=a.length;l<f;l++){n=a[l];if(e&&e!==n.callback&&e!==n.callback._callback||r&&r!==n.context){s.push(n)}}}if(!s.length)delete this._events[t]}}return this},trigger:function(t){if(!this._events)return this;var e=o.call(arguments,1);if(!c(this,"trigger",t,e))return this;var i=this._events[t];var r=this._events.all;if(i)f(i,e);if(r)f(r,arguments);return this},stopListening:function(t,e,r){var s=this._listeningTo;if(!s)return this;var n=!e&&!r;if(!r&&typeof e==="object")r=this;if(t)(s={})[t._listenId]=t;for(var a in s){t=s[a];t.off(e,r,this);if(n||i.isEmpty(t._events))delete this._listeningTo[a]}return this}};var l=/\s+/;var c=function(t,e,i,r){if(!i)return true;if(typeof i==="object"){for(var s in i){t[e].apply(t,[s,i[s]].concat(r))}return false}if(l.test(i)){var n=i.split(l);for(var a=0,o=n.length;a<o;a++){t[e].apply(t,[n[a]].concat(r))}return false}return true};var f=function(t,e){var i,r=-1,s=t.length,n=e[0],a=e[1],o=e[2];switch(e.length){case 0:while(++r<s)(i=t[r]).callback.call(i.ctx);return;case 1:while(++r<s)(i=t[r]).callback.call(i.ctx,n);return;case 2:while(++r<s)(i=t[r]).callback.call(i.ctx,n,a);return;case 3:while(++r<s)(i=t[r]).callback.call(i.ctx,n,a,o);return;default:while(++r<s)(i=t[r]).callback.apply(i.ctx,e);return}};var d={listenTo:"on",listenToOnce:"once"};i.each(d,function(t,e){u[e]=function(e,r,s){var n=this._listeningTo||(this._listeningTo={});var a=e._listenId||(e._listenId=i.uniqueId("l"));n[a]=e;if(!s&&typeof r==="object")s=this;e[t](r,s,this);return this}});u.bind=u.on;u.unbind=u.off;i.extend(e,u);var p=e.Model=function(t,e){var r=t||{};e||(e={});this.cid=i.uniqueId("c");this.attributes={};if(e.collection)this.collection=e.collection;if(e.parse)r=this.parse(r,e)||{};r=i.defaults({},r,i.result(this,"defaults"));this.set(r,e);this.changed={};this.initialize.apply(this,arguments)};i.extend(p.prototype,u,{changed:null,validationError:null,idAttribute:"id",initialize:function(){},toJSON:function(t){return i.clone(this.attributes)},sync:function(){return e.sync.apply(this,arguments)},get:function(t){return this.attributes[t]},escape:function(t){return i.escape(this.get(t))},has:function(t){return this.get(t)!=null},set:function(t,e,r){var s,n,a,o,h,u,l,c;if(t==null)return this;if(typeof t==="object"){n=t;r=e}else{(n={})[t]=e}r||(r={});if(!this._validate(n,r))return false;a=r.unset;h=r.silent;o=[];u=this._changing;this._changing=true;if(!u){this._previousAttributes=i.clone(this.attributes);this.changed={}}c=this.attributes,l=this._previousAttributes;if(this.idAttribute in n)this.id=n[this.idAttribute];for(s in n){e=n[s];if(!i.isEqual(c[s],e))o.push(s);if(!i.isEqual(l[s],e)){this.changed[s]=e}else{delete this.changed[s]}a?delete c[s]:c[s]=e}if(!h){if(o.length)this._pending=r;for(var f=0,d=o.length;f<d;f++){this.trigger("change:"+o[f],this,c[o[f]],r)}}if(u)return this;if(!h){while(this._pending){r=this._pending;this._pending=false;this.trigger("change",this,r)}}this._pending=false;this._changing=false;return this},unset:function(t,e){return this.set(t,void 0,i.extend({},e,{unset:true}))},clear:function(t){var e={};for(var r in this.attributes)e[r]=void 0;return this.set(e,i.extend({},t,{unset:true}))},hasChanged:function(t){if(t==null)return!i.isEmpty(this.changed);return i.has(this.changed,t)},changedAttributes:function(t){if(!t)return this.hasChanged()?i.clone(this.changed):false;var e,r=false;var s=this._changing?this._previousAttributes:this.attributes;for(var n in t){if(i.isEqual(s[n],e=t[n]))continue;(r||(r={}))[n]=e}return r},previous:function(t){if(t==null||!this._previousAttributes)return null;return this._previousAttributes[t]},previousAttributes:function(){return i.clone(this._previousAttributes)},fetch:function(t){t=t?i.clone(t):{};if(t.parse===void 0)t.parse=true;var e=this;var r=t.success;t.success=function(i){if(!e.set(e.parse(i,t),t))return false;if(r)r(e,i,t);e.trigger("sync",e,i,t)};q(this,t);return this.sync("read",this,t)},save:function(t,e,r){var s,n,a,o=this.attributes;if(t==null||typeof t==="object"){s=t;r=e}else{(s={})[t]=e}r=i.extend({validate:true},r);if(s&&!r.wait){if(!this.set(s,r))return false}else{if(!this._validate(s,r))return false}if(s&&r.wait){this.attributes=i.extend({},o,s)}if(r.parse===void 0)r.parse=true;var h=this;var u=r.success;r.success=function(t){h.attributes=o;var e=h.parse(t,r);if(r.wait)e=i.extend(s||{},e);if(i.isObject(e)&&!h.set(e,r)){return false}if(u)u(h,t,r);h.trigger("sync",h,t,r)};q(this,r);n=this.isNew()?"create":r.patch?"patch":"update";if(n==="patch")r.attrs=s;a=this.sync(n,this,r);if(s&&r.wait)this.attributes=o;return a},destroy:function(t){t=t?i.clone(t):{};var e=this;var r=t.success;var s=function(){e.trigger("destroy",e,e.collection,t)};t.success=function(i){if(t.wait||e.isNew())s();if(r)r(e,i,t);if(!e.isNew())e.trigger("sync",e,i,t)};if(this.isNew()){t.success();return false}q(this,t);var n=this.sync("delete",this,t);if(!t.wait)s();return n},url:function(){var t=i.result(this,"urlRoot")||i.result(this.collection,"url")||M();if(this.isNew())return t;return t.replace(/([^\/])$/,"$1/")+encodeURIComponent(this.id)},parse:function(t,e){return t},clone:function(){return new this.constructor(this.attributes)},isNew:function(){return!this.has(this.idAttribute)},isValid:function(t){return this._validate({},i.extend(t||{},{validate:true}))},_validate:function(t,e){if(!e.validate||!this.validate)return true;t=i.extend({},this.attributes,t);var r=this.validationError=this.validate(t,e)||null;if(!r)return true;this.trigger("invalid",this,r,i.extend(e,{validationError:r}));return false}});var v=["keys","values","pairs","invert","pick","omit"];i.each(v,function(t){p.prototype[t]=function(){var e=o.call(arguments);e.unshift(this.attributes);return i[t].apply(i,e)}});var g=e.Collection=function(t,e){e||(e={});if(e.model)this.model=e.model;if(e.comparator!==void 0)this.comparator=e.comparator;this._reset();this.initialize.apply(this,arguments);if(t)this.reset(t,i.extend({silent:true},e))};var m={add:true,remove:true,merge:true};var y={add:true,remove:false};i.extend(g.prototype,u,{model:p,initialize:function(){},toJSON:function(t){return this.map(function(e){return e.toJSON(t)})},sync:function(){return e.sync.apply(this,arguments)},add:function(t,e){return this.set(t,i.extend({merge:false},e,y))},remove:function(t,e){var r=!i.isArray(t);t=r?[t]:i.clone(t);e||(e={});var s,n,a,o;for(s=0,n=t.length;s<n;s++){o=t[s]=this.get(t[s]);if(!o)continue;delete this._byId[o.id];delete this._byId[o.cid];a=this.indexOf(o);this.models.splice(a,1);this.length--;if(!e.silent){e.index=a;o.trigger("remove",o,this,e)}this._removeReference(o,e)}return r?t[0]:t},set:function(t,e){e=i.defaults({},e,m);if(e.parse)t=this.parse(t,e);var r=!i.isArray(t);t=r?t?[t]:[]:i.clone(t);var s,n,a,o,h,u,l;var c=e.at;var f=this.model;var d=this.comparator&&c==null&&e.sort!==false;var v=i.isString(this.comparator)?this.comparator:null;var g=[],y=[],_={};var b=e.add,w=e.merge,x=e.remove;var E=!d&&b&&x?[]:false;for(s=0,n=t.length;s<n;s++){h=t[s]||{};if(h instanceof p){a=o=h}else{a=h[f.prototype.idAttribute||"id"]}if(u=this.get(a)){if(x)_[u.cid]=true;if(w){h=h===o?o.attributes:h;if(e.parse)h=u.parse(h,e);u.set(h,e);if(d&&!l&&u.hasChanged(v))l=true}t[s]=u}else if(b){o=t[s]=this._prepareModel(h,e);if(!o)continue;g.push(o);this._addReference(o,e)}o=u||o;if(E&&(o.isNew()||!_[o.id]))E.push(o);_[o.id]=true}if(x){for(s=0,n=this.length;s<n;++s){if(!_[(o=this.models[s]).cid])y.push(o)}if(y.length)this.remove(y,e)}if(g.length||E&&E.length){if(d)l=true;this.length+=g.length;if(c!=null){for(s=0,n=g.length;s<n;s++){this.models.splice(c+s,0,g[s])}}else{if(E)this.models.length=0;var k=E||g;for(s=0,n=k.length;s<n;s++){this.models.push(k[s])}}}if(l)this.sort({silent:true});if(!e.silent){for(s=0,n=g.length;s<n;s++){(o=g[s]).trigger("add",o,this,e)}if(l||E&&E.length)this.trigger("sort",this,e)}return r?t[0]:t},reset:function(t,e){e||(e={});for(var r=0,s=this.models.length;r<s;r++){this._removeReference(this.models[r],e)}e.previousModels=this.models;this._reset();t=this.add(t,i.extend({silent:true},e));if(!e.silent)this.trigger("reset",this,e);return t},push:function(t,e){return this.add(t,i.extend({at:this.length},e))},pop:function(t){var e=this.at(this.length-1);this.remove(e,t);return e},unshift:function(t,e){return this.add(t,i.extend({at:0},e))},shift:function(t){var e=this.at(0);this.remove(e,t);return e},slice:function(){return o.apply(this.models,arguments)},get:function(t){if(t==null)return void 0;return this._byId[t]||this._byId[t.id]||this._byId[t.cid]},at:function(t){return this.models[t]},where:function(t,e){if(i.isEmpty(t))return e?void 0:[];return this[e?"find":"filter"](function(e){for(var i in t){if(t[i]!==e.get(i))return false}return true})},findWhere:function(t){return this.where(t,true)},sort:function(t){if(!this.comparator)throw new Error("Cannot sort a set without a comparator");t||(t={});if(i.isString(this.comparator)||this.comparator.length===1){this.models=this.sortBy(this.comparator,this)}else{this.models.sort(i.bind(this.comparator,this))}if(!t.silent)this.trigger("sort",this,t);return this},pluck:function(t){return i.invoke(this.models,"get",t)},fetch:function(t){t=t?i.clone(t):{};if(t.parse===void 0)t.parse=true;var e=t.success;var r=this;t.success=function(i){var s=t.reset?"reset":"set";r[s](i,t);if(e)e(r,i,t);r.trigger("sync",r,i,t)};q(this,t);return this.sync("read",this,t)},create:function(t,e){e=e?i.clone(e):{};if(!(t=this._prepareModel(t,e)))return false;if(!e.wait)this.add(t,e);var r=this;var s=e.success;e.success=function(t,i){if(e.wait)r.add(t,e);if(s)s(t,i,e)};t.save(null,e);return t},parse:function(t,e){return t},clone:function(){return new this.constructor(this.models)},_reset:function(){this.length=0;this.models=[];this._byId={}},_prepareModel:function(t,e){if(t instanceof p)return t;e=e?i.clone(e):{};e.collection=this;var r=new this.model(t,e);if(!r.validationError)return r;this.trigger("invalid",this,r.validationError,e);return false},_addReference:function(t,e){this._byId[t.cid]=t;if(t.id!=null)this._byId[t.id]=t;if(!t.collection)t.collection=this;t.on("all",this._onModelEvent,this)},_removeReference:function(t,e){if(this===t.collection)delete t.collection;t.off("all",this._onModelEvent,this)},_onModelEvent:function(t,e,i,r){if((t==="add"||t==="remove")&&i!==this)return;if(t==="destroy")this.remove(e,r);if(e&&t==="change:"+e.idAttribute){delete this._byId[e.previous(e.idAttribute)];if(e.id!=null)this._byId[e.id]=e}this.trigger.apply(this,arguments)}});var _=["forEach","each","map","collect","reduce","foldl","inject","reduceRight","foldr","find","detect","filter","select","reject","every","all","some","any","include","contains","invoke","max","min","toArray","size","first","head","take","initial","rest","tail","drop","last","without","difference","indexOf","shuffle","lastIndexOf","isEmpty","chain","sample"];i.each(_,function(t){g.prototype[t]=function(){var e=o.call(arguments);e.unshift(this.models);return i[t].apply(i,e)}});var b=["groupBy","countBy","sortBy","indexBy"];i.each(b,function(t){g.prototype[t]=function(e,r){var s=i.isFunction(e)?e:function(t){return t.get(e)};return i[t](this.models,s,r)}});var w=e.View=function(t){this.cid=i.uniqueId("view");t||(t={});i.extend(this,i.pick(t,E));this._ensureElement();this.initialize.apply(this,arguments);this.delegateEvents()};var x=/^(\S+)\s*(.*)$/;var E=["model","collection","el","id","attributes","className","tagName","events"];i.extend(w.prototype,u,{tagName:"div",$:function(t){return this.$el.find(t)},initialize:function(){},render:function(){return this},remove:function(){this.$el.remove();this.stopListening();return this},setElement:function(t,i){if(this.$el)this.undelegateEvents();this.$el=t instanceof e.$?t:e.$(t);this.el=this.$el[0];if(i!==false)this.delegateEvents();return this},delegateEvents:function(t){if(!(t||(t=i.result(this,"events"))))return this;this.undelegateEvents();for(var e in t){var r=t[e];if(!i.isFunction(r))r=this[t[e]];if(!r)continue;var s=e.match(x);var n=s[1],a=s[2];r=i.bind(r,this);n+=".delegateEvents"+this.cid;if(a===""){this.$el.on(n,r)}else{this.$el.on(n,a,r)}}return this},undelegateEvents:function(){this.$el.off(".delegateEvents"+this.cid);return this},_ensureElement:function(){if(!this.el){var t=i.extend({},i.result(this,"attributes"));if(this.id)t.id=i.result(this,"id");if(this.className)t["class"]=i.result(this,"className");var r=e.$("<"+i.result(this,"tagName")+">").attr(t);this.setElement(r,false)}else{this.setElement(i.result(this,"el"),false)}}});e.sync=function(t,r,s){var n=T[t];i.defaults(s||(s={}),{emulateHTTP:e.emulateHTTP,emulateJSON:e.emulateJSON});var a={type:n,dataType:"json"};if(!s.url){a.url=i.result(r,"url")||M()}if(s.data==null&&r&&(t==="create"||t==="update"||t==="patch")){a.contentType="application/json";a.data=JSON.stringify(s.attrs||r.toJSON(s))}if(s.emulateJSON){a.contentType="application/x-www-form-urlencoded";a.data=a.data?{model:a.data}:{}}if(s.emulateHTTP&&(n==="PUT"||n==="DELETE"||n==="PATCH")){a.type="POST";if(s.emulateJSON)a.data._method=n;var o=s.beforeSend;s.beforeSend=function(t){t.setRequestHeader("X-HTTP-Method-Override",n);if(o)return o.apply(this,arguments)}}if(a.type!=="GET"&&!s.emulateJSON){a.processData=false}if(a.type==="PATCH"&&k){a.xhr=function(){return new ActiveXObject("Microsoft.XMLHTTP")}}var h=s.xhr=e.ajax(i.extend(a,s));r.trigger("request",r,h,s);return h};var k=typeof window!=="undefined"&&!!window.ActiveXObject&&!(window.XMLHttpRequest&&(new XMLHttpRequest).dispatchEvent);var T={create:"POST",update:"PUT",patch:"PATCH","delete":"DELETE",read:"GET"};e.ajax=function(){return e.$.ajax.apply(e.$,arguments)};var $=e.Router=function(t){t||(t={});if(t.routes)this.routes=t.routes;this._bindRoutes();this.initialize.apply(this,arguments)};var S=/\((.*?)\)/g;var H=/(\(\?)?:\w+/g;var A=/\*\w+/g;var I=/[\-{}\[\]+?.,\\\^$|#\s]/g;i.extend($.prototype,u,{initialize:function(){},route:function(t,r,s){if(!i.isRegExp(t))t=this._routeToRegExp(t);if(i.isFunction(r)){s=r;r=""}if(!s)s=this[r];var n=this;e.history.route(t,function(i){var a=n._extractParameters(t,i);n.execute(s,a);n.trigger.apply(n,["route:"+r].concat(a));n.trigger("route",r,a);e.history.trigger("route",n,r,a)});return this},execute:function(t,e){if(t)t.apply(this,e)},navigate:function(t,i){e.history.navigate(t,i);return this},_bindRoutes:function(){if(!this.routes)return;this.routes=i.result(this,"routes");var t,e=i.keys(this.routes);while((t=e.pop())!=null){this.route(t,this.routes[t])}},_routeToRegExp:function(t){t=t.replace(I,"\\$&").replace(S,"(?:$1)?").replace(H,function(t,e){return e?t:"([^/?]+)"}).replace(A,"([^?]*?)");return new RegExp("^"+t+"(?:\\?([\\s\\S]*))?$")},_extractParameters:function(t,e){var r=t.exec(e).slice(1);return i.map(r,function(t,e){if(e===r.length-1)return t||null;return t?decodeURIComponent(t):null})}});var N=e.History=function(){this.handlers=[];i.bindAll(this,"checkUrl");if(typeof window!=="undefined"){this.location=window.location;this.history=window.history}};var R=/^[#\/]|\s+$/g;var O=/^\/+|\/+$/g;var P=/msie [\w.]+/;var C=/\/$/;var j=/#.*$/;N.started=false;i.extend(N.prototype,u,{interval:50,atRoot:function(){return this.location.pathname.replace(/[^\/]$/,"$&/")===this.root},getHash:function(t){var e=(t||this).location.href.match(/#(.*)$/);return e?e[1]:""},getFragment:function(t,e){if(t==null){if(this._hasPushState||!this._wantsHashChange||e){t=decodeURI(this.location.pathname+this.location.search);var i=this.root.replace(C,"");if(!t.indexOf(i))t=t.slice(i.length)}else{t=this.getHash()}}return t.replace(R,"")},start:function(t){if(N.started)throw new Error("Backbone.history has already been started");N.started=true;this.options=i.extend({root:"/"},this.options,t);this.root=this.options.root;this._wantsHashChange=this.options.hashChange!==false;this._wantsPushState=!!this.options.pushState;this._hasPushState=!!(this.options.pushState&&this.history&&this.history.pushState);var r=this.getFragment();var s=document.documentMode;var n=P.exec(navigator.userAgent.toLowerCase())&&(!s||s<=7);this.root=("/"+this.root+"/").replace(O,"/");if(n&&this._wantsHashChange){var a=e.$('<iframe src="javascript:0" tabindex="-1">');this.iframe=a.hide().appendTo("body")[0].contentWindow;this.navigate(r)}if(this._hasPushState){e.$(window).on("popstate",this.checkUrl)}else if(this._wantsHashChange&&"onhashchange"in window&&!n){e.$(window).on("hashchange",this.checkUrl)}else if(this._wantsHashChange){this._checkUrlInterval=setInterval(this.checkUrl,this.interval)}this.fragment=r;var o=this.location;if(this._wantsHashChange&&this._wantsPushState){if(!this._hasPushState&&!this.atRoot()){this.fragment=this.getFragment(null,true);this.location.replace(this.root+"#"+this.fragment);return true}else if(this._hasPushState&&this.atRoot()&&o.hash){this.fragment=this.getHash().replace(R,"");this.history.replaceState({},document.title,this.root+this.fragment)}}if(!this.options.silent)return this.loadUrl()},stop:function(){e.$(window).off("popstate",this.checkUrl).off("hashchange",this.checkUrl);if(this._checkUrlInterval)clearInterval(this._checkUrlInterval);N.started=false},route:function(t,e){this.handlers.unshift({route:t,callback:e})},checkUrl:function(t){var e=this.getFragment();if(e===this.fragment&&this.iframe){e=this.getFragment(this.getHash(this.iframe))}if(e===this.fragment)return false;if(this.iframe)this.navigate(e);this.loadUrl()},loadUrl:function(t){t=this.fragment=this.getFragment(t);return i.any(this.handlers,function(e){if(e.route.test(t)){e.callback(t);return true}})},navigate:function(t,e){if(!N.started)return false;if(!e||e===true)e={trigger:!!e};var i=this.root+(t=this.getFragment(t||""));t=t.replace(j,"");if(this.fragment===t)return;this.fragment=t;if(t===""&&i!=="/")i=i.slice(0,-1);if(this._hasPushState){this.history[e.replace?"replaceState":"pushState"]({},document.title,i)}else if(this._wantsHashChange){this._updateHash(this.location,t,e.replace);if(this.iframe&&t!==this.getFragment(this.getHash(this.iframe))){if(!e.replace)this.iframe.document.open().close();this._updateHash(this.iframe.location,t,e.replace)}}else{return this.location.assign(i)}if(e.trigger)return this.loadUrl(t)},_updateHash:function(t,e,i){if(i){var r=t.href.replace(/(javascript:|#).*$/,"");t.replace(r+"#"+e)}else{t.hash="#"+e}}});e.history=new N;var U=function(t,e){var r=this;var s;if(t&&i.has(t,"constructor")){s=t.constructor}else{s=function(){return r.apply(this,arguments)}}i.extend(s,r,e);var n=function(){this.constructor=s};n.prototype=r.prototype;s.prototype=new n;if(t)i.extend(s.prototype,t);s.__super__=r.prototype;return s};p.extend=g.extend=$.extend=w.extend=N.extend=U;var M=function(){throw new Error('A "url" property or function must be specified')};var q=function(t,e){var i=e.error;e.error=function(r){if(i)i(t,r,e);t.trigger("error",t,r,e)}};return e});
-//# sourceMappingURL=backbone-min.map
-;
 (function(_, Backbone) {
 
 // Require Underscore and Backbone if there's a `require` function.
@@ -2983,7 +2979,7 @@ function iterateQueryString(queryString, callback) {
         minutes = Math.floor(ms / (1000 * 60));
         remainingMs = ms - (minutes * 1000 * 60);
         seconds = Math.floor(remainingMs / 1000);
-        return "" + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
       },
       clamp: function(val, min, max) {
         return Math.max(min, Math.min(max, val));
@@ -2996,7 +2992,99 @@ function iterateQueryString(queryString, callback) {
         }
       },
       playerLinkToShow: function(show) {
-        return this.linkTo("" + (this.dateString(show.get('show_date'), '%m-%d-%Y')) + "&nbsp;<small>" + (show.get('location')) + "</small>", show.show_url());
+        return this.linkTo((this.dateString(show.get('show_date'), '%m-%d-%Y')) + "&nbsp;<small>" + (show.get('location')) + "</small>", show.show_url());
+      },
+      cssComplementaryColors: function() {
+        var bgColor, fgColor;
+        bgColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        fgColor = SP.Helpers.lighten(bgColor, 0.9);
+        return "color: " + fgColor + "; background: " + bgColor + ";";
+      },
+      _rgbify: function(colr) {
+        colr = colr.replace(/#/, '');
+        if (colr.length === 3) {
+          return [parseInt(colr.slice(0, 1) + colr.slice(0, 1), 16), parseInt(colr.slice(1, 2) + colr.slice(1, 1), 16), parseInt(colr.slice(2, 3) + colr.slice(2, 1), 16)];
+        } else if (colr.length === 6) {
+          return [parseInt(colr.slice(0, 2), 16), parseInt(colr.slice(2, 4), 16), parseInt(colr.slice(4, 6), 16)];
+        } else {
+          return [0, 0, 0];
+        }
+      },
+      lighten: function(rgb, percent) {
+        var hsl, lightness;
+        if (typeof rgb === 'string') {
+          rgb = SP.Helpers._rgbify(rgb);
+        }
+        hsl = SP.Helpers._rgbToHsl.apply(this, rgb);
+        lightness = hsl[2] + (hsl[2] * percent);
+        lightness = Math.min(1.0, lightness);
+        return SP.Helpers._hexify(SP.Helpers._hslToRgb(hsl[0], hsl[1], lightness));
+      },
+      _hslToRgb: function(h, s, l) {
+        var b, g, hue2rgb, p, q, r;
+        if (s === 0) {
+          r = g = b = l;
+        } else {
+          hue2rgb = function(p, q, t) {
+            if (t < 0) {
+              t += 1;
+            }
+            if (t > 1) {
+              t -= 1;
+            }
+            if (t < 1 / 6) {
+              return p + (q - p) * 6 * t;
+            }
+            if (t < 1 / 2) {
+              return q;
+            }
+            if (t < 2 / 3) {
+              return p + (q - p) * (2 / 3 - t) * 6;
+            }
+            return p;
+          };
+          q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+          p = 2 * l - q;
+          r = hue2rgb(p, q, h + 1 / 3);
+          g = hue2rgb(p, q, h);
+          b = hue2rgb(p, q, h - 1 / 3);
+        }
+        return [r * 255, g * 255, b * 255];
+      },
+      _hexify: function(rgb) {
+        var colr;
+        colr = '#';
+        colr += Math.floor(rgb[0]).toString(16);
+        colr += Math.floor(rgb[1]).toString(16);
+        colr += Math.floor(rgb[2]).toString(16);
+        return colr;
+      },
+      _rgbToHsl: function(r, g, b) {
+        var d, h, l, max, min, s;
+        r /= 255;
+        g /= 255;
+        b /= 255;
+        max = Math.max(r, g, b);
+        min = Math.min(r, g, b);
+        l = (max + min) / 2;
+        if (max === min) {
+          h = s = 0;
+        } else {
+          d = max - min;
+          s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+          switch (max) {
+            case r:
+              h = (g - b) / d + (g < b ? 6 : 0);
+              break;
+            case g:
+              h = (b - r) / d + 2;
+              break;
+            case b:
+              h = (r - g) / d + 4;
+          }
+          h /= 6;
+        }
+        return [h, s, l];
       }
     }
   };
@@ -3004,28 +3092,27 @@ function iterateQueryString(queryString, callback) {
   window.Streamphish = window.SP;
 
 }).call(this);
-Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a class=\"btn prev\" data-control=\"prev\">\n    <span class=\"arrowGrp\">\n      <span class=\"arrow\"><\/span><span class=\"arrow\"><\/span>\n    <\/span>\n  <\/a>\n  <a class=\"btn playpause\" data-control=\"togglePause\" id=\"playBtn\">\n    <span class=\"pause\"><\/span>\n  <\/a>\n  <a class=\"btn next\" data-control=\"next\">\n    <span class=\"arrowGrp\">\n      <span class=\"arrow\"><\/span><span class=\"arrow\"><\/span>\n    <\/span>\n  <\/a>\n<\/div>\n\n<% var show = (currentTrack.collection && currentTrack.collection.show) ? currentTrack.collection.show : null; %>\n<h2><%= SP.Helpers.linkTo(currentTrack.get(\'title\'), \"songs/\" + currentTrack.get(\'slug\')) %><\/h2>\n\n<% if(show) { %>\n  <h3><%= SP.Helpers.playerLinkToShow(show) %><\/h3>\n<% } %>\n<% var lt10MinClass = currentTrack.get(\'duration\') < 600000 ? \'lt10Min\' : \'\' %>\n<div class=\"scrubber <%= lt10MinClass %>\">\n  <div class=\"loadProgress\">\n    <div class=\"handle\"><\/div>\n  <\/div>\n<\/div>\n<div class=\"time\">\n  <span class=\"current\">0:00<\/span><span class=\"total\"> / <%= SP.Helpers.msToMMSS(currentTrack.get(\'duration\')) %><\/span>\n<\/div>\n");Streamphish.Templates["show"] = _.template("<header>\n  <a href=\"/shows/<%= year %>\" class=\"backBtn\">← <%= year %><\/a>\n  <h1>\n    <%= Streamphish.Helpers.dateString(show_date, \'%m-%d-%Y\') %><span class=\"location\"> - <%= location %>\n  <\/h1>\n  <% if(source_info) { %>\n    <div class=\"sourceContainer\">\n      <a href=\"#\" class=\"info mic\"><i class=\"icon-mic\"><\/i><\/a>\n      <div class=\"invisible sourceInfo\" data-arrow-pos=\"-15px\">\n        <%= source_info.replace(/\\n/g, \'<br>\') %>\n      <\/div>\n    <\/div>\n  <% } %>\n  <a href=\"http://phish.net/setlists/?d=<%= show_date %>\" target=\"_blank\" class=\"info\" data-bypass>\n    p.net\n  <\/a>\n\n<\/header>\n\n<% beforeTrackIdxs = _.map(sets, function(set) { return set.beforeTrackIdx; }); %>\n\n<ul class=\"pageList songs\">\n  <% _.each(tracks.models, function(track, trackIdx) { %>\n    <% if( (setIdx = _.indexOf(beforeTrackIdxs, trackIdx)) !== -1 ) { %>\n    <li class=\"sectionTitle\"><h2><%= sets[setIdx].title %><\/h2><\/li>\n    <% } %>\n\n    <li data-cid=\"<%= track.cid %>\">\n      <div class=\"songInfo\">\n        <div class=\"songTitle\">\n          <a data-control=\"song\" href=\"/shows/<%= show_date %>/<%= track.get(\'slug\') %>\" data-bypass><%= track.get(\'title\') %><\/a>\n          <% if(sbd) { %>\n            <span class=\"tag\">SBD<\/span>\n          <% } %>\n          <% if(remastered) { %>\n            <span class=\"tag\">Remastered<\/span>\n          <% } %>\n        <\/div>\n      <\/div>\n      <span class=\"duration\"><%= Streamphish.Util.msToMMSS(track.get(\'duration\')) %><\/span>\n    <\/li>\n  <% }); %>\n<\/ul>\n\n<style>header div.sourceInfo:after { margin-left: -15px; }<\/style>\n");Streamphish.Templates["shows_by_year"] = _.template("<header>\n  <a href=\"/\" class=\"backBtn\">← Home<\/a>\n  <h1>\n    <a href=\'#\' data-control=\'toggleYearList\' data-bypass=\'true\'>\n      <%= year %> <small>▾<\/small>\n    <\/a>\n  <\/h1>\n<\/header>\n\n<ul class=\"pageList linkItems showsByYear\">\n  <% _.each(shows, function(show) { %>\n    <li><a href=\"/shows/<%= Streamphish.Helpers.dateString(show.show_date, \'%Y-%m-%d\') %>\">\n      <span>\n        <strong><%= Streamphish.Helpers.dateString(show.show_date, \'%m/%d/%Y\') %><\/strong>\n        <%= show.location %>\n      <\/span>\n      <% if(show.sbd || show.remastered) { %>\n        <div class=\"tagContainer\">\n      <% } %>\n        <% if(show.sbd) { %>\n          <span class=\"tag\">SBD<\/span>\n        <% } %>\n\n        <% if(show.remastered) { %>\n          <span class=\"tag\">Remastered<\/span>\n        <% } %>\n      <% if(show.sbd || show.remastered) { %>\n        <\/div>\n      <% } %>\n    <\/a><\/li>\n  <% }); %>\n<\/ul>\n");Streamphish.Templates["site_index"] = _.template("<header>\n  <h1>PhishTracks<\/h1>\n<\/header>\n\n<ul class=\"pageList linkItems\">\n  <li class=\"sectionTitle\"><h2>Years<\/h2><\/li>\n  <% _.each(years.reverse(), function(year) { %>\n    <li>\n      <a href=\"/shows/<%= year.year %>\"><span><%= year.year %><\/span><\/a>\n    <\/li>\n  <% }); %>\n  <li class=\"sectionTitle\"><h2>Songs<\/h2><\/li>\n  <% _.each(songs, function(song) { %>\n    <li>\n      <a href=\"<%= song.url %>\"><span><%= song.title %><\/span><\/a>\n    <\/li>\n  <% }); %>\n<\/ul>\n");Streamphish.Templates["song"] = _.template("<header>\n  <a href=\"/songs\" class=\"backBtn\">← Songs<\/a>\n  <h1><%= title %><\/h1>\n<\/header>\n\n<ul class=\"pageList songs song\">\n  <% _.each(tracks, function(track, idx) { %>\n     <li data-track-idx=\"<%= idx %>\" data-track-id=\"<%= track.id %>\">\n      <div class=\"songInfo\">\n        <span class=\"songDate\">\n          <a href=\"/shows/<%= track.show.show_date %>\"><%= track.show.show_date %><\/a>\n        <\/span>\n        <br>\n        <span class=\"songVenue\"><%= track.show.location %><\/span>\n      <\/div>\n      <span class=\"duration\"><%= Streamphish.Helpers.msToMMSS(track.duration) %><\/span>\n    <\/li>\n  <% }); %>\n<\/ul>\n");Streamphish.Templates["song_bubbles"] = _.template("<div class=\"songs\">\n  <% _.each(songs, function(song) { %>\n    <a href=\"<%= song.url %>\" style=\"background: <%= song.bg %>; color: <%= song.fg %>;\">\n      <span><%= song.title %><\/span>\n    <\/a>\n  <% }); %>\n<\/div>\n");Streamphish.Templates["songs"] = _.template("<header>\n  <a href=\"/\" class=\"backBtn\">← Home<\/a>\n  <h1>Songs<\/h1>\n<\/header>\n\n<ul class=\"pageList linkItems\">\n<% _.each(data, function(song) { %>\n  <li>\n    <a href=\"/songs/<%= song.slug %>\"><span><%= song.title %><\/span><\/a>\n  <\/li>\n<% }); %>\n<\/ul>\n");Streamphish.Templates["year_bubbles"] = _.template("<ul class=\"yearsCircles\">\n  <% _.each(years, function(year) { %>\n    <li style=\"background: <%= year.bg %>; border: 1px solid <%= year.bg %>;\">\n      <a href=\"/shows/<%= year.year %>\" style=\"color: <%= year.fg %>;\">\n        <span><%= year.year %><\/span>\n      <\/a>\n    <\/li>\n  <% }); %>\n<\/ul>\n");(function() {
-  var _ref, _ref1,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+Streamphish.Templates["map"] = _.template("<div class=\"wrapper\">\n  <img src=\"http://assets.phishtracks.com/maps/<%= file %>\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\"><\/svg>\n<\/div>\n<a class=\"closeBtn\"><i class=\"icon-close\"><\/i><\/a>\n");Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a class=\"btn prev\" data-control=\"prev\">\n    <span class=\"arrowGrp\">\n      <span class=\"arrow\"><\/span><span class=\"arrow\"><\/span>\n    <\/span>\n  <\/a>\n  <a class=\"btn playpause\" data-control=\"togglePause\" id=\"playBtn\">\n    <span class=\"pause\"><\/span>\n  <\/a>\n  <a class=\"btn next\" data-control=\"next\">\n    <span class=\"arrowGrp\">\n      <span class=\"arrow\"><\/span><span class=\"arrow\"><\/span>\n    <\/span>\n  <\/a>\n<\/div>\n\n<% var show = (currentTrack.collection && currentTrack.collection.show) ? currentTrack.collection.show : null; %>\n<h2><%= SP.Helpers.linkTo(currentTrack.get(\'title\'), \"songs/\" + currentTrack.get(\'slug\')) %><\/h2>\n\n<% if(currentTrack.has(\'map\')) { %>\n<a class=\"map\"><i class=\"icon-map\"><\/i><\/a>\n<% } %>\n\n<% if(show) { %>\n  <h3><%= SP.Helpers.playerLinkToShow(show) %><\/h3>\n<% } %>\n<% var lt10MinClass = currentTrack.get(\'duration\') < 600000 ? \'lt10Min\' : \'\' %>\n<div class=\"scrubber <%= lt10MinClass %>\">\n  <div class=\"loadProgress\">\n    <div class=\"handle\"><\/div>\n    <div class=\"handle ghost\"><\/div>\n  <\/div>\n<\/div>\n<div class=\"time\">\n  <span class=\"current\">0:00<\/span><span class=\"total\"> / <%= SP.Helpers.msToMMSS(currentTrack.get(\'duration\')) %><\/span>\n<\/div>\n");Streamphish.Templates["playlist"] = _.template("<header>\n  <a href=\"/\" class=\"backBtn\">← Home<\/a>\n  <h1>My Favorite Jam Ever - Surrender to the Flow<\/h1>\n<\/header>\n\n<ul class=\"pageList songs song\">\n  <% _.each(tracks, function(track, idx) { %>\n    <li data-track-idx=\"<%= idx %>\" data-track-id=\"<%= track.id %>\">\n      <div class=\"songInfo\">\n        <span class=\"songDate\"><%= track.title %><\/span>\n        <br>\n        <span class=\"songVenue\">\n          <%= SP.Helpers.dateString(track.show.show_date, \'%m/%d/%Y\') %> - <%= track.show.location %>\n        <\/span>\n      <\/div>\n      <span class=\"duration\"><%= SP.Helpers.msToMMSS(track.duration) %><\/span>\n    <\/li>\n  <% }); %>\n<\/ul>\n");Streamphish.Templates["show"] = _.template("<header>\n  <a href=\"/shows/<%= year %>\" class=\"backBtn\">← <%= year %><\/a>\n  <% if(prev_show) { %>\n    <a href=\"/shows/<%= prev_show %>\" class=\"info showNav L\">&laquo;<\/a>\n  <% } %>\n  <h1>\n    <%= SP.Helpers.dateString(show_date, \'%m-%d-%Y\') %><span class=\"location\"> - <%= location %>\n  <\/h1>\n  <% if(next_show) { %>\n    <a href=\"/shows/<%= next_show %>\" class=\"info showNav R\">&raquo;<\/a>\n  <% } %>\n  <% if(source_info) { %>\n    <div class=\"sourceContainer\">\n      <a href=\"#\" class=\"info mic\"><i class=\"icon-mic\"><\/i><\/a>\n      <div class=\"invisible sourceInfo\" data-arrow-pos=\"-15px\">\n        <%= source_info.replace(/\\n/g, \'<br>\') %>\n      <\/div>\n    <\/div>\n  <% } %>\n  <a href=\"http://phish.net/setlists/?d=<%= show_date %>\" target=\"_blank\" class=\"info\" data-bypass>\n    p.net\n  <\/a>\n\n<\/header>\n\n<% beforeTrackIdxs = _.map(sets, function(set) { return set.beforeTrackIdx; }); %>\n\n<ul class=\"pageList songs\">\n  <% _.each(tracks.models, function(track, trackIdx) { %>\n    <% if( (setIdx = _.indexOf(beforeTrackIdxs, trackIdx)) !== -1 ) { %>\n    <li class=\"sectionTitle\"><h2><%= sets[setIdx].title %><\/h2><\/li>\n    <% } %>\n\n    <li data-id=\"<%= track.id %>\">\n      <div class=\"songInfo\">\n        <div class=\"songTitle\">\n          <a data-control=\"song\" href=\"/shows/<%= show_date %>/<%= track.get(\'slug\') %>\" data-bypass><%= track.get(\'title\') %>\n            <% if(track.has(\'map\')) { %>\n              <i class=\"icon-map\"><\/i>\n            <% } %>\n          <\/a>\n          <% if(sbd) { %>\n            <span class=\"tag\">SBD<\/span>\n          <% } %>\n          <% if(remastered) { %>\n            <span class=\"tag\">Remastered<\/span>\n          <% } %>\n        <\/div>\n      <\/div>\n      <span class=\"duration\"><%= Streamphish.Util.msToMMSS(track.get(\'duration\')) %><\/span>\n    <\/li>\n  <% }); %>\n<\/ul>\n\n<style>header div.sourceInfo:after { margin-left: -15px; }<\/style>\n");Streamphish.Templates["shows_by_year"] = _.template("<header>\n  <a href=\"/\" class=\"backBtn\">← Home<\/a>\n  <h1>\n    <a href=\'#\' data-control=\'toggleYearList\' data-bypass=\'true\'>\n      <%= year %> <small>▾<\/small>\n    <\/a>\n  <\/h1>\n<\/header>\n\n<ul class=\"pageList linkItems showsByYear\">\n  <% _.each(shows, function(show) { %>\n    <li><a href=\"/shows/<%= Streamphish.Helpers.dateString(show.show_date, \'%Y-%m-%d\') %>\">\n      <span>\n        <strong><%= Streamphish.Helpers.dateString(show.show_date, \'%m/%d/%Y\') %><\/strong>\n        <%= show.location %>\n      <\/span>\n      <% if(show.sbd || show.remastered) { %>\n        <div class=\"tagContainer\">\n      <% } %>\n        <% if(show.sbd) { %>\n          <span class=\"tag\">SBD<\/span>\n        <% } %>\n\n        <% if(show.remastered) { %>\n          <span class=\"tag\">Remastered<\/span>\n        <% } %>\n      <% if(show.sbd || show.remastered) { %>\n        <\/div>\n      <% } %>\n    <\/a><\/li>\n  <% }); %>\n<\/ul>\n\n\n<div id=\"yearSelect\">\n  <ul>\n    <% _.each(App.active_years, function(year) { %>\n    <li>\n      <a style=\"<%= SP.Helpers.cssComplementaryColors() %>\" href=\"/shows/<%= year %>\">\n        <span><%= year %><\/span>\n      <\/a>\n    <\/li>\n    <% }); %>\n  <\/ul>\n<\/div>\n\n");Streamphish.Templates["site_index"] = _.template("<header>\n  <h1>PhishTracks<\/h1>\n<\/header>\n\n<ul class=\"pageList linkItems\">\n  <li class=\"sectionTitle\"><h2>Years<\/h2><\/li>\n  <% _.each(years.reverse(), function(year) { %>\n    <li>\n      <a href=\"/shows/<%= year.year %>\"><span><%= year.year %><\/span><\/a>\n    <\/li>\n  <% }); %>\n  <li class=\"sectionTitle\"><h2>Songs<\/h2><\/li>\n  <% _.each(songs, function(song) { %>\n    <li>\n      <a href=\"<%= song.url %>\"><span><%= song.title %><\/span><\/a>\n    <\/li>\n  <% }); %>\n<\/ul>\n");Streamphish.Templates["song"] = _.template("<header>\n  <a href=\"/songs\" class=\"backBtn\">← Songs<\/a>\n  <h1><%= title %><\/h1>\n<\/header>\n\n<ul class=\"pageList songs song\">\n  <% _.each(tracks, function(track, idx) { %>\n     <li data-track-idx=\"<%= idx %>\" data-track-id=\"<%= track.id %>\">\n      <div class=\"songInfo\">\n        <span class=\"songDate\">\n          <a href=\"/shows/<%= track.show.show_date %>\"><%= track.show.show_date %><\/a>\n        <\/span>\n        <br>\n        <span class=\"songVenue\"><%= track.show.location %><\/span>\n      <\/div>\n      <span class=\"duration\"><%= Streamphish.Helpers.msToMMSS(track.duration) %><\/span>\n    <\/li>\n  <% }); %>\n<\/ul>\n");Streamphish.Templates["song_bubbles"] = _.template("<div class=\"songs\">\n  <% _.each(songs, function(song) { %>\n    <a href=\"<%= song.url %>\" style=\"background: <%= song.bg %>; color: <%= song.fg %>;\">\n      <span><%= song.title %><\/span>\n    <\/a>\n  <% }); %>\n<\/div>\n");Streamphish.Templates["songs"] = _.template("<header>\n  <a href=\"/\" class=\"backBtn\">← Home<\/a>\n  <h1>Songs<\/h1>\n<\/header>\n\n<ul class=\"pageList linkItems\">\n<% _.each(data, function(song) { %>\n  <li>\n    <a href=\"/songs/<%= song.slug %>\"><span><%= song.title %><\/span><\/a>\n  <\/li>\n<% }); %>\n<\/ul>\n");Streamphish.Templates["year_bubbles"] = _.template("<ul class=\"yearsCircles\">\n  <% _.each(years, function(year) { %>\n    <li style=\"background: <%= year.bg %>; border: 1px solid <%= year.bg %>;\">\n      <a href=\"/shows/<%= year.year %>\" style=\"color: <%= year.fg %>;\">\n        <span><%= year.year %><\/span>\n      <\/a>\n    <\/li>\n  <% }); %>\n<\/ul>\n");(function() {
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Models.Base = (function(_super) {
-    __extends(Base, _super);
+  Streamphish.Models.Base = (function(superClass) {
+    extend(Base, superClass);
 
     function Base() {
-      _ref = Base.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return Base.__super__.constructor.apply(this, arguments);
     }
 
     Base.prototype.fetch = function(opts) {
-      var _success,
-        _this = this;
+      var _success;
       _success = opts.success;
       _.extend(opts, {
-        success: function(model, resp, opts) {
-          _success(model, resp, opts);
-          return _this.fetched = true;
-        }
+        success: (function(_this) {
+          return function(model, resp, opts) {
+            _success(model, resp, opts);
+            return _this.fetched = true;
+          };
+        })(this)
       });
       if (window.PTData && Backbone.history._wantsPushState) {
         this.set(window.PTData);
@@ -3040,23 +3127,23 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
   })(Backbone.Model);
 
-  Streamphish.Collections.Base = (function(_super) {
-    __extends(Base, _super);
+  Streamphish.Collections.Base = (function(superClass) {
+    extend(Base, superClass);
 
     function Base() {
-      _ref1 = Base.__super__.constructor.apply(this, arguments);
-      return _ref1;
+      return Base.__super__.constructor.apply(this, arguments);
     }
 
     Base.prototype.fetch = function(opts) {
-      var _success,
-        _this = this;
+      var _success;
       _success = opts.success;
       _.extend(opts, {
-        success: function(model, resp, opts) {
-          _success(model, resp, opts);
-          return _this.fetched = true;
-        }
+        success: (function(_this) {
+          return function(model, resp, opts) {
+            _success(model, resp, opts);
+            return _this.fetched = true;
+          };
+        })(this)
       });
       if (window.PTData) {
         this.set(window.PTData);
@@ -3073,16 +3160,14 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var _ref,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Models.IndexData = (function(_super) {
-    __extends(IndexData, _super);
+  Streamphish.Models.IndexData = (function(superClass) {
+    extend(IndexData, superClass);
 
     function IndexData() {
-      _ref = IndexData.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return IndexData.__super__.constructor.apply(this, arguments);
     }
 
     IndexData.prototype.urlRoot = '/';
@@ -3093,19 +3178,162 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var _ref,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Models.Player = (function(_super) {
-    __extends(Player, _super);
+  SP.Models.Map = (function(superClass) {
+    extend(Map, superClass);
+
+    function Map() {
+      return Map.__super__.constructor.apply(this, arguments);
+    }
+
+    Map.prototype.initialize = function(data) {
+      var region;
+      Map.__super__.initialize.apply(this, arguments);
+      if (this.has('regions')) {
+        return this.set('regions', new SP.Collections.MapRegion((function() {
+          var i, len, ref, results;
+          ref = this.get('regions');
+          results = [];
+          for (i = 0, len = ref.length; i < len; i++) {
+            region = ref[i];
+            results.push(new SP.Models.MapRegion(region));
+          }
+          return results;
+        }).call(this)), {
+          silent: true
+        });
+      }
+    };
+
+    return Map;
+
+  })(Backbone.Model);
+
+}).call(this);
+(function() {
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
+
+  SP.Models.MapRegion = (function(superClass) {
+    extend(MapRegion, superClass);
+
+    function MapRegion() {
+      return MapRegion.__super__.constructor.apply(this, arguments);
+    }
+
+    MapRegion.STATES = ['default', 'highlighted', 'active'];
+
+    MapRegion.prototype.initialize = function() {
+      MapRegion.__super__.initialize.apply(this, arguments);
+      return this.set('state', 0);
+    };
+
+    MapRegion.prototype.pointsStr = function() {
+      return _.map(this.get('points'), function(coords) {
+        return coords.join(',');
+      }).join('  ');
+    };
+
+    MapRegion.prototype.toJSON = function() {
+      var json;
+      json = MapRegion.__super__.toJSON.apply(this, arguments);
+      json.pointsStr = this.pointsStr();
+      return json;
+    };
+
+    return MapRegion;
+
+  })(Backbone.Model);
+
+  SP.Collections.MapRegion = (function(superClass) {
+    extend(MapRegion, superClass);
+
+    function MapRegion() {
+      return MapRegion.__super__.constructor.apply(this, arguments);
+    }
+
+    MapRegion.prototype.clearHighlight = function() {
+      var region;
+      region = this.findWhere({
+        state: 1
+      });
+      if (region != null) {
+        return region.set('state', 0);
+      }
+    };
+
+    MapRegion.prototype.setHighlight = function(cid) {
+      var region;
+      if (cid != null) {
+        region = this.get(cid);
+        if (region.get('state') === 2) {
+          return this.clearHighlight();
+        } else {
+          this.clearHighlight();
+          return region.set('state', 1);
+        }
+      } else {
+        return this.clearHighlight();
+      }
+    };
+
+    MapRegion.prototype.clearActive = function() {
+      var region;
+      region = this.findWhere({
+        state: 2
+      });
+      if (region != null) {
+        return region.set('state', 0);
+      }
+    };
+
+    MapRegion.prototype.setActive = function(cid) {
+      var region;
+      if (cid != null) {
+        region = this.get(cid);
+        if (region.get('state') !== 2) {
+          this.clearActive();
+          return region.set('state', 2);
+        }
+      } else {
+        return this.clearActive();
+      }
+    };
+
+    MapRegion.prototype.regionForTime = function(ms) {
+      var _region, i, len, ref, region;
+      _region = null;
+      ref = this.models;
+      for (i = 0, len = ref.length; i < len; i++) {
+        region = ref[i];
+        if (ms >= region.get('time')) {
+          _region = region;
+        } else if (ms < region.get('time')) {
+          break;
+        }
+      }
+      return _region;
+    };
+
+    return MapRegion;
+
+  })(Backbone.Collection);
+
+}).call(this);
+(function() {
+  var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
+
+  Streamphish.Models.Player = (function(superClass) {
+    extend(Player, superClass);
 
     function Player() {
-      this._pushTrackListenAnalytic = __bind(this._pushTrackListenAnalytic, this);
-      this.playNext = __bind(this.playNext, this);
-      _ref = Player.__super__.constructor.apply(this, arguments);
-      return _ref;
+      this._pushTrackListenAnalytic = bind(this._pushTrackListenAnalytic, this);
+      this.playNext = bind(this.playNext, this);
+      return Player.__super__.constructor.apply(this, arguments);
     }
 
     Player.prototype._cSound = null;
@@ -3118,7 +3346,6 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
     };
 
     Player.prototype.load = function(track, pos, autoStart) {
-      var _this = this;
       if (pos == null) {
         pos = 0;
       }
@@ -3128,21 +3355,23 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
       if (!track) {
         return;
       }
-      return soundManager.onready(function() {
-        if (track.collection) {
-          _this.set('playlist', track.collection);
-        }
-        track.set('initialPosition', (soundManager.html5.usingFlash ? 0 : pos));
-        if (autoStart) {
-          return _this.set('currentTrack', track);
-        } else {
-          _this.set('currentTrack', track, {
-            silent: true
-          });
-          App.player_view.render();
-          return document.getElementById('playBtn').children[0].className = 'play';
-        }
-      });
+      return soundManager.onready((function(_this) {
+        return function() {
+          if (track.collection) {
+            _this.set('playlist', track.collection);
+          }
+          track.set('initialPosition', (soundManager.html5.usingFlash ? 0 : pos));
+          if (autoStart) {
+            return _this.set('currentTrack', track);
+          } else {
+            _this.set('currentTrack', track, {
+              silent: true
+            });
+            App.player_view.render();
+            return document.getElementById('playBtn').children[0].className = 'play';
+          }
+        };
+      })(this));
     };
 
     Player.prototype.play = function(track, pos) {
@@ -3207,40 +3436,77 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var _ref, _ref1,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  SP.Models.Show = (function(_super) {
-    __extends(Show, _super);
+  SP.Models.Playlist = (function(superClass) {
+    extend(Playlist, superClass);
+
+    function Playlist() {
+      return Playlist.__super__.constructor.apply(this, arguments);
+    }
+
+    Playlist.prototype.urlRoot = '/api/v1/playlists';
+
+    Playlist.prototype.initialize = function() {
+      Playlist.__super__.initialize.apply(this, arguments);
+      return this.on('change:tracks', (function(_this) {
+        return function(model, tracks) {
+          var track;
+          return _this.set('tracks', new SP.Collections.Tracks((function() {
+            var i, len, results;
+            results = [];
+            for (i = 0, len = tracks.length; i < len; i++) {
+              track = tracks[i];
+              results.push(new SP.Models.Track(track));
+            }
+            return results;
+          })()), {
+            silent: true
+          });
+        };
+      })(this));
+    };
+
+    return Playlist;
+
+  })(SP.Models.Base);
+
+}).call(this);
+(function() {
+  var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
+
+  SP.Models.Show = (function(superClass) {
+    extend(Show, superClass);
 
     function Show() {
-      this.year = __bind(this.year, this);
-      _ref = Show.__super__.constructor.apply(this, arguments);
-      return _ref;
+      this.year = bind(this.year, this);
+      return Show.__super__.constructor.apply(this, arguments);
     }
 
     Show.prototype.urlRoot = '/api/v1/shows';
 
     Show.prototype.initialize = function() {
-      var _this = this;
       Show.__super__.initialize.apply(this, arguments);
-      this.on('change:tracks', function(model, tracks) {
-        var track;
-        _this.set('tracks', new Streamphish.Collections.Tracks((function() {
-          var _i, _len, _results;
-          _results = [];
-          for (_i = 0, _len = tracks.length; _i < _len; _i++) {
-            track = tracks[_i];
-            _results.push(new Streamphish.Models.Track(track));
-          }
-          return _results;
-        })()), {
-          silent: true
-        });
-        return _this.get('tracks').show = model;
-      });
+      this.on('change:tracks', (function(_this) {
+        return function(model, tracks) {
+          var track;
+          _this.set('tracks', new SP.Collections.Tracks((function() {
+            var i, len, results;
+            results = [];
+            for (i = 0, len = tracks.length; i < len; i++) {
+              track = tracks[i];
+              results.push(new SP.Models.Track(track));
+            }
+            return results;
+          })()), {
+            silent: true
+          });
+          return _this.get('tracks').show = model;
+        };
+      })(this));
       return this.on('change:sets', function(model, sets) {
         var _sets, _tracks;
         _tracks = _.flatten(_.map(sets, function(set) {
@@ -3277,14 +3543,15 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
     };
 
     Show.prototype.fetch = function(opts) {
-      var _success,
-        _this = this;
+      var _success;
       _success = opts.success;
       _.extend(opts, {
-        success: function(model, resp, opts) {
-          _success(model, resp, opts);
-          return _this.fetched = true;
-        }
+        success: (function(_this) {
+          return function(model, resp, opts) {
+            _success(model, resp, opts);
+            return _this.fetched = true;
+          };
+        })(this)
       });
       return Show.__super__.fetch.call(this, opts);
     };
@@ -3293,17 +3560,16 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
   })(SP.Models.Base);
 
-  Streamphish.Collections.Shows = (function(_super) {
-    __extends(Shows, _super);
+  SP.Collections.Shows = (function(superClass) {
+    extend(Shows, superClass);
 
     function Shows() {
-      _ref1 = Shows.__super__.constructor.apply(this, arguments);
-      return _ref1;
+      return Shows.__super__.constructor.apply(this, arguments);
     }
 
     Shows.prototype.url = '/api/v1/shows';
 
-    Shows.prototype.model = Streamphish.Models.Show;
+    Shows.prototype.model = SP.Models.Show;
 
     Shows.prototype.initialize = function(models, opts) {
       if (opts.year) {
@@ -3334,7 +3600,7 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
     return Shows;
 
-  })(Streamphish.Collections.Base);
+  })(SP.Collections.Base);
 
 }).call(this);
 (function() {
@@ -3373,16 +3639,14 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var _ref, _ref1,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Models.Song = (function(_super) {
-    __extends(Song, _super);
+  Streamphish.Models.Song = (function(superClass) {
+    extend(Song, superClass);
 
     function Song() {
-      _ref = Song.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return Song.__super__.constructor.apply(this, arguments);
     }
 
     Song.prototype.urlRoot = '/api/v1/songs';
@@ -3391,12 +3655,11 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
   })(Streamphish.Models.Base);
 
-  Streamphish.Collections.Songs = (function(_super) {
-    __extends(Songs, _super);
+  Streamphish.Collections.Songs = (function(superClass) {
+    extend(Songs, superClass);
 
     function Songs() {
-      _ref1 = Songs.__super__.constructor.apply(this, arguments);
-      return _ref1;
+      return Songs.__super__.constructor.apply(this, arguments);
     }
 
     Songs.prototype.url = '/api/v1/songs';
@@ -3409,49 +3672,63 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var _ref, _ref1,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Models.Track = (function(_super) {
-    __extends(Track, _super);
+  SP.Models.Track = (function(superClass) {
+    extend(Track, superClass);
 
     function Track() {
-      _ref = Track.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return Track.__super__.constructor.apply(this, arguments);
     }
 
     Track.prototype.initialize = function() {
-      return Track.__super__.initialize.apply(this, arguments);
+      Track.__super__.initialize.apply(this, arguments);
+      if (this.has('map')) {
+        this.set('map', new SP.Models.Map(this.get('map')));
+        return this.get('map').track = this;
+      }
     };
 
     Track.prototype.play = function(opts) {
-      var _this = this;
-      return soundManager.onready(function() {
-        var pos;
-        if (!_this.sound) {
-          if (_this.get('initialPosition') && _this.get('initialPosition') < _this.get('duration')) {
-            pos = _this.get('initialPosition');
-          } else {
-            pos = 0;
+      return soundManager.onready((function(_this) {
+        return function() {
+          var pos;
+          if (!_this.sound) {
+            if (_this.get('initialPosition') && _this.get('initialPosition') < _this.get('duration')) {
+              pos = _this.get('initialPosition');
+            } else {
+              pos = 0;
+            }
+            _this.sound = soundManager.createSound({
+              id: _this.cid,
+              url: _this.fileUrl(),
+              autoPlay: false,
+              position: pos,
+              onfinish: App.player.playNext,
+              multiShot: false
+            });
           }
-          _this.sound = soundManager.createSound({
-            id: _this.cid,
-            url: _this.get('file_url'),
-            autoPlay: false,
-            position: pos,
-            onfinish: App.player.playNext
+          return _this.sound.play({
+            whileloading: function() {
+              return App.player_view.trackLoading(_this);
+            },
+            whileplaying: function() {
+              return App.player_view.trackPlaying(_this);
+            }
           });
-        }
-        return _this.sound.play({
-          whileloading: function() {
-            return App.player_view.trackLoading(_this);
-          },
-          whileplaying: function() {
-            return App.player_view.trackPlaying(_this);
-          }
-        });
-      });
+        };
+      })(this));
+    };
+
+    Track.prototype.fileUrl = function() {
+      var format;
+      format = SP.Util.isFirefox() ? 'ogx' : 'm4a';
+      if (this.has('map')) {
+        return this.get("file_url_" + format) || this.get('file_url');
+      } else {
+        return this.get('file_url');
+      }
     };
 
     Track.prototype.togglePause = function() {
@@ -3463,23 +3740,33 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
     };
 
     Track.prototype.position = function() {
-      var _ref1;
-      return ((_ref1 = this.sound) != null ? _ref1.position : void 0) || this.get('initialPosition') || 0;
+      var ref;
+      return ((ref = this.sound) != null ? ref.position : void 0) || this.get('initialPosition') || 0;
+    };
+
+    Track.prototype.goToPosition = function(ms) {
+      var positionCallback;
+      this.sound.pause();
+      positionCallback = function(eventPosition) {
+        this.clearOnPosition(0, positionCallback);
+        return this.resume();
+      };
+      this.sound.onPosition(0, positionCallback);
+      return this.sound.setPosition(ms);
     };
 
     return Track;
 
   })(Backbone.Model);
 
-  Streamphish.Collections.Tracks = (function(_super) {
-    __extends(Tracks, _super);
+  SP.Collections.Tracks = (function(superClass) {
+    extend(Tracks, superClass);
 
     function Tracks() {
-      _ref1 = Tracks.__super__.constructor.apply(this, arguments);
-      return _ref1;
+      return Tracks.__super__.constructor.apply(this, arguments);
     }
 
-    Tracks.prototype.model = Streamphish.Models.Track;
+    Tracks.prototype.model = SP.Models.Track;
 
     return Tracks;
 
@@ -3487,21 +3774,26 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var _ref,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Views.ApplicationView = (function(_super) {
-    __extends(ApplicationView, _super);
+  SP.Views.ApplicationView = (function(superClass) {
+    extend(ApplicationView, superClass);
 
     function ApplicationView() {
-      _ref = ApplicationView.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return ApplicationView.__super__.constructor.apply(this, arguments);
     }
 
     ApplicationView.prototype.tagName = 'div';
 
     ApplicationView.prototype.id = 'currentView';
+
+    ApplicationView.prototype.initialize = function() {
+      if (App.router.sequence === 0) {
+        this.$el = $('#currentView');
+      }
+      return ApplicationView.__super__.initialize.apply(this, arguments);
+    };
 
     ApplicationView.prototype.bypassLink = function(e) {
       $(document).trigger(e);
@@ -3526,21 +3818,241 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var _ref,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Views.Player = (function(_super) {
-    __extends(Player, _super);
+  SP.Views.Map = (function(superClass) {
+    extend(Map, superClass);
+
+    function Map() {
+      this.resetState = bind(this.resetState, this);
+      this.trackIsPlaying = bind(this.trackIsPlaying, this);
+      this.handleKeypress = bind(this.handleKeypress, this);
+      this.highlightRegionForPos = bind(this.highlightRegionForPos, this);
+      this.activateCurrentRegion = bind(this.activateCurrentRegion, this);
+      return Map.__super__.constructor.apply(this, arguments);
+    }
+
+    Map.prototype.el = '#map';
+
+    Map.prototype.template = SP.Templates.map;
+
+    Map.prototype.events = {
+      'click polygon': 'regionClick',
+      'click a.closeBtn': 'closeHandler',
+      'mouseover polygon': 'hoverOnRegion',
+      'mouseout polygon': 'hideGhostHandle'
+    };
+
+    Map.prototype.initialize = function() {
+      var i, len, ref, region;
+      Map.__super__.initialize.apply(this, arguments);
+      this.regions = {};
+      ref = this.model.get('regions').models;
+      for (i = 0, len = ref.length; i < len; i++) {
+        region = ref[i];
+        this.regions[region.cid] = new SP.Views.MapRegion({
+          model: region,
+          parent: this
+        });
+      }
+      App.player_view.on('trackPlaying', this.activateCurrentRegion);
+      App.player_view.on('scrubbing', this.highlightRegionForPos);
+      App.player.on('change:currentTrack', this.resetState);
+      return $(document).on('keyup', this.handleKeypress);
+    };
+
+    Map.prototype.adjustHeight = function() {
+      this.$el.find('svg:first').attr('height', this.model.get('height')).attr('width', this.model.get('width'));
+      return this.$el.find('.wrapper').css('width', this.model.get('width'));
+    };
+
+    Map.prototype.regionClick = function(e) {
+      var region;
+      region = this.model.get('regions').get($(e.currentTarget).data('cid'));
+      if (region.has('track')) {
+        return App.player.set('currentTrack', App.player.get('playlist').get(region.get('track')));
+      } else if (region.has('url')) {
+        return window.open(region.get('url'), '_blank');
+      } else {
+        return this.scrubToRegion(region);
+      }
+    };
+
+    Map.prototype.activateCurrentRegion = function() {
+      var currRegion;
+      if (App.player_view.scrubbing || !this.trackIsPlaying()) {
+        return;
+      }
+      currRegion = this.model.get('regions').regionForTime(App.player.get('currentTrack').sound.position);
+      if (currRegion != null) {
+        if (currRegion.get('state') === 2) {
+          return;
+        }
+        return this.model.get('regions').setActive(currRegion.cid);
+      } else {
+        return this.model.get('regions').setActive(null);
+      }
+    };
+
+    Map.prototype.highlightRegionForPos = function(pos) {
+      var currRegion;
+      if (!this.trackIsPlaying()) {
+        return;
+      }
+      currRegion = this.model.get('regions').regionForTime(pos);
+      if (currRegion != null) {
+        return this.model.get('regions').setHighlight(currRegion.cid);
+      } else {
+        return this.model.get('regions').setHighlight(null);
+      }
+    };
+
+    Map.prototype.handleKeypress = function(e) {
+      if (e.keyCode === 27) {
+        return this.closeHandler();
+      }
+    };
+
+    Map.prototype.closeHandler = function() {
+      return App.player_view.closeMap();
+    };
+
+    Map.prototype.exit = function() {
+      var cid, ref, region;
+      $('body').removeClass('noScroll');
+      this.$el.hide();
+      this.hideGhostHandle();
+      ref = this.regions;
+      for (cid in ref) {
+        region = ref[cid];
+        region.exit();
+      }
+      App.player_view.off('trackPlaying', this.activateCurrentRegion);
+      App.player_view.off('scrubbing', this.highlightRegionForPos);
+      App.player.off('change:currentTrack', this.resetState);
+      $(document).off('keyup', this.handleKeypress);
+      this.resetState();
+      return this.$el.unbind();
+    };
+
+    Map.prototype.scrubToRegion = function(region) {
+      this.model.track.goToPosition(region.get('time'));
+      if (!this.trackIsPlaying()) {
+        App.player.set('currentTrack', this.model.track);
+      }
+      return App.player_view.play();
+    };
+
+    Map.prototype.hoverOnRegion = function(e) {
+      var cssPos, percentageIn, region;
+      if (!this.trackIsPlaying()) {
+        return;
+      }
+      region = this.model.get('regions').get($(e.currentTarget).data('cid'));
+      if (region.has('url') || region.has('track')) {
+        return;
+      }
+      percentageIn = region.get('time') / App.player.get('currentTrack').get('duration');
+      cssPos = App.player_view.cssPosForPercentage(percentageIn);
+      return App.player_view.$el.find('.handle.ghost').css('left', cssPos).show();
+    };
+
+    Map.prototype.trackIsPlaying = function() {
+      return App.player.get('currentTrack').get('id') === this.model.track.get('id');
+    };
+
+    Map.prototype.hideGhostHandle = function() {
+      return App.player_view.$el.find('.handle.ghost').hide();
+    };
+
+    Map.prototype.resetState = function() {
+      this.model.get('regions').setHighlight(null);
+      return this.model.get('regions').setActive(null);
+    };
+
+    Map.prototype.render = function() {
+      Map.__super__.render.apply(this, arguments);
+      _.each(this.regions, function(region) {
+        return region.render();
+      });
+      $('body').addClass('noScroll');
+      this.activateCurrentRegion();
+      this.adjustHeight();
+      return this.$el.show();
+    };
+
+    return Map;
+
+  })(SP.Views.ApplicationView);
+
+}).call(this);
+(function() {
+  var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
+
+  SP.Views.MapRegion = (function(superClass) {
+    extend(MapRegion, superClass);
+
+    function MapRegion() {
+      this.render = bind(this.render, this);
+      this.exit = bind(this.exit, this);
+      this.updateState = bind(this.updateState, this);
+      return MapRegion.__super__.constructor.apply(this, arguments);
+    }
+
+    MapRegion.prototype.tagName = 'polygon';
+
+    MapRegion.prototype.id = null;
+
+    MapRegion.prototype.initialize = function(opts) {
+      MapRegion.__super__.initialize.apply(this, arguments);
+      this.map = opts.parent;
+      this.setElement(document.createElementNS('http://www.w3.org/2000/svg', 'polygon'));
+      return this.listenTo(this.model, 'change:state', this.updateState);
+    };
+
+    MapRegion.prototype._pointsStr = function() {
+      return _.map(this.model.get('points'), function(coords) {
+        return coords.join(',');
+      }).join('  ');
+    };
+
+    MapRegion.prototype.updateState = function(model, stateIdx) {
+      return this.$el.attr('class', SP.Models.MapRegion.STATES[stateIdx]);
+    };
+
+    MapRegion.prototype.exit = function() {
+      return this.stopListening(this.model);
+    };
+
+    MapRegion.prototype.render = function() {
+      this.$el.attr('points', this._pointsStr());
+      this.$el.attr('data-cid', this.model.cid);
+      return this.map.$el.find('svg').append(this.el);
+    };
+
+    return MapRegion;
+
+  })(SP.Views.ApplicationView);
+
+}).call(this);
+(function() {
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
+
+  SP.Views.Player = (function(superClass) {
+    extend(Player, superClass);
 
     function Player() {
-      _ref = Player.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return Player.__super__.constructor.apply(this, arguments);
     }
 
     Player.prototype.el = '#player';
 
-    Player.prototype.template = Streamphish.Templates.player;
+    Player.prototype.template = SP.Templates.player;
 
     Player.prototype.scrubbing = false;
 
@@ -3548,13 +4060,13 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
       'click .btn.prev': 'playPrev',
       'click .btn.next': 'playNext',
       'click .btn.playpause': 'togglePause',
+      'click a.map': 'toggleMap',
       'mousedown .scrubber': 'grabScrubberHandle',
       'mousedown .scrubber .handle': 'grabScrubberHandle',
       'touchdown .scrubber .handle': 'grabScrubberHandle'
     };
 
     Player.prototype.initialize = function(opts) {
-      var _this = this;
       soundManager.setup({
         url: '/assets/',
         useHTML5Audio: true,
@@ -3563,9 +4075,11 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
         debugMode: false
       });
       this.model.on('change:currentTrack', this.trackChange, this);
-      return $(document).on('keypress', function(e) {
-        return _this.handleKeypress(e);
-      });
+      return $(document).on('keypress', (function(_this) {
+        return function(e) {
+          return _this.handleKeypress(e);
+        };
+      })(this));
     };
 
     Player.prototype.playPrev = function() {
@@ -3576,26 +4090,51 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
       return this.model.playNext();
     };
 
+    Player.prototype.play = function() {
+      this.model.play();
+      return this.setPlayBtnState('pause');
+    };
+
     Player.prototype.togglePause = function() {
       var $btn;
       $btn = this.$el.find('.btn.playpause');
       this.model.togglePause();
-      this.toggleTitleAnimation();
       return this.$el.find('.btn.playpause span').toggleClass('play').toggleClass('pause');
+    };
+
+    Player.prototype.setPlayBtnState = function(state) {
+      var rm_state;
+      rm_state = state === 'play' ? 'pause' : 'play';
+      return this.$el.find('.btn.playpause span').addClass(state).removeClass(rm_state);
+    };
+
+    Player.prototype.closeMap = function() {
+      if (this.mapView) {
+        return this.toggleMap();
+      }
+    };
+
+    Player.prototype.toggleMap = function() {
+      if (this.mapView) {
+        this.mapView.exit();
+        return this.mapView = null;
+      } else {
+        this.mapView = new SP.Views.Map({
+          model: this.model.get('currentTrack').get('map')
+        });
+        return this.mapView.render();
+      }
     };
 
     Player.prototype.trackChange = function(player, track) {
       this.render();
       player.stop();
-      if (!(this._animating || App.config.isMobile)) {
-        this.toggleTitleAnimation();
-      }
       return track.play();
     };
 
     Player.prototype.trackLoading = function(track) {
       var cssWidth;
-      cssWidth = "" + (Math.round(track.sound.duration / track.get('duration') * 100)) + "%";
+      cssWidth = (Math.round(track.sound.duration / track.get('duration') * 100)) + "%";
       return this.$el.find('.loadProgress').width(cssWidth);
     };
 
@@ -3605,39 +4144,23 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
       }
     };
 
+    Player.prototype.cssPosForPercentage = function(percentage) {
+      return (this.$el.find('.scrubber').width() - 8) * percentage;
+    };
+
     Player.prototype._updateHandlePosition = function(track) {
-      var cssPos, maxScrubDistance;
-      maxScrubDistance = this.$el.find('.scrubber').width() - 8;
-      cssPos = (track.position() / track.get('duration')) * maxScrubDistance;
+      var cssPos;
       if (!this.scrubbing) {
-        return this.$el.find('.handle').css('left', cssPos);
+        cssPos = this.cssPosForPercentage(track.position() / track.get('duration'));
+        return this.$el.find('.handle:first').css('left', cssPos);
       }
     };
 
     Player.prototype.trackPlaying = function(track) {
       this._updateTime(track);
+      this.trigger('trackPlaying');
       if (!App.config.isMobile) {
         return this._updateHandlePosition(track);
-      }
-    };
-
-    Player.prototype.toggleTitleAnimation = function() {
-      var titleAnimation,
-        _this = this;
-      this._title || (this._title = document.title);
-      this._frames || (this._frames = ['◈', '▣', '◉', '◎']);
-      titleAnimation = function() {
-        _this._frames.unshift(_this._frames.pop());
-        return document.title = _this._frames[0] + " " + _this._title + " " + _this._frames[0];
-      };
-      if (this._animating) {
-        clearInterval(this._titleAnimation);
-        document.title = this._title;
-        return this._title = this._animating = null;
-      } else {
-        titleAnimation();
-        this._titleAnimation = setInterval(titleAnimation, 400);
-        return this._animating = true;
       }
     };
 
@@ -3656,10 +4179,11 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
     Player.prototype.scrubToMousePos = function(e, sv) {
       var msPosition;
-      sv.scrubPosition = Streamphish.Helpers.clamp(e.clientX - sv.scrubOffset, 0, sv.maxScrubDistance);
+      sv.scrubPosition = SP.Helpers.clamp(e.clientX - sv.scrubOffset, 0, sv.maxScrubDistance);
       msPosition = sv.scrubPosition / sv.maxScrubDistance * this.model.get('currentTrack').get('duration');
       sv.$handle.css('left', sv.scrubPosition);
-      return sv.$currentTime.text(Streamphish.Helpers.msToMMSS(msPosition));
+      sv.$currentTime.text(SP.Helpers.msToMMSS(msPosition));
+      return msPosition;
     };
 
     Player.prototype.grabScrubberHandle = function(e) {
@@ -3672,19 +4196,24 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
     };
 
     Player.prototype._toggleHandleHandlers = function(sv) {
-      var $doc,
-        _this = this;
+      var $doc;
       $doc = $(document);
       if (this.scrubbing) {
         $('body').addClass('noTextSelect');
-        $doc.on('mouseup touchend', function() {
-          _this.model.goToPercentage(sv.scrubPosition / sv.maxScrubDistance);
-          _this.scrubbing = false;
-          return _this._toggleHandleHandlers();
-        });
-        return $doc.on('mousemove touchmove', function(e) {
-          return _this.scrubToMousePos(e, sv);
-        });
+        $doc.on('mouseup touchend', (function(_this) {
+          return function() {
+            _this.model.goToPercentage(sv.scrubPosition / sv.maxScrubDistance);
+            _this.scrubbing = false;
+            return _this._toggleHandleHandlers();
+          };
+        })(this));
+        return $doc.on('mousemove touchmove', (function(_this) {
+          return function(e) {
+            var msPos;
+            msPos = _this.scrubToMousePos(e, sv);
+            return _this.trigger('scrubbing', msPos);
+          };
+        })(this));
       } else {
         $doc.off('mouseup mousemove touchend touchmove');
         return $('body').removeClass('noTextSelect');
@@ -3709,20 +4238,54 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
     return Player;
 
+  })(SP.Views.ApplicationView);
+
+}).call(this);
+(function() {
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
+
+  Streamphish.Views.Playlist = (function(superClass) {
+    extend(Playlist, superClass);
+
+    function Playlist() {
+      return Playlist.__super__.constructor.apply(this, arguments);
+    }
+
+    Playlist.prototype.template = Streamphish.Templates.playlist;
+
+    Playlist.prototype.events = {
+      'click ul.songs a': 'bypassLink',
+      'click ul.songs li': 'trackClick'
+    };
+
+    Playlist.prototype.trackClick = function(e) {
+      var $li, trackId, trackIdx;
+      $li = $(e.currentTarget);
+      trackIdx = $li.data('track-idx');
+      trackId = $li.data('track-id');
+      debugger;
+      return App.player.play(this.model.get('tracks').get(trackId));
+    };
+
+    Playlist.prototype.pageTitle = function() {
+      return "PhishTracks";
+    };
+
+    return Playlist;
+
   })(Streamphish.Views.ApplicationView);
 
 }).call(this);
 (function() {
-  var _ref,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Views.Show = (function(_super) {
-    __extends(Show, _super);
+  Streamphish.Views.Show = (function(superClass) {
+    extend(Show, superClass);
 
     function Show() {
-      _ref = Show.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return Show.__super__.constructor.apply(this, arguments);
     }
 
     Show.prototype.template = Streamphish.Templates.show;
@@ -3747,10 +4310,10 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
     };
 
     Show.prototype.songClick = function(e) {
-      var song, songCid;
+      var song, songId;
       e.preventDefault();
-      songCid = $(e.target).closest('li').data('cid');
-      song = this.model.get('tracks').get(songCid);
+      songId = $(e.target).closest('li').data('id');
+      song = this.model.get('tracks').get(songId);
       this.updateUrl(song);
       return App.player.play(song);
     };
@@ -3813,6 +4376,10 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
       return pos;
     };
 
+    Show.prototype.pageTitle = function() {
+      return (SP.Helpers.dateString(this.model.get('show_date'), '%m/%d/%Y')) + " " + (this.model.get('location'));
+    };
+
     Show.prototype.remove = function() {
       App.player.off('change:currentTrack', null, this);
       return Show.__super__.remove.apply(this, arguments);
@@ -3829,16 +4396,14 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var _ref,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Views.ShowsByYear = (function(_super) {
-    __extends(ShowsByYear, _super);
+  Streamphish.Views.ShowsByYear = (function(superClass) {
+    extend(ShowsByYear, superClass);
 
     function ShowsByYear() {
-      _ref = ShowsByYear.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return ShowsByYear.__super__.constructor.apply(this, arguments);
     }
 
     ShowsByYear.prototype.template = Streamphish.Templates.shows_by_year;
@@ -3859,9 +4424,13 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
       }
     };
 
+    ShowsByYear.prototype.pageTitle = function() {
+      return this.collection.year + " - PhishTracks";
+    };
+
     ShowsByYear.prototype.remove = function() {
-      var _ref1, _ref2;
-      return (_ref1 = this.yearSelect) != null ? (_ref2 = _ref1.style) != null ? _ref2.display = 'none' : void 0 : void 0;
+      var ref, ref1;
+      return (ref = this.yearSelect) != null ? (ref1 = ref.style) != null ? ref1.display = 'none' : void 0 : void 0;
     };
 
     return ShowsByYear;
@@ -3870,16 +4439,14 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var _ref,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Views.SiteIndex = (function(_super) {
-    __extends(SiteIndex, _super);
+  Streamphish.Views.SiteIndex = (function(superClass) {
+    extend(SiteIndex, superClass);
 
     function SiteIndex() {
-      _ref = SiteIndex.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return SiteIndex.__super__.constructor.apply(this, arguments);
     }
 
     SiteIndex.prototype.template = Streamphish.Templates.site_index;
@@ -3896,16 +4463,14 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var _ref,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Views.Song = (function(_super) {
-    __extends(Song, _super);
+  Streamphish.Views.Song = (function(superClass) {
+    extend(Song, superClass);
 
     function Song() {
-      _ref = Song.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return Song.__super__.constructor.apply(this, arguments);
     }
 
     Song.prototype.template = Streamphish.Templates.song;
@@ -3927,25 +4492,31 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
       });
     };
 
+    Song.prototype.pageTitle = function() {
+      return (this.model.get('title')) + " - PhishTracks";
+    };
+
     return Song;
 
   })(Streamphish.Views.ApplicationView);
 
 }).call(this);
 (function() {
-  var _ref,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Views.Songs = (function(_super) {
-    __extends(Songs, _super);
+  Streamphish.Views.Songs = (function(superClass) {
+    extend(Songs, superClass);
 
     function Songs() {
-      _ref = Songs.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return Songs.__super__.constructor.apply(this, arguments);
     }
 
     Songs.prototype.template = Streamphish.Templates.songs;
+
+    Songs.prototype.pageTitle = function() {
+      return 'Songs - PhishTracks';
+    };
 
     return Songs;
 
@@ -3953,16 +4524,14 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var _ref,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty;
 
-  Streamphish.Routers.AppRouter = (function(_super) {
-    __extends(AppRouter, _super);
+  Streamphish.Routers.AppRouter = (function(superClass) {
+    extend(AppRouter, superClass);
 
     function AppRouter() {
-      _ref = AppRouter.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return AppRouter.__super__.constructor.apply(this, arguments);
     }
 
     AppRouter.prototype.routes = {
@@ -3975,7 +4544,13 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
     AppRouter.prototype.initialize = function() {
       AppRouter.__super__.initialize.apply(this, arguments);
       this.bind('route', this._trackPageView);
-      return this._dim = document.getElementById('dim');
+      this._dim = document.getElementById('dim');
+      return this.sequence = 0;
+    };
+
+    AppRouter.prototype.execute = function() {
+      AppRouter.__super__.execute.apply(this, arguments);
+      return this.sequence = this.sequence + 1;
     };
 
     AppRouter.prototype.index = function() {
@@ -4041,25 +4616,33 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
         this.currentView.remove();
       }
       this.currentView = view;
-      this.currentView.render();
-      $('#main').html(this.currentView.$el);
+      if (this.sequence !== 0) {
+        this.currentView.render();
+        $('#main').html(this.currentView.$el);
+        this._setTitleForView(view);
+      }
       return this._dim.style.display = 'none';
     };
 
     AppRouter.prototype._swap = function(view, fetchable) {
-      var _this = this;
       if (this.currentView) {
         this._dim.style.display = 'block';
       }
       if (!fetchable.fetched) {
         return fetchable.fetch({
-          success: function(model, resp, opts) {
-            return _this._swapCallback(view);
-          }
+          success: (function(_this) {
+            return function(model, resp, opts) {
+              return _this._swapCallback(view);
+            };
+          })(this)
         });
       } else {
         return this._swapCallback(view);
       }
+    };
+
+    AppRouter.prototype._setTitleForView = function(view) {
+      return $('title').text((typeof view.pageTitle === "function" ? view.pageTitle() : void 0) || 'PhishTracks');
     };
 
     AppRouter.prototype._trackPageView = function() {
@@ -4082,11 +4665,15 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
       minutes = Math.floor(ms / (1000 * 60));
       remainingMs = ms - (minutes * 1000 * 60);
       seconds = Math.floor(remainingMs / 1000);
-      return "" + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+      return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     };
 
     Util.clamp = function(val, min, max) {
       return Math.max(min, Math.min(max, val));
+    };
+
+    Util.isFirefox = function() {
+      return navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
     };
 
     return Util;
@@ -4095,12 +4682,12 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
 
 }).call(this);
 (function() {
-  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   Streamphish.FastTouchLinks = (function() {
     function FastTouchLinks(el) {
-      this.cbOnClick = __bind(this.cbOnClick, this);
-      this.cbPop = __bind(this.cbPop, this);
+      this.cbOnClick = bind(this.cbOnClick, this);
+      this.cbPop = bind(this.cbPop, this);
       this.main = el;
       this.main.addEventListener('touchstart', this, false);
       this.main.addEventListener('click', this, false);
@@ -4175,11 +4762,12 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
     };
 
     FastTouchLinks.prototype.preventGhostClick = function(x, y) {
-      var _this = this;
       this.cbCoords.push(x, y);
-      return window.setTimeout((function() {
-        return _this.cbPop;
-      }), 2500);
+      return window.setTimeout(((function(_this) {
+        return function() {
+          return _this.cbPop;
+        };
+      })(this)), 2500);
     };
 
     FastTouchLinks.prototype.cbPop = function() {
@@ -4187,23 +4775,23 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
     };
 
     FastTouchLinks.prototype.cbOnClick = function(e) {
-      var coord, i, x, y, _i, _len, _ref, _ref1, _results;
-      _ref = this.cbCoords;
-      _results = [];
-      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
-        coord = _ref[i];
+      var coord, i, j, len, ref, ref1, results, x, y;
+      ref = this.cbCoords;
+      results = [];
+      for (i = j = 0, len = ref.length; j < len; i = ++j) {
+        coord = ref[i];
         if (!(i % 2 === 0)) {
           continue;
         }
-        _ref1 = [this.cbCoords[i], this.cbCoords[i + 1]], x = _ref1[0], y = _ref1[1];
+        ref1 = [this.cbCoords[i], this.cbCoords[i + 1]], x = ref1[0], y = ref1[1];
         if (Math.abs(e.clientX - x) < 25 && Math.abs(e.clientY - y) < 25) {
           e.stopPropagation();
-          _results.push(e.preventDefault());
+          results.push(e.preventDefault());
         } else {
-          _results.push(void 0);
+          results.push(void 0);
         }
       }
-      return _results;
+      return results;
     };
 
     FastTouchLinks.prototype.getANode = function(node) {
@@ -4219,6 +4807,10 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
   })();
 
 }).call(this);
+/*Please JS, Jordan Checkman 2014, Checkman.io, MIT Liscense, Have fun.*/
+
+(function(e){"use strict";function t(){function i(e,t){return Math.floor(Math.random()*(t-e+1))+e}function s(e,t){return Math.random()*(t-e)+e}function o(e,t,n){if(e<t){e=t}else if(e>n){e=n}return e}function u(t,n){switch(t){case"hex":for(var r=0;r<n.length;r++){n[r]=e.HSV_to_HEX(n[r])}break;case"rgb":for(var r=0;r<n.length;r++){n[r]=e.HSV_to_RGB(n[r])}break;case"rgb-string":for(var r=0;r<n.length;r++){var i=e.HSV_to_RGB(n[r]);n[r]="rgb("+i.r+","+i.g+","+i.b+")"}break;case"hsv":break;default:console.log("Format not recognized.");break}return n}function a(e){var t={};for(var n in e){if(e.hasOwnProperty(n)){t[n]=e[n]}}return t}var e={};var t={aliceblue:"F0F8FF",antiquewhite:"FAEBD7",aqua:"00FFFF",aquamarine:"7FFFD4",azure:"F0FFFF",beige:"F5F5DC",bisque:"FFE4C4",black:"000000",blanchedalmond:"FFEBCD",blue:"0000FF",blueviolet:"8A2BE2",brown:"A52A2A",burlywood:"DEB887",cadetblue:"5F9EA0",chartreuse:"7FFF00",chocolate:"D2691E",coral:"FF7F50",cornflowerblue:"6495ED",cornsilk:"FFF8DC",crimson:"DC143C",cyan:"00FFFF",darkblue:"00008B",darkcyan:"008B8B",darkgoldenrod:"B8860B",darkgray:"A9A9A9",darkgrey:"A9A9A9",darkgreen:"006400",darkkhaki:"BDB76B",darkmagenta:"8B008B",darkolivegreen:"556B2F",darkorange:"FF8C00",darkorchid:"9932CC",darkred:"8B0000",darksalmon:"E9967A",darkseagreen:"8FBC8F",darkslateblue:"483D8B",darkslategray:"2F4F4F",darkslategrey:"2F4F4F",darkturquoise:"00CED1",darkviolet:"9400D3",deeppink:"FF1493",deepskyblue:"00BFFF",dimgray:"696969",dimgrey:"696969",dodgerblue:"1E90FF",firebrick:"B22222",floralwhite:"FFFAF0",forestgreen:"228B22",fuchsia:"FF00FF",gainsboro:"DCDCDC",ghostwhite:"F8F8FF",gold:"FFD700",goldenrod:"DAA520",gray:"808080",grey:"808080",green:"008000",greenyellow:"ADFF2F",honeydew:"F0FFF0",hotpink:"FF69B4",indianred:"CD5C5C",indigo:"4B0082",ivory:"FFFFF0",khaki:"F0E68C",lavender:"E6E6FA",lavenderblush:"FFF0F5",lawngreen:"7CFC00",lemonchiffon:"FFFACD",lightblue:"ADD8E6",lightcoral:"F08080",lightcyan:"E0FFFF",lightgoldenrodyellow:"FAFAD2",lightgray:"D3D3D3",lightgrey:"D3D3D3",lightgreen:"90EE90",lightpink:"FFB6C1",lightsalmon:"FFA07A",lightseagreen:"20B2AA",lightskyblue:"87CEFA",lightslategray:"778899",lightslategrey:"778899",lightsteelblue:"B0C4DE",lightyellow:"FFFFE0",lime:"00FF00",limegreen:"32CD32",linen:"FAF0E6",magenta:"FF00FF",maroon:"800000",mediumaquamarine:"66CDAA",mediumblue:"0000CD",mediumorchid:"BA55D3",mediumpurple:"9370D8",mediumseagreen:"3CB371",mediumslateblue:"7B68EE",mediumspringgreen:"00FA9A",mediumturquoise:"48D1CC",mediumvioletred:"C71585",midnightblue:"191970",mintcream:"F5FFFA",mistyrose:"FFE4E1",moccasin:"FFE4B5",navajowhite:"FFDEAD",navy:"000080",oldlace:"FDF5E6",olive:"808000",olivedrab:"6B8E23",orange:"FFA500",orangered:"FF4500",orchid:"DA70D6",palegoldenrod:"EEE8AA",palegreen:"98FB98",paleturquoise:"AFEEEE",palevioletred:"D87093",papayawhip:"FFEFD5",peachpuff:"FFDAB9",peru:"CD853F",pink:"FFC0CB",plum:"DDA0DD",powderblue:"B0E0E6",purple:"800080",rebeccapurple:"663399",red:"FF0000",rosybrown:"BC8F8F",royalblue:"4169E1",saddlebrown:"8B4513",salmon:"FA8072",sandybrown:"F4A460",seagreen:"2E8B57",seashell:"FFF5EE",sienna:"A0522D",silver:"C0C0C0",skyblue:"87CEEB",slateblue:"6A5ACD",slategray:"708090",slategrey:"708090",snow:"FFFAFA",springgreen:"00FF7F",steelblue:"4682B4",tan:"D2B48C",teal:"008080",thistle:"D8BFD8",tomato:"FF6347",turquoise:"40E0D0",violet:"EE82EE",wheat:"F5DEB3",white:"FFFFFF",whitesmoke:"F5F5F5",yellow:"FFFF00",yellowgreen:"9ACD32"};var n={hue:null,saturation:null,value:null,base_color:"",greyscale:false,grayscale:false,golden:true,full_random:false,colors_returned:1,format:"hex"};var r={scheme_type:"analogous",format:"hex"};e.NAME_to_HEX=function(e){if(e in t){return t[e]}else{console.log("Color name not recognized.")}};e.NAME_to_HSV=function(t){return e.HEX_to_RGB(e.NAME_to_HEX(t))};e.NAME_to_HSV=function(t){return e.HEX_to_HSV(e.NAME_to_HEX(t))};e.HEX_to_RGB=function(e){var t=/^#?([a-f\d])([a-f\d])([a-f\d])$/i;e=e.replace(t,function(e,t,n,r){return t+t+n+n+r+r});var n=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(e);return n?{r:parseInt(n[1],16),g:parseInt(n[2],16),b:parseInt(n[3],16)}:null};e.RGB_to_HEX=function(e){return"#"+((1<<24)+(e.r<<16)+(e.g<<8)+e.b).toString(16).slice(1)};e.HSV_to_RGB=function(e){var t,n,r;var i=e.h/360;var s=e.s;var o=e.v;var u=Math.floor(i*6);var a=i*6-u;var f=o*(1-s);var l=o*(1-a*s);var c=o*(1-(1-a)*s);switch(u%6){case 0:t=o,n=c,r=f;break;case 1:t=l,n=o,r=f;break;case 2:t=f,n=o,r=c;break;case 3:t=f,n=l,r=o;break;case 4:t=c,n=f,r=o;break;case 5:t=o,n=f,r=l;break}return{r:Math.floor(t*255),g:Math.floor(n*255),b:Math.floor(r*255)}};e.RGB_to_HSV=function(e){var t,n,r;var i=0;var s=0;var o=0;t=e.r/255;n=e.g/255;r=e.b/255;var u=Math.min(t,Math.min(n,r));var a=Math.max(t,Math.max(n,r));if(u==a){o=u;return{h:0,s:0,v:o}}var f=t==u?n-r:r==u?t-n:r-t;var l=t==u?3:r==u?1:5;i=60*(l-f/(a-u));s=(a-u)/a;o=a;return{h:i,s:s,v:o}};e.HSV_to_HEX=function(t){return e.RGB_to_HEX(e.HSV_to_RGB(t))};e.HEX_to_HSV=function(t){return e.RGB_to_HSV(e.HEX_to_RGB(t))};e.make_scheme=function(e,t){function f(e){return{h:e.h,s:e.s,v:e.v}}var n=a(r);if(t!=null){for(var i in t){if(t.hasOwnProperty(i)){n[i]=t[i]}}}var s=[e];switch(n.scheme_type.toLowerCase()){case"monochromatic":case"mono":for(var l=1;l<=2;l++){var c=f(e);var h=c.s+.1*l;h=o(h,0,1);var p=c.v+.1*l;p=o(p,0,1);c.s=h;c.v=p;s.push(c)}for(var l=1;l<2;l++){var c=f(e);var h=c.s-.1*l;h=o(h,0,1);var p=c.v-.1*l;p=o(p,0,1);c.s=h;c.v=p;s.push(c)}break;case"complementary":case"complement":var c=f(e);c.h+=180;if(c.h>360){c.h-=360}s.push(c);break;case"split-complementary":case"split-complement":case"split":var c=f(e);c.h+=165;if(c.h>360){c.h-=360}s.push(c);var c=f(e);c.h-=165;if(c.h<0){c.h+=360}s.push(c);break;case"double-complementary":case"double-complement":case"double":var c=f(e);c.h+=180;if(c.h>360){c.h-=360}s.push(c);var c=f(e);c.h+=30;if(c.h>360){c.h-=360}var d=f(c);s.push(c);d.h+=180;if(d.h>360){d.h-=360}s.push(d);break;case"analogous":case"ana":for(var l=1;l<=5;l++){var c=f(e);c.h+=20*l;if(c.h>360){c.h-=360}s.push(c)}break;case"triadic":case"triad":case"tri":for(var l=1;l<3;l++){var c=f(e);c.h+=120*l;if(c.h>360){c.h-=360}s.push(c)}break;default:console.log("Color scheme not recognized.");break}u(n.format.toLowerCase(),s);return s};e.make_color=function(r){var a=[];var f={};for(var l in n){if(n.hasOwnProperty(l)){f[l]=n[l]}}if(r!=null){for(var l in r){if(r.hasOwnProperty(l)){f[l]=r[l]}}}var c;if(f.base_color.length>0){c=t[f.base_color.toLowerCase()];c=e.HEX_to_HSV(c)}for(var h=0;h<f.colors_returned;h++){var p=i(0,360);var d,v,m;if(c!=null){d=i(c.h-5,c.h+5);v=s(.4,.85);m=s(.4,.85);a.push({h:d,s:v,v:m})}else{if(f.greyscale==true||f.grayscale==true){d=0}else if(f.golden==true){d=p+p/.618033988749895}else if(f.hue==null||f.full_random==true){d=p}else{d=o(f.hue,0,360)}if(f.greyscale==true||f.grayscale==true){v=0}else if(f.full_random==true){v=s(0,1)}else if(f.saturation==null){v=.4}else{v=o(f.saturation,0,1)}if(f.full_random==true){m=s(0,1)}else if(f.greyscale==true||f.grayscale==true){m=s(.15,.75)}else if(f.value==null){m=.75}else{m=o(f.value,0,1)}a.push({h:d,s:v,v:m})}}u(f.format.toLowerCase(),a);if(a.length===1){return a[0]}else{return a}};return e}if(typeof Please=="undefined"){e.Please=t()}})(window)
+;
 (function() {
   window.App = {};
 
@@ -4231,6 +4823,7 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
     App.config = {
       isMobile: document.width <= 320
     };
+    App.active_years = ["83-87", 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
     if (App.config.isMobile) {
       App.FTL = new Streamphish.FastTouchLinks(document.body);
     } else {
@@ -4240,9 +4833,10 @@ Streamphish.Templates["player"] = _.template("<div class=\"controls\">\n  <a cla
           prop: $(this).prop("href"),
           attr: $(this).attr("href")
         };
-        root = "" + location.protocol + "//" + location.host;
+        root = location.protocol + "//" + location.host;
         if (href.prop && (href.prop.slice(0, root.length) === root)) {
           e.preventDefault();
+          App.player_view.closeMap();
           return App.router.navigate(href.attr, true);
         }
       });
