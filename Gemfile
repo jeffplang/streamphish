@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 #source "http://gems.rubyforge.org"
 
-ruby '2.1.1'
+ruby '2.1.6'
 
 # gem 'rails', '3.2.12'
 gem 'rails', '4.0.5'
