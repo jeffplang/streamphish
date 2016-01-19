@@ -30,6 +30,7 @@ $ ->
   App.active_years = <%= Streamphish::Application.config.phish_active_years.to_json.html_safe %>;
 
 
+
   # Setup link hijacking to go through Backbone
   if App.config.isMobile
     App.FTL = new Streamphish.FastTouchLinks(document.body)
