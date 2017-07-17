@@ -67,7 +67,7 @@ module Streamphish
 
     config.action_controller.page_cache_extension = '.json'
 
-    config.phish_active_years = ['83-87'] + (1988..2016).to_a - [2001, 2005, 2006, 2007, 2008]
+    config.phish_active_years = ['83-87'] + (1988..2017).to_a - [2001, 2005, 2006, 2007, 2008]
 
   end
 end
